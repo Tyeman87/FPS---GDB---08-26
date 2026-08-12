@@ -21,8 +21,6 @@ public class gameManager : MonoBehaviour
 
     public bool playerHasFlag;
 
-    public TMP_Text killCountText;
-
     float timeScaleOrig;
     int gameGoalCount;
     int killCount;
