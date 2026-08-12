@@ -33,10 +33,13 @@ public class playerController : MonoBehaviour
     void Update()
     {
         movement();
+        sprint();
     }
 
     void movement()
     {
+        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
+
         if (characterController.isGrounded)
         {
             jumpCount = 0;
@@ -54,6 +57,19 @@ public class playerController : MonoBehaviour
         {
             //TODO:
             //shoot();
+        }
+    }
+
+    void sprint()
+    {
+        
+        if (Input.GetButtonDown("Sprint"))
+        {
+            speed *= sprintMod;
+        }
+        else if(Input.GetButtonUp("Sprint"))
+        {
+            speed /= sprintMod;
         }
     }
 
