@@ -10,6 +10,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
+    [SerializeField] TMP_Text killCountText;
 
     public bool isPaused;
     public GameObject player;
@@ -23,7 +24,6 @@ public class gameManager : MonoBehaviour
     public TMP_Text killCountText;
 
     float timeScaleOrig;
-
     int gameGoalCount;
     int killCount;
 
