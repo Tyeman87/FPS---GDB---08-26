@@ -1,6 +1,6 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class gameManager : MonoBehaviour
 {
@@ -10,6 +10,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
+    [SerializeField] TMP_Text killCountText;
 
     public bool isPaused;
     public GameObject player;
@@ -17,13 +18,10 @@ public class gameManager : MonoBehaviour
     public Image playerHPBar;
     public GameObject damageFlashPanel;
 
-    public TMP_Text killCountText;
-    
-
     float timeScaleOrig;
-
     int gameGoalCount;
     int killCount;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {

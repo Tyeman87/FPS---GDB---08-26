@@ -146,9 +146,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2685428695569063082}
+  - component: {fileID: 3108563590286888899}
   - component: {fileID: 4326116532634170512}
   - component: {fileID: 5847436481561374589}
-  - component: {fileID: 3108563590286888899}
   - component: {fileID: 8184326383462856043}
   m_Layer: 3
   m_Name: Player
@@ -173,6 +173,31 @@ Transform:
   - {fileID: 8690685913131147597}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3108563590286888899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8790214717902577705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d958a898ecbe38549bc0db23c3898680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::playerController
+  characterController: {fileID: 8184326383462856043}
+  ignoreLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  HP: 10
+  speed: 5
+  sprintMod: 4
+  jumpSpeed: 10
+  jumpMax: 2
+  gravity: 20
+  shootDamage: 2
+  shootDist: 120
+  shootRate: 1.99
 --- !u!33 &4326116532634170512
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -230,31 +255,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3108563590286888899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8790214717902577705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d958a898ecbe38549bc0db23c3898680, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::playerController
-  characterController: {fileID: 8184326383462856043}
-  ignoreLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  HP: 1
-  speed: 5
-  sprintMod: 2
-  jumpSpeed: 5
-  jumpMax: 1
-  gravity: 15
-  shootDamage: 1
-  shootDist: 3
-  shootRate: 0.1
 --- !u!143 &8184326383462856043
 CharacterController:
   m_ObjectHideFlags: 0
