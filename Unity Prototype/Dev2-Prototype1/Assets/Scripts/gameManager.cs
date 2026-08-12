@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,9 +17,13 @@ public class gameManager : MonoBehaviour
     public Image playerHPBar;
     public GameObject damageFlashPanel;
 
+    public TMP_Text killCountText;
+    
+
     float timeScaleOrig;
 
     int gameGoalCount;
+    int killCount;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -26,6 +31,8 @@ public class gameManager : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
         timeScaleOrig = Time.timeScale;
+
+        killCountText.text = "Kills: 0";
     }
 
     // Update is called once per frame
@@ -77,6 +84,18 @@ public class gameManager : MonoBehaviour
             menuActive = menuWin;
             menuActive.SetActive(true);
         }
+    }
+
+    public void addKill()
+    {
+        killCount++;
+
+        killCountText.text = "Kills: " + killCount;
+    }
+
+    public int getKillCount()
+    {
+        return killCount;
     }
         public void youLose()
     {
