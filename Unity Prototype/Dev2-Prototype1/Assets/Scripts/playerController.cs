@@ -35,10 +35,15 @@ public class playerController : MonoBehaviour, IDamage
     void Update()
     {
         movement();
+        sprint();
     }
 
     void movement()
     {
+        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
+
+        shootTimer += Time.deltaTime;
+
         if (characterController.isGrounded)
         {
             jumpCount = 0;
@@ -54,8 +59,19 @@ public class playerController : MonoBehaviour, IDamage
 
         if (Input.GetButton("Fire1") && shootTimer > shootRate)
         {
-            //TODO:
-            //shoot();
+            shoot();
+        }
+    }
+
+    void sprint()
+    {
+        if(Input.GetButtonDown("Sprint"))
+        {
+            speed *= sprintMod;
+        }
+        else if(Input.GetButtonUp("Sprint"))
+        {
+            speed /= sprintMod;
         }
     }
 
