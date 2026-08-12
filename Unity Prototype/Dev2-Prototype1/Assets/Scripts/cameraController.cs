@@ -20,8 +20,8 @@ public class cameraController : MonoBehaviour
     {
         if (!gameManager.instance.isPaused)
         {
-            float mouseX = Input.GetAxisRaw("Mouse X") * Sense * Time.deltaTime;
-            float mouseY = Input.GetAxisRaw("Mouse Y") * Sense * Time.deltaTime;
+            float mouseX = Input.GetAxisRaw("Mouse X") * Sense;
+            float mouseY = Input.GetAxisRaw("Mouse Y") * Sense;
 
             camRotX -= mouseY;
             camRotX = Mathf.Clamp(camRotX, minVert, maxVert);
