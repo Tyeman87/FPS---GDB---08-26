@@ -464,26 +464,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 219527251}
   m_CullTransparentMesh: 1
---- !u!1 &219669754 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3327457035481325646, guid: 5ba9c0000173504479c1976f95227bae, type: 3}
-  m_PrefabInstance: {fileID: 1811701051315540778}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &219669760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 219669754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8d7520caf596904c8d6f7f45f3c7c90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::cameraController
-  Sense: 20
-  minVert: -90
-  maxVert: 90
 --- !u!1 &230493486
 GameObject:
   m_ObjectHideFlags: 0
@@ -1580,6 +1560,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 641888572}
   m_CullTransparentMesh: 1
+--- !u!1 &692569581 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3327457035481325646, guid: 5ba9c0000173504479c1976f95227bae, type: 3}
+  m_PrefabInstance: {fileID: 1811701051315540778}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &692569587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692569581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d7520caf596904c8d6f7f45f3c7c90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::cameraController
+  Sense: 20
+  minVert: -90
+  maxVert: 90
 --- !u!1 &726596605
 GameObject:
   m_ObjectHideFlags: 0
@@ -3806,7 +3806,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3327457035481325646, guid: 5ba9c0000173504479c1976f95227bae, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 219669760}
+      addedObject: {fileID: 692569587}
   m_SourcePrefab: {fileID: 100100000, guid: 5ba9c0000173504479c1976f95227bae, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
