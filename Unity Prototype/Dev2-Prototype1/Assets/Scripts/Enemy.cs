@@ -1,3 +1,4 @@
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -21,5 +22,10 @@ public class Enemy : MonoBehaviour
         speed = baseSpeed + ((level - 1) * speedIncrease);
         health = baseHealth + ((level - 1) * healthIncrease);
         damage = baseDamage + ((level - 1) * damageIncrease);
+    }
+
+    private void Start()
+    {
+        ApplyLevelDifficulty();
     }
 }
