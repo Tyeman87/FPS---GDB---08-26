@@ -21,8 +21,6 @@ public class gameManager : MonoBehaviour
 
     public bool playerHasFlag;
 
-    public TMP_Text killCountText;
-
     float timeScaleOrig;
     int gameGoalCount;
     int killCount;
@@ -126,6 +124,14 @@ public class gameManager : MonoBehaviour
         statePause();
 
         menuActive = menuLose;
+        menuActive.SetActive(true);
+    }
+
+    public void winGame()
+    {
+        statePause();
+
+        menuActive = menuWin;
         menuActive.SetActive(true);
     }
 }
