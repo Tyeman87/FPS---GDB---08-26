@@ -1,11 +1,10 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class cameraController : MonoBehaviour
 {
-
-    [SerializeField] int sens;
-    [SerializeField] int lockVertMin, lockVertMax;
+    [Header("Camera Settings")]
+    [Range(10, 200)][SerializeField] int Sense;
+    [SerializeField] int minVert, maxVert;
 
     float camRotX;
 
@@ -19,13 +18,16 @@ public class cameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float mouseX = Input.GetAxisRaw("Mouse X") * sens;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * sens;
+        if (!gameManager.instance.isPaused)
+        {
+            float mouseX = Input.GetAxisRaw("Mouse X") * Sense * Time.deltaTime;
+            float mouseY = Input.GetAxisRaw("Mouse Y") * Sense * Time.deltaTime;
 
-        camRotX -= mouseY;
-        camRotX = Mathf.Clamp(camRotX, lockVertMin, lockVertMax);
-        transform.localRotation = Quaternion.Euler(camRotX, 0, 0);
+            camRotX -= mouseY;
+            camRotX = Mathf.Clamp(camRotX, minVert, maxVert);
+            transform.localRotation = Quaternion.Euler(camRotX, 0, 0);
 
-        transform.parent.Rotate(Vector3.up * mouseX);
+            transform.parent.Rotate(Vector3.up * mouseX);
+        }
     }
 }
