@@ -1,6 +1,6 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class gameManager : MonoBehaviour
 {
@@ -16,23 +16,30 @@ public class gameManager : MonoBehaviour
     public playerController playerScript;
     public Image playerHPBar;
     public GameObject damageFlashPanel;
+    public Image flagUI;
+
+    public bool playerHasFlag;
 
     public TMP_Text killCountText;
-    
 
     float timeScaleOrig;
 
     int gameGoalCount;
     int killCount;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         instance = this;
+
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
+
         timeScaleOrig = Time.timeScale;
 
         killCountText.text = "Kills: 0";
+
+        flagUI.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -59,6 +66,7 @@ public class gameManager : MonoBehaviour
     {
         isPaused = true;
         Time.timeScale = 0;
+
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
@@ -67,8 +75,10 @@ public class gameManager : MonoBehaviour
     {
         isPaused = false;
         Time.timeScale = timeScaleOrig;
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
         menuActive.SetActive(false);
         menuActive = null;
     }
@@ -81,6 +91,7 @@ public class gameManager : MonoBehaviour
         {
             // you win!!
             statePause();
+
             menuActive = menuWin;
             menuActive.SetActive(true);
         }
@@ -97,9 +108,23 @@ public class gameManager : MonoBehaviour
     {
         return killCount;
     }
-        public void youLose()
+
+    public void playerPickedUpFlag()
+    {
+        playerHasFlag = true;
+        flagUI.gameObject.SetActive(true);
+    }
+
+    public void playerDroppedFlag()
+    {
+        playerHasFlag = false;
+        flagUI.gameObject.SetActive(false);
+    }
+
+    public void youLose()
     {
         statePause();
+
         menuActive = menuLose;
         menuActive.SetActive(true);
     }
