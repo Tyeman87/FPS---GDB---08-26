@@ -19,9 +19,9 @@ public class Enemy : MonoBehaviour
     {
         int level = levelManager.currentLevel;
 
-        speed = baseSpeed + ((level - 1) * speedIncrease);
-        health = baseHealth + ((level - 1) * healthIncrease);
-        damage = baseDamage + ((level - 1) * damageIncrease);
+        speed = baseSpeed + ((level - 1) * speedIncrease) * levelManager.difficultyMultiplier;
+        health = baseHealth + ((level - 1) * healthIncrease) * levelManager.difficultyMultiplier;
+        damage = baseDamage + ((level - 1) * damageIncrease) * levelManager.difficultyMultiplier;
     }
 
     private void Start()
