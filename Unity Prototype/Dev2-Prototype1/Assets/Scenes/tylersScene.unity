@@ -904,6 +904,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::enemyAI
   agent: {fileID: 890948142}
   model: {fileID: 890948139}
+  maxHP: 1
+  colorOrig: {r: 0, g: 0, b: 0, a: 0}
   HP: 3
   maxHP: 7
   faceTargetSpeed: 2
