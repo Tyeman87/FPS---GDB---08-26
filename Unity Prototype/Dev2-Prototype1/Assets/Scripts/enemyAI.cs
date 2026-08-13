@@ -5,20 +5,12 @@ using UnityEngine;
 public class enemyAI : MonoBehaviour, IDamage
 {
     [SerializeField] NavMeshAgent agent;
-    [SerializeField] public Renderer model;
-
-    [Header("Stats")]
-    [Range(1, 30)] [SerializeField] public int maxHP;
-
-
-    public Color colorOrig;
-    bool isDead = false; 
+    [SerializeField] Renderer model;
 
     [Header("Enemy Stats")]
-    [Range(1, 10)][SerializeField] public int HP;
+    [Range(1, 10)][SerializeField] int HP;
     [SerializeField] int faceTargetSpeed;
     [SerializeField] int FOV;
-    [SerializeField] float moveSpeed;
 
     [Header("Weapons")]
     [SerializeField] GameObject bullet;
@@ -26,8 +18,8 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] Transform shootPosition;
     [SerializeField] float shootRate;
     [SerializeField] int gunRotateSpeed;
-    [SerializeField] int bulletDamage;
 
+    Color colorOrig;
     Vector3 playerDir;
 
     float shootTimer;
@@ -37,7 +29,6 @@ public class enemyAI : MonoBehaviour, IDamage
     void Start()
     {
         colorOrig = model.material.color;
-        agent.speed = moveSpeed;
         gameManager.instance.updateGameGoal(1);
     }
 
@@ -115,30 +106,18 @@ public class enemyAI : MonoBehaviour, IDamage
     void shoot()
     {
         shootTimer = 0;
-
-        GameObject newBullet = Instantiate(bullet, shootPosition.position, gunPivot.rotation);
-
-        damage bulletDamageScript = newBullet.GetComponent<damage>();
-
-        if (bulletDamageScript != null)
-        {
-            bulletDamageScript.setDamage(bulletDamage);
-        }
+        Instantiate(bullet, shootPosition.position, transform.rotation);
     }
 
     public void takeDamage(int amount)
     {
-        if (isDead) return;
-
         HP -= amount;
         agent.SetDestination(gameManager.instance.player.transform.position);
 
         if (HP <= 0)
         {
-            isDead = true;
-
-            RespawnManager.instance.HandleEnemyDeath(gameObject);
-            //gameManager.instance.updateGameGoal(-1);
+            gameManager.instance.updateGameGoal(-1);
+            Destroy(gameObject);
         }
         else
         {
@@ -153,3 +132,4 @@ public class enemyAI : MonoBehaviour, IDamage
         model.material.color = colorOrig;
     }
 }
+

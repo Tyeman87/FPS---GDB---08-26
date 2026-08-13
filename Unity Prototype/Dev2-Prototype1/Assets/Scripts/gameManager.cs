@@ -20,7 +20,7 @@ public class gameManager : MonoBehaviour
     public Image flagUI;
 
     public bool playerHasFlag;
-
+    
     float timeScaleOrig;
     int gameGoalCount;
     int killCount;
@@ -29,7 +29,6 @@ public class gameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-
 
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
