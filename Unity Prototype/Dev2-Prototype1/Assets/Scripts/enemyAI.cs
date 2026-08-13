@@ -40,7 +40,7 @@ public class enemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-        if(playerInSight && canSeePlayer())
+        if (playerInSight && canSeePlayer())
         {
 
         }
