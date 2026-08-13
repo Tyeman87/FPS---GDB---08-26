@@ -34,13 +34,13 @@ public class playerController : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-        shootTimer += Time.deltaTime;
         movement();
         sprint();
     }
 
     void movement()
     {
+        shootTimer += Time.deltaTime;
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
 
         if (characterController.isGrounded)

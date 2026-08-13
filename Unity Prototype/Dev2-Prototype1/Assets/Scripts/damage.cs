@@ -25,6 +25,12 @@ public class damage : MonoBehaviour
 
     bool isDamaging;
 
+    // Damage setter for different enemy types
+    public void setDamage(int amount)
+    {
+        damageAmount = amount;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
