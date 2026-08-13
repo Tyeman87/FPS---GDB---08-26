@@ -320,6 +320,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 890948142}
   m_SourcePrefab: {fileID: 100100000, guid: f07200c1e7570da41a4cb102a86c160b, type: 3}
+--- !u!4 &256850752 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4270699528705787131, guid: f07200c1e7570da41a4cb102a86c160b, type: 3}
+  m_PrefabInstance: {fileID: 225937820}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &269500560 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7791680660320909169, guid: f07200c1e7570da41a4cb102a86c160b, type: 3}
@@ -442,11 +447,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1382091494}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &569514915 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1559942487890406157, guid: f07200c1e7570da41a4cb102a86c160b, type: 3}
-  m_PrefabInstance: {fileID: 225937820}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &824676135
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,9 +509,9 @@ MonoBehaviour:
   FOV: 45
   bullet: {fileID: 6964972883987111141, guid: e497d04b3da85d748af41ef0a2efde98, type: 3}
   gunPivot: {fileID: 468767658}
-  shootPosition: {fileID: 569514915}
+  shootPosition: {fileID: 256850752}
   shootRate: 1
-  gunRotateSpeed: 1
+  gunRotateSpeed: 5
 --- !u!195 &890948142
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -874,6 +874,10 @@ PrefabInstance:
     - target: {fileID: 2685428695569063082, guid: 5ba9c0000173504479c1976f95227bae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210993811449926648, guid: 5ba9c0000173504479c1976f95227bae, type: 3}
+      propertyPath: Sense
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8790214717902577705, guid: 5ba9c0000173504479c1976f95227bae, type: 3}
       propertyPath: m_Name
