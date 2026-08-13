@@ -34,6 +34,7 @@ public class playerController : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
+        shootTimer += Time.deltaTime;
         movement();
         sprint();
     }
@@ -58,7 +59,6 @@ public class playerController : MonoBehaviour, IDamage
 
         if (Input.GetButtonDown("Fire1") && shootTimer > shootRate)
         {
-            
             shoot();
         }
     }
