@@ -7,15 +7,9 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] NavMeshAgent agent;
     [SerializeField] public Renderer model;
 
-    [Header("Stats")]
-    [Range(1, 30)] [SerializeField] public int maxHP;
-
-
-    public Color colorOrig;
-    bool isDead = false; 
-
     [Header("Enemy Stats")]
     [Range(1, 10)][SerializeField] public int HP;
+    [SerializeField] public int maxHP;
     [SerializeField] int faceTargetSpeed;
     [SerializeField] int FOV;
     [SerializeField] float moveSpeed;
@@ -28,6 +22,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int gunRotateSpeed;
     [SerializeField] int bulletDamage;
 
+    public Color colorOrig;
     Vector3 playerDir;
 
     float shootTimer;
@@ -36,6 +31,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     void Start()
     {
+        HP = maxHP;
         colorOrig = model.material.color;
         agent.speed = moveSpeed;
         gameManager.instance.updateGameGoal(1);
@@ -52,26 +48,20 @@ public class enemyAI : MonoBehaviour, IDamage
 
     bool canSeePlayer()
     {
-        // If the player is in the trigger, face the player and shoot at them.
         shootTimer += Time.deltaTime;
         playerDir = gameManager.instance.player.transform.position - transform.position;
 
-        // Calculate the angle between the enemy's forward direction and the direction to the player
         angleToPlayer = Vector3.Angle(playerDir, transform.forward);
 
-        // Perform a raycast to check if there are any obstacles between the enemy and the player
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, playerDir, out hit))
+        if (Physics.Raycast(transform.position, playerDir.normalized, out hit))
         {
-            // If the player is within the enemy's field of view and there are no obstacles, return true
             if (angleToPlayer < FOV && hit.collider.CompareTag("Player"))
             {
-                // Set enemy action priorities
                 agent.SetDestination(gameManager.instance.player.transform.position);
                 faceTarget();
                 gunRotation();
 
-                // If the player is in the trigger, shoot at them.
                 if (shootTimer >= shootRate)
                 {
                     shoot();
@@ -128,17 +118,13 @@ public class enemyAI : MonoBehaviour, IDamage
 
     public void takeDamage(int amount)
     {
-        if (isDead) return;
-
         HP -= amount;
         agent.SetDestination(gameManager.instance.player.transform.position);
 
         if (HP <= 0)
         {
-            isDead = true;
-
-            RespawnManager.instance.HandleEnemyDeath(gameObject);
-            //gameManager.instance.updateGameGoal(-1);
+            gameManager.instance.updateGameGoal(-1);
+            Destroy(gameObject);
         }
         else
         {
