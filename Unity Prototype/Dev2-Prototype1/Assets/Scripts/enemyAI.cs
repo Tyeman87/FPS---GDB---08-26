@@ -8,7 +8,6 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] public Renderer model;
 
     [Header("Stats")]
-    [Range(1, 30)] [SerializeField] public int HP;
     [Range(1, 30)] [SerializeField] public int maxHP;
 
 
@@ -16,7 +15,7 @@ public class enemyAI : MonoBehaviour, IDamage
     bool isDead = false; 
 
     [Header("Enemy Stats")]
-    [Range(1, 10)][SerializeField] int HP;
+    [Range(1, 10)][SerializeField] public int HP;
     [SerializeField] int faceTargetSpeed;
     [SerializeField] int FOV;
 
@@ -27,7 +26,6 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] float shootRate;
     [SerializeField] int gunRotateSpeed;
 
-    Color colorOrig;
     Vector3 playerDir;
 
     float shootTimer;
