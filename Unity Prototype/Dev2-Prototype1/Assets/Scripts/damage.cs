@@ -28,7 +28,11 @@ public class damage : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        if (type == DamageType.Bullet)
+        {
+            rb.linearVelocity = transform.forward * bulletSpeed;
+            Destroy(gameObject, bulletDestroyTime);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -60,11 +64,8 @@ public class damage : MonoBehaviour
         if (other.isTrigger)
             return;
 
-        // Check if the other object has the InterfaceDamage component
         IDamage damageable = other.GetComponent<IDamage>();
 
-        // If it does, apply damage over time based on the type of damage
-        if (damageable != null && type == DamageType.DOT && !isDamaging)
         if (damageable != null && type == DamageType.DOT && !isDamaging)
         {
             StartCoroutine(damageOther(damageable));
