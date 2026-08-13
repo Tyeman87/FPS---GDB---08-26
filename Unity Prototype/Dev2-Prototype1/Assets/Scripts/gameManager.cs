@@ -30,6 +30,7 @@ public class gameManager : MonoBehaviour
     {
         instance = this;
 
+
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<playerController>();
 

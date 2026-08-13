@@ -42,6 +42,7 @@ public class playerController : MonoBehaviour, IDamage
     {
         shootTimer += Time.deltaTime;
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
+        shootTimer += Time.deltaTime;
 
         if (characterController.isGrounded)
         {
@@ -56,7 +57,7 @@ public class playerController : MonoBehaviour, IDamage
         characterController.Move(playerVel * Time.deltaTime);
         playerVel.y -= gravity * Time.deltaTime;
 
-        if (Input.GetButton("Fire1") && shootTimer > shootRate)
+        if (Input.GetButtonDown("Fire1") && shootTimer > shootRate)
         {
             shoot();
         }
@@ -86,12 +87,15 @@ public class playerController : MonoBehaviour, IDamage
 
     void shoot()
     {
+        
         shootTimer = 0;
         
         RaycastHit hit;
         if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreLayer))
         {
             Debug.Log(hit.collider.name);
+            
+
             IDamage dmg = hit.collider.GetComponent<IDamage>();
             if(dmg != null)
             {

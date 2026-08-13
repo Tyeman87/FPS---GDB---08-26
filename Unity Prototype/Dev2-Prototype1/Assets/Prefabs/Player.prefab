@@ -44,12 +44,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3327457035481325646}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fe0a5542529dbe49999723ed7ac2495, type: 3}
+  m_Script: {fileID: 11500000, guid: e8d7520caf596904c8d6f7f45f3c7c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::cameraController
-  sens: 10
-  lockVertMin: -90
-  lockVertMax: 90
+  Sense: 10
+  minVert: -90
+  maxVert: 90
 --- !u!20 &3514934487301289805
 Camera:
   m_ObjectHideFlags: 0
@@ -205,7 +205,7 @@ MonoBehaviour:
   characterController: {fileID: 8184326383462856043}
   ignoreLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   HP: 10
   speed: 5
   sprintMod: 4
@@ -214,7 +214,7 @@ MonoBehaviour:
   gravity: 20
   shootDamage: 2
   shootDist: 120
-  shootRate: 1.99
+  shootRate: 0.2
 --- !u!33 &4326116532634170512
 MeshFilter:
   m_ObjectHideFlags: 0
