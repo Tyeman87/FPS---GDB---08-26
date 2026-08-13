@@ -47,7 +47,9 @@ public class damage : MonoBehaviour
             return;
 
         // Check if the other object has the InterfaceDamage component
-        IDamage damageable = other.GetComponent<IDamage>();
+        IDamage damageable = other.GetComponentInParent<IDamage>();
+
+        Debug.Log("Hit: " + other.gameObject.name + " | IDamage: " + (damageable != null));
 
         // If it does, apply damage based on the type of damage
         if (damageable != null && type != DamageType.DOT)
