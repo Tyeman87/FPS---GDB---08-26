@@ -34,7 +34,6 @@ public class enemyAI : MonoBehaviour, IDamage
         HP = maxHP;
         colorOrig = model.material.color;
         agent.speed = moveSpeed;
-        gameManager.instance.updateGameGoal(1);
     }
 
     // Update is called once per frame
@@ -123,8 +122,8 @@ public class enemyAI : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
-            gameManager.instance.updateGameGoal(-1);
-            Destroy(gameObject);
+            gameManager.instance.addKill();
+            RespawnManager.instance.HandleEnemyDeath(gameObject);
         }
         else
         {
