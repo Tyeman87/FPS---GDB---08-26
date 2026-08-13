@@ -18,6 +18,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [Range(1, 10)][SerializeField] public int HP;
     [SerializeField] int faceTargetSpeed;
     [SerializeField] int FOV;
+    [SerializeField] float moveSpeed;
 
     [Header("Weapons")]
     [SerializeField] GameObject bullet;
@@ -25,6 +26,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] Transform shootPosition;
     [SerializeField] float shootRate;
     [SerializeField] int gunRotateSpeed;
+    [SerializeField] int bulletDamage;
 
     Vector3 playerDir;
 
@@ -35,7 +37,7 @@ public class enemyAI : MonoBehaviour, IDamage
     void Start()
     {
         colorOrig = model.material.color;
-        HP = maxHP;
+        agent.speed = moveSpeed;
         gameManager.instance.updateGameGoal(1);
     }
 
@@ -113,7 +115,15 @@ public class enemyAI : MonoBehaviour, IDamage
     void shoot()
     {
         shootTimer = 0;
-        Instantiate(bullet, shootPosition.position, transform.rotation);
+
+        GameObject newBullet = Instantiate(bullet, shootPosition.position, gunPivot.rotation);
+
+        damage bulletDamageScript = newBullet.GetComponent<damage>();
+
+        if (bulletDamageScript != null)
+        {
+            bulletDamageScript.setDamage(bulletDamage);
+        }
     }
 
     public void takeDamage(int amount)

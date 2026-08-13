@@ -40,6 +40,7 @@ public class playerController : MonoBehaviour, IDamage
 
     void movement()
     {
+        shootTimer += Time.deltaTime;
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
         shootTimer += Time.deltaTime;
 
