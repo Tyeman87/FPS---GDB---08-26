@@ -2,18 +2,23 @@ using System.Collections;
 using UnityEngine.AI;
 using UnityEngine;
 
-public class enemyAI : MonoBehaviour
+public class enemyAI : MonoBehaviour, IDamage
 {
     [SerializeField] NavMeshAgent agent;
-    [SerializeField] Renderer model;
+    [SerializeField] public Renderer model;
 
     [Header("Stats")]
-    [Range(1, 10)] [SerializeField] int HP;
+    [Range(1, 30)] [SerializeField] public int HP;
+    [Range(1, 30)] [SerializeField] public int maxHP;
 
-    Color colorOrig;
+
+    public Color colorOrig;
+    bool isDead = false; 
+
     void Start()
     {
         colorOrig = model.material.color;
+        HP = maxHP;
         gameManager.instance.updateGameGoal(1);
     }
 
@@ -25,12 +30,16 @@ public class enemyAI : MonoBehaviour
 
     public void takeDamage(int amount)
     {
+        if (isDead) return;
+
         HP -= amount;
 
         if(HP <= 0)
         {
-            gameManager.instance.updateGameGoal(-1);
-            Destroy(gameObject);
+            isDead = true;
+
+            RespawnManager.instance.HandleEnemyDeath(gameObject);
+            //gameManager.instance.updateGameGoal(-1);
         }
         else
         {

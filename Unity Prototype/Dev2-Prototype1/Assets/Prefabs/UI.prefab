@@ -1910,7 +1910,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -842, y: -380}
+  m_AnchoredPosition: {x: -842, y: -195.32257}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4999555564804602203
@@ -2190,12 +2190,14 @@ MonoBehaviour:
   menuPause: {fileID: 838118135669628009}
   menuWin: {fileID: 591115484347059125}
   menuLose: {fileID: 3127010212097096403}
+  killCountText: {fileID: 3587253459724173666}
   isPaused: 0
   player: {fileID: 0}
   playerScript: {fileID: 0}
   playerHPBar: {fileID: 3787153116631766667}
   damageFlashPanel: {fileID: 3252056979600745473}
-  killCountText: {fileID: 0}
+  flagUI: {fileID: 0}
+  playerHasFlag: 0
 --- !u!1 &6067457582195886285
 GameObject:
   m_ObjectHideFlags: 0
