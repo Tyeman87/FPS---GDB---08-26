@@ -47,6 +47,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     bool canSeePlayer()
     {
+        if (!agent.enabled || !agent.isOnNavMesh) return false;
         shootTimer += Time.deltaTime;
         playerDir = gameManager.instance.player.transform.position - transform.position;
 
@@ -118,7 +119,10 @@ public class enemyAI : MonoBehaviour, IDamage
     public void takeDamage(int amount)
     {
         HP -= amount;
-        agent.SetDestination(gameManager.instance.player.transform.position);
+        if (agent.enabled && agent.isOnNavMesh)
+        { 
+            agent.SetDestination(gameManager.instance.player.transform.position); 
+        }
 
         if (HP <= 0)
         {
