@@ -56,6 +56,7 @@ public class enemyAI : MonoBehaviour, IDamage
         RaycastHit hit;
         if (Physics.Raycast(transform.position, playerDir.normalized, out hit))
         {
+            Debug.DrawRay(transform.position, playerDir.normalized * hit.distance, Color.green);
             if (angleToPlayer < FOV && hit.collider.CompareTag("Player"))
             {
                 agent.SetDestination(gameManager.instance.player.transform.position);
@@ -70,8 +71,12 @@ public class enemyAI : MonoBehaviour, IDamage
                 return true;
             }
         }
+        else
+        {
+            Debug.DrawRay(transform.position, playerDir.normalized, Color.red);
+        }
 
-        return false;
+        return false;        
     }
 
     private void OnTriggerEnter(Collider other)
