@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 6742151988029644562}
   - component: {fileID: 1894091835600958296}
   - component: {fileID: 7115800916567883710}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tanky Boi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -282,9 +282,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::enemyAI
   agent: {fileID: 7115800916567883710}
   model: {fileID: 6742151988029644562}
-  maxHP: 1
-  colorOrig: {r: 0, g: 0, b: 0, a: 0}
   HP: 10
+  maxHP: 1
   faceTargetSpeed: 2
   FOV: 50
   moveSpeed: 3
@@ -294,6 +293,7 @@ MonoBehaviour:
   shootRate: 3
   gunRotateSpeed: 0
   bulletDamage: 3
+  colorOrig: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &9020758087450073878
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -431,7 +431,7 @@ GameObject:
   - component: {fileID: 9059356443277837000}
   - component: {fileID: 178555868475454493}
   - component: {fileID: 9142735675136554545}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tank's Helm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,9 +467,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::enemyAI
   agent: {fileID: 5814893360944073819}
   model: {fileID: 178555868475454493}
-  maxHP: 1
-  colorOrig: {r: 0, g: 0, b: 0, a: 0}
   HP: 1
+  maxHP: 1
   faceTargetSpeed: 0
   FOV: 0
   moveSpeed: 0
@@ -479,6 +478,7 @@ MonoBehaviour:
   shootRate: 0
   gunRotateSpeed: 0
   bulletDamage: 0
+  colorOrig: {r: 0, g: 0, b: 0, a: 0}
 --- !u!195 &5814893360944073819
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -499,7 +499,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 0.99999994
   m_BaseOffset: 0.49999997
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 2
   m_ObstacleAvoidanceType: 4
 --- !u!33 &9059356443277837000
 MeshFilter:
@@ -1171,7 +1171,7 @@ GameObject:
   - component: {fileID: 2557998504260393112}
   - component: {fileID: 6386833192952037091}
   - component: {fileID: 7243706442933435313}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tank's Vest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1207,9 +1207,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::enemyAI
   agent: {fileID: 260548289474213040}
   model: {fileID: 6386833192952037091}
-  maxHP: 1
-  colorOrig: {r: 0, g: 0, b: 0, a: 0}
   HP: 3
+  maxHP: 1
   faceTargetSpeed: 0
   FOV: 0
   moveSpeed: 0
@@ -1219,6 +1218,7 @@ MonoBehaviour:
   shootRate: 0
   gunRotateSpeed: 0
   bulletDamage: 0
+  colorOrig: {r: 0, g: 0, b: 0, a: 0}
 --- !u!195 &260548289474213040
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1234,12 +1234,12 @@ NavMeshAgent:
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
+  m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 0.9999997
-  m_BaseOffset: 0.49999985
-  m_WalkableMask: 4294967295
+  m_BaseOffset: 0.8571429
+  m_WalkableMask: 2
   m_ObstacleAvoidanceType: 4
 --- !u!33 &2557998504260393112
 MeshFilter:
