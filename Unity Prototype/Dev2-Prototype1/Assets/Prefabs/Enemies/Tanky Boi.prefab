@@ -62,7 +62,7 @@ MonoBehaviour:
   bullet: {fileID: 6964972883987111141, guid: e497d04b3da85d748af41ef0a2efde98, type: 3}
   gunPivot: {fileID: 6710340420772787653}
   shootPosition: {fileID: 7181307909152167102}
-  shootRate: 3
+  shootRate: 1
   gunRotateSpeed: 6
   bulletDamage: 3
   colorOrig: {r: 0, g: 0, b: 0, a: 0}
