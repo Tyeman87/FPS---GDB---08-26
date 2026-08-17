@@ -9,9 +9,12 @@ public class JailDoorInteractable : MonoBehaviour, IInteractable
     [SerializeField] private float openDuration = 0.35f;
     [SerializeField] private bool invertDirection = false;
 
+    [Header("Hostage")]
+    [SerializeField] private HostageSpawner hostageSpawner;
+
     [Header("State")]
     [SerializeField] private bool startOpen = false;
-    
+
     private Quaternion closedRotation;
     private Vector3 closedPosition;
     private Vector3 pivotPosition;
@@ -25,14 +28,16 @@ public class JailDoorInteractable : MonoBehaviour, IInteractable
     private void Awake()
     {
         if (hingePivot == null && transform.parent != null)
+        {
             hingePivot = transform.parent.Find("Hinges");
+        }
 
         closedPosition = transform.position;
         closedRotation = transform.rotation;
 
         pivotPosition = hingePivot != null
-         ? hingePivot.position
-         : transform.position;
+            ? hingePivot.position
+            : transform.position;
 
         rotationAxis = hingePivot != null
             ? hingePivot.up
@@ -44,12 +49,30 @@ public class JailDoorInteractable : MonoBehaviour, IInteractable
     public void Interact()
     {
         Debug.Log("Jail door interacted with!");
+
         SetOpen(!isOpen);
     }
 
     public void SetOpen(bool open, bool instant = false)
     {
         isOpen = open;
+
+        // Release hostage when the door opens
+        if (open && hostageSpawner != null)
+        {
+            hostageAI npc = hostageSpawner.GetHostage();
+
+            if (npc != null)
+            {
+                npc.OpenCell();
+            }
+            else
+            {
+                Debug.LogError(
+                    "JailDoorInteractable: No hostage found in spawner!"
+                );
+            }
+        }
 
         if (doorRoutine != null)
         {
@@ -67,7 +90,9 @@ public class JailDoorInteractable : MonoBehaviour, IInteractable
             return;
         }
 
-        doorRoutine = StartCoroutine(AnimateDoor(targetAngle));
+        doorRoutine = StartCoroutine(
+            AnimateDoor(targetAngle)
+        );
     }
 
     private IEnumerator AnimateDoor(float targetAngle)
@@ -79,7 +104,9 @@ public class JailDoorInteractable : MonoBehaviour, IInteractable
         {
             elapsed += Time.deltaTime;
 
-            float t = Mathf.Clamp01(elapsed / openDuration);
+            float t = Mathf.Clamp01(
+                elapsed / openDuration
+            );
 
             float currentAngle = Mathf.Lerp(
                 startAngle,
@@ -93,38 +120,47 @@ public class JailDoorInteractable : MonoBehaviour, IInteractable
         }
 
         ApplyDoorRotation(targetAngle);
+
         doorRoutine = null;
     }
 
     private float GetCurrentAngle()
     {
         Quaternion relativeRotation =
-            Quaternion.Inverse(closedRotation) * transform.rotation;
+            Quaternion.Inverse(closedRotation)
+            * transform.rotation;
 
         relativeRotation.ToAngleAxis(
             out float angle,
             out Vector3 axis
         );
 
-        if (Vector3.Dot(axis, rotationAxis) < 0 )
+        if (Vector3.Dot(axis, rotationAxis) < 0)
+        {
             angle = -angle;
+        }
 
         if (angle > 180f)
+        {
             angle -= 360f;
+        }
 
         return angle;
     }
 
     private void ApplyDoorRotation(float angle)
     {
-        Quaternion rotation = 
-            Quaternion.AngleAxis(angle, rotationAxis);
+        Quaternion rotation =
+            Quaternion.AngleAxis(
+                angle,
+                rotationAxis
+            );
 
-        Vector3 position = 
+        Vector3 position =
             rotation * (closedPosition - pivotPosition)
             + pivotPosition;
 
-        Quaternion newRotation = 
+        Quaternion newRotation =
             rotation * closedRotation;
 
         transform.SetPositionAndRotation(
