@@ -23,6 +23,9 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] Transform shootPosition;
     [Range(0.1f, 5)][SerializeField] float shootRate;
 
+    [Header("Interaction")]
+    [SerializeField] float interactDistance = 3f;
+
     int jumpCount;
     int HPOrig;
     float shootTimer;
@@ -42,6 +45,7 @@ public class playerController : MonoBehaviour, IDamage
     {
         movement();
         sprint();
+        interact();
     }
 
     void movement()
@@ -120,5 +124,26 @@ public class playerController : MonoBehaviour, IDamage
     public void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+    }
+
+    void interact()
+    {
+        if (Input.GetButtonDown("Interact"))
+        {
+            Ray ray = new Ray(
+                Camera.main.transform.position,
+                Camera.main.transform.forward
+            );
+
+            if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, ~ignoreLayer))
+            {
+                IInteractable interactable = hit.collider.GetComponentInParent<IInteractable>();
+
+                if (interactable != null)
+                {
+                    interactable.Interact();
+                }
+            }
+        }
     }
 }
