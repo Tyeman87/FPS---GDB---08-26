@@ -28,4 +28,6 @@ public class Enemy : MonoBehaviour
     {
         ApplyLevelDifficulty();
     }
+
+
 }
