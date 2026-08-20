@@ -98,6 +98,13 @@ public class playerController : MonoBehaviour, IDamage
     {
         shootTimer = 0;
 
+        Debug.DrawRay(
+        shootPosition.position,
+        shootPosition.forward * 20f,
+        Color.blue,
+        2f
+        );
+
         Instantiate(bullet, shootPosition.position, shootPosition.rotation);
     }
 
