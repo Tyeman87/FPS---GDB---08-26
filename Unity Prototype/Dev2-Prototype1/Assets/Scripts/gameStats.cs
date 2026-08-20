@@ -30,4 +30,18 @@ public class gameStats : MonoBehaviour
             timeTaken += Time.deltaTime;
         }
     }
+
+    private void StartGame()
+    {
+        timeTaken = 0f;
+        enemiesKilled = 0;
+
+        gameStarted = true;
+        gameFinished = false;
+    }
+
+    public void EnemyKilled()
+    {
+        enemiesKilled++;
+    }
 }
