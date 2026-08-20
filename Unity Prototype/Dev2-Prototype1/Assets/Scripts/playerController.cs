@@ -33,12 +33,14 @@ public class playerController : MonoBehaviour, IDamage
     Vector3 moveDir;
     Vector3 playerVel;
 
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         HPOrig = HP;
         updatePlayerUI();
     }
 
+    // Update is called once per frame
     void Update()
     {
         movement();
@@ -96,36 +98,7 @@ public class playerController : MonoBehaviour, IDamage
     {
         shootTimer = 0;
 
-        Ray ray = new Ray(
-            Camera.main.transform.position,
-            Camera.main.transform.forward
-        );
-
-        Vector3 targetPoint =
-            Camera.main.transform.position +
-            Camera.main.transform.forward * shootDist;
-
-        if (Physics.Raycast(
-            ray,
-            out RaycastHit hit,
-            shootDist,
-            ~ignoreLayer))
-        {
-            targetPoint = hit.point;
-        }
-
-        Vector3 shootDirection =
-            (targetPoint - shootPosition.position).normalized;
-
-        // Rotate bullet toward target
-        Quaternion shootRotation =
-            Quaternion.LookRotation(shootDirection);
-
-        Instantiate(
-            bullet,
-            shootPosition.position,
-            shootRotation
-        );
+        Instantiate(bullet, shootPosition.position, shootPosition.rotation);
     }
 
     public void takeDamage(int amount)
