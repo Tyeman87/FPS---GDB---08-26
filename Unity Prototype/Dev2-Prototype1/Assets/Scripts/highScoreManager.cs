@@ -29,4 +29,9 @@ public class highScoreManager : MonoBehaviour
             PlayerPrefs.Save();
         }
     }
+
+    public int GetHighScore()
+    {
+        return PlayerPrefs.GetInt(HIGH_SCORE_KEY, 0);
+    }
 }
