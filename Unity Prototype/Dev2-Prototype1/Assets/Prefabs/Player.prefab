@@ -10,11 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8690685913131147597}
   - component: {fileID: 3210993811449926648}
-  - component: {fileID: 7035791366343654218}
   - component: {fileID: 3514934487301289805}
   - component: {fileID: 3478358739301574036}
   - component: {fileID: 3263775091814444636}
-  - component: {fileID: 5355151042019562615}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -31,10 +29,11 @@ Transform:
   m_GameObject: {fileID: 3327457035481325646}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0.16, y: 0.541, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8357307583490317801}
   m_Father: {fileID: 2685428695569063082}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3210993811449926648
@@ -50,21 +49,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::cameraController
   Sense: 10
-  minVert: -90
-  maxVert: 90
---- !u!114 &7035791366343654218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3327457035481325646}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8d7520caf596904c8d6f7f45f3c7c90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::cameraController
-  Sense: 30
   minVert: -90
   maxVert: 90
 --- !u!20 &3514934487301289805
@@ -170,21 +154,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!114 &5355151042019562615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3327457035481325646}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8d7520caf596904c8d6f7f45f3c7c90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::cameraController
-  Sense: 21
-  minVert: -90
-  maxVert: 90
 --- !u!1 &5917629181694668302
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,13 +270,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8541579752948399500}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.6, y: -0.36, z: 0.5}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4923732779820895502}
-  m_Father: {fileID: 2685428695569063082}
+  m_Father: {fileID: 8690685913131147597}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6369063542864721681
 MeshFilter:
@@ -400,7 +369,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8690685913131147597}
-  - {fileID: 8357307583490317801}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3108563590286888899
@@ -420,16 +388,17 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   HP: 10
-  speed: 5
-  sprintMod: 4
+  speed: 4
+  sprintMod: 3
   jumpSpeed: 10
-  jumpMax: 2
-  gravity: 20
+  jumpMax: 1
+  gravity: 30
   shootDamage: 1
   shootDist: 120
   bullet: {fileID: 6964972883987111141, guid: e497d04b3da85d748af41ef0a2efde98, type: 3}
   shootPosition: {fileID: 4923732779820895502}
   shootRate: 0.66
+  interactDistance: 5
 --- !u!33 &4326116532634170512
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -508,7 +477,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.55
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}

@@ -17,31 +17,38 @@ public class HostageSpawner : MonoBehaviour
     {
         if (hostagePrefab == null)
         {
-            Debug.LogError("HostageSpawner: No hostage prefab assigned!");
+            Debug.LogError(
+                "HostageSpawner: No hostage prefab assigned!"
+            );
+
             return null;
         }
 
         if (spawnPoint == null)
         {
-            Debug.LogError("HostageSpawner: No spawn point assigned!");
+            Debug.LogError(
+                "HostageSpawner: No spawn point assigned!"
+            );
+
             return null;
         }
 
-        // Spawn the hostage
         GameObject hostage = Instantiate(
             hostagePrefab,
             spawnPoint.position,
             spawnPoint.rotation
         );
 
-        // Get hostage AI
-        spawnedHostage = hostage.GetComponent<hostageAI>();
+        spawnedHostage =
+            hostage.GetComponent<hostageAI>();
 
         if (spawnedHostage == null)
         {
             Debug.LogError(
                 "Hostage prefab does not have a hostageAI component!"
             );
+
+            Destroy(hostage);
 
             return null;
         }
