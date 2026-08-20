@@ -21,4 +21,23 @@ public class scoreManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public int CalculateScore()
+    {
+        int enemiesKilled = gameStats.Instance.enemiesKilled;
+        float timeTaken = gameStats.Instance.timeTaken;
+
+        finalScore = Mathf.RoundToInt((enemiesKilled * pointsPerKill) - (timeTaken * timePenalty));
+
+        if (finalScore < 0)
+        {
+            finalScore = 0;
+        }
+        return finalScore;
+    }
+
+    public int GetFinalScore()
+    {
+        return finalScore;
+    }
 }
