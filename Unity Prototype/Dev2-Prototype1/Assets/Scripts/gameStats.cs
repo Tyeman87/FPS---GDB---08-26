@@ -44,4 +44,19 @@ public class gameStats : MonoBehaviour
     {
         enemiesKilled++;
     }
+
+    public void FinishGame()
+    {
+        gameFinished = true;
+        gameStarted = false;
+    }
+
+    public void ResetStats()
+    {
+        timeTaken = 0f;
+        enemiesKilled = 0;
+
+        gameStarted = false;
+        gameFinished = false;
+    }
 }
