@@ -18,4 +18,15 @@ public class highScoreManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void SaveHighScore(int score)
+    {
+        int currentHighScore = GetHighScore();
+
+        if (score > currentHighScore)
+        {
+            PlayerPrefs.SetInt(HIGH_SCORE_KEY, score);
+            PlayerPrefs.Save();
+        }
+    }
 }
