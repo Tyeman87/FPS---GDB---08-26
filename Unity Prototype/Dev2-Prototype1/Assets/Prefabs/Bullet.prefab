@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9179730014584375689}
   - component: {fileID: 3203547958431647872}
   - component: {fileID: 59584297229983832}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,8 +50,8 @@ MonoBehaviour:
   type: 0
   rb: {fileID: 3203547958431647872}
   damageAmount: 1
-  damageRate: 1
-  bulletSpeed: 500
+  damageRate: 0
+  bulletSpeed: 50
   bulletDestroyTime: 2
   hitEffect: {fileID: 0}
 --- !u!135 &9179730014584375689
@@ -101,7 +101,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!96 &59584297229983832
 TrailRenderer:
   serializedVersion: 4
