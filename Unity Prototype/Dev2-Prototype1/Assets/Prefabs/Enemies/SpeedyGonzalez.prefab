@@ -395,7 +395,7 @@ MonoBehaviour:
   model: {fileID: 922637601940458279}
   HP: 3
   maxHP: 3
-  faceTargetSpeed: 7
+  faceTargetSpeed: 15
   FOV: 70
   moveSpeed: 9
   bullet: {fileID: 0}
