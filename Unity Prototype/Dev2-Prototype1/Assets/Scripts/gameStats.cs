@@ -31,7 +31,7 @@ public class gameStats : MonoBehaviour
         }
     }
 
-    private void StartGame()
+    public void StartGame()
     {
         timeTaken = 0f;
         enemiesKilled = 0;
