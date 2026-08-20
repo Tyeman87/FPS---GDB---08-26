@@ -34,4 +34,11 @@ public class highScoreManager : MonoBehaviour
     {
         return PlayerPrefs.GetInt(HIGH_SCORE_KEY, 0);
     }
+
+    public void ResetHighScore()
+    {
+        PlayerPrefs.DeleteKey(HIGH_SCORE_KEY);
+        PlayerPrefs.Save();
+    }
+
 }
