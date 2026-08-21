@@ -6,7 +6,10 @@ public class goalTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Object.FindAnyObjectByType <levelManager>().WinLevel();
+            if(gameManager.instance.playerHasFlag)
+            {
+                gameManager.instance.winGame();
+            }
         }
     }
 }

@@ -6,16 +6,22 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] CharacterController characterController;
     [SerializeField] LayerMask ignoreLayer;
 
+    [Header("Player Stats")]
     [Range(1, 10)] [SerializeField]int HP;
     [Range(1, 10)] [SerializeField]int speed;
     [Range(2, 10)] [SerializeField]int sprintMod;
     [Range(5, 30)] [SerializeField]int jumpSpeed;
     [Range(1, 5)] [SerializeField]int jumpMax;
     [Range(15, 40)] [SerializeField]int gravity;
-    
+
+    [Header("Combat Stats")]
     [Range(1, 10)] [SerializeField]int shootDamage;
     [Range(3, 1000)] [SerializeField]int shootDist;
-    [Range(0.1f, 5)] [SerializeField] float shootRate;
+    
+    [Header("Weapon")]
+    [SerializeField] GameObject bullet;
+    [SerializeField] Transform shootPosition;
+    [Range(0.1f, 5)][SerializeField] float shootRate;
 
     int jumpCount;
     int HPOrig;
@@ -43,7 +49,7 @@ public class playerController : MonoBehaviour, IDamage
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
 
         shootTimer += Time.deltaTime;
-
+        
         if (characterController.isGrounded)
         {
             jumpCount = 0;
@@ -87,17 +93,8 @@ public class playerController : MonoBehaviour, IDamage
     void shoot()
     {
         shootTimer = 0;
-        
-        RaycastHit hit;
-        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreLayer))
-        {
-            Debug.Log(hit.collider.name);
-            IDamage dmg = hit.collider.GetComponent<IDamage>();
-            if(dmg != null)
-            {
-                dmg.takeDamage(shootDamage);
-            }
-        }
+
+        Instantiate(bullet, shootPosition.position, shootPosition.rotation);
     }
 
     public void takeDamage(int amount)
