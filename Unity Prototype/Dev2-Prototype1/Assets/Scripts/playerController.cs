@@ -46,9 +46,10 @@ public class playerController : MonoBehaviour, IDamage
 
     void movement()
     {
-        shootTimer += Time.deltaTime;
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
 
+        shootTimer += Time.deltaTime;
+        
         if (characterController.isGrounded)
         {
             jumpCount = 0;
@@ -70,8 +71,7 @@ public class playerController : MonoBehaviour, IDamage
 
     void sprint()
     {
-        
-        if (Input.GetButtonDown("Sprint"))
+        if(Input.GetButtonDown("Sprint"))
         {
             speed *= sprintMod;
         }
