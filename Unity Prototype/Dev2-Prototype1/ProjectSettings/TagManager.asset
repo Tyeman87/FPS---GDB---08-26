@@ -6,6 +6,7 @@ TagManager:
   tags:
   - EnemySpawner
   - Spawner_SpeedyGonzales
+  - Player Spawn Position
   layers:
   - Default
   - TransparentFX
