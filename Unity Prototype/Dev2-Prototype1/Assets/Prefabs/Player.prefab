@@ -29,10 +29,11 @@ Transform:
   m_GameObject: {fileID: 3327457035481325646}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0.16, y: 1, z: 0.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8357307583490317801}
   m_Father: {fileID: 2685428695569063082}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3210993811449926648
@@ -269,14 +270,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8541579752948399500}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalRotation: {x: -0.010631339, y: -0.007797221, z: 0.000274796, w: 0.9999131}
+  m_LocalPosition: {x: 0.60360706, y: -0.36, z: 0.50037}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4923732779820895502}
-  m_Father: {fileID: 2685428695569063082}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 8690685913131147597}
+  m_LocalEulerAnglesHint: {x: -1.218, y: -0.894, z: 0.041}
 --- !u!33 &6369063542864721681
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -368,7 +369,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8690685913131147597}
-  - {fileID: 8357307583490317801}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3108563590286888899
@@ -388,16 +388,17 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   HP: 10
-  speed: 5
-  sprintMod: 4
+  speed: 4
+  sprintMod: 3
   jumpSpeed: 10
-  jumpMax: 2
-  gravity: 20
-  shootDamage: 2
+  jumpMax: 1
+  gravity: 30
+  shootDamage: 1
   shootDist: 120
   bullet: {fileID: 6964972883987111141, guid: e497d04b3da85d748af41ef0a2efde98, type: 3}
   shootPosition: {fileID: 4923732779820895502}
-  shootRate: 0.6
+  shootRate: 0.66
+  interactDistance: 5
 --- !u!33 &4326116532634170512
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -476,7 +477,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.55
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
