@@ -6,7 +6,7 @@ public class flagObject : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            gameManager.instance.playerPickedUpFlag();
+            
 
             gameObject.SetActive(false);
             

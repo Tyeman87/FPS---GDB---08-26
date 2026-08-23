@@ -21,9 +21,6 @@ public class gameManager : MonoBehaviour
     public playerController playerScript;
     public Image playerHPBar;
     public GameObject damageFlashPanel;
-
-    public Image flagUI;
-    public bool playerHasFlag;
     
     public int totalHostages;
     public int rescuedHostages;
@@ -46,11 +43,6 @@ public class gameManager : MonoBehaviour
         timeScaleOrig = Time.timeScale;
 
         killCountText.text = "Kills: 0";
-
-        if (flagUI != null)
-        {
-            flagUI.gameObject.SetActive(false);
-        }
 
         if (hostageCountText != null)
         {
@@ -141,18 +133,6 @@ public class gameManager : MonoBehaviour
     public int getKillCount()
     {
         return killCount;
-    }
-
-    public void playerPickedUpFlag()
-    {
-        playerHasFlag = true;
-        flagUI.gameObject.SetActive(true);
-    }
-
-    public void playerDroppedFlag()
-    {
-        playerHasFlag = false;
-        flagUI.gameObject.SetActive(false);
     }
 
     public void youLose()
