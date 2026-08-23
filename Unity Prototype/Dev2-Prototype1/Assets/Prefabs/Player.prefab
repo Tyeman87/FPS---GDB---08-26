@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::cameraController
   Sense: 10
-  lockVertMin: 0
-  lockVertMax: 0
+  lockVertMin: -90
+  lockVertMax: 90
 --- !u!20 &3514934487301289805
 Camera:
   m_ObjectHideFlags: 0
