@@ -48,8 +48,6 @@ public class gameManager : MonoBehaviour
 
         killCountText.text = "Kills: 0";
 
-        flagUI.gameObject.SetActive(false);
-
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Position");
 
         if (playerSpawnPos == null)
