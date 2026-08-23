@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::cameraController
   Sense: 10
-  minVert: -90
-  maxVert: 90
+  lockVertMin: 0
+  lockVertMax: 0
 --- !u!20 &3514934487301289805
 Camera:
   m_ObjectHideFlags: 0
@@ -393,11 +393,11 @@ MonoBehaviour:
   jumpSpeed: 10
   jumpMax: 2
   gravity: 20
-  shootDamage: 1
+  shootDamage: 2
   shootDist: 120
   bullet: {fileID: 6964972883987111141, guid: e497d04b3da85d748af41ef0a2efde98, type: 3}
   shootPosition: {fileID: 4923732779820895502}
-  shootRate: 0.66
+  shootRate: 0.6
 --- !u!33 &4326116532634170512
 MeshFilter:
   m_ObjectHideFlags: 0
