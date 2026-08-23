@@ -29,6 +29,10 @@ public class gameManager : MonoBehaviour
     int gameGoalCount;
     int killCount;
 
+    public GameObject playerSpawnPos;
+    public GameObject checkpointPopup;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         instance = this;
@@ -44,6 +48,18 @@ public class gameManager : MonoBehaviour
 
         killCountText.text = "Kills: 0";
 
+        flagUI.gameObject.SetActive(false);
+
+        playerSpawnPos = GameObject.FindWithTag("Player Spawn Position");
+
+        if (playerSpawnPos == null)
+        {
+            Debug.LogError("PLAYER SPAWN POSITION NOT FOUND!");
+        }
+        else
+        {
+            Debug.Log("Player Spawn Position FOUND: " + playerSpawnPos.name);
+        }
         if (hostageCountText != null)
         {
             hostageCountText.text = "Rescued: 0/0";
