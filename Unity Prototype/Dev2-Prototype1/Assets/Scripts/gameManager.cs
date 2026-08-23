@@ -10,17 +10,21 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
-    [SerializeField] TMP_Text killCountText;
 
+    [Header("UI")] 
+    [SerializeField] TMP_Text killCountText;
+    [SerializeField] TMP_Text hostageCountText;
+
+    [Header("Player")]
     public bool isPaused;
     public GameObject player;
     public playerController playerScript;
     public Image playerHPBar;
     public GameObject damageFlashPanel;
-    public Image flagUI;
-
-    public bool playerHasFlag;
     
+    public int totalHostages;
+    public int rescuedHostages;
+
     float timeScaleOrig;
     int gameGoalCount;
     int killCount;
@@ -34,13 +38,15 @@ public class gameManager : MonoBehaviour
         instance = this;
 
         player = GameObject.FindWithTag("Player");
-        playerScript = player.GetComponent<playerController>();
+
+        if (player != null)
+        {
+            playerScript = player.GetComponent<playerController>();
+        }
 
         timeScaleOrig = Time.timeScale;
 
         killCountText.text = "Kills: 0";
-
-        flagUI.gameObject.SetActive(false);
 
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Position");
 
@@ -52,23 +58,24 @@ public class gameManager : MonoBehaviour
         {
             Debug.Log("Player Spawn Position FOUND: " + playerSpawnPos.name);
         }
+        if (hostageCountText != null)
+        {
+            hostageCountText.text = "Rescued: 0/0";
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetButtonDown("Cancel"))
         {
             if(menuActive == null)
             {
-                // pause the game
                 statePause();
                 menuActive = menuPause;
                 menuActive.SetActive(true);
             }
             else if(menuActive == menuPause)
             {
-                // unpause the game and return to gameplay
                 stateUnpause();
             }
         }
@@ -95,17 +102,38 @@ public class gameManager : MonoBehaviour
         menuActive = null;
     }
 
-    public void updateGameGoal(int amount)
+    public void RegisterHostage()
     {
-        gameGoalCount += amount;
+        totalHostages++;
+        UpdateHostageUI();
+        Debug.Log(
+            "Hostage registered. Total hostages: " +
+            totalHostages
+        );
+    }
 
-        if(gameGoalCount <= 0)
+    public void hostageRescued()
+    {
+        rescuedHostages++;
+        UpdateHostageUI();
+
+        Debug.Log(
+            "Hostage rescued: " +
+            rescuedHostages + 
+            "/" +
+            totalHostages
+        );
+    }
+    
+    private void UpdateHostageUI()
+    {
+        if (hostageCountText != null)
         {
-            // you win!!
-            statePause();
-
-            menuActive = menuWin;
-            menuActive.SetActive(true);
+            hostageCountText.text = 
+            "Rescued: " +
+            rescuedHostages +
+            " / " +
+            totalHostages;
         }
     }
 
@@ -119,18 +147,6 @@ public class gameManager : MonoBehaviour
     public int getKillCount()
     {
         return killCount;
-    }
-
-    public void playerPickedUpFlag()
-    {
-        playerHasFlag = true;
-        flagUI.gameObject.SetActive(true);
-    }
-
-    public void playerDroppedFlag()
-    {
-        playerHasFlag = false;
-        flagUI.gameObject.SetActive(false);
     }
 
     public void youLose()
