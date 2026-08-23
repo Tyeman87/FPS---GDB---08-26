@@ -4,7 +4,7 @@ public class cameraController : MonoBehaviour
 {
     [Header("Camera Settings")]
     [Range(10, 200)][SerializeField] int Sense;
-    [SerializeField] int minVert, maxVert;
+    [SerializeField] int lockVertMin, lockVertMax;
 
     float camRotX;
 
@@ -22,7 +22,7 @@ public class cameraController : MonoBehaviour
             float mouseY = Input.GetAxisRaw("Mouse Y") * Sense;
 
             camRotX -= mouseY;
-            camRotX = Mathf.Clamp(camRotX, minVert, maxVert);
+            camRotX = Mathf.Clamp(camRotX, lockVertMin, lockVertMax);
             transform.localRotation = Quaternion.Euler(camRotX, 0, 0);
 
             transform.parent.Rotate(Vector3.up * mouseX);
