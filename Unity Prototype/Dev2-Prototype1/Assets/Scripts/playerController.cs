@@ -25,6 +25,9 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] Transform shootPosition;
     [Range(0.1f, 5)][SerializeField] float shootRate;
 
+    [Header("Interaction")]
+    [SerializeField] float interactDistance = 3f;
+
     int jumpCount;
     int HPOrig;
     float shootTimer;
@@ -36,7 +39,7 @@ public class playerController : MonoBehaviour, IDamage
     void Start()
     {
         HPOrig = HP;
-        updatePlayerUI();
+        spawnPlayer();
     }
 
     // Update is called once per frame
@@ -44,13 +47,15 @@ public class playerController : MonoBehaviour, IDamage
     {
         movement();
         sprint();
+        interact();
     }
 
     void movement()
     {
-        shootTimer += Time.deltaTime;
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
 
+        shootTimer += Time.deltaTime;
+        
         if (characterController.isGrounded)
         {
             jumpCount = 0;
@@ -72,8 +77,7 @@ public class playerController : MonoBehaviour, IDamage
 
     void sprint()
     {
-        
-        if (Input.GetButtonDown("Sprint"))
+        if(Input.GetButtonDown("Sprint"))
         {
             speed *= sprintMod;
         }
@@ -95,6 +99,13 @@ public class playerController : MonoBehaviour, IDamage
     void shoot()
     {
         shootTimer = 0;
+
+        Debug.DrawRay(
+        shootPosition.position,
+        shootPosition.forward * 20f,
+        Color.blue,
+        2f
+        );
 
         Instantiate(bullet, shootPosition.position, shootPosition.rotation);
     }
@@ -152,4 +163,32 @@ public class playerController : MonoBehaviour, IDamage
 
     
 
+    public void spawnPlayer()
+    {
+        characterController.transform.position = gameManager.instance.playerSpawnPos.transform.position;
+        Physics.SyncTransforms();
+        HP = HPOrig;
+        updatePlayerUI();
+    }
+    
+    void interact()
+    {
+        if (Input.GetButtonDown("Interact"))
+        {
+            Ray ray = new Ray(
+                Camera.main.transform.position,
+                Camera.main.transform.forward
+            );
+
+            if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, ~ignoreLayer))
+            {
+                IInteractable interactable = hit.collider.GetComponentInParent<IInteractable>();
+
+                if (interactable != null)
+                {
+                    interactable.Interact();
+                }
+            }
+        }
+    }
 }

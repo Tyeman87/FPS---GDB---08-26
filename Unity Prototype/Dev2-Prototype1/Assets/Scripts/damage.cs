@@ -43,6 +43,8 @@ public class damage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Bullet collided with: " + other.gameObject.name);
+        
         if (other.isTrigger)
             return;
 
