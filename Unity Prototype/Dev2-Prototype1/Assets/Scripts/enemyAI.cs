@@ -127,6 +127,11 @@ public class enemyAI : MonoBehaviour, IDamage
         if (HP <= 0)
         {
             gameManager.instance.addKill();
+
+            if (gameStats.Instance != null)
+            {
+                gameStats.Instance.EnemyKilled();
+            }
             RespawnManager.instance.HandleEnemyDeath(gameObject);
         }
         else
