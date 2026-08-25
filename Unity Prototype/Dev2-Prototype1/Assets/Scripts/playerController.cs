@@ -1,7 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class playerController : MonoBehaviour, IDamage
+public class playerController : MonoBehaviour, IDamage, IPickupGun
 {
     [SerializeField] CharacterController characterController;
     [SerializeField] LayerMask ignoreLayer;
@@ -14,24 +15,32 @@ public class playerController : MonoBehaviour, IDamage
     [Range(1, 5)] [SerializeField]int jumpMax;
     [Range(15, 40)] [SerializeField]int gravity;
 
-    [Header("Combat Stats")]
-    [Range(1, 10)] [SerializeField]int shootDamage;
-    [Range(3, 1000)] [SerializeField]int shootDist;
-    
-    [Header("Weapon")]
-    [SerializeField] GameObject bullet;
-    [SerializeField] Transform shootPosition;
-    [Range(0.1f, 5)][SerializeField] float shootRate;
+    [Header("GunStff")]
+    [SerializeField] List<gunStats> gunInv = new List<gunStats>();
+    [SerializeField] GameObject gunModel;
+
+    [Header("Audio")]
+    [SerializeField] AudioClip[] audHurt;
+    [Range(0, 1)][SerializeField] float audHurtVol;
+    [SerializeField] AudioClip[] audJump;
+    [Range(0, 1)][SerializeField] float audJumpVol;
+    [SerializeField] AudioClip[] audSteps;
+    [Range(0, 1)][SerializeField] float audStepsVol;
 
     [Header("Interaction")]
     [SerializeField] float interactDistance = 3f;
 
     int jumpCount;
     int HPOrig;
+    int gunInvPos;
+
     float shootTimer;
 
     Vector3 moveDir;
     Vector3 playerVel;
+
+    bool isSprinting;
+    bool isPlayingStep;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -50,14 +59,21 @@ public class playerController : MonoBehaviour, IDamage
 
     void movement()
     {
-        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
-
+        if (gunInv.Count > 0)
+        {
+            Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * gunInv[gunInvPos].shootDist, Color.red);
+        }
         shootTimer += Time.deltaTime;
         
         if (characterController.isGrounded)
         {
             jumpCount = 0;
             playerVel.y = 0;
+
+            if(moveDir.magnitude > 0.3f && !isPlayingStep)
+            {
+                StartCoroutine(playStep());
+            }
         }
 
         moveDir = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
@@ -67,10 +83,12 @@ public class playerController : MonoBehaviour, IDamage
         characterController.Move(playerVel * Time.deltaTime);
         playerVel.y -= gravity * Time.deltaTime;
 
-        if (Input.GetButton("Fire1") && shootTimer > shootRate)
+        if (Input.GetButton("Fire1") && gunInv.Count > 0 && shootTimer > gunInv[gunInvPos].shootRate)
         {
             shoot();
         }
+
+        selectGun();
     }
 
     void sprint()
@@ -78,11 +96,30 @@ public class playerController : MonoBehaviour, IDamage
         if(Input.GetButtonDown("Sprint"))
         {
             speed *= sprintMod;
+            isSprinting = true;
         }
         else if(Input.GetButtonUp("Sprint"))
         {
             speed /= sprintMod;
+            isSprinting = false;
         }
+    }
+
+    IEnumerator playStep()
+    {
+        isPlayingStep = true;
+        audioManager.Instance.audPlayer.PlayOneShot(audSteps[Random.Range(0, audSteps.Length)], audStepsVol);
+
+        if(isSprinting)
+        {
+            yield return new WaitForSeconds(0.3f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        isPlayingStep = false;
     }
 
     void jump()
@@ -91,21 +128,27 @@ public class playerController : MonoBehaviour, IDamage
         {
             jumpCount++;
             playerVel.y = jumpSpeed;
+            audioManager.Instance.audPlayer.PlayOneShot(audJump[Random.Range(0, audJump.Length)], audJumpVol);
         }
     }
 
     void shoot()
     {
         shootTimer = 0;
+        audioManager.Instance.audPlayer.PlayOneShot(gunInv[gunInvPos].shootSound[Random.Range(0, gunInv[gunInvPos].shootSound.Length)], gunInv[gunInvPos].shootSoundVol);
 
-        Debug.DrawRay(
-        shootPosition.position,
-        shootPosition.forward * 20f,
-        Color.blue,
-        2f
-        );
+        RaycastHit hit;
+        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, gunInv[gunInvPos].shootDist, ~ignoreLayer))
+        {
+            Debug.Log(hit.collider.name);
 
-        Instantiate(bullet, shootPosition.position, shootPosition.rotation);
+            Instantiate(gunInv[gunInvPos].hitEffect, hit.point, Quaternion.identity);
+            IDamage dmg = hit.collider.GetComponent<IDamage>();
+            if(dmg != null)
+            {
+                dmg.takeDamage(gunInv[gunInvPos].shootDamage);
+            }
+        }
     }
 
     public void takeDamage(int amount)
@@ -113,6 +156,8 @@ public class playerController : MonoBehaviour, IDamage
         HP -= amount; 
         updatePlayerUI();
         StartCoroutine(flashDamage());
+
+        audioManager.Instance.audPlayer.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
 
         if(HP <= 0)
         {
@@ -159,6 +204,34 @@ public class playerController : MonoBehaviour, IDamage
                     interactable.Interact();
                 }
             }
+        }
+    }
+
+    public void getGunStats(gunStats gun)
+    {
+        gunInv.Add(gun);
+        gunInvPos = gunInv.Count - 1;
+        changeGunModel();
+    }
+
+    void changeGunModel()
+    {
+        gunModel.GetComponent<MeshFilter>().sharedMesh = gunInv[gunInvPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunInv[gunInvPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+    }
+
+    void selectGun()
+    {
+        if(Input.GetAxis("Mouse ScrollWheel") > 0 && gunInvPos < gunInv.Count - 1)
+        {
+            gunInvPos++;
+            changeGunModel();
+        }
+
+        else if(Input.GetAxis("Mouse ScrollWheel") < 0 && gunInvPos > 0)
+        {
+            gunInvPos--;
+            changeGunModel();
         }
     }
 }
