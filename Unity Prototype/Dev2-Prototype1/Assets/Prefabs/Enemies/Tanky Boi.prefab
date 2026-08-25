@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 2189090049730347300}
   - component: {fileID: 3096206759532186278}
   - component: {fileID: 2471577431671269336}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tank's Gun (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 2893004753857035428}
   - component: {fileID: 4981635320925482192}
   - component: {fileID: 2364559486156365297}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shoot POS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -409,7 +409,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -429,7 +429,7 @@ GameObject:
   - component: {fileID: 7535229890705705542}
   - component: {fileID: 2786030737571369512}
   - component: {fileID: 2499934859537603304}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tank's Gun (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 2312724738540277540}
   - component: {fileID: 976621588313366829}
   - component: {fileID: 6920261305637571956}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -635,7 +635,7 @@ GameObject:
   - component: {fileID: 6263460262808220363}
   - component: {fileID: 6889646824519761734}
   - component: {fileID: 504998963933861088}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tank's Gun (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -749,7 +749,7 @@ GameObject:
   - component: {fileID: 5564125660824102700}
   - component: {fileID: 4839903456335230559}
   - component: {fileID: 484954575921858402}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gun Pivot Tank (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -843,7 +843,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -863,7 +863,7 @@ GameObject:
   - component: {fileID: 9015098338472293533}
   - component: {fileID: 7581394157561181955}
   - component: {fileID: 7108674363338091390}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tank's Gun (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -977,7 +977,7 @@ GameObject:
   - component: {fileID: 8680744747405769705}
   - component: {fileID: 6458610581991416709}
   - component: {fileID: 6014134510438411469}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tank's Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1100,7 +1100,7 @@ GameObject:
   - component: {fileID: 7533553478856821839}
   - component: {fileID: 5630311438059543345}
   - component: {fileID: 1453578035944278651}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tank's Gun (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1215,7 +1215,7 @@ GameObject:
   - component: {fileID: 4700674073986485389}
   - component: {fileID: 7868618590866200937}
   - component: {fileID: 950302978376248457}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Tank's Helm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1339,7 +1339,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3374009969225530759}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Head Pos (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1374,7 +1374,7 @@ GameObject:
   - component: {fileID: 3453656900258233795}
   - component: {fileID: 8063071424608093601}
   - component: {fileID: 6856603092990454765}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tank's Gun (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1487,7 +1487,7 @@ GameObject:
   - component: {fileID: 7963255048971950543}
   - component: {fileID: 8017514573563338442}
   - component: {fileID: 6765603795943304156}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1578,7 +1578,7 @@ GameObject:
   - component: {fileID: 4702230993154110381}
   - component: {fileID: 2066502314672081893}
   - component: {fileID: 5003978805960368686}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gun Pivot Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1672,7 +1672,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1693,7 +1693,7 @@ GameObject:
   - component: {fileID: 4432199927702908193}
   - component: {fileID: 969290995561950685}
   - component: {fileID: 5614809323465598125}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Tank's Vest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1818,7 +1818,7 @@ GameObject:
   - component: {fileID: 3882349898752286466}
   - component: {fileID: 1884335688541818084}
   - component: {fileID: 826136484280158178}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Eye (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
