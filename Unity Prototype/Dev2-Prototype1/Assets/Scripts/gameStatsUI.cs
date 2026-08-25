@@ -12,7 +12,7 @@ public class gameStatsUI : MonoBehaviour
 
         float time = gameStats.Instance.timeTaken;
         int kills = gameStats.Instance.enemiesKilled;
-        int enemiesAlive = gameStats.Instance.enemiesAlive;
+        int enemiesAlive = GameObject.FindGameObjectsWithTag("Enemy").Length;
 
         int score = 0;
 
@@ -31,6 +31,6 @@ public class gameStatsUI : MonoBehaviour
         int minutes = Mathf.FloorToInt(time / 60f);
         int seconds = Mathf.FloorToInt(time % 60f);
 
-        statsText.text = "Time: " + minutes.ToString("00") + ":" + seconds.ToString("00") + "\n" + "Enemies Alive: " + "\n" + "Enemies Killed: " + kills + "\n" + "Score: " + score + "\n" + "High Score: " + highScore;
+        statsText.text = "Time: " + minutes.ToString("00") + ":" + seconds.ToString("00") + "\n" + "Enemies Alive: " + enemiesAlive + "\n" + "Enemies Killed: " + kills + "\n" + "Score: " + score + "\n" + "High Score: " + highScore;
     }
 }

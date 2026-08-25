@@ -23,15 +23,6 @@ public class gameStats : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        enemiesAlive = enemies.Length;
-
-        Debug.Log("Enemies Alive: " + enemiesAlive);
-    }
-
     private void Update()
     {
         if (gameStarted && !gameFinished)
@@ -55,7 +46,7 @@ public class gameStats : MonoBehaviour
         enemiesAlive--;
     }
 
-    public void enemySpawned()
+    public void EnemySpawned()
     {
         enemiesAlive++;
     }
