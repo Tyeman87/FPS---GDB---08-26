@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7704936883307192026}
   - component: {fileID: 2577034445132239608}
   - component: {fileID: 1520897790187126348}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: powerup_hp
   m_TagString: Untagged
   m_Icon: {fileID: 0}

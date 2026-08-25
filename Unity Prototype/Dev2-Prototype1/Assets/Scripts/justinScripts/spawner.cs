@@ -49,10 +49,8 @@ public class spawner : MonoBehaviour
         spawnCount++;
 
         spawnPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
-        for (int i = 0; i < spawnAmount; i++)
-        {
-            Instantiate(objectToSpawn, spawnPos, Quaternion.Euler(0, Random.Range(0, 360), 0));
 
-        }
+
+        Instantiate(objectToSpawn, spawnPos, Quaternion.Euler(0, Random.Range(0, 360), 0));
     }
 }
