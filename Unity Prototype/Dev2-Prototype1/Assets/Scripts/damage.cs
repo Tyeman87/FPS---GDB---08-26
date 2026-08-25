@@ -20,7 +20,7 @@ public class damage : MonoBehaviour
     [SerializeField] int damageAmount;
     [SerializeField] int damageRate;
     [SerializeField] int bulletSpeed;
-    [SerializeField] int bulletDestroyTime;
+    [Range (0, 1) ] [SerializeField] float bulletDestroyTime;
     [SerializeField] ParticleSystem hitEffect;
 
     bool isDamaging;
@@ -35,6 +35,11 @@ public class damage : MonoBehaviour
     void Start()
     {
         if (type == DamageType.Bullet)
+        {
+            rb.linearVelocity = transform.forward * bulletSpeed;
+            Destroy(gameObject, bulletDestroyTime);
+        }
+        else if(type == DamageType.Spread)
         {
             rb.linearVelocity = transform.forward * bulletSpeed;
             Destroy(gameObject, bulletDestroyTime);
@@ -58,6 +63,15 @@ public class damage : MonoBehaviour
         }
 
         if (type == DamageType.Bullet)
+        {
+            if (hitEffect != null)
+            {
+                Instantiate(hitEffect, transform.position, Quaternion.identity);
+            }
+            Destroy(gameObject);
+        }
+
+        if (type == DamageType.Spread)
         {
             if (hitEffect != null)
             {

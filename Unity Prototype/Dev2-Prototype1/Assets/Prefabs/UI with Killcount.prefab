@@ -553,12 +553,10 @@ MonoBehaviour:
   playerHPBar: {fileID: 4919731149078942818}
   playerArmorBar: {fileID: 3770267643138901937}
   damageFlashPanel: {fileID: 3318761036117476638}
-  flagUI: {fileID: 0}
-  playerHasFlag: 0
-  playerSpawnPos: {fileID: 0}
-  checkpointPopup: {fileID: 2867201546536177610}
   totalHostages: 0
   rescuedHostages: 0
+  playerSpawnPos: {fileID: 0}
+  checkpointPopup: {fileID: 2867201546536177610}
 --- !u!1 &1194688683538114382
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,6 +741,7 @@ RectTransform:
   - {fileID: 1351534027981279591}
   - {fileID: 4527025161394238014}
   - {fileID: 8485799007699619095}
+  - {fileID: 4453731854142790338}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
