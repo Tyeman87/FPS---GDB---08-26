@@ -9,6 +9,8 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun
 
     [Header("Player Stats")]
     [Range(1, 10)] [SerializeField]int HP;
+    [Range(0, 20)][SerializeField] int armor;
+    [Range(1, 20)][SerializeField] int armorMax;
     [Range(1, 10)] [SerializeField]int speed;
     [Range(2, 10)] [SerializeField]int sprintMod;
     [Range(5, 30)] [SerializeField]int jumpSpeed;
@@ -153,7 +155,13 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun
 
     public void takeDamage(int amount)
     {
-        HP -= amount; 
+        //subtract armor amount first
+
+        int absorbed = Mathf.Min(armor, amount);
+        armor -= absorbed;
+
+        HP -= (amount - absorbed);
+        
         updatePlayerUI();
         StartCoroutine(flashDamage());
 
@@ -165,6 +173,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun
             gameManager.instance.youLose();
         }
     }
+   
 
     IEnumerator flashDamage()
     {
@@ -176,7 +185,28 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun
     public void updatePlayerUI()
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+        gameManager.instance.playerArmorBar.fillAmount = (float)armor / armorMax;
     }
+
+    public void addHealth(int amount)
+    {
+        HP += amount;
+        if (HP > HPOrig)
+        {
+            HP = HPOrig;
+        }
+    }
+
+    public void addArmor(int amount)
+    {
+        armor += amount;
+        if (armor > armorMax)
+        {
+            armor = armorMax;
+        }
+    }
+
+    
 
     public void spawnPlayer()
     {

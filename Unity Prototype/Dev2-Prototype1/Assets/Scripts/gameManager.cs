@@ -20,6 +20,7 @@ public class gameManager : MonoBehaviour
     public GameObject player;
     public playerController playerScript;
     public Image playerHPBar;
+    public Image playerArmorBar;
     public GameObject damageFlashPanel;
     
     public int totalHostages;

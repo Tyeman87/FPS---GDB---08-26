@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4631932677149832330}
   - component: {fileID: 8795756443334117999}
   - component: {fileID: 6917952967294015356}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Valve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 4816257038689482084}
   - component: {fileID: 4905855787455061060}
   - component: {fileID: 6840340628919222179}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Valve (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 385127696919357208}
   - component: {fileID: 3013698736822352388}
   - component: {fileID: 7545425896757507273}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: JugFlameThrow (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 4542863203267759341}
   - component: {fileID: 358943327733597616}
   - component: {fileID: 7823132796785418255}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Valve (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -475,7 +475,7 @@ GameObject:
   - component: {fileID: 5372650431413264027}
   - component: {fileID: 32116509197028576}
   - component: {fileID: 3696212933004856992}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Handle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -590,7 +590,7 @@ GameObject:
   - component: {fileID: 2761276924852773551}
   - component: {fileID: 8255825021591130968}
   - component: {fileID: 2155323486094505474}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Juggernaut Vest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -718,7 +718,7 @@ GameObject:
   - component: {fileID: 7233671266689638141}
   - component: {fileID: 585561538521667203}
   - component: {fileID: 1505474021633633138}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Valve (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -832,7 +832,7 @@ GameObject:
   - component: {fileID: 3185864767383378990}
   - component: {fileID: 4744540329956408989}
   - component: {fileID: 4791862407655737834}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Valve (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -946,7 +946,7 @@ GameObject:
   - component: {fileID: 2050634126259332534}
   - component: {fileID: 3999868729594938176}
   - component: {fileID: 7022874068780719564}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -969,6 +969,7 @@ Transform:
   - {fileID: 221285366906044429}
   - {fileID: 5935617969109768573}
   - {fileID: 2614732887689084383}
+  - {fileID: 7472316353242505961}
   m_Father: {fileID: 6310714545718156402}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &2050634126259332534
@@ -1064,7 +1065,7 @@ GameObject:
   - component: {fileID: 148034613450548959}
   - component: {fileID: 8009261745528464757}
   - component: {fileID: 782638220673559178}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Juggernaut Helm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1191,7 +1192,7 @@ GameObject:
   - component: {fileID: 2265320388050020474}
   - component: {fileID: 9079986577551936593}
   - component: {fileID: 2838486661667160122}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: JugFlameThrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1311,7 +1312,8 @@ GameObject:
   - component: {fileID: 7648387745627048174}
   - component: {fileID: 1748264648706540187}
   - component: {fileID: 1094433282538441851}
-  m_Layer: 0
+  - component: {fileID: 5129993851381219847}
+  m_Layer: 6
   m_Name: Juggernaut Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1355,12 +1357,12 @@ MonoBehaviour:
   faceTargetSpeed: 8
   FOV: 100
   moveSpeed: 4
-  bullet: {fileID: 6964972883987111141, guid: e497d04b3da85d748af41ef0a2efde98, type: 3}
+  bullet: {fileID: 5614957210237989777, guid: bd81b90c2b250f84c879b12ba0a85f77, type: 3}
   gunPivot: {fileID: 3643653682235363325}
-  shootPosition: {fileID: 2614732887689084383}
-  shootRate: 1
-  gunRotateSpeed: 1
-  bulletDamage: 4
+  shootPosition: {fileID: 7472316353242505961}
+  shootRate: 0.1
+  gunRotateSpeed: 345
+  bulletDamage: 2
   colorOrig: {r: 0, g: 0, b: 0, a: 0}
 --- !u!33 &5200536922452790399
 MeshFilter:
@@ -1485,6 +1487,27 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 70
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &5129993851381219847
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4242709740756583432}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 70
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4783402169153942910
 GameObject:
   m_ObjectHideFlags: 0
@@ -1496,7 +1519,7 @@ GameObject:
   - component: {fileID: 6172840186092521425}
   - component: {fileID: 7028538141803839609}
   - component: {fileID: 542205215683551339}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1589,7 +1612,7 @@ GameObject:
   - component: {fileID: 381393461667893795}
   - component: {fileID: 5031855659974897840}
   - component: {fileID: 5158153244937661911}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Nozzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1683,7 +1706,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1704,7 +1727,7 @@ GameObject:
   - component: {fileID: 3564170942833155222}
   - component: {fileID: 322999673771248046}
   - component: {fileID: 8328210986404245324}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Juggernaut Vest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1830,7 +1853,7 @@ GameObject:
   - component: {fileID: 7500847694845070910}
   - component: {fileID: 7458933550879645383}
   - component: {fileID: 3834746551840113805}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Valve (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1944,7 +1967,7 @@ GameObject:
   - component: {fileID: 2679008823623908541}
   - component: {fileID: 7792386993892527911}
   - component: {fileID: 2932631129603413318}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Handle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2046,6 +2069,120 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!1 &6265497222696121297
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7472316353242505961}
+  - component: {fileID: 6215471444365052539}
+  - component: {fileID: 9203994617690298019}
+  - component: {fileID: 6828168665722219464}
+  m_Layer: 6
+  m_Name: Nozzle (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7472316353242505961
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6265497222696121297}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: -5.88, y: 0.76, z: -0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3643653682235363325}
+  m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
+--- !u!33 &6215471444365052539
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6265497222696121297}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &9203994617690298019
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6265497222696121297}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a217f32cd7765344bb5c38420b2dde70, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &6828168665722219464
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6265497222696121297}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5000001
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &6370607540042503006
 GameObject:
   m_ObjectHideFlags: 0
@@ -2058,7 +2195,7 @@ GameObject:
   - component: {fileID: 1017392376146804743}
   - component: {fileID: 7709074379549294909}
   - component: {fileID: 4502060376212769855}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Valve (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2171,7 +2308,7 @@ GameObject:
   - component: {fileID: 6278410698436928503}
   - component: {fileID: 5701298655299958409}
   - component: {fileID: 5712722645322645310}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Eye (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2263,7 +2400,7 @@ GameObject:
   - component: {fileID: 4201219429863898017}
   - component: {fileID: 2791868134415654722}
   - component: {fileID: 7809119970565186468}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Juggernaut Vest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2388,7 +2525,7 @@ GameObject:
   - component: {fileID: 6905589669091691358}
   - component: {fileID: 2762783900363898721}
   - component: {fileID: 4599573732898619631}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2476,7 +2613,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3814818413978270028}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Head Pos (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2511,7 +2648,7 @@ GameObject:
   - component: {fileID: 463469468923081774}
   - component: {fileID: 4458923642017582876}
   - component: {fileID: 6992059254001452947}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Valve (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

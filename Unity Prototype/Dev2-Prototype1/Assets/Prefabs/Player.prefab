@@ -298,6 +298,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   HP: 10
+  armor: 0
+  armorMax: 1
   speed: 4
   sprintMod: 3
   jumpSpeed: 10
