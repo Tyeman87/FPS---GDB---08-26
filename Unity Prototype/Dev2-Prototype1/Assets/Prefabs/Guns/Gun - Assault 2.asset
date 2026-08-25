@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bee6ee902613e0c48ba955385fcf555b, type: 3}
+  m_Name: Gun - Assault 2
+  m_EditorClassIdentifier: Assembly-CSharp::gunStats
+  gunModel: {fileID: 5166629313087248835, guid: a218c21bc250f064588d8b8a1c7cea81, type: 3}
+  shootDamage: 1
+  shootDist: 200
+  shootRate: 0.1
+  ammoCur: 20
+  ammoMax: 20
+  hitEffect: {fileID: 5584602140419805224, guid: 6d2ab2bfa7deb87469243d7b8de20229, type: 3}
+  shootSound:
+  - {fileID: 8300000, guid: 79e0e3085f3f0e94a9068b0c05a898f9, type: 3}
+  shootSoundVol: 0.2

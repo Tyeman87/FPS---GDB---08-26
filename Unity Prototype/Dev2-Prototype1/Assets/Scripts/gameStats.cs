@@ -6,6 +6,7 @@ public class gameStats : MonoBehaviour
 
     public float timeTaken = 0f;
     public int enemiesKilled = 0;
+    public int enemiesAlive = 0;
 
     private bool gameStarted = false;
     private bool gameFinished = false;
@@ -15,12 +16,20 @@ public class gameStats : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        enemiesAlive = enemies.Length;
+
+        Debug.Log("Enemies Alive: " + enemiesAlive);
     }
 
     private void Update()
@@ -43,6 +52,12 @@ public class gameStats : MonoBehaviour
     public void EnemyKilled()
     {
         enemiesKilled++;
+        enemiesAlive--;
+    }
+
+    public void enemySpawned()
+    {
+        enemiesAlive++;
     }
 
     public void FinishGame()
