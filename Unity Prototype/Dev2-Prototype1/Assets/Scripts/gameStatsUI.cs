@@ -31,6 +31,6 @@ public class gameStatsUI : MonoBehaviour
         int minutes = Mathf.FloorToInt(time / 60f);
         int seconds = Mathf.FloorToInt(time % 60f);
 
-        statsText.text = "Time: " + minutes.ToString("00") + ":" + seconds.ToString("00") + "\n" + "Enemies Alive: " + "\n" + "Enemies Killed: " + kills + "\n" + "Score: " + score + "\n" + "High Score: " + highScore;
+        statsText.text = "Time: " + minutes.ToString("00") + ":" + seconds.ToString("00") + "\n" + "Enemies Alive: " + enemiesAlive + "\n" + "Enemies Killed: " + kills + "\n" + "Score: " + score + "\n" + "High Score: " + highScore;
     }
 }

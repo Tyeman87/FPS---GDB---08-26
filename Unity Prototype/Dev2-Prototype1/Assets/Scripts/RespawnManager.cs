@@ -52,8 +52,47 @@ public class RespawnManager : MonoBehaviour
     IEnumerator RespawnCoroutine(GameObject prefab, Transform spawner)
     {
         yield return new WaitForSeconds(respawnTimer);
-        Debug.Log("Respawning Enemy:" + prefab.name);
-        Instantiate(prefab, spawner.position, Quaternion.identity);
+
+        //reset enemy position to enemySpawnpoint object
+        enemy.transform.position = enemySpawnPoint.position;
+
+        //reenable physics and ai
+        Collider coll = enemy.GetComponent<Collider>();
+        if (coll)
+        {
+            coll.enabled = true;
+        }
+
+        Rigidbody rb = enemy.GetComponent<Rigidbody>();
+        if (rb)
+        {
+            rb.isKinematic = false;
+        }
+
+        NavMeshAgent agent = enemy.GetComponent<NavMeshAgent>();
+        if (agent)
+        {
+            agent.enabled = true;
+        }
+
+        Renderer[] renderers = enemy.GetComponentsInChildren<Renderer>();
+        foreach (Renderer r in renderers)
+        {
+            r.enabled = true;
+        }
+
+        //reset enemy health and color
+        enemyAI aiScript = enemy.GetComponent<enemyAI>();
+        if (aiScript != null)
+        {
+            aiScript.HP = aiScript.maxHP;
+            aiScript.model.material.color = aiScript.colorOrig;//makes sure enemy doesn't stay red when they die
+        }
+
+        if (gameStats.Instance != null)
+        {
+            gameStats.Instance.EnemySpawned();
+        }
     }
 
 }

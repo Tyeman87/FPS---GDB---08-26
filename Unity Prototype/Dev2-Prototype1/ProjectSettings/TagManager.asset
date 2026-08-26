@@ -4,9 +4,7 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - EnemySpawner
-  - Spawner_SpeedyGonzales
-  - Player Spawn Position
+  - Enemy
   layers:
   - Default
   - TransparentFX
