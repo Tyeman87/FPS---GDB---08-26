@@ -92,5 +92,10 @@ public class RespawnManager : MonoBehaviour
             aiScript.HP = aiScript.maxHP;
             aiScript.model.material.color = aiScript.colorOrig;//makes sure enemy doesn't stay red when they die
         }
+
+        if (gameStats.Instance != null)
+        {
+            gameStats.Instance.EnemySpawned();
+        }
     }
 }

@@ -12,7 +12,7 @@ public class gameStatsUI : MonoBehaviour
 
         float time = gameStats.Instance.timeTaken;
         int kills = gameStats.Instance.enemiesKilled;
-        int enemiesAlive = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        int enemiesAlive = gameStats.Instance.enemiesAlive;
 
         int score = 0;
 
