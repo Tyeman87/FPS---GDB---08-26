@@ -10,6 +10,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
+    
 
     [Header("UI")] 
     [SerializeField] TMP_Text killCountText;

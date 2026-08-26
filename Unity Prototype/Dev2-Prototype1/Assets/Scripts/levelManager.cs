@@ -9,7 +9,7 @@ public class levelManager : MonoBehaviour
 
     private void Start()
     {
-        gameStats.Instance.StartGame();
+        //gameStats.Instance.StartGame();
     }
 
     public void WinLevel()
@@ -29,6 +29,6 @@ public class levelManager : MonoBehaviour
         currentLevel++;
         difficultyMultiplier += difficultyIncreaseRate;
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

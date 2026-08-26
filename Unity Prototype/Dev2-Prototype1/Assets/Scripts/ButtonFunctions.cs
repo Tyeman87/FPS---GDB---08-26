@@ -28,4 +28,11 @@ public class ButtonFunctions : MonoBehaviour
         gameManager.instance.playerScript.spawnPlayer();
         gameManager.instance.stateUnpause();
     }
+
+    public void nextLevel()
+    {
+        Time.timeScale = 1f;
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentScene + 1);
+    }
 }
