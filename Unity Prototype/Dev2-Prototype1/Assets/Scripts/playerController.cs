@@ -140,7 +140,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen
         audioManager.Instance.audPlayer.PlayOneShot(gunInv[gunInvPos].shootSound[Random.Range(0, gunInv[gunInvPos].shootSound.Length)], gunInv[gunInvPos].shootSoundVol);
 
         RaycastHit hit;
-        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, gunInv[gunInvPos].shootDist, ~ignoreLayer))
+        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, gunInv[gunInvPos].shootDist, ~ignoreLayer, QueryTriggerInteraction.Ignore))
         {
             Debug.Log(hit.collider.name);
 
