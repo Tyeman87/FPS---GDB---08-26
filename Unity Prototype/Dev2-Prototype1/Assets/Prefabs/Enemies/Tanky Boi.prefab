@@ -37,7 +37,7 @@ Transform:
   m_Children:
   - {fileID: 6748096264909438237}
   - {fileID: 388632866647420165}
-  - {fileID: 5156091266013921268}
+  - {fileID: 9133142508291729114}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8732551328266769177
@@ -60,7 +60,7 @@ MonoBehaviour:
   FOV: 90
   moveSpeed: 3
   bullet: {fileID: 6964972883987111141, guid: e497d04b3da85d748af41ef0a2efde98, type: 3}
-  gunPivot: {fileID: 6710340420772787653}
+  gunPivot: {fileID: 9133142508291729114}
   shootPosition: {fileID: 7181307909152167102}
   shootRate: 1
   gunRotateSpeed: 6
@@ -993,7 +993,7 @@ Transform:
   m_GameObject: {fileID: 5728717919278095584}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.97, y: -0.152, z: 0.359}
+  m_LocalPosition: {x: 0.97000027, y: -0.15200001, z: 0.3590002}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.21428572}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1006,7 +1006,7 @@ Transform:
   - {fileID: 7073843224566304790}
   - {fileID: 7181307909152167102}
   - {fileID: 4475739012749301772}
-  m_Father: {fileID: 7743829422452702652}
+  m_Father: {fileID: 9133142508291729114}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &8680744747405769705
 MeshFilter:
@@ -1897,3 +1897,35 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &9142633223154121241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9133142508291729114}
+  m_Layer: 6
+  m_Name: TanksGunPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9133142508291729114
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9142633223154121241}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5156091266013921268}
+  m_Father: {fileID: 7743829422452702652}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
