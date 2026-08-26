@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5618750125584826778}
   - component: {fileID: 1039519348160453000}
   - component: {fileID: 8051953967700108164}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 3996261401381253170}
   - component: {fileID: 2556390857802021628}
   - component: {fileID: 4693456867609756817}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 1290214027996401833}
   - component: {fileID: 9135122757817023338}
   - component: {fileID: 2349622275154064224}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Eye (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 4777772277700636142}
   - component: {fileID: 8616417700787183914}
   - component: {fileID: 8198325244884189140}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -374,7 +374,7 @@ GameObject:
   - component: {fileID: 4270699528705787131}
   - component: {fileID: 1578237971281944949}
   - component: {fileID: 3352003681979233441}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shoot Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,7 +462,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1559942487890406157}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Head Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -494,7 +494,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4446749787455840186}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gun Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -570,8 +570,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::enemyAI
   agent: {fileID: 7836691616530714333}
   model: {fileID: 6515721808002073225}
-  HP: 3
-  maxHP: 2
+  HP: 5
+  maxHP: 5
   faceTargetSpeed: 10
   FOV: 45
   moveSpeed: 4
@@ -580,7 +580,7 @@ MonoBehaviour:
   shootPosition: {fileID: 4270699528705787131}
   shootRate: 2
   gunRotateSpeed: 10
-  bulletDamage: 1
+  bulletDamage: 2
   colorOrig: {r: 0, g: 0, b: 0, a: 0}
 --- !u!33 &6986632289804971165
 MeshFilter:
@@ -615,7 +615,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: ca2ed216f98028c4dae6c5224a952b3c, type: 3}
+  - {fileID: 2100000, guid: 9dcb14f2fb77920468d05d2bd4692d0e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

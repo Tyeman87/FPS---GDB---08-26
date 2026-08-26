@@ -20,7 +20,7 @@ public class damage : MonoBehaviour
     [SerializeField] int damageAmount;
     [SerializeField] int damageRate;
     [SerializeField] int bulletSpeed;
-    [SerializeField] int bulletDestroyTime;
+    [Range (0, 1) ] [SerializeField] float bulletDestroyTime;
     [SerializeField] ParticleSystem hitEffect;
 
     bool isDamaging;
@@ -39,15 +39,22 @@ public class damage : MonoBehaviour
             rb.linearVelocity = transform.forward * bulletSpeed;
             Destroy(gameObject, bulletDestroyTime);
         }
+        else if(type == DamageType.Spread)
+        {
+            rb.linearVelocity = transform.forward * bulletSpeed;
+            Destroy(gameObject, bulletDestroyTime);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Bullet collided with: " + other.gameObject.name);
+        
         if (other.isTrigger)
             return;
 
         // Check if the other object has the InterfaceDamage component
-        IDamage damageable = other.GetComponentInParent<IDamage>();
+        IDamage damageable = other.GetComponent<IDamage>();
 
         // If it does, apply damage based on the type of damage
         if (damageable != null && type != DamageType.DOT)
@@ -56,6 +63,15 @@ public class damage : MonoBehaviour
         }
 
         if (type == DamageType.Bullet)
+        {
+            if (hitEffect != null)
+            {
+                Instantiate(hitEffect, transform.position, Quaternion.identity);
+            }
+            Destroy(gameObject);
+        }
+
+        if (type == DamageType.Spread)
         {
             if (hitEffect != null)
             {
