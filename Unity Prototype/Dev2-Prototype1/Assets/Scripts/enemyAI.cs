@@ -85,8 +85,10 @@ public class enemyAI : MonoBehaviour, IDamage
         randPos += startingPos;
         NavMeshHit hit;
 
-        NavMesh.SamplePosition(randPos, out hit, roamDist, 1);
-        agent.SetDestination(hit.position);
+        if (NavMesh.SamplePosition(randPos, out hit, roamDist, NavMesh.AllAreas))
+        {
+            agent.SetDestination(hit.position);
+        }
     }
 
 

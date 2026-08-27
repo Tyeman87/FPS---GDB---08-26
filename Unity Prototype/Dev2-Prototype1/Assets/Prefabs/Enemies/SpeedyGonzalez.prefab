@@ -398,9 +398,11 @@ MonoBehaviour:
   faceTargetSpeed: 15
   FOV: 70
   moveSpeed: 9
-  bullet: {fileID: 0}
-  gunPivot: {fileID: 0}
-  shootPosition: {fileID: 0}
+  roamDist: 0
+  roamPauseTime: 0
+  bullet: {fileID: 6964972883987111141, guid: e497d04b3da85d748af41ef0a2efde98, type: 3}
+  gunPivot: {fileID: 8304003015372662412}
+  shootPosition: {fileID: 5592583429657268166}
   shootRate: 0
   gunRotateSpeed: 0
   bulletDamage: 0
@@ -419,7 +421,7 @@ NavMeshAgent:
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 2000
-  m_StoppingDistance: 0
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -503,8 +505,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 1.5
+  m_Height: 3.9999998
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &39750530522540390

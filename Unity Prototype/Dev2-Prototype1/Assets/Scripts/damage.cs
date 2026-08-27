@@ -54,7 +54,7 @@ public class damage : MonoBehaviour
             return;
 
         // Check if the other object has the InterfaceDamage component
-        IDamage damageable = other.GetComponent<IDamage>();
+        IDamage damageable = other.GetComponentInParent<IDamage>();
 
         // If it does, apply damage based on the type of damage
         if (damageable != null && type != DamageType.DOT)
@@ -62,7 +62,7 @@ public class damage : MonoBehaviour
             damageable.takeDamage(damageAmount);
         }
 
-        if (type == DamageType.Bullet)
+        if (type == DamageType.Bullet || type == DamageType.Spread)
         {
             if (hitEffect != null)
             {
