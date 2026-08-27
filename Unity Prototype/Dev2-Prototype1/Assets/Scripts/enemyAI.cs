@@ -13,6 +13,8 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int faceTargetSpeed;
     [SerializeField] int FOV;
     [SerializeField] float moveSpeed;
+    [SerializeField] int roamDist;
+    [SerializeField] int roamPauseTime;
 
     [Header("Weapons")]
     [SerializeField] GameObject bullet;
@@ -24,24 +26,101 @@ public class enemyAI : MonoBehaviour, IDamage
 
     public Color colorOrig;
     Vector3 playerDir;
+    
 
     float shootTimer;
     bool playerInSight;
     float angleToPlayer;
+
+    
+    float roamTimer;
+    float stoppingDistOrig;
+    bool playerInTrigger;
+    Vector3 startingPos;
+
+    Vector3 lastPos;
+    float stuckTimer;
+    float stuckThreshold = 0.5f;
 
     void Start()
     {
         HP = maxHP;
         colorOrig = model.material.color;
         agent.speed = moveSpeed;
+        startingPos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        checkStuck();
+
         if (playerInSight && canSeePlayer())
         {
 
+        }
+        else
+        {
+            checkRoam();
+        }
+    }
+
+    void checkRoam()
+    {
+        if(agent.remainingDistance < 0.1f)
+        {
+            roamTimer += Time.deltaTime;
+            if (roamTimer > roamPauseTime)
+            {
+                roam();
+            }
+        }
+    }
+
+    void roam()
+    {
+        roamTimer = 0;
+        agent.stoppingDistance = 0;
+
+        Vector3 randPos = Random.insideUnitSphere * roamDist;
+        randPos += startingPos;
+        NavMeshHit hit;
+
+        NavMesh.SamplePosition(randPos, out hit, roamDist, 1);
+        agent.SetDestination(hit.position);
+    }
+
+    void checkStuck()
+    {
+        if (transform.position == lastPos)
+        {
+            stuckTimer += Time.deltaTime;
+
+            if (stuckTimer > stuckThreshold)
+            {
+                unstuck();
+                stuckTimer = 0;
+            }
+        }
+        else
+        {
+            stuckTimer = 0;
+        }
+
+        lastPos = transform.position;
+    }
+
+    void unstuck()
+    {
+        Vector3 offset = Random.insideUnitSphere * 2f;
+        offset.y = 0;
+        Vector3 targetPos = transform.position + offset;
+
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(targetPos, out hit, 2f, 1))
+        {
+            agent.SetDestination(hit.position);
+            agent.velocity = Vector3.zero;
         }
     }
 
