@@ -8,7 +8,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen
     [SerializeField] LayerMask ignoreLayer;
 
     [Header("Player Stats")]
-    [Range(1, 10)] [SerializeField]int HP;
+    [Range(1, 30)] [SerializeField]int HP;
     [Range(0, 20)][SerializeField] int armor;
     [Range(1, 20)][SerializeField] int armorMax;
     [Range(1, 10)] [SerializeField]int speed;
@@ -17,7 +17,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen
     [Range(1, 5)] [SerializeField]int jumpMax;
     [Range(15, 40)] [SerializeField]int gravity;
 
-    [Header("GunStff")]
+    [Header("GunStuff")]
     [SerializeField] List<gunStats> gunInv = new List<gunStats>();
     [SerializeField] GameObject gunModel;
 
