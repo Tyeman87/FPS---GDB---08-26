@@ -53,7 +53,7 @@ public class enemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-        checkStuck();
+        
 
         if (playerInSight && canSeePlayer())
         {
@@ -90,39 +90,6 @@ public class enemyAI : MonoBehaviour, IDamage
         agent.SetDestination(hit.position);
     }
 
-    void checkStuck()
-    {
-        if (transform.position == lastPos)
-        {
-            stuckTimer += Time.deltaTime;
-
-            if (stuckTimer > stuckThreshold)
-            {
-                unstuck();
-                stuckTimer = 0;
-            }
-        }
-        else
-        {
-            stuckTimer = 0;
-        }
-
-        lastPos = transform.position;
-    }
-
-    void unstuck()
-    {
-        Vector3 offset = Random.insideUnitSphere * 2f;
-        offset.y = 0;
-        Vector3 targetPos = transform.position + offset;
-
-        NavMeshHit hit;
-        if (NavMesh.SamplePosition(targetPos, out hit, 2f, 1))
-        {
-            agent.SetDestination(hit.position);
-            agent.velocity = Vector3.zero;
-        }
-    }
 
     bool canSeePlayer()
     {
