@@ -166,7 +166,7 @@ MonoBehaviour:
   player: {fileID: 0}
   rescueType: 0
   rescueDistance: 5
-  followDistance: 3
+  followDistance: 1
 --- !u!33 &6239545547816225926
 MeshFilter:
   m_ObjectHideFlags: 0

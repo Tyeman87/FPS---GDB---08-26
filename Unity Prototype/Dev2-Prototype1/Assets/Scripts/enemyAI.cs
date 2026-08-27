@@ -40,7 +40,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     Vector3 lastPos;
     float stuckTimer;
-    float stuckThreshold = 0.5f;
+    //float stuckThreshold = 0.5f;
 
     void Start()
     {
@@ -86,8 +86,10 @@ public class enemyAI : MonoBehaviour, IDamage
         randPos += startingPos;
         NavMeshHit hit;
 
-        NavMesh.SamplePosition(randPos, out hit, roamDist, 1);
-        agent.SetDestination(hit.position);
+        if (NavMesh.SamplePosition(randPos, out hit, roamDist, NavMesh.AllAreas))
+        {
+            agent.SetDestination(hit.position);
+        }
     }
 
 
