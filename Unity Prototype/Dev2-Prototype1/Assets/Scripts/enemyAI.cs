@@ -47,6 +47,7 @@ public class enemyAI : MonoBehaviour, IDamage
         HP = maxHP;
         colorOrig = model.material.color;
         agent.speed = moveSpeed;
+        startingPos = transform.position;
     }
 
     // Update is called once per frame
