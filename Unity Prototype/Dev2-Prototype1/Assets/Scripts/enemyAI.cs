@@ -38,9 +38,8 @@ public class enemyAI : MonoBehaviour, IDamage
     bool playerInTrigger;
     Vector3 startingPos;
 
-    Vector3 lastPos;
-    float stuckTimer;
-    float stuckThreshold = 0.5f;
+
+
 
     void Start()
     {
