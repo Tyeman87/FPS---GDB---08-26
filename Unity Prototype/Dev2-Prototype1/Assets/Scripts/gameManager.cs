@@ -15,6 +15,7 @@ public class gameManager : MonoBehaviour
     [Header("UI")] 
     [SerializeField] TMP_Text killCountText;
     [SerializeField] TMP_Text hostageCountText;
+    [SerializeField] public TMP_Text ammoCounterText;
 
     [Header("Player")]
     public bool isPaused;
@@ -49,6 +50,7 @@ public class gameManager : MonoBehaviour
         timeScaleOrig = Time.timeScale;
 
         killCountText.text = "Kills: 0";
+        
 
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Position");
 
