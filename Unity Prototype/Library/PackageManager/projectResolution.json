@@ -1,28 +1,128 @@
 {
   "context": {
-    "projectPath": "C:/Users/mhomo/OneDrive/Documents/GitHub/FPS---GDB---08-26/Unity Prototype/Packages",
+    "projectPath": "C:/GitHub/FPS---GDB---08-26/Unity Prototype/Packages",
     "unityVersion": "6000.5.7f1"
   },
   "inputs": [
-    "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Packages\\manifest.json",
-    "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Packages\\packages-lock.json",
+    "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Packages\\manifest.json",
+    "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Packages\\packages-lock.json",
     "C:\\Program Files\\Unity\\Hub\\Editor\\6000.5.7f1\\Editor\\Data\\Resources\\PackageManager\\BuiltInPackages\\BuiltInPackagesCombined.sha1"
   ],
   "outputs": {
+    "com.unity.ai.navigation@2.0.14": {
+      "name": "com.unity.ai.navigation",
+      "displayName": "AI Navigation",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.ai.navigation@134dd6a3b97b",
+      "fingerprint": "134dd6a3b97bb75be809e267fbcd9c5071579dd2",
+      "editorCompatibility": "6000.0.0a1",
+      "version": "2.0.14",
+      "source": "registry",
+      "testable": false
+    },
+    "com.unity.collab-proxy@2.13.5": {
+      "name": "com.unity.collab-proxy",
+      "displayName": "Unity Version Control",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.collab-proxy@120d77864ebc",
+      "fingerprint": "120d77864ebcdd4b17df8b322e9a563f916d25b1",
+      "editorCompatibility": "6000.0.0a1",
+      "version": "2.13.5",
+      "source": "registry",
+      "testable": false
+    },
+    "com.unity.ide.rider@3.0.38": {
+      "name": "com.unity.ide.rider",
+      "displayName": "JetBrains Rider Editor",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.ide.rider@1f60b3138684",
+      "fingerprint": "1f60b3138684c97af67aa8d911b1632ba916d29d",
+      "editorCompatibility": "2021.3.0a1",
+      "version": "3.0.38",
+      "source": "registry",
+      "testable": false
+    },
+    "com.unity.ide.visualstudio@2.0.27": {
+      "name": "com.unity.ide.visualstudio",
+      "displayName": "Visual Studio Editor",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.ide.visualstudio@dc1ddd4f09b6",
+      "fingerprint": "dc1ddd4f09b68a99b5dc00185f3b7551294e28a7",
+      "editorCompatibility": "2021.3.0a1",
+      "version": "2.0.27",
+      "source": "registry",
+      "testable": false
+    },
+    "com.unity.inputsystem@1.20.0": {
+      "name": "com.unity.inputsystem",
+      "displayName": "Input System",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.inputsystem@7a4e1a2a8194",
+      "fingerprint": "7a4e1a2a81941121ffc0721a14009b46299dada1",
+      "editorCompatibility": "6000.0.0a1",
+      "version": "1.20.0",
+      "source": "registry",
+      "testable": false
+    },
     "com.unity.multiplayer.center@1.0.1": {
       "name": "com.unity.multiplayer.center",
       "displayName": "Multiplayer Center",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.multiplayer.center@b860850997d0",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.multiplayer.center@b860850997d0",
       "fingerprint": "b860850997d026668b04ee7b71cb731ee193804c",
       "editorCompatibility": "6000.0.0a1",
       "version": "1.0.1",
       "source": "builtin",
       "testable": false
     },
+    "com.unity.render-pipelines.universal@17.5.0": {
+      "name": "com.unity.render-pipelines.universal",
+      "displayName": "Universal Render Pipeline",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.render-pipelines.universal@73b4c4ff130e",
+      "fingerprint": "73b4c4ff130e691b346be0980dab6c6b953424e9",
+      "editorCompatibility": "6000.5.0a1",
+      "version": "17.5.0",
+      "source": "builtin",
+      "testable": false
+    },
+    "com.unity.test-framework@1.7.0": {
+      "name": "com.unity.test-framework",
+      "displayName": "Test Framework",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.test-framework@1405238725ab",
+      "fingerprint": "1405238725ab5d498428c2b01df5379ae8055acb",
+      "editorCompatibility": "6000.0.44f1",
+      "version": "1.7.0",
+      "source": "builtin",
+      "testable": false
+    },
+    "com.unity.timeline@1.8.12": {
+      "name": "com.unity.timeline",
+      "displayName": "Timeline",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.timeline@8cd8509afae5",
+      "fingerprint": "8cd8509afae5d2655af4657a214db1b563c28425",
+      "editorCompatibility": "2022.3.0a1",
+      "version": "1.8.12",
+      "source": "registry",
+      "testable": false
+    },
+    "com.unity.ugui@2.5.0": {
+      "name": "com.unity.ugui",
+      "displayName": "uGUI",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.ugui@67707a67a4ab",
+      "fingerprint": "67707a67a4ab60fc9a96c48f30b4d99875c979ad",
+      "editorCompatibility": "6000.5.0a1",
+      "version": "2.5.0",
+      "source": "builtin",
+      "testable": false
+    },
+    "com.unity.visualscripting@1.9.12": {
+      "name": "com.unity.visualscripting",
+      "displayName": "Visual Scripting",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.visualscripting@4edfcc09512f",
+      "fingerprint": "4edfcc09512f786fe1a7f50476d320b36dab9676",
+      "editorCompatibility": "6000.0.0a1",
+      "version": "1.9.12",
+      "source": "registry",
+      "testable": false
+    },
     "com.unity.modules.accessibility@1.0.0": {
       "name": "com.unity.modules.accessibility",
       "displayName": "Accessibility",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.accessibility",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.accessibility",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -30,7 +130,7 @@
     "com.unity.modules.adaptiveperformance@1.0.0": {
       "name": "com.unity.modules.adaptiveperformance",
       "displayName": "Adaptive Performance",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.adaptiveperformance",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.adaptiveperformance",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -38,7 +138,7 @@
     "com.unity.modules.ai@1.0.0": {
       "name": "com.unity.modules.ai",
       "displayName": "AI",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.ai",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.ai",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -46,7 +146,7 @@
     "com.unity.modules.androidjni@1.0.0": {
       "name": "com.unity.modules.androidjni",
       "displayName": "Android JNI",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.androidjni",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.androidjni",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -54,7 +154,7 @@
     "com.unity.modules.animation@1.0.0": {
       "name": "com.unity.modules.animation",
       "displayName": "Animation",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.animation",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.animation",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -62,7 +162,7 @@
     "com.unity.modules.assetbundle@1.0.0": {
       "name": "com.unity.modules.assetbundle",
       "displayName": "Asset Bundle",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.assetbundle",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.assetbundle",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -70,7 +170,7 @@
     "com.unity.modules.audio@1.0.0": {
       "name": "com.unity.modules.audio",
       "displayName": "Audio",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.audio",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.audio",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -78,7 +178,7 @@
     "com.unity.modules.cloth@1.0.0": {
       "name": "com.unity.modules.cloth",
       "displayName": "Cloth",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.cloth",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.cloth",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -86,7 +186,7 @@
     "com.unity.modules.director@1.0.0": {
       "name": "com.unity.modules.director",
       "displayName": "Director",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.director",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.director",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -94,7 +194,7 @@
     "com.unity.modules.imageconversion@1.0.0": {
       "name": "com.unity.modules.imageconversion",
       "displayName": "Image Conversion",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.imageconversion",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.imageconversion",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -102,7 +202,7 @@
     "com.unity.modules.imgui@1.0.0": {
       "name": "com.unity.modules.imgui",
       "displayName": "IMGUI",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.imgui",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.imgui",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -110,7 +210,7 @@
     "com.unity.modules.jsonserialize@1.0.0": {
       "name": "com.unity.modules.jsonserialize",
       "displayName": "JSONSerialize",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.jsonserialize",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.jsonserialize",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -118,7 +218,7 @@
     "com.unity.modules.particlesystem@1.0.0": {
       "name": "com.unity.modules.particlesystem",
       "displayName": "Particle System",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.particlesystem",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.particlesystem",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -126,7 +226,7 @@
     "com.unity.modules.physics@1.0.0": {
       "name": "com.unity.modules.physics",
       "displayName": "Physics",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.physics",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.physics",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -134,7 +234,7 @@
     "com.unity.modules.physics2d@1.0.0": {
       "name": "com.unity.modules.physics2d",
       "displayName": "Physics 2D",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.physics2d",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.physics2d",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -142,7 +242,7 @@
     "com.unity.modules.physicscore2d@1.0.0": {
       "name": "com.unity.modules.physicscore2d",
       "displayName": "Physics Core 2D",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.physicscore2d",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.physicscore2d",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -150,7 +250,7 @@
     "com.unity.modules.screencapture@1.0.0": {
       "name": "com.unity.modules.screencapture",
       "displayName": "Screen Capture",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.screencapture",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.screencapture",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -158,7 +258,7 @@
     "com.unity.modules.terrain@1.0.0": {
       "name": "com.unity.modules.terrain",
       "displayName": "Terrain",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.terrain",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.terrain",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -166,7 +266,7 @@
     "com.unity.modules.terrainphysics@1.0.0": {
       "name": "com.unity.modules.terrainphysics",
       "displayName": "Terrain Physics",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.terrainphysics",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.terrainphysics",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -174,7 +274,7 @@
     "com.unity.modules.tilemap@1.0.0": {
       "name": "com.unity.modules.tilemap",
       "displayName": "Tilemap",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.tilemap",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.tilemap",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -182,7 +282,7 @@
     "com.unity.modules.ui@1.0.0": {
       "name": "com.unity.modules.ui",
       "displayName": "UI",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.ui",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.ui",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -190,7 +290,7 @@
     "com.unity.modules.uielements@1.0.0": {
       "name": "com.unity.modules.uielements",
       "displayName": "UIElements",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.uielements",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.uielements",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -198,7 +298,7 @@
     "com.unity.modules.umbra@1.0.0": {
       "name": "com.unity.modules.umbra",
       "displayName": "Umbra",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.umbra",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.umbra",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -206,7 +306,7 @@
     "com.unity.modules.unityanalytics@1.0.0": {
       "name": "com.unity.modules.unityanalytics",
       "displayName": "Unity Analytics",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.unityanalytics",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.unityanalytics",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -214,7 +314,7 @@
     "com.unity.modules.unitywebrequest@1.0.0": {
       "name": "com.unity.modules.unitywebrequest",
       "displayName": "Unity Web Request",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.unitywebrequest",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.unitywebrequest",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -222,7 +322,7 @@
     "com.unity.modules.unitywebrequestassetbundle@1.0.0": {
       "name": "com.unity.modules.unitywebrequestassetbundle",
       "displayName": "Unity Web Request Asset Bundle",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.unitywebrequestassetbundle",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.unitywebrequestassetbundle",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -230,7 +330,7 @@
     "com.unity.modules.unitywebrequestaudio@1.0.0": {
       "name": "com.unity.modules.unitywebrequestaudio",
       "displayName": "Unity Web Request Audio",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.unitywebrequestaudio",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.unitywebrequestaudio",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -238,7 +338,7 @@
     "com.unity.modules.unitywebrequesttexture@1.0.0": {
       "name": "com.unity.modules.unitywebrequesttexture",
       "displayName": "Unity Web Request Texture",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.unitywebrequesttexture",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.unitywebrequesttexture",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -246,7 +346,7 @@
     "com.unity.modules.unitywebrequestwww@1.0.0": {
       "name": "com.unity.modules.unitywebrequestwww",
       "displayName": "Unity Web Request WWW",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.unitywebrequestwww",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.unitywebrequestwww",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -254,7 +354,7 @@
     "com.unity.modules.vectorgraphics@1.0.0": {
       "name": "com.unity.modules.vectorgraphics",
       "displayName": "Vector Graphics",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.vectorgraphics",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.vectorgraphics",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -262,7 +362,7 @@
     "com.unity.modules.vehicles@1.0.0": {
       "name": "com.unity.modules.vehicles",
       "displayName": "Vehicles",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.vehicles",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.vehicles",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -270,7 +370,7 @@
     "com.unity.modules.video@1.0.0": {
       "name": "com.unity.modules.video",
       "displayName": "Video",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.video",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.video",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -278,7 +378,7 @@
     "com.unity.modules.wind@1.0.0": {
       "name": "com.unity.modules.wind",
       "displayName": "Wind",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.wind",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.wind",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -286,7 +386,7 @@
     "com.unity.modules.xr@1.0.0": {
       "name": "com.unity.modules.xr",
       "displayName": "XR",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.xr",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.xr",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -294,7 +394,7 @@
     "com.unity.modules.subsystems@1.0.0": {
       "name": "com.unity.modules.subsystems",
       "displayName": "Subsystems",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.subsystems",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.subsystems",
       "version": "1.0.0",
       "source": "builtin",
       "testable": false
@@ -302,8 +402,108 @@
     "com.unity.modules.hierarchycore@1.0.0": {
       "name": "com.unity.modules.hierarchycore",
       "displayName": "Hierarchy Core",
-      "resolvedPath": "C:\\Users\\mhomo\\OneDrive\\Documents\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.hierarchycore",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.modules.hierarchycore",
       "version": "1.0.0",
+      "source": "builtin",
+      "testable": false
+    },
+    "com.unity.ext.nunit@2.1.0": {
+      "name": "com.unity.ext.nunit",
+      "displayName": "Custom NUnit",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.ext.nunit@44f7d31723bd",
+      "fingerprint": "44f7d31723bdd3bc52a37606118a195329e01928",
+      "editorCompatibility": "2019.4.0a1",
+      "version": "2.1.0",
+      "source": "builtin",
+      "testable": false
+    },
+    "com.unity.render-pipelines.core@17.5.0": {
+      "name": "com.unity.render-pipelines.core",
+      "displayName": "Scriptable Render Pipeline Core",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.render-pipelines.core@645717f21c5f",
+      "fingerprint": "645717f21c5f8c920740170184e73db3507d9524",
+      "editorCompatibility": "6000.5.0a1",
+      "version": "17.5.0",
+      "source": "builtin",
+      "testable": false
+    },
+    "com.unity.shadergraph@17.5.0": {
+      "name": "com.unity.shadergraph",
+      "displayName": "Shader Graph",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.shadergraph@8d7376ec43ee",
+      "fingerprint": "8d7376ec43ee0ba3dca1703338e2749e4cfdf0a8",
+      "editorCompatibility": "6000.5.0a1",
+      "version": "17.5.0",
+      "source": "builtin",
+      "testable": false
+    },
+    "com.unity.render-pipelines.universal-config@17.5.0": {
+      "name": "com.unity.render-pipelines.universal-config",
+      "displayName": "Universal Render Pipeline Config",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.render-pipelines.universal-config@fdda01c80fe3",
+      "fingerprint": "fdda01c80fe3156555919c7f18ff421792d1b592",
+      "editorCompatibility": "6000.5.0a1",
+      "version": "17.5.0",
+      "source": "builtin",
+      "testable": false
+    },
+    "com.unity.collections@6.5.0": {
+      "name": "com.unity.collections",
+      "displayName": "Collections",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.collections@ec2c217e4cb2",
+      "fingerprint": "ec2c217e4cb22fd5a1239bb86ac5970ea67160db",
+      "editorCompatibility": "6000.5.0a1",
+      "version": "6.5.0",
+      "source": "builtin",
+      "testable": false
+    },
+    "com.unity.searcher@4.9.4": {
+      "name": "com.unity.searcher",
+      "displayName": "Searcher",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.searcher@d45a78918735",
+      "fingerprint": "d45a78918735dd5b1de2247c6e3567c60aa24115",
+      "editorCompatibility": "2019.1.0a1",
+      "version": "4.9.4",
+      "source": "registry",
+      "testable": false
+    },
+    "com.unity.burst@1.8.30": {
+      "name": "com.unity.burst",
+      "displayName": "Burst",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.burst@2f3d916873ea",
+      "fingerprint": "2f3d916873ea867ff077372df3fe42447ba7d4c6",
+      "editorCompatibility": "6000.0.0a1",
+      "version": "1.8.30",
+      "source": "registry",
+      "testable": false
+    },
+    "com.unity.nuget.mono-cecil@1.11.6": {
+      "name": "com.unity.nuget.mono-cecil",
+      "displayName": "Mono Cecil",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.nuget.mono-cecil@ecb9724e46ff",
+      "fingerprint": "ecb9724e46fff855c46a4f37f0a3377a3cfffc06",
+      "editorCompatibility": "2019.4.0a1",
+      "version": "1.11.6",
+      "source": "registry",
+      "testable": false
+    },
+    "com.unity.test-framework.performance@3.5.0": {
+      "name": "com.unity.test-framework.performance",
+      "displayName": "Performance testing API",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.test-framework.performance@8b56083ec0f0",
+      "fingerprint": "8b56083ec0f03c33121bea5c806c91b0fa2f2b69",
+      "editorCompatibility": "2020.3.0a1",
+      "version": "3.5.0",
+      "source": "registry",
+      "testable": false
+    },
+    "com.unity.mathematics@1.4.0": {
+      "name": "com.unity.mathematics",
+      "displayName": "Mathematics",
+      "resolvedPath": "C:\\GitHub\\FPS---GDB---08-26\\Unity Prototype\\Library\\PackageCache\\com.unity.mathematics@981956d94fb6",
+      "fingerprint": "981956d94fb67524c64303c45a850c84830359e9",
+      "editorCompatibility": "6000.5.0a1",
+      "version": "1.4.0",
       "source": "builtin",
       "testable": false
     }
