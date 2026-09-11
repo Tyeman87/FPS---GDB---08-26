@@ -305,7 +305,8 @@ MonoBehaviour:
   jumpSpeed: 10
   jumpMax: 1
   gravity: 30
-  gunInv: []
+  startingGuns:
+  - {fileID: 11400000, guid: 4f19344b106e9c84cb29ba45ece7deeb, type: 2}
   gunModel: {fileID: 6526621469927365538}
   audHurt:
   - {fileID: 8300000, guid: a2c59b878a779364a869d7d6e21af421, type: 3}

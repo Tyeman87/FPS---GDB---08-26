@@ -3,7 +3,7 @@ using UnityEngine;
 public class gunPickup : MonoBehaviour
 {
     [SerializeField] gunStats gun;
-    [Range(0, 100)] [SerializeField] float roationSpeed = 100f;
+    [Range(0, 100)] [SerializeField] float rotationSpeed = 100f;
     [SerializeField] float bobHeight = 0.25f;
     [SerializeField] float bobSpeed = 2f;
 
@@ -16,7 +16,7 @@ public class gunPickup : MonoBehaviour
 
     private void Update()
     {
-        transform.Rotate(0f, roationSpeed * Time.deltaTime, 0f);
+        transform.Rotate(0f, rotationSpeed * Time.deltaTime, 0f);
         float newY = startPosition.y + Mathf.Sin(Time.time * bobSpeed) * bobHeight;
 
         transform.position = new Vector3(
@@ -31,8 +31,9 @@ public class gunPickup : MonoBehaviour
         IPickupGun pickup = other.GetComponent<IPickupGun>();
         if (pickup != null)
         {
-            gun.ammoCur = gun.ammoMax;
+            
             pickup.getGunStats(gun);
+            gameManager.instance.playerScript.updatePlayerUI();
             Destroy(gameObject);
         }
     }

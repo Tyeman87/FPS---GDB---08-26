@@ -35,4 +35,14 @@ public class ButtonFunctions : MonoBehaviour
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentScene + 1);
     }
+
+    public void continueGame()
+    {
+        // Load saved game
+    }
+
+    public void newGame()
+    {
+        // Delete saved game and start fresh
+    }
 }
