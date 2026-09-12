@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEditor.dll::UnityEditor.GridSettings
   m_ActiveModeIndex: 0
   m_GridModes:
-  - rid: 1194422866498289667
-  - rid: 1194422866498289668
+  - rid: 2894142453931573248
+  - rid: 2894142453931573249
   m_GridSize: {x: 1, y: 1, z: 1}
   m_GridMultiplier: 0
   references:
     version: 2
     RefIds:
-    - rid: 1194422866498289667
+    - rid: 2894142453931573248
       type: {class: WorldGridMode, ns: UnityEditor, asm: UnityEditor.CoreModule}
       data: 
-    - rid: 1194422866498289668
+    - rid: 2894142453931573249
       type: {class: CustomGridMode, ns: UnityEditor, asm: UnityEditor.CoreModule}
       data:
         m_Position: {x: 0, y: 0, z: 0}
