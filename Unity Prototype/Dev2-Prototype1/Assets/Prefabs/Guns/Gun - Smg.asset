@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee6ee902613e0c48ba955385fcf555b, type: 3}
   m_Name: Gun - Smg
   m_EditorClassIdentifier: Assembly-CSharp::gunStats
+  itemCost: 10000
+  itemID: gun_smg1
+  itemName: SMG 1
   gunModel: {fileID: 5049443059584821746, guid: 5d26839961eff72408f1751525343de2, type: 3}
-  shootDamage: 1
-  shootDist: 40
-  shootRate: 0.5
-  magSize: 30
+  shootDamage: 2
+  shootDist: 50
+  shootRate: 0.1
+  magSize: 40
   maxReserve: 300
   hitEffect: {fileID: 5584602140419805224, guid: 4d5386e8a70034148885447cd6a0a582, type: 3}
   shootSound:

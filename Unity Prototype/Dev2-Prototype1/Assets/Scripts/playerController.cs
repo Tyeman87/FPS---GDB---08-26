@@ -8,11 +8,11 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen
     [System.Serializable]
     public class GunAmmoData
     {
-        public gunStats stats;
+        public GunStats stats;
         public int currMag;
         public int currReserve;
 
-        public GunAmmoData(gunStats gun)
+        public GunAmmoData(GunStats gun)
         {
             stats = gun;
             currMag = gun.magSize;
@@ -33,7 +33,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen
     [Range(15, 40)][SerializeField] int gravity;
 
     [Header("GunStuff")]
-    [SerializeField] List<gunStats> startingGuns = new List<gunStats>();//inventory at beginning of level
+    [SerializeField] List<GunStats> startingGuns = new List<GunStats>();//inventory at beginning of level
     [SerializeField] GameObject gunModel;
     List<GunAmmoData> gunInv = new List<GunAmmoData>();// to hold stats + ammo of held guns
 
@@ -64,7 +64,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen
     void Start()
     {
         HPOrig = HP;
-        foreach (gunStats gun in startingGuns)
+        foreach (GunStats gun in startingGuns)
         {
             gunInv.Add(new GunAmmoData(gun));
         }
@@ -172,7 +172,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen
 
         updatePlayerUI();
 
-        gunStats gun = gunInv[gunInvPos].stats;
+        GunStats gun = gunInv[gunInvPos].stats;
 
         audioManager.Instance.audPlayer.PlayOneShot(gunInv[gunInvPos].stats.shootSound[Random.Range(0, gunInv[gunInvPos].stats.shootSound.Length)], gunInv[gunInvPos].stats.shootSoundVol);
 
@@ -296,7 +296,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen
         }
     }
 
-    public void getGunStats(gunStats gun)
+    public void getGunStats(GunStats gun)
     {
         for(int i = 0; i < gunInv.Count; i++)
         {

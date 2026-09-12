@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bee6ee902613e0c48ba955385fcf555b, type: 3}
-  m_Name: Gun - Shotgun 1
+  m_Name: Gun - Sniper 1
   m_EditorClassIdentifier: Assembly-CSharp::gunStats
-  itemCost: 500
-  itemID: gun_shotgun1
-  itemName: Shotgun 1
-  gunModel: {fileID: 7402851512432412455, guid: 89334e2249ee6034ea3c73d05dbbc729, type: 3}
-  shootDamage: 5
-  shootDist: 10
-  shootRate: 1
+  itemCost: 10000
+  itemID: gun_sniper
+  itemName: Sniper 1
+  gunModel: {fileID: 0}
+  shootDamage: 1
+  shootDist: 200
+  shootRate: 0.1
   magSize: 5
   maxReserve: 50
-  hitEffect: {fileID: 5584602140419805224, guid: 965221b72cdf3694ba411a9830b83587, type: 3}
+  hitEffect: {fileID: 5584602140419805224, guid: 6d2ab2bfa7deb87469243d7b8de20229, type: 3}
   shootSound:
   - {fileID: 8300000, guid: 79e0e3085f3f0e94a9068b0c05a898f9, type: 3}
-  shootSoundVol: 0.1
+  shootSoundVol: 0.2
