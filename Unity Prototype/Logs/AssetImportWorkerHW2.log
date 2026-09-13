@@ -365,3 +365,422 @@ Importing 'GUID: e6b6a8458fd2b324ca06f5676ce14ef3 - Path: Assets/Scripts/stealth
 Imported 'GUID: e6b6a8458fd2b324ca06f5676ce14ef3' -> (Import Result ID: '0685c21541ac08cd0c9fba43a44b4c82') in 0.012 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=de70d71735411cf4736d4ea063a1709f DependenciesID=fb743c1b82459d0acc3df39ddbff37e1 StaticDependenciesID=326fcafa64d372a1e4de09b66451b280 
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 0
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+[Licensing::Client] Successfully resolved entitlement details
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+System.Exception: Error! Visual Scripting: couldn't find visual scripting package
+  at Unity.VisualScripting.PackageVersionUtility.get_version () [0x00043] in .\Library\PackageCache\com.unity.visualscripting@4edfcc09512f\Editor\VisualScripting.Core\Utilities\PackageVersionUtility.cs:31 
+  at Unity.VisualScripting.BoltCoreManifest.get_version () [0x00000] in .\Library\PackageCache\com.unity.visualscripting@4edfcc09512f\Editor\VisualScripting.Core\Plugin\BoltCoreManifest.cs:11 
+  at Unity.VisualScripting.PluginManifest.get_currentVersion () [0x00000] in .\Library\PackageCache\com.unity.visualscripting@4edfcc09512f\Editor\VisualScripting.Core\Plugins\PluginManifest.cs:33 
+  at Unity.VisualScripting.PluginManifest.get_versionMismatch () [0x00000] in .\Library\PackageCache\com.unity.visualscripting@4edfcc09512f\Editor\VisualScripting.Core\Plugins\PluginManifest.cs:48 
+  at Unity.VisualScripting.PluginContainer.Initialize () [0x00525] in .\Library\PackageCache\com.unity.visualscripting@4edfcc09512f\Editor\VisualScripting.Core\Plugins\PluginContainer.cs:208 
+  at Unity.VisualScripting.PluginContainer.InitializeOnLoad () [0x00009] in .\Library\PackageCache\com.unity.visualscripting@4edfcc09512f\Editor\VisualScripting.Core\Plugins\PluginContainer.cs:32 
+  at Unity.VisualScripting.VSUsageUtility.DoInitializeOnLoadCalls () [0x00034] in .\Library\PackageCache\com.unity.visualscripting@4edfcc09512f\Editor\VisualScripting.Core\Utilities\VSUsageUtility.cs:76 
+  at Unity.VisualScripting.VSUsageUtility.set_isVisualScriptingUsed (System.Boolean value) [0x0002c] in .\Library\PackageCache\com.unity.visualscripting@4edfcc09512f\Editor\VisualScripting.Core\Utilities\VSUsageUtility.cs:114 
+  at Unity.VisualScripting.VSUsageUtility.CheckAndSetIsVisualScriptingUsed () [0x0000d] in .\Library\PackageCache\com.unity.visualscripting@4edfcc09512f\Editor\VisualScripting.Core\Utilities\VSUsageUtility.cs:33 
+  at Unity.VisualScripting.VSUsageUtility..cctor () [0x00000] in .\Library\PackageCache\com.unity.visualscripting@4edfcc09512f\Editor\VisualScripting.Core\Utilities\VSUsageUtility.cs:22 
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.ReadOnlySpan`1<intptr>)
+
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.209 seconds
+Domain Reload Profiling: 3685ms
+	BeginReloadAssembly (413ms)
+		DisableScriptedObjects (52ms)
+		CreateAndSetChildDomain (118ms)
+	RebuildCommonClasses (12ms)
+	RebuildNativeTypeToScriptingClass (19ms)
+	initialDomainReloadingComplete (111ms)
+	LoadAllAssembliesAndSetupDomain (1920ms)
+		LoadAssemblies (1789ms)
+		AnalyzeDomain (170ms)
+			TypeCache.Refresh (12ms)
+			BuildScriptInfoCaches (150ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (1210ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			BeforeProcessingInitializeOnLoad (83ms)
+			ProcessInitializeOnLoadAttributes (419ms)
+			ProcessInitializeOnLoadMethodAttributes (104ms)
+			AfterProcessingInitializeOnLoad (7ms)
+		AwakeInstancesAfterBackupRestoration (14ms)
+Unloading 22 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6652 unused Assets / (5.3 MB). Loaded Objects now: 7578.
+Memory consumption went from 382.1 MB to 376.8 MB.
+Total: 12.501600 ms (FindLiveObjects: 0.394800 ms CreateObjectMapping: 1.153500 ms MarkObjects: 9.568500 ms  DeleteObjects: 1.383900 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+Unloading 22 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 22 unused Assets / (2.6 MB). Loaded Objects now: 7578.
+Memory consumption went from 379.9 MB to 377.3 MB.
+Total: 14.904800 ms (FindLiveObjects: 0.407600 ms CreateObjectMapping: 0.462100 ms MarkObjects: 13.719600 ms  DeleteObjects: 0.314100 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-12T21:45:56.242772Z
+  Time since last request: 6702.03159119999964 seconds.
+  importAddress: GUID: 248fe58887bcdc44ba23f7f22f80b507 - Path: Assets/Prefabs/ScoreManager.prefab - Importer: PreviewImporter
+Importing 'GUID: 248fe58887bcdc44ba23f7f22f80b507 - Path: Assets/Prefabs/ScoreManager.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 248fe58887bcdc44ba23f7f22f80b507' -> (Import Result ID: '755ab875f5c13db1f2a7169d06be27a4') in 0.038 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=4429b588c1dc856b4d25dc784954f8f4 DependenciesID=d7ba5a0ac1ca6b23ed52fc0ca0272ce3 StaticDependenciesID=d92fed3504a5e4300cbcdceec7653bc3 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 5
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-12T21:45:59.0412219Z
+  Time since last request: 2.7492215 seconds.
+  importAddress: GUID: 8f067328ae5c7464b93e124b8ed0c85f - Path: Assets/Prefabs/HighScoreManager.prefab - Importer: PreviewImporter
+Importing 'GUID: 8f067328ae5c7464b93e124b8ed0c85f - Path: Assets/Prefabs/HighScoreManager.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 8f067328ae5c7464b93e124b8ed0c85f' -> (Import Result ID: '9213ba45ad443b3812a900acb3a0ddca') in 0.002 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=9f05ceb6904f5794dc7520cbbbc6b9d8 DependenciesID=8855cb45d3ea8d751debb81f4e377cf8 StaticDependenciesID=ca9c8d914396ce139cf39d115e4ab30b 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 5
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-12T23:55:57.3418771Z
+  Time since last request: 7798.28932069999973 seconds.
+  importAddress: GUID: 00000000000000003000000000000000 - Path: ProjectSettings/TagManager.asset - Importer: PreviewImporter
+Importing 'GUID: 00000000000000003000000000000000 - Path: ProjectSettings/TagManager.asset - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 00000000000000003000000000000000' -> (Import Result ID: '29c512649a6c0d986ff0e96840c0b89d') in 0.010 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a9de5dacb787dcd7900ea87c9e19fd79 DependenciesID=b5ff1dfce3219283558cf8b3309613f9 StaticDependenciesID=9397b8a0e3747deace831701ec4ea260 
+Number of updated asset objects reloaded before import = 1
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:02.3313221Z
+  Time since last request: 9004.93990689999919 seconds.
+  importAddress: GUID: 33269b2b610f4c245a712795c1927939 - Path: Assets/Low Poly Guns/Models/Guns/assault1/assault1.fbx - Importer: PreviewImporter
+Importing 'GUID: 33269b2b610f4c245a712795c1927939 - Path: Assets/Low Poly Guns/Models/Guns/assault1/assault1.fbx - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 33269b2b610f4c245a712795c1927939' -> (Import Result ID: 'd64c513867d9ef805c0af0ade5fb8814') in 3.425 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=065445abc9e604b6045ca0fcae24e20a DependenciesID=7dcab679257b7a1f9ae7b7883da9e796 StaticDependenciesID=28ca7728f5d8a12a0808159a88f60f93 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:05.7708072Z
+  Time since last request: 0.0000515 seconds.
+  importAddress: GUID: 5d26839961eff72408f1751525343de2 - Path: Assets/Prefabs/Guns/Pickup - Smg.prefab - Importer: PreviewImporter
+Importing 'GUID: 5d26839961eff72408f1751525343de2 - Path: Assets/Prefabs/Guns/Pickup - Smg.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 5d26839961eff72408f1751525343de2' -> (Import Result ID: '7d101083ff71d2222138f6e692cac304') in 2.129 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=afcf6abd543dcff2a41276a8f2589571 DependenciesID=b07417d6a3071e63cfeaa2594b3ec5eb StaticDependenciesID=85bdd4fd0ba4ce34c193e5833278fa17 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 28
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:07.9104675Z
+  Time since last request: 0.0008493 seconds.
+  importAddress: GUID: c09ad91f33a47654ba6b2d02e2a68a95 - Path: Assets/Prefabs/Hostage.prefab - Importer: PreviewImporter
+Importing 'GUID: c09ad91f33a47654ba6b2d02e2a68a95 - Path: Assets/Prefabs/Hostage.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: c09ad91f33a47654ba6b2d02e2a68a95' -> (Import Result ID: '88caed4b02ed878d8dd1694aff1a5710') in 1.792 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=ca34dd27a08e771bd175116cb71b1dd0 DependenciesID=0a2a35e2d90f56500a0f5d70aa1ae98e StaticDependenciesID=23349069ab8c5de09001cb63da153bbb 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 21
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:09.7139126Z
+  Time since last request: 0.0014543 seconds.
+  importAddress: GUID: 5125a79ceec0a374d947ba25923da690 - Path: Assets/Prefabs/Level Stuff/powerup_armor.prefab - Importer: PreviewImporter
+Importing 'GUID: 5125a79ceec0a374d947ba25923da690 - Path: Assets/Prefabs/Level Stuff/powerup_armor.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 5125a79ceec0a374d947ba25923da690' -> (Import Result ID: '83bd16d8602d07d50335413b10732c2e') in 1.553 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=e4890dbff6acde100a158b781c42009a DependenciesID=2590df3e9515352cebaf197604e6cf92 StaticDependenciesID=76e81e3201d7a3b772b097545518c40f 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 17
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:11.2764117Z
+  Time since last request: 0.0003417 seconds.
+  importAddress: GUID: 23a126666bebab542b8efc5803506fa5 - Path: Assets/Prefabs/Level Stuff/powerup_hp.prefab - Importer: PreviewImporter
+Importing 'GUID: 23a126666bebab542b8efc5803506fa5 - Path: Assets/Prefabs/Level Stuff/powerup_hp.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 23a126666bebab542b8efc5803506fa5' -> (Import Result ID: 'f291cc6cfa936322283a25f7aa11d841') in 0.023 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=3c2f8610820ad61f8c71575599f3ed61 DependenciesID=2fb6e89c6e4eb04410d8bfafd7a38fc6 StaticDependenciesID=5518fb31e304cdca3754f4f8338fd062 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 17
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:11.3103855Z
+  Time since last request: 0.0018647 seconds.
+  importAddress: GUID: 8b36fb41929fc22429f0083d817b8040 - Path: Assets/Low Poly Guns/Models/Guns/shotgun2/shotgun2.fbx - Importer: PreviewImporter
+Importing 'GUID: 8b36fb41929fc22429f0083d817b8040 - Path: Assets/Low Poly Guns/Models/Guns/shotgun2/shotgun2.fbx - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 8b36fb41929fc22429f0083d817b8040' -> (Import Result ID: '0ae8814d51a2f981fc5c0b90093add25') in 0.022 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=b8766462dcecd3b7b5802cc6539a391b DependenciesID=63585df3f231ad1230a231ab327b65b0 StaticDependenciesID=410f37aa22903bfb7c9a2750731f73f1 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:11.3417732Z
+  Time since last request: 0.0012616 seconds.
+  importAddress: GUID: 336bc68ab0090c84d9d642712e81d1fa - Path: Assets/Prefabs/BlueFlag.prefab - Importer: PreviewImporter
+Importing 'GUID: 336bc68ab0090c84d9d642712e81d1fa - Path: Assets/Prefabs/BlueFlag.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 336bc68ab0090c84d9d642712e81d1fa' -> (Import Result ID: '3d8b8d8b654c161d1100d7607e4b0a59') in 1.837 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=7ed98ae9ff0a68d4008fa8acc13cad3e DependenciesID=ec58634959ba18957c01bddb38706669 StaticDependenciesID=89e43dbfd6c8e4b3a64994927711cdce 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 19
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:13.1886219Z
+  Time since last request: 0.001759 seconds.
+  importAddress: GUID: 4df3ce82db8e66645afd54ab1d5b0262 - Path: Assets/Low Poly Guns/Models/Guns/pistol1/pistol1.fbx - Importer: PreviewImporter
+Importing 'GUID: 4df3ce82db8e66645afd54ab1d5b0262 - Path: Assets/Low Poly Guns/Models/Guns/pistol1/pistol1.fbx - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 4df3ce82db8e66645afd54ab1d5b0262' -> (Import Result ID: '7596b7920089dd89d948e1db683f801b') in 0.024 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=5053b2628360efc0a64fcdfed108c8df DependenciesID=dfd871955b7de18bf158e9730049ba11 StaticDependenciesID=bc42983a50d1fc51e5747a4234e715a6 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:13.2215074Z
+  Time since last request: 0.000428 seconds.
+  importAddress: GUID: 5d9e55400ebc4234abe7d9801b705670 - Path: Assets/Prefabs/Enemies/SpeedyGonzalez.prefab - Importer: PreviewImporter
+Importing 'GUID: 5d9e55400ebc4234abe7d9801b705670 - Path: Assets/Prefabs/Enemies/SpeedyGonzalez.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 5d9e55400ebc4234abe7d9801b705670' -> (Import Result ID: 'd4c6629dc9a11927cccda06d12950fea') in 0.018 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=63e92e7f2d675cfedd119a927ed18035 DependenciesID=541cc1ce8dc50af895eb9df72061b467 StaticDependenciesID=52aa68f238737d5b973ed0fdedb078b3 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 65
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:13.2496524Z
+  Time since last request: 0.0009151 seconds.
+  importAddress: GUID: c06256d85fcdc8841b47178717fe2ed4 - Path: Assets/Prefabs/Enemies/SniperMan.prefab - Importer: PreviewImporter
+Importing 'GUID: c06256d85fcdc8841b47178717fe2ed4 - Path: Assets/Prefabs/Enemies/SniperMan.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: c06256d85fcdc8841b47178717fe2ed4' -> (Import Result ID: '052fa1c3c19b5c9ccc5044fda034257b') in 0.021 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=e980e09cacbff348110a56ae7c70dea7 DependenciesID=fc19bd28b748effa2ef54ddc122273f6 StaticDependenciesID=d8af125e9d3951f4ffca56a74046f2d2 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 100
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:13.2810083Z
+  Time since last request: 0.0014467 seconds.
+  importAddress: GUID: b9ba026e38b9d074c88d760632af69c2 - Path: Assets/Prefabs/goalTrigger.prefab - Importer: PreviewImporter
+Importing 'GUID: b9ba026e38b9d074c88d760632af69c2 - Path: Assets/Prefabs/goalTrigger.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: b9ba026e38b9d074c88d760632af69c2' -> (Import Result ID: '8b8137a4068cdebae292dfd37b8b12e4') in 0.009 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=6d89e32a5ec08bed0d29a6e16158a371 DependenciesID=51e9273f324dbd21e66207b6e74e6e0e StaticDependenciesID=79e2f286b49ed237bcfd0fb6af866210 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 8
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:13.3005438Z
+  Time since last request: 0.0015919 seconds.
+  importAddress: GUID: f39f26e6d438aeb4cbd73dade74cac4a - Path: Assets/Prefabs/Enemies/Tanky Boi.prefab - Importer: PreviewImporter
+Importing 'GUID: f39f26e6d438aeb4cbd73dade74cac4a - Path: Assets/Prefabs/Enemies/Tanky Boi.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: f39f26e6d438aeb4cbd73dade74cac4a' -> (Import Result ID: '8f727a6a757762677572dffd6b3236df') in 0.013 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=10ad5371a1944e2bd298ea3432c351c4 DependenciesID=f7279bd77fd37ce765ab6a9d281a6a48 StaticDependenciesID=67d00d1240f027d0557bf0117228493b 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 100
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:13.3244187Z
+  Time since last request: 0.0014852 seconds.
+  importAddress: GUID: 925be8a765ea99d42855fb584b132fb6 - Path: Assets/Prefabs/Level Stuff/Door 1.0.prefab - Importer: PreviewImporter
+Importing 'GUID: 925be8a765ea99d42855fb584b132fb6 - Path: Assets/Prefabs/Level Stuff/Door 1.0.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 925be8a765ea99d42855fb584b132fb6' -> (Import Result ID: '7bbb18fa952f5330dfc3bcc2acd15198') in 0.096 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a51639beadedd82769e2e113576659a5 DependenciesID=81fbb34c42ba4fdbc9a41b0f07d0f3b7 StaticDependenciesID=f24f2255279e59ff8600cf7ed3e52b26 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 45
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:13.4324523Z
+  Time since last request: 0.0001242 seconds.
+  importAddress: GUID: c8573db8e30e916479a705831bd5040c - Path: Assets/Low Poly Guns/Models/Guns/sniper2/sniper2.fbx - Importer: PreviewImporter
+Importing 'GUID: c8573db8e30e916479a705831bd5040c - Path: Assets/Low Poly Guns/Models/Guns/sniper2/sniper2.fbx - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: c8573db8e30e916479a705831bd5040c' -> (Import Result ID: 'a8a4a79618d8ced2834a7b8a3493a777') in 0.024 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=5069bdbb615961479fde78f1c7c61876 DependenciesID=07a93302847e5869c93ab65c6683f30f StaticDependenciesID=2041e600e8c66b43c8e3235edc7b435e 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:13.4677341Z
+  Time since last request: 0.0016889 seconds.
+  importAddress: GUID: 55ea4a66b34b43846a02b7ee9143114a - Path: Assets/Prefabs/Ground.prefab - Importer: PreviewImporter
+Importing 'GUID: 55ea4a66b34b43846a02b7ee9143114a - Path: Assets/Prefabs/Ground.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 55ea4a66b34b43846a02b7ee9143114a' -> (Import Result ID: '979dfd2238560825e838e2b96f46abac') in 1.828 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=2b8c01c4d0fc5b86a6c8a3598c00e57e DependenciesID=51255bfd7b77eeb1f47fb4773897270b StaticDependenciesID=498f4e26775c4dda5ab082f534507048 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:15.3068055Z
+  Time since last request: 0.0013405 seconds.
+  importAddress: GUID: 965221b72cdf3694ba411a9830b83587 - Path: Assets/Prefabs/Guns/effects/Hit Effect - Laser.prefab - Importer: PreviewImporter
+Importing 'GUID: 965221b72cdf3694ba411a9830b83587 - Path: Assets/Prefabs/Guns/effects/Hit Effect - Laser.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 965221b72cdf3694ba411a9830b83587' -> (Import Result ID: '33ac4957e544d94a3c2180a056932131') in 0.024 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=e3fe1145d25263db8f69ff967f057068 DependenciesID=3fd67407eebe0e76f77e8b0cbb0a0f0b StaticDependenciesID=c3f8fbe42e5a14ea6ab69ccb89653ac2 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:15.3416074Z
+  Time since last request: 0.001942 seconds.
+  importAddress: GUID: ffb3f5f9531da764c906b0baf3285c62 - Path: Assets/Low Poly Guns/Models/Guns/assault4/assault4.fbx - Importer: PreviewImporter
+Importing 'GUID: ffb3f5f9531da764c906b0baf3285c62 - Path: Assets/Low Poly Guns/Models/Guns/assault4/assault4.fbx - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: ffb3f5f9531da764c906b0baf3285c62' -> (Import Result ID: '501b70e725b1c10b1540eddadc7bfe32') in 0.026 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=30978f2590cfaa92e6a4708e5ee2302c DependenciesID=38328d615c3eddfdff2fe594c99f881c StaticDependenciesID=2668cabbf136216832cbdba5b9cb1711 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:15.3779457Z
+  Time since last request: 0.0014876 seconds.
+  importAddress: GUID: 8f9696fb6017be144a307b6586855ac0 - Path: Assets/Low Poly Guns/Models/Guns/pistol2/pistol2.fbx - Importer: PreviewImporter
+Importing 'GUID: 8f9696fb6017be144a307b6586855ac0 - Path: Assets/Low Poly Guns/Models/Guns/pistol2/pistol2.fbx - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 8f9696fb6017be144a307b6586855ac0' -> (Import Result ID: 'dd5093847f6abc888f43f3aa52360068') in 0.033 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=8610a663f0da13072db7aebecb88b790 DependenciesID=a9b8bc81ba82231519c28a9bc44902bb StaticDependenciesID=6a85f2b953afa930600640126e616e63 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:15.4234533Z
+  Time since last request: 0.0026858 seconds.
+  importAddress: GUID: 4d5386e8a70034148885447cd6a0a582 - Path: Assets/Prefabs/Guns/effects/Hit Effect - Blue.prefab - Importer: PreviewImporter
+Importing 'GUID: 4d5386e8a70034148885447cd6a0a582 - Path: Assets/Prefabs/Guns/effects/Hit Effect - Blue.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 4d5386e8a70034148885447cd6a0a582' -> (Import Result ID: '35a26070b42bd621d56090c8312c0b7f') in 0.012 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=70629700bdf3413b87fa0fe36bf25eb7 DependenciesID=b613ae31af648386147c45dfa9f9abb5 StaticDependenciesID=726bd69f96acbf3c0177802edc14e335 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:15.446079Z
+  Time since last request: 0.0016551 seconds.
+  importAddress: GUID: 2cf10fa706c7a4d42b5927d8e730f4e2 - Path: Assets/Low Poly Guns/Models/Guns/smg1/smg1.fbx - Importer: PreviewImporter
+Importing 'GUID: 2cf10fa706c7a4d42b5927d8e730f4e2 - Path: Assets/Low Poly Guns/Models/Guns/smg1/smg1.fbx - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 2cf10fa706c7a4d42b5927d8e730f4e2' -> (Import Result ID: '6ad5ca7c7b577f6a8497a60b8bcbbf06') in 0.051 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=006ddfb98b8ae8f57d248f99705b40b8 DependenciesID=eb88bbedc7ba09060067da21941cfc6f StaticDependenciesID=e60103756f5b92d800e478fdcacc2330 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:15.5078529Z
+  Time since last request: 0.0015072 seconds.
+  importAddress: GUID: e525d5c90c0df01498dca09570cfb5ec - Path: Assets/Low Poly Guns/Models/Guns/assault3/assault3.fbx - Importer: PreviewImporter
+Importing 'GUID: e525d5c90c0df01498dca09570cfb5ec - Path: Assets/Low Poly Guns/Models/Guns/assault3/assault3.fbx - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: e525d5c90c0df01498dca09570cfb5ec' -> (Import Result ID: 'b78869d415676be16036cb3b8201f9dc') in 0.023 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=cacb44626d48c1211ba867f530a9dd6c DependenciesID=8a40d0380c4dff804263be9cdea93677 StaticDependenciesID=88aed2b923ff08786c1a8f43b989c209 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:15.541529Z
+  Time since last request: 0.0016702 seconds.
+  importAddress: GUID: e67ed429949d69e47a5c592feb743a56 - Path: Assets/Low Poly Powerups/2 URP/Prefabs/Damage.prefab - Importer: PreviewImporter
+Importing 'GUID: e67ed429949d69e47a5c592feb743a56 - Path: Assets/Low Poly Powerups/2 URP/Prefabs/Damage.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: e67ed429949d69e47a5c592feb743a56' -> (Import Result ID: '764579d904fc9712ec7adc7447e9af1f') in 0.024 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1d1e7c5ce47f161326d8f5fa0c1dc461 DependenciesID=f43d90c46fc63dc00811040f788e578d StaticDependenciesID=022751bd7fcd19339224a9ed0be36b40 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 18
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:15.5751709Z
+  Time since last request: 0.001096 seconds.
+  importAddress: GUID: 60d91f925d8c1e442bb6596dfb94ffff - Path: Assets/Low Poly Guns/Models/Guns/sniper1/sniper1.fbx - Importer: PreviewImporter
+Importing 'GUID: 60d91f925d8c1e442bb6596dfb94ffff - Path: Assets/Low Poly Guns/Models/Guns/sniper1/sniper1.fbx - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 60d91f925d8c1e442bb6596dfb94ffff' -> (Import Result ID: '64bfe887e91e3a564939d777c0081ae4') in 0.021 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=09696623a397323b943eb427ad7be099 DependenciesID=d443648682049f0c0bdadf25f03dbe58 StaticDependenciesID=160adba0da7ebc63f1e2babc23e5fbed 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:15.6062543Z
+  Time since last request: 0.0008766 seconds.
+  importAddress: GUID: 5ba9c0000173504479c1976f95227bae - Path: Assets/Prefabs/Player.prefab - Importer: PreviewImporter
+Importing 'GUID: 5ba9c0000173504479c1976f95227bae - Path: Assets/Prefabs/Player.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 5ba9c0000173504479c1976f95227bae' -> (Import Result ID: '66b9924ce79e79bedba70eaac1f0b3a0') in 0.168 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=02ba165f6e600c6b2ae9773b2af3834a DependenciesID=3e28f518c17bfbf4cfb54d9ed2dc0c4c StaticDependenciesID=af87aa20ccea320f924934d6893f4217 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 44
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:15.7854352Z
+  Time since last request: 0.0002731 seconds.
+  importAddress: GUID: a4fbc566a345e66409272aedc890fb9d - Path: Assets/Prefabs/Spawners/Player Spawn Position.prefab - Importer: PreviewImporter
+Importing 'GUID: a4fbc566a345e66409272aedc890fb9d - Path: Assets/Prefabs/Spawners/Player Spawn Position.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: a4fbc566a345e66409272aedc890fb9d' -> (Import Result ID: '4c7d879dcce444b96e95beb62781e0e8') in 0.002 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=9af1bba721136bd533ba871e119f9959 DependenciesID=3e6aa6bbe5c46c9a38026160c46e024f StaticDependenciesID=18406b5e6953c344868e97ffd7b81830 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 5
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:15.7963141Z
+  Time since last request: 0.0003847 seconds.
+  importAddress: GUID: ca1c64f7c147fb0479f9ef03e264a372 - Path: Assets/Low Poly Guns/Models/Guns/pistol4/pistol4.fbx - Importer: PreviewImporter
+Importing 'GUID: ca1c64f7c147fb0479f9ef03e264a372 - Path: Assets/Low Poly Guns/Models/Guns/pistol4/pistol4.fbx - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: ca1c64f7c147fb0479f9ef03e264a372' -> (Import Result ID: 'b76d5f90cd07c91288fabce6fda9d5d1') in 0.023 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=c37ac5e68f8d1565f50e4938678e0a5b DependenciesID=194b424b483b7a0e0f9541905f6dcd4e StaticDependenciesID=0ca385f6af90ccdded4a3cc68e7d9a16 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:15.8298363Z
+  Time since last request: 0.0003205 seconds.
+  importAddress: GUID: 779fba0f9d6b2c047a4a24316b391712 - Path: Assets/Prefabs/UI.prefab - Importer: PreviewImporter
+Importing 'GUID: 779fba0f9d6b2c047a4a24316b391712 - Path: Assets/Prefabs/UI.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 779fba0f9d6b2c047a4a24316b391712' -> (Import Result ID: 'cfdb0e0fea20a9f9597c2bc212de44ea') in 0.053 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=5143ad8997e0ff23afd002ceef35c58d DependenciesID=ee64d24309d73dc1c6c247e06c59c30d StaticDependenciesID=f8b3d9717d246da57b2146ec4e660aa0 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 150
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:15.8944882Z
+  Time since last request: 0.0000246 seconds.
+  importAddress: GUID: 20363e2c59793c542a591c679855fa7d - Path: Assets/Prefabs/Level Stuff/Checkpoint 1.0.prefab - Importer: PreviewImporter
+Importing 'GUID: 20363e2c59793c542a591c679855fa7d - Path: Assets/Prefabs/Level Stuff/Checkpoint 1.0.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 20363e2c59793c542a591c679855fa7d' -> (Import Result ID: 'f1c02d047df62ff90bf9669e1734b4d1') in 0.009 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=2fe2e5c42b8cdcb02b9b1b1a2986a600 DependenciesID=1767927f951599e9bd46f5ea6188f31b StaticDependenciesID=35f37fd6d0e9022d9149a126b5da4b8e 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 11
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:15.9148411Z
+  Time since last request: 0.0012009 seconds.
+  importAddress: GUID: 5b60c123e23cdfc419c96d084b78a02f - Path: Assets/Low Poly Powerups/2 URP/Prefabs/Health.prefab - Importer: PreviewImporter
+Importing 'GUID: 5b60c123e23cdfc419c96d084b78a02f - Path: Assets/Low Poly Powerups/2 URP/Prefabs/Health.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 5b60c123e23cdfc419c96d084b78a02f' -> (Import Result ID: 'c9caa8c4377e7243d73dbdc2dd43a1ba') in 0.014 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=ace29f3cd7e9fc416db1940e4a287b6a DependenciesID=a4a346c3eee5657dfff44dca411321a9 StaticDependenciesID=2063f296922e55e1dd5bbc80d22ed654 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 19
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:15.9391328Z
+  Time since last request: 0.001857 seconds.
+  importAddress: GUID: b0f78e6d1ef058444a7389a6d3df86f9 - Path: Assets/Low Poly Powerups/2 URP/Prefabs/Shield.prefab - Importer: PreviewImporter
+Importing 'GUID: b0f78e6d1ef058444a7389a6d3df86f9 - Path: Assets/Low Poly Powerups/2 URP/Prefabs/Shield.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: b0f78e6d1ef058444a7389a6d3df86f9' -> (Import Result ID: 'aee805e5d3025b271c63f10788c51e16') in 0.012 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=9588d16634c5b81de0c1ae4f24476a0c DependenciesID=fd3698050f1f8f641743e59567a0ddf9 StaticDependenciesID=2ed85590a00a517fdeafe2f55afaf6cf 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 19
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:15.9619503Z
+  Time since last request: 0.0013219 seconds.
+  importAddress: GUID: 376debbb16c50ef4aaed1ebe38a220b5 - Path: Assets/Prefabs/FlagUI.prefab - Importer: PreviewImporter
+Importing 'GUID: 376debbb16c50ef4aaed1ebe38a220b5 - Path: Assets/Prefabs/FlagUI.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 376debbb16c50ef4aaed1ebe38a220b5' -> (Import Result ID: '405041a442454a1b391fb1730e897aaa') in 0.003 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=ec5d197e1ae227b640fbaec00777d7e7 DependenciesID=869e7187842adc0053b1af48d5fc7d35 StaticDependenciesID=1681d1d69c7182d3c29135d1eb9db7eb 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:15.9769917Z
+  Time since last request: 0.0015149 seconds.
+  importAddress: GUID: bfa28c0da5c76384985d8b25b01ebd15 - Path: Assets/Prefabs/Enemies/NavMesh Surface.prefab - Importer: PreviewImporter
+Importing 'GUID: bfa28c0da5c76384985d8b25b01ebd15 - Path: Assets/Prefabs/Enemies/NavMesh Surface.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: bfa28c0da5c76384985d8b25b01ebd15' -> (Import Result ID: '35e4c8e8cc305b701b42387db113394a') in 0.012 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=2cc887ec229412bedea31210b1bfb809 DependenciesID=25e414a4060047912c81bba5d72dd7ca StaticDependenciesID=6607e9d8311bda429b4c84a67f6dadd8 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:15.9979292Z
+  Time since last request: 0.0000505 seconds.
+  importAddress: GUID: ba89ba24fb709594eb2e62b8e75a07dc - Path: Assets/Prefabs/Enemies/Drone.prefab - Importer: PreviewImporter
+Importing 'GUID: ba89ba24fb709594eb2e62b8e75a07dc - Path: Assets/Prefabs/Enemies/Drone.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: ba89ba24fb709594eb2e62b8e75a07dc' -> (Import Result ID: 'c4206d64461bc8ec2f3a7c9de2d8ace2') in 0.013 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=413ea697ad54059e71ef9cbed4e70ed8 DependenciesID=62affd63874043266974760026fc1419 StaticDependenciesID=18a212be111126bbc943d48530e9c800 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 96
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:16.0216762Z
+  Time since last request: 0.0010421 seconds.
+  importAddress: GUID: 5237abdd7af8b0542a9d6e1104f3d47f - Path: Assets/Prefabs/UI with Killcount.prefab - Importer: PreviewImporter
+Importing 'GUID: 5237abdd7af8b0542a9d6e1104f3d47f - Path: Assets/Prefabs/UI with Killcount.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 5237abdd7af8b0542a9d6e1104f3d47f' -> (Import Result ID: 'fd23721f7941b3cf20c654aa8b6f10f8') in 0.024 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=5b6157b1f39b00b936fd7f66ff9d22f3 DependenciesID=58ecba2631cbd0c31670b0553c9a79c5 StaticDependenciesID=012c1efc09aef4dd92f0a55db8e62ed1 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 198
+========================================================================
+Received Import Request.
+  Time of request: 2026-09-13T02:26:16.0572486Z
+  Time since last request: 0.0007216 seconds.
+  importAddress: GUID: 6d2ab2bfa7deb87469243d7b8de20229 - Path: Assets/Prefabs/Guns/effects/Hit Effect - Big.prefab - Importer: PreviewImporter
+Importing 'GUID: 6d2ab2bfa7deb87469243d7b8de20229 - Path: Assets/Prefabs/Guns/effects/Hit Effect - Big.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 6d2ab2bfa7deb87469243d7b8de20229' -> (Import Result ID: '2c9b5b54ed33405c0f99d524b9521d7a') in 0.008 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=6f79b7e4bf9e8fbeb81706ee1f902d90 DependenciesID=a2e266515685ec7064830d0e0245df2b StaticDependenciesID=a0e90232b9ad4a2fa0bbd733026da2f4 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
+AcceleratorClientConnectionCallback - disconnected - :0
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

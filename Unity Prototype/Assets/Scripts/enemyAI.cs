@@ -24,6 +24,14 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int gunRotateSpeed;
     [SerializeField] int bulletDamage;
 
+    [Header("Hearing")]
+    [SerializeField] private UnityEngine.UI.Slider stealthBar;
+    [SerializeField] private float hearingThreshold = 0.75f;
+    [SerializeField] private float hearingDelay = 2f;
+
+    private float hearingTimer = 0f;
+    private bool heardPlayer = false;
+
     public Color colorOrig;
     Vector3 playerDir;
     
