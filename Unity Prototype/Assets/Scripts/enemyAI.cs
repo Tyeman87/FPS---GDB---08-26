@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine.AI;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class enemyAI : MonoBehaviour, IDamage
 {
@@ -61,7 +62,7 @@ public class enemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-        
+
 
         if (playerInSight && canSeePlayer())
         {
@@ -70,6 +71,11 @@ public class enemyAI : MonoBehaviour, IDamage
         else
         {
             checkRoam();
+        }
+
+        if (!heardPlayer)
+        {
+            CheckPlayerNoise();
         }
     }
 
@@ -100,6 +106,29 @@ public class enemyAI : MonoBehaviour, IDamage
         }
     }
 
+    private void CheckPlayerNoise()
+    {
+        if (stealthBar == null)
+            return;
+
+        if (stealthBar.value >= hearingThreshold)
+        {
+            hearingTimer += Time.deltaTime;
+
+            if (hearingTimer >= hearingDelay)
+            {
+                heardPlayer = true;
+                hearingTimer = 0f;
+
+                Debug.Log("Enemy heard the player!");
+            }
+        }
+        else
+        {
+            hearingTimer = 0f;
+        }
+    }
+
 
     bool canSeePlayer()
     {
@@ -113,7 +142,7 @@ public class enemyAI : MonoBehaviour, IDamage
         if (Physics.Raycast(transform.position, playerDir.normalized, out hit))
         {
             Debug.DrawRay(transform.position, playerDir.normalized * hit.distance, Color.green);
-            if (angleToPlayer < FOV && hit.collider.CompareTag("Player"))
+            if ((angleToPlayer < FOV && hit.collider.CompareTag("Player")) || heardPlayer)
             {
                 agent.SetDestination(gameManager.instance.player.transform.position);
                 faceTarget();

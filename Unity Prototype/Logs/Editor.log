@@ -80846,3 +80846,163 @@ info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
       Executed endpoint 'gRPC - /UnityILPP.PostProcessing/ConfigurePostProcessors'
 info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
       Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors - 200 - application/grpc 3.0319ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/PostProcessAssembly - application/grpc -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/PostProcessAssembly'
+info: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll, with 142 defines and 339 references
+info: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+info: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      running Unity.Jobs.CodeGen.JobsILPostProcessor
+info: Unity.ILPP.Runner.PostProcessingPipeline[0]
+      running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/PostProcessAssembly'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/PostProcessAssembly - 200 - application/grpc 203.3630ms
+ExitCode: 0 Duration: 3s865ms
+[730/927    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+[923/927    3s] Csc Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll (+2 others)
+Assets\Scripts\enemyAI.cs(30,36): warning CS0414: The field 'enemyAI.hearingDelay' is assigned but its value is never used
+
+Assets\Scripts\enemyAI.cs(33,18): warning CS0414: The field 'enemyAI.heardPlayer' is assigned but its value is never used
+
+Assets\Scripts\enemyAI.cs(29,36): warning CS0414: The field 'enemyAI.hearingThreshold' is assigned but its value is never used
+
+Assets\Scripts\enemyAI.cs(32,19): warning CS0414: The field 'enemyAI.hearingTimer' is assigned but its value is never used
+[924/927    0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll, with 142 defines and 339 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[925/927    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp.pdb
+[926/927    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp.dll
+*** Tundra build success (3.78 seconds), 5 items updated, 927 evaluated
+Assets\Scripts\enemyAI.cs(30,36): warning CS0414: The field 'enemyAI.hearingDelay' is assigned but its value is never used
+Assets\Scripts\enemyAI.cs(33,18): warning CS0414: The field 'enemyAI.heardPlayer' is assigned but its value is never used
+Assets\Scripts\enemyAI.cs(29,36): warning CS0414: The field 'enemyAI.hearingThreshold' is assigned but its value is never used
+Assets\Scripts\enemyAI.cs(32,19): warning CS0414: The field 'enemyAI.hearingTimer' is assigned but its value is never used
+Reloading assemblies after finishing script compilation.
+Reloading assemblies after forced synchronous recompile.
+Begin MonoManager ReloadAssembly
+Total cache size 184377372
+Total cache size after purge 184377372, took 00:00:00.7226009
+Refreshing native plugins compatible for Editor in 2.72 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  4.327 seconds
+Domain Reload Profiling: 6598ms
+	BeginReloadAssembly (1501ms)
+		DisableScriptedObjects (273ms)
+		CreateAndSetChildDomain (814ms)
+	RebuildCommonClasses (17ms)
+	RebuildNativeTypeToScriptingClass (23ms)
+	initialDomainReloadingComplete (146ms)
+	LoadAllAssembliesAndSetupDomain (584ms)
+		LoadAssemblies (274ms)
+		AnalyzeDomain (335ms)
+			TypeCache.Refresh (18ms)
+			BuildScriptInfoCaches (277ms)
+			ResolveRequiredComponents (35ms)
+	FinalizeReload (4328ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			BeforeProcessingInitializeOnLoad (337ms)
+			ProcessInitializeOnLoadAttributes (1851ms)
+			ProcessInitializeOnLoadMethodAttributes (181ms)
+			AfterProcessingInitializeOnLoad (17ms)
+		AwakeInstancesAfterBackupRestoration (1139ms)
+Importing 'GUID: c06256d85fcdc8841b47178717fe2ed4 - Path: Assets/Prefabs/Enemies/SniperMan.prefab' with importer (PrefabImporter)
+Imported 'GUID: c06256d85fcdc8841b47178717fe2ed4' -> (Import Result ID: '6b738d616c996ce01ef1b37b5436288f') in 0.022 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=94e3b1a4022a079c2fd434bafd4cdf30 DependenciesID=73dc754ad290a469b78b3aeaf60b7988 StaticDependenciesID=a9a034b63338c7643877226cb72ce370 
+Importing 'GUID: f07200c1e7570da41a4cb102a86c160b - Path: Assets/Prefabs/Enemies/Enemy 1.0.prefab' with importer (PrefabImporter)
+Imported 'GUID: f07200c1e7570da41a4cb102a86c160b' -> (Import Result ID: '37eb932873f65a8da63b40b3745ba39a') in 0.015 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=ca1e3313a05f58eedf2ba892d42d02d4 DependenciesID=3dd3b3bf98126fade55f04f8a493ff43 StaticDependenciesID=863fce81a3e0c3c386725f08e6e47805 
+Importing 'GUID: 630c9a9cb9d61364db0ad8440bbc1013 - Path: Assets/Prefabs/Enemies/Juggernaut Boss.prefab' with importer (PrefabImporter)
+Imported 'GUID: 630c9a9cb9d61364db0ad8440bbc1013' -> (Import Result ID: '5bfbf01987bbac4fe7311ff4cd24d227') in 0.016 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=3deff10d31294a69039548a6e995181e DependenciesID=c21c453a517b8781cb37b5ba2bbe3885 StaticDependenciesID=8844606b86df4a34bf8ec4101194bbea 
+Importing 'GUID: f39f26e6d438aeb4cbd73dade74cac4a - Path: Assets/Prefabs/Enemies/Tanky Boi.prefab' with importer (PrefabImporter)
+Imported 'GUID: f39f26e6d438aeb4cbd73dade74cac4a' -> (Import Result ID: '5416dff1e2fa494efca9a9daf2bd5fd1') in 0.013 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=cecf45da36df120095bf885f1a687a7b DependenciesID=26ff11b32e826ff750afcbe3eff3f393 StaticDependenciesID=f8e2bcb621535ceb77aa147cd15b0ac8 
+Importing 'GUID: ba89ba24fb709594eb2e62b8e75a07dc - Path: Assets/Prefabs/Enemies/Drone.prefab' with importer (PrefabImporter)
+Imported 'GUID: ba89ba24fb709594eb2e62b8e75a07dc' -> (Import Result ID: 'cd5cdbb6b2c78058ea43392734eb2ae4') in 0.012 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=f2812c8da97fc6c6f56467688d203dd0 DependenciesID=114d165280cea9ccd1d6755394a8b980 StaticDependenciesID=5df6323030242452d2fa81f3eded072b 
+Importing 'GUID: 5d9e55400ebc4234abe7d9801b705670 - Path: Assets/Prefabs/Enemies/SpeedyGonzalez.prefab' with importer (PrefabImporter)
+Imported 'GUID: 5d9e55400ebc4234abe7d9801b705670' -> (Import Result ID: 'bb69b66bba05b37acb3f5cd5aebaa72f') in 0.014 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=7664e727b178f9138cf543d20882c97c DependenciesID=0b95833a42c8668d86f39c1c1bb432af StaticDependenciesID=2668bfa0ee9ab1f393fd11a6df2a6ff2 
+Refreshing native plugins compatible for Editor in 3.07 ms, found 4 plugins.
+
+Asset Pipeline Refresh (id=ad07ba1c39f4c784a9d933b0ea8c65f0): Total: 7.131 seconds - Initiated by StopAssetImportingV2(ForceSynchronousImport | ForceDomainReload)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=6 (actual=6, local cache=0, cache server=0)
+		Asset DB Process Time: managed=5 ms, native=4664 ms
+		Asset DB Callback time: managed=67 ms, native=10 ms
+		Scripting: domain reloads=1, domain reload time=2381 ms, compile time=2 ms, other=0 ms
+		Project Asset Count: scripts=1420, non-scripts=2582
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokePackagesCallback: 3.218ms
+	ApplyChangesToAssetFolders: 0.370ms
+	Collect global state as custom dependencies: 4.742ms
+	ProcessAssetsWithTransientArtifactChanges: 7.743ms
+	CategorizeAssets: 69.751ms
+	CompileScripts: 1.641ms
+	ImportOutOfDateAssets: 4533.259ms (4344.525ms without children)
+		ImportManagerImport: 151.407ms (53.005ms without children)
+			UpdateCategorizedAssets: 0.089ms
+		CollectScriptTypesHashes: 1.599ms
+		ReloadNativeAssets: 1.678ms
+		UnloadImportedAssets: 0.506ms
+		ReloadImportedAssets: 4.417ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.708ms
+		ImportSchedulerStart: 34.375ms
+	PostProcessAllAssets: 69.108ms
+		XRBuildSystem.XRAssetImported 0.879ms
+		MonoPostProcessAllAssets: 67.359ms
+			UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 10.449ms
+			BuilderAssetPostprocessor.OnPostprocessAllAssets 8.394ms
+			AssetChangedListener.OnPostprocessAllAssets 7.770ms
+			AssetPostprocessor.OnPostprocessAllAssets 4.692ms
+			SyncVS.PostprocessSyncProject 4.191ms
+			ShaderGraphAssetPostProcessor.OnPostprocessAllAssets 2.871ms
+			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 2.135ms
+			RetainedModeAssetPostprocessor.OnPostprocessAllAssets 2.124ms
+			AssetReloadNotifier.OnPostprocessAllAssets 1.345ms
+			EditModeScopePostprocessor.OnPostprocessAllAssets 1.190ms
+			UVCSAssetPostprocessor.OnPostprocessAllAssets 1.122ms
+			SpeedTree9Postprocessor.OnPostprocessAllAssets 1.073ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 0.894ms
+			MaterialPostprocessor.OnPostprocessAllAssets 0.867ms
+			TMPro_TexturePostProcessor.OnPostprocessAllAssets 0.671ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.507ms
+			ArtifactBrowserPostProcessor.OnPostprocessAllAssets 0.468ms
+			ShaderReflectionAssetPostProcessor.OnPostprocessAllAssets 0.420ms
+			AudioMixerPostprocessor.OnPostprocessAllAssets 0.415ms
+			TextAssetPostProcessor.OnPostprocessAllAssets 0.389ms
+			AssetEvents.OnPostprocessAllAssets 0.361ms
+			InputActionJsonNameModifierAssetProcessor.OnPostprocessAllAssets 0.354ms
+			SampleDependencyImporterPostProcessor.OnPostprocessAllAssets 0.351ms
+			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.346ms
+			StyleCatalogPostProcessor.OnPostprocessAllAssets 0.346ms
+			PostProcessor.OnPostprocessAllAssets 0.320ms
+			ScenarioDriftAssetsTracker.OnPostprocessAllAssets 0.275ms
+			SamplePostprocessor.OnPostprocessAllAssets 0.238ms
+			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.215ms
+			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.211ms
+			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.188ms
+			SpeedTreePostProcessor.OnPostprocessAllAssets 0.185ms
+			ConfigAssetsTracker.OnPostprocessAllAssets 0.181ms
+			AudioContainerPostProcessor.OnPostprocessAllAssets 0.094ms
+	PostAssetChangesProfiler: 7.882ms
+	GatherAllCurrentPrimaryImportResultRevisions: 0.165ms
+	PersistCurrentRevisions: 0.260ms
+	GenerateScriptTypeHashes: 4.441ms
+	GenerateScriptTypeSerializationHashes: 7.568ms
+	Untracked: 2424.817ms
+
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Client] Successfully resolved entitlement details
