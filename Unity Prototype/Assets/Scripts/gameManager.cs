@@ -29,6 +29,7 @@ public class gameManager : MonoBehaviour
     public int rescuedHostages;
 
     float timeScaleOrig;
+    int pauseInputSuppressedFrame = -1;
     int gameGoalCount;
     int killCount;
 
@@ -72,6 +73,16 @@ public class gameManager : MonoBehaviour
     {
         if(Input.GetButtonDown("Cancel"))
         {
+            if (pauseInputSuppressedFrame == Time.frameCount)
+            {
+                return;
+            }
+
+            if (isPaused && menuActive == null)
+            {
+                return;
+            }
+
             if(menuActive == null)
             {
                 statePause();
@@ -83,6 +94,11 @@ public class gameManager : MonoBehaviour
                 stateUnpause();
             }
         }
+    }
+
+    public void SuppressPauseInputThisFrame()
+    {
+        pauseInputSuppressedFrame = Time.frameCount;
     }
 
     public void statePause()

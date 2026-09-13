@@ -14,6 +14,8 @@ public class gunStats : ScriptableObject
     [Range(5, 50)] public int magSize;
     [Range(50, 300)] public int maxReserve;
 
+    public Sprite weaponIcon;
+
     [Header("Audio & FX")]
     public ParticleSystem hitEffect;
     public AudioClip[] shootSound;

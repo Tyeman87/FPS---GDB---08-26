@@ -7,6 +7,7 @@ public class gunPickup : MonoBehaviour
     [SerializeField] float bobHeight = 0.25f;
     [SerializeField] float bobSpeed = 2f;
 
+
     private Vector3 startPosition;
 
     private void Start()

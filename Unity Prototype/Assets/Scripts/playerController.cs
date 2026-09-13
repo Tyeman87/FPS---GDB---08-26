@@ -243,8 +243,16 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
         gameManager.instance.playerArmorBar.fillAmount = (float)armor / armorMax;
-        gameManager.instance.ammoCounterText.text = $"{gunInv[gunInvPos].currMag} / {gunInv[gunInvPos].currReserve}";
         
+        if (gunInv.Count > 0)
+        {
+            gameManager.instance.ammoCounterText.text =
+                $"{gunInv[gunInvPos].currMag} / {gunInv[gunInvPos].currReserve}";
+        }
+        else
+        {
+            gameManager.instance.ammoCounterText.text = "NO WEAPON";
+        }
     }
 
     public void addHealth(int amount)
@@ -312,6 +320,51 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen
         gunInv.Add(new GunAmmoData(gun));
         gunInvPos = gunInv.Count - 1;
         changeGunModel();
+    }
+
+    public void AddStoredGun(gunStats gun, int currMag, int currReserve)
+    {
+        GunAmmoData storedGun = new GunAmmoData(gun);
+        storedGun.currMag = currMag;
+        storedGun.currReserve = currReserve;
+
+        gunInv.Add(storedGun);
+        gunInvPos = gunInv.Count - 1;
+
+        changeGunModel();
+        updatePlayerUI();
+    }
+
+    public GunAmmoData GetCurrentGun()
+    {
+        if (gunInv.Count == 0)
+        {
+            return null;
+        }
+
+        return gunInv[gunInvPos];
+    }
+
+    public void RemoveCurrentGun()
+    {
+        if (gunInv.Count == 0)
+        {
+            return;
+        }
+
+        gunInv.RemoveAt(gunInvPos);
+
+        if (gunInv.Count > 0)
+        {
+            if (gunInvPos >= gunInv.Count)
+            {
+                gunInvPos = gunInv.Count - 1;
+            }
+
+            changeGunModel();
+        }
+
+        updatePlayerUI();
     }
 
     void changeGunModel()
