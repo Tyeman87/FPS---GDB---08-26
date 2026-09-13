@@ -224,7 +224,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen
         if (HP <= 0)
         {
             // I'm dead!!!
-            gameManager.instance.youLose();
+            missionManager.instance.LoseMission("PLAYER KILLED");
         }
     }
 
@@ -261,8 +261,6 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen
             armor = armorMax;
         }
     }
-
-
 
     public void spawnPlayer()
     {

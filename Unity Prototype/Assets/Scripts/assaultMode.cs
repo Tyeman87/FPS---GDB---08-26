@@ -10,6 +10,11 @@ public class assaultMode : MonoBehaviour
         enemiesRemaining = FindObjectsByType<enemyAI>().Length;
 
         Debug.Log("Assault Mission Started. Enemies Remaining: " + enemiesRemaining);
+
+        gameManager.instance.setMissionObjective(
+        "ELIMINATE ALL ENEMIES\n" +
+        enemiesRemaining + " ENEMIES REMAINING"
+    );
     }
 
     // Update is called once per frame
@@ -19,7 +24,12 @@ public class assaultMode : MonoBehaviour
 
         Debug.Log("Enemy defeated. Enemies Remaining: " + enemiesRemaining);
 
-        if(enemiesRemaining <= 0)
+        gameManager.instance.setMissionObjective(
+            "ELIMINATE ALL ENEMIES\n" +
+            enemiesRemaining + " ENEMIES REMAINING"
+        );
+
+        if (enemiesRemaining <= 0)
         {
             missionManager.instance.WinMission();
         }
