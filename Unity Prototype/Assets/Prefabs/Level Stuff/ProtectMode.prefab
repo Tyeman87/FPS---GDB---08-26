@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3691477038782473280
+--- !u!1 &8516422265412074836
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5979160570507237401}
-  - component: {fileID: 4706968487723364200}
-  - component: {fileID: 2610585425120437970}
+  - component: {fileID: 1584305829194995207}
+  - component: {fileID: 89508481153668499}
+  - component: {fileID: 3940458626265183554}
   m_Layer: 0
-  m_Name: MissionManager
+  m_Name: ProtectMode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5979160570507237401
+--- !u!4 &1584305829194995207
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3691477038782473280}
+  m_GameObject: {fileID: 8516422265412074836}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 61.60576, y: 1, z: 60.44921}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: 55.72417, y: 0, z: 48.656}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &4706968487723364200
+--- !u!65 &89508481153668499
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3691477038782473280}
+  m_GameObject: {fileID: 8516422265412074836}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -54,17 +54,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2610585425120437970
+--- !u!114 &3940458626265183554
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3691477038782473280}
+  m_GameObject: {fileID: 8516422265412074836}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74c3aee13f583f14b9e937b56272f64c, type: 3}
+  m_Script: {fileID: 11500000, guid: 32116cff0a6b17648a5f3bf093a3e8af, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::missionManager
-  missionName: Test
-  currentGameMode: 2
+  m_EditorClassIdentifier: Assembly-CSharp::protectMode
+  survivalTime: 60

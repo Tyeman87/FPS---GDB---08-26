@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor.VersionControl;
 
 public class gameManager : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class gameManager : MonoBehaviour
     [SerializeField] TMP_Text killCountText;
     [SerializeField] TMP_Text hostageCountText;
     [SerializeField] public TMP_Text ammoCounterText;
+    [SerializeField] TMP_Text missionObjectiveText;
+    [SerializeField] TMP_Text winMessageText;
+    [SerializeField] TMP_Text loseMessageText;
 
     [Header("Player")]
     public bool isPaused;
@@ -127,6 +131,11 @@ public class gameManager : MonoBehaviour
             "/" +
             totalHostages
         );
+
+        if (rescuedHostages >= totalHostages)
+        {
+            setMissionObjective("Return to Extraction");
+        }
     }
 
     private void UpdateHostageUI()
@@ -169,14 +178,23 @@ public class gameManager : MonoBehaviour
         menuActive.SetActive(true);
     }
 
-    public void missionWin()
+    public void missionWin(string message)
     {
+        winMessageText.text = message;
         winGame();
     }
 
-    public void missionLose()
+    public void missionLose(string message)
      {
+        loseMessageText.text = message;
         youLose();
      }
 
+    public void setMissionObjective(string objective)
+    {
+        if (missionObjectiveText != null)
+        {
+            missionObjectiveText.text = objective;
+        }
+    }
 }

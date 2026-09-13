@@ -23,7 +23,8 @@ public class missionManager : MonoBehaviour
     [Header("Mission Settings")]
     [SerializeField] string missionName;
     [SerializeField] GameMode currentGameMode;
-    public MissionState currentState => currentState;
+    private MissionState currentState = MissionState.NotStarted;
+    public MissionState CurrentState => currentState;
 
     private bool missionActive;
     private bool missionComplete;
@@ -35,11 +36,14 @@ public class missionManager : MonoBehaviour
 
     private void Start()
     {
+        DetectGameMode();
         StartMission();
     }
 
     public void StartMission()
     {
+        currentState = MissionState.Active;
+
         missionActive = true;
         missionComplete = false;
 
@@ -55,13 +59,29 @@ public class missionManager : MonoBehaviour
 
         missionComplete = true;
         missionActive = false;
+        currentState = MissionState.Completed;
+
+        string message = "";
+
+        if (currentGameMode == GameMode.Hostage)
+        {
+            message = "HOSTAGES RESCUED!";
+        }
+        else if (currentGameMode == GameMode.Assault)
+        {
+            message = "AREA SECURED!";
+        }
+        else if (currentGameMode == GameMode.Protect)
+        {
+            message = "OBJECTIVE PROTECTED!";
+        }
 
         Debug.Log($"Mission '{missionName}' completed successfully!");
 
-        gameManager.instance.missionWin();
+        gameManager.instance.missionWin(message);
     }
 
-    public void LoseMission()
+    public void LoseMission(string message)
     {
         if (!missionActive || missionComplete)
         {
@@ -70,7 +90,11 @@ public class missionManager : MonoBehaviour
 
         missionComplete = true;
         missionActive = false;
+        currentState = MissionState.Lost;
+
         Debug.Log($"Mission '{missionName}' failed.");
+
+        gameManager.instance.missionLose(message);
     }
 
     public bool ShouldRespawnEnemies()
@@ -81,5 +105,27 @@ public class missionManager : MonoBehaviour
         }
 
         return true;
+    }
+
+    private void DetectGameMode()
+    {
+        if (FindAnyObjectByType<hostageMode>() != null)
+        {
+            currentGameMode = GameMode.Hostage;
+        }
+        else if (FindAnyObjectByType<assaultMode>() != null)
+        {
+            currentGameMode = GameMode.Assault;
+        }
+        else if (FindAnyObjectByType<protectMode>() != null)
+        {
+            currentGameMode = GameMode.Protect;
+        }
+        else
+        {
+            Debug.LogWarning("No game mode object found in this scene!");
+        }
+
+        Debug.Log("Detected Game Mode: " + currentGameMode);
     }
 }

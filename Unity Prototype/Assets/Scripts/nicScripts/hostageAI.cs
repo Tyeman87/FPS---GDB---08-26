@@ -1,17 +1,21 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class hostageAI : MonoBehaviour
+public class hostageAI : MonoBehaviour, IDamage, IInteractable
 {
     public enum RescueType
     {
         JailCell,
-        PlayerProximity
+        PlayerProximity,
+        PlayerInteraction
     }
 
     [Header("References")]
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform player;
+
+    [Header("Hostage Stats")]
+    [SerializeField] int HP = 8;
 
     [Header("Rescue Settings")]
     [SerializeField] RescueType rescueType = RescueType.JailCell;
@@ -61,13 +65,18 @@ public class hostageAI : MonoBehaviour
             Debug.LogError("Hostage could not find GameManager!");
         }
 
-        if (rescueType == RescueType.JailCell)
+        if (rescueType == RescueType.JailCell || rescueType == RescueType.PlayerInteraction)
         {
             agent.isStopped = true;
 
-            Debug.Log(
-                "Hostage is waiting in jail cell."
-            );
+            if (rescueType == RescueType.PlayerInteraction)
+            {
+                Debug.Log("Hostage is waiting for player interaction.");
+            }
+            else
+            {
+                Debug.Log("Hostage is waiting in jail cell.");
+            }
         }
 
         else if (rescueType == RescueType.PlayerProximity)
@@ -183,5 +192,35 @@ public class hostageAI : MonoBehaviour
         Debug.Log(
             "HOSTAGE RESCUED!"
         );
+    }
+    public void takeDamage(int amount)
+    {
+        HP -= amount;
+
+        Debug.Log("Hostage took " + amount + " damage. HP: " + HP);
+
+        if (HP <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log("HOSTAGE DIED!");
+
+        missionManager.instance.LoseMission("HOSTAGE KILLED");
+
+        Destroy(gameObject);
+    }
+
+    public void Interact()
+    {
+        if (rescueType != RescueType.PlayerInteraction)
+        {
+            return;
+        }
+
+        RescueHostage();
     }
 }
