@@ -297,14 +297,14 @@ MonoBehaviour:
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 8
-  HP: 10
-  armor: 0
+  HP: 11
+  armor: 6
   armorMax: 1
-  speed: 4
+  speed: 7
   sprintMod: 3
   jumpSpeed: 10
-  jumpMax: 1
-  gravity: 30
+  jumpMax: 2
+  gravity: 21
   startingGuns:
   - {fileID: 11400000, guid: 4f19344b106e9c84cb29ba45ece7deeb, type: 2}
   gunModel: {fileID: 6526621469927365538}

@@ -1,4 +1,0 @@
-[2026-08-13T21:25:20.556Z][INFO] Command-line: 'C:\\Program Files\\Unity\\Hub\\Editor\\6000.5.7f1\\Editor\\Data\\Resources\\PackageManager\\Server\\UnityPackageManager.exe' server -s 42748 --ipc-path Unity-Upm-42748 -l 2 --log-file 'C:\\SystemsProgramming Assignments\\Unity Prototype/Logs/upm.log'
-[2026-08-13T21:25:20.625Z][INFO] IPC server started (IPC path=Unity-Upm-42748).
-[2026-08-13T21:25:20.625Z][INFO] Hint: To connect to this UPM instance, launch Unity with the command-line parameter -upmIpcPath Upm-42748.
-[2026-08-13T21:25:35.770Z][INFO] Shutting down UnityPackageManager.exe: parent process [42748] is no longer running.
