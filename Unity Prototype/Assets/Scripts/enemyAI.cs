@@ -15,6 +15,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] float moveSpeed;
     [SerializeField] int roamDist;
     [SerializeField] int roamPauseTime;
+    [SerializeField] Transform eyePosition;
 
     [Header("Weapons")]
     [SerializeField] GameObject bullet;
@@ -24,15 +25,21 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int gunRotateSpeed;
     [SerializeField] int bulletDamage;
 
+    [Header("Attack Types")]
+    [SerializeField] bool isRanged;
+
     public Color colorOrig;
     Vector3 playerDir;
+
+    assaultMode assaultMode;
     
 
     float shootTimer;
     bool playerInSight;
     float angleToPlayer;
+    int playerTriggerCount;
 
-    
+
     float roamTimer;
     float stoppingDistOrig;
     bool playerInTrigger;
@@ -48,16 +55,22 @@ public class enemyAI : MonoBehaviour, IDamage
         colorOrig = model.material.color;
         agent.speed = moveSpeed;
         startingPos = transform.position;
+        assaultMode = FindAnyObjectByType<assaultMode>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-
-        if (playerInSight && canSeePlayer())
+        if (playerInSight)
         {
-
+            if (canSeePlayer())
+            {
+                if (isRanged)
+                {
+                    agent.stoppingDistance = 10f;
+                    agent.SetDestination(gameManager.instance.player.transform.position);
+                }
+            }
         }
         else
         {
@@ -97,49 +110,68 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         if (!agent.enabled || !agent.isOnNavMesh) return false;
         shootTimer += Time.deltaTime;
-        playerDir = gameManager.instance.player.transform.position - transform.position;
+        playerDir = gameManager.instance.player.transform.position - eyePosition.position;
 
-        angleToPlayer = Vector3.Angle(playerDir, transform.forward);
+        Vector3 flatPlayerDir = new Vector3(playerDir.x, 0, playerDir.z);
+        angleToPlayer = Vector3.Angle(flatPlayerDir, transform.forward);
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, playerDir.normalized, out hit))
-        {
-            Debug.DrawRay(transform.position, playerDir.normalized * hit.distance, Color.green);
-            if (angleToPlayer < FOV && hit.collider.CompareTag("Player"))
-            {
-                agent.SetDestination(gameManager.instance.player.transform.position);
-                faceTarget();
-                gunRotation();
 
-                if (shootTimer >= shootRate)
+        if (Physics.Raycast(
+            eyePosition.position,
+            playerDir.normalized,
+            out hit,
+            playerDir.magnitude
+        ))
+        {
+            if (angleToPlayer < FOV &&
+                hit.collider.GetComponentInParent<playerController>() != null)
+            {
+                if (isRanged)
                 {
-                    shoot();
+                    agent.stoppingDistance = 10f;
+                    faceTarget();
+                    gunRotation();
+
+                    if (shootTimer >= shootRate)
+                    {
+                        shoot();
+                    }
+                }
+                else
+                {
+                    agent.stoppingDistance = 0;
+                    agent.SetDestination(gameManager.instance.player.transform.position);
+                    faceTarget();
                 }
 
                 return true;
             }
         }
-        else
-        {
-            Debug.DrawRay(transform.position, playerDir.normalized, Color.red);
-        }
 
-        return false;        
+        return false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.GetComponentInParent<playerController>() != null)
         {
+            playerTriggerCount++;
             playerInSight = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.GetComponentInParent<playerController>() != null)
         {
-            playerInSight = false;
+            playerTriggerCount--;
+
+            if (playerTriggerCount <= 0)
+            {
+                playerTriggerCount = 0;
+                playerInSight = false;
+            }
         }
     }
 
@@ -159,7 +191,18 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         shootTimer = 0;
 
-        GameObject newBullet = Instantiate(bullet, shootPosition.position, gunPivot.rotation);
+        Vector3 targetDirection =
+            gameManager.instance.player.transform.position
+            - shootPosition.position;
+
+        Quaternion targetRotation =
+            Quaternion.LookRotation(targetDirection);
+
+        GameObject newBullet = Instantiate(
+            bullet,
+            shootPosition.position,
+            targetRotation
+        );
 
         damage bulletDamageScript = newBullet.GetComponent<damage>();
 
@@ -185,6 +228,12 @@ public class enemyAI : MonoBehaviour, IDamage
             {
                 gameStats.Instance.EnemyKilled();
             }
+
+            if (assaultMode != null)
+            {
+                assaultMode.enemyDefeated();
+            }
+
             RespawnManager.instance.HandleEnemyDeath(gameObject);
         }
         else

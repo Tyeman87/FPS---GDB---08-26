@@ -10,9 +10,9 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
-    
 
-    [Header("UI")] 
+
+    [Header("UI")]
     [SerializeField] TMP_Text killCountText;
     [SerializeField] TMP_Text hostageCountText;
     [SerializeField] public TMP_Text ammoCounterText;
@@ -24,7 +24,7 @@ public class gameManager : MonoBehaviour
     public Image playerHPBar;
     public Image playerArmorBar;
     public GameObject damageFlashPanel;
-    
+
     public int totalHostages;
     public int rescuedHostages;
 
@@ -50,7 +50,7 @@ public class gameManager : MonoBehaviour
         timeScaleOrig = Time.timeScale;
 
         killCountText.text = "Kills: 0";
-        
+
 
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Position");
 
@@ -70,15 +70,15 @@ public class gameManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Cancel"))
         {
-            if(menuActive == null)
+            if (menuActive == null)
             {
                 statePause();
                 menuActive = menuPause;
                 menuActive.SetActive(true);
             }
-            else if(menuActive == menuPause)
+            else if (menuActive == menuPause)
             {
                 stateUnpause();
             }
@@ -123,17 +123,17 @@ public class gameManager : MonoBehaviour
 
         Debug.Log(
             "Hostage rescued: " +
-            rescuedHostages + 
+            rescuedHostages +
             "/" +
             totalHostages
         );
     }
-    
+
     private void UpdateHostageUI()
     {
         if (hostageCountText != null)
         {
-            hostageCountText.text = 
+            hostageCountText.text =
             "Rescued: " +
             rescuedHostages +
             " / " +
@@ -168,4 +168,15 @@ public class gameManager : MonoBehaviour
         menuActive = menuWin;
         menuActive.SetActive(true);
     }
+
+    public void missionWin()
+    {
+        winGame();
+    }
+
+    public void missionLose()
+     {
+        youLose();
+     }
+
 }

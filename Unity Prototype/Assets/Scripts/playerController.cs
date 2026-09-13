@@ -88,10 +88,6 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen
 
     void movement()
     {
-        if (gunInv.Count > 0)
-        {
-            Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * gunInv[gunInvPos].stats.shootDist, Color.red);
-        }
         shootTimer += Time.deltaTime;
 
         if (characterController.isGrounded)
@@ -168,8 +164,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen
     {
         shootTimer = 0;
         gunInv[gunInvPos].currMag--;//subtract ammo when shooting
-        Debug.Log($"Magazine: {gunInv[gunInvPos].currMag} / {gunInv[gunInvPos].stats.magSize} | Reserve: {gunInv[gunInvPos].currReserve} / {gunInv[gunInvPos].stats.maxReserve} ");
-
+        
         updatePlayerUI();
 
         gunStats gun = gunInv[gunInvPos].stats;
@@ -179,13 +174,15 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, gunInv[gunInvPos].stats.shootDist, ~ignoreLayer, QueryTriggerInteraction.Ignore))
         {
-            Debug.Log(hit.collider.name);
-
             Instantiate(gunInv[gunInvPos].stats.hitEffect, hit.point, Quaternion.identity);
-            IDamage dmg = hit.collider.GetComponent<IDamage>();
+            IDamage dmg = hit.collider.GetComponentInParent<IDamage>();
+
             if (dmg != null)
             {
                 dmg.takeDamage(gunInv[gunInvPos].stats.shootDamage);
+            }
+            else
+            {
             }
         }
     }

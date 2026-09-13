@@ -473,7 +473,6 @@ GameObject:
   - component: {fileID: 6854844875911712000}
   - component: {fileID: 4592038853187858983}
   - component: {fileID: 761439648378754764}
-  - component: {fileID: 130465879482946770}
   m_Layer: 0
   m_Name: Sniper
   m_TagString: Untagged
@@ -559,29 +558,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &130465879482946770
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3197868059764818384}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &3200071896339407113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1236,6 +1212,7 @@ GameObject:
   - component: {fileID: 1727404876629506661}
   - component: {fileID: 3011267891858190578}
   - component: {fileID: 2980074542337231133}
+  - component: {fileID: 297445431950081976}
   m_Layer: 0
   m_Name: SniperMan
   m_TagString: Untagged
@@ -1334,7 +1311,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1363,12 +1340,14 @@ MonoBehaviour:
   moveSpeed: 1
   roamDist: 1
   roamPauseTime: 1
+  eyePosition: {fileID: 3473818471812092209}
   bullet: {fileID: 6964972883987111141, guid: e497d04b3da85d748af41ef0a2efde98, type: 3}
   gunPivot: {fileID: 6788570804692156776}
   shootPosition: {fileID: 6788570804692156776}
   shootRate: 3
   gunRotateSpeed: 1
   bulletDamage: 5
+  isRanged: 1
   colorOrig: {r: 0, g: 0, b: 0, a: 0}
 --- !u!195 &3011267891858190578
 NavMeshAgent:
@@ -1413,6 +1392,33 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 70
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &297445431950081976
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5729611328717780402}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7158969893946974376
 GameObject:
   m_ObjectHideFlags: 0

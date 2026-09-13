@@ -26,6 +26,13 @@ public class RespawnManager : MonoBehaviour
 
     public void HandleEnemyDeath(GameObject enemy)
     {
+        if (!missionManager.instance.ShouldRespawnEnemies())
+        {
+            Debug.Log("Enemies will not respawn in this mission.");
+            Destroy(enemy);
+            return;
+        }
+
         enemySpawner matchedSpawner = null;
         //compare to each spawner in level
         foreach (enemySpawner spawner in levelSpawners)

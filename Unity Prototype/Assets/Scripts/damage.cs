@@ -48,18 +48,26 @@ public class damage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Bullet collided with: " + other.gameObject.name);
-        
         if (other.isTrigger)
             return;
 
-        // Check if the other object has the InterfaceDamage component
-        IDamage damageable = other.GetComponentInParent<IDamage>();
+        enemyAI enemy = other.GetComponentInParent<enemyAI>();
 
-        // If it does, apply damage based on the type of damage
-        if (damageable != null && type != DamageType.DOT)
+        if (enemy != null)
         {
-            damageable.takeDamage(damageAmount);
+            enemy.takeDamage(damageAmount);
+        }
+        else
+        {
+            IDamage damageable = other.GetComponentInParent<IDamage>();
+
+            if (damageable != null)
+            {
+                damageable.takeDamage(damageAmount);
+            }
+            else
+            {
+            }
         }
 
         if (type == DamageType.Bullet || type == DamageType.Spread)
