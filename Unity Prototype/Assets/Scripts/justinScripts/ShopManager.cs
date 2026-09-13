@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,6 +11,8 @@ public class ShopManager : MonoBehaviour
     public Transform slotContainer;
     public static ShopManager Instance { get; private set; }
     public TextMeshProUGUI playerCreditsText;
+
+    private List<ShopSlot> activeSlots = new List<ShopSlot>();
     private Coroutine flashCoroutine;
     private Color originalTextColor = Color.white;
 
@@ -35,6 +38,8 @@ public class ShopManager : MonoBehaviour
             newSlot.shopItem = shopItem;
             //initialize
             newSlot.Initialize();
+
+            activeSlots.Add(newSlot);
         }
 
         UpdateCreditsUI();
@@ -70,5 +75,16 @@ public class ShopManager : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         playerCreditsText.faceColor = Color.white;
 
+    }
+
+    public void RefreshShopSlots()
+    {
+        foreach (ShopSlot slot in activeSlots)
+        {
+            if (slot != null)
+            {
+                slot.RefreshSlotState();
+            }
+        }
     }
 }

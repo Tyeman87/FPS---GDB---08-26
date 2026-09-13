@@ -65,7 +65,7 @@ public class SaveDataManager : MonoBehaviour
         {
             //increment playerCredits in saveObject for testing
             data.playerCredits += 100;
-            Debug.Log(data.playerCredits);
+            Debug.Log($"Total credits: {data.playerCredits}. Saved game.");
             Save();
 
             ShopManager.Instance.UpdateCreditsUI();
@@ -75,6 +75,12 @@ public class SaveDataManager : MonoBehaviour
         {
             Load();
         }
+
+        if (Input.GetButtonDown("ResetSave"))
+        {
+            ResetSave();
+            ShopManager.Instance.UpdateCreditsUI();
+        }
     }
 
     public void Save()
@@ -82,6 +88,18 @@ public class SaveDataManager : MonoBehaviour
         string json = JsonUtility.ToJson(data);
         SaveSystem.Save(json);
         Debug.Log("Saved player data");
+    }
+
+    public void ResetSave()
+    {
+        data.playerCredits = 0;
+        data.unlockedItemIDs.Clear();
+        Save();
+        Debug.Log($"Save Data has been reset. Player Money: {data.playerCredits}; Unlocked Items: {data.unlockedItemIDs.Count}");
+        if (ShopManager.Instance != null)
+        {
+            ShopManager.Instance.RefreshShopSlots();
+        }
     }
 
     public void Load()

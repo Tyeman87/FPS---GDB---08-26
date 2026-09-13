@@ -51,18 +51,29 @@ public class ShopSlot : MonoBehaviour
 
     }
 
-    private void RefreshSlotState()
+    public void RefreshSlotState()
     {
         if (shopItem != null && SaveDataManager.Instance != null)
         {
             bool isUnlocked = SaveDataManager.Instance.IsItemUnlocked(shopItem.itemID);
+
+            TextMeshProUGUI btnText = buyButton.GetComponentInChildren<TextMeshProUGUI>();
+
             if (isUnlocked)
             {
                 buyButton.interactable = false;
-                TextMeshProUGUI btnText = buyButton.GetComponentInChildren<TextMeshProUGUI>();
+                
                 if (btnText != null)
                 {
                     btnText.text = "Owned";
+                }
+            }
+            else
+            {
+                buyButton.interactable = true;
+                if (btnText != null)
+                {
+                    btnText.text = "Purchase";
                 }
             }
         }
