@@ -5,8 +5,11 @@ public class stealthBar : MonoBehaviour
 {
     public Slider StealthBar;
 
-    public float increaseSpeed = 0.25f;
-    public float decreaseSpeed = 0.4f;
+    [Header("Noise Speeds")]
+    public float walkingNoise = 0.15f;
+    public float runningNoise = 0.4f;
+    public float shootingNoise = 1.0f;
+    public float decreaseSpeed = 0.5f;
 
     // Update is called once per frame
     void Update()
@@ -16,9 +19,27 @@ public class stealthBar : MonoBehaviour
 
         bool isMoving = Mathf.Abs(horizontal) > 0.1f || Mathf.Abs(vertical) > 0.1f;
 
-        if (isMoving)
+        bool isCrouching = Input.GetKey(KeyCode.LeftControl);
+
+        bool isRunning = Input.GetKey(KeyCode.LeftShift);
+
+        bool isShooting = Input.GetButton("Fire1");
+
+        if (isCrouching)
         {
-            StealthBar.value += increaseSpeed * Time.deltaTime;
+            StealthBar.value -=decreaseSpeed * Time.deltaTime;
+        }
+        else if (isShooting)
+        {
+            StealthBar.value += shootingNoise * Time.deltaTime;
+        }
+        else if (isMoving && isRunning)
+        {
+            StealthBar.value += runningNoise * Time.deltaTime;
+        }
+        else if (isMoving)
+        {
+            StealthBar.value += walkingNoise * Time.deltaTime;
         }
         else
         {
