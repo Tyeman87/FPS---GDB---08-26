@@ -28,12 +28,12 @@ public class pickup : MonoBehaviour
             gameManager.instance.playerScript.addHealth(healAmount);
             gameManager.instance.playerScript.addArmor(armorAmount);
             gameManager.instance.playerScript.updatePlayerUI();
-
+            displayPopup();
             //deactivate mesh and collider for duration of timer
             GetComponent<BoxCollider>().enabled = false;
             GetComponent<MeshRenderer>().enabled = false;
 
-            
+            StartCoroutine(displayPopup());
             StartCoroutine(reenableTimer());
         }
     }
@@ -43,6 +43,14 @@ public class pickup : MonoBehaviour
         yield return new WaitForSeconds(timer);
         GetComponent<BoxCollider>().enabled = true;
         GetComponent<MeshRenderer>().enabled = true;
+    }
+
+    IEnumerator displayPopup()
+    {
+        gameManager.instance.hpArmorAddedText.text = $"+{healAmount} HP  +{armorAmount} ARMOR";
+        gameManager.instance.hpArmorAddedPopup.SetActive(true);
+        yield return new WaitForSeconds(2);
+        gameManager.instance.hpArmorAddedPopup.SetActive(false);
     }
 
 

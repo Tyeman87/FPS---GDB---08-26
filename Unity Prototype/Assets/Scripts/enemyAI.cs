@@ -234,7 +234,7 @@ public class enemyAI : MonoBehaviour, IDamage
                 assaultMode.enemyDefeated();
             }
 
-            RespawnManager.instance.HandleEnemyDeath(gameObject);
+            //RespawnManager.instance.HandleEnemyDeath(gameObject);
         }
         else
         {

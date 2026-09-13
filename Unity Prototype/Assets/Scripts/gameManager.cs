@@ -20,6 +20,8 @@ public class gameManager : MonoBehaviour
     [SerializeField] TMP_Text missionObjectiveText;
     [SerializeField] TMP_Text winMessageText;
     [SerializeField] TMP_Text loseMessageText;
+    [SerializeField] public TMP_Text hpArmorAddedText;
+    [SerializeField] public TMP_Text ammoAddedText;
 
     [Header("Player")]
     public bool isPaused;
@@ -38,6 +40,11 @@ public class gameManager : MonoBehaviour
 
     public GameObject playerSpawnPos;
     public GameObject checkpointPopup;
+    public GameObject ammoAddedPopup;
+    public GameObject hpArmorAddedPopup;
+    public GameObject reloadPopup;
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
