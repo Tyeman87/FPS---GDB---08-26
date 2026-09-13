@@ -1,5 +1,0 @@
-sceneSetups:
-- path: Assets/Scenes/Moni's scene.unity
-  isLoaded: 1
-  isActive: 1
-  isSubScene: 0

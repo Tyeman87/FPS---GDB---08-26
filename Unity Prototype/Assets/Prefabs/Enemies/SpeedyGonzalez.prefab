@@ -400,12 +400,14 @@ MonoBehaviour:
   moveSpeed: 9
   roamDist: 0
   roamPauseTime: 0
+  eyePosition: {fileID: 1883413639345802533}
   bullet: {fileID: 6964972883987111141, guid: e497d04b3da85d748af41ef0a2efde98, type: 3}
   gunPivot: {fileID: 8304003015372662412}
   shootPosition: {fileID: 5592583429657268166}
   shootRate: 0
   gunRotateSpeed: 0
   bulletDamage: 0
+  isRanged: 0
   colorOrig: {r: 0, g: 0, b: 0, a: 0}
 --- !u!195 &7474998551972659669
 NavMeshAgent:
@@ -501,7 +503,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
