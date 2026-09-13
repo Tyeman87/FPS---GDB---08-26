@@ -84,6 +84,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen
         sprint();
         interact();
         reload();
+        ShowReloadPrompt();
     }
 
     void movement()
@@ -329,5 +330,28 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen
             changeGunModel();
         }
         updatePlayerUI();
+    }
+
+    public void AddReserveAmmo(int ammoAmount)
+    {
+        if (gunInv.Count == 0) return;
+
+        GunAmmoData gun = gunInv[gunInvPos];
+        gun.currReserve = Mathf.Min(gun.currReserve + ammoAmount, gun.stats.maxReserve);
+        updatePlayerUI();
+    }
+
+    void ShowReloadPrompt()
+    {
+        if (gunInv.Count == 0) return;
+        if (gunInv[gunInvPos].currMag == 0 && gunInv[gunInvPos].currReserve > 0)
+        {
+            gameManager.instance.reloadPopup.SetActive(true);
+        }
+        else
+        {
+            gameManager.instance.reloadPopup.SetActive(false);
+        }
+
     }
 }
