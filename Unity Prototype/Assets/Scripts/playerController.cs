@@ -318,7 +318,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen
         changeGunModel();
     }
 
-    public void AddStoredGun(gunStats gun, int currMag, int currReserve)
+    public void AddStoredGun(GunStats gun, int currMag, int currReserve)
     {
         GunAmmoData storedGun = new GunAmmoData(gun);
         storedGun.currMag = currMag;

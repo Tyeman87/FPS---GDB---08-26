@@ -74,6 +74,7 @@ public class gameManager : MonoBehaviour
         {
             Debug.Log("Player Spawn Position FOUND: " + playerSpawnPos.name);
         }
+
         if (hostageCountText != null)
         {
             hostageCountText.text = "Rescued: 0/0";
@@ -94,7 +95,7 @@ public class gameManager : MonoBehaviour
                 return;
             }
 
-            if(menuActive == null)
+            if (menuActive == null)
             {
                 statePause();
                 menuActive = menuPause;
@@ -137,6 +138,7 @@ public class gameManager : MonoBehaviour
     {
         totalHostages++;
         UpdateHostageUI();
+
         Debug.Log(
             "Hostage registered. Total hostages: " +
             totalHostages
@@ -166,10 +168,10 @@ public class gameManager : MonoBehaviour
         if (hostageCountText != null)
         {
             hostageCountText.text =
-            "Rescued: " +
-            rescuedHostages +
-            " / " +
-            totalHostages;
+                "Rescued: " +
+                rescuedHostages +
+                " / " +
+                totalHostages;
         }
     }
 
@@ -200,7 +202,6 @@ public class gameManager : MonoBehaviour
         menuActive = menuWin;
         menuActive.SetActive(true);
     }
-}
 
     public void missionWin(string message)
     {
@@ -209,10 +210,10 @@ public class gameManager : MonoBehaviour
     }
 
     public void missionLose(string message)
-     {
+    {
         loseMessageText.text = message;
         youLose();
-     }
+    }
 
     public void setMissionObjective(string objective)
     {

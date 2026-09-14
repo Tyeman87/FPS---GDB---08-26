@@ -76,8 +76,8 @@ public class StashUI : MonoBehaviour
             if (button != null)
             {
                 Debug.Log("BUTTON CREATED: " + gun.stats.name);
-                
-                button.onClick.AddListener(() => 
+
+                button.onClick.AddListener(() =>
                 {
                     Debug.Log("BUTTON CLICKED: " + gun.stats.name);
                     SelectItem(gun);
@@ -85,6 +85,7 @@ public class StashUI : MonoBehaviour
             }
         }
     }
+
     private void SelectItem(StashContainer.StashedGun gun)
     {
         Debug.Log("STASH ITEM CLICKED: " + gun.stats.name);
@@ -94,7 +95,7 @@ public class StashUI : MonoBehaviour
 
         selectedItemName.text = gun.stats.name;
 
-        selectedItemStats.text = 
+        selectedItemStats.text =
             $"Magazine: {gun.currMag} / {gun.stats.magSize}\n" +
             $"Reserve: {gun.currReserve} / {gun.stats.maxReserve}\n" +
             $"Damage: {gun.stats.shootDamage}\n" +
@@ -182,7 +183,7 @@ public class StashUI : MonoBehaviour
         ClearPreviewModel();
     }
 
-    private void ShowPreviewModel(gunStats gun)
+    private void ShowPreviewModel(GunStats gun)
     {
         Transform previewParent = GetPreviewModelParent();
 
