@@ -772,7 +772,7 @@ MonoBehaviour:
   playerHPBar: {fileID: 4919731149078942818}
   playerArmorBar: {fileID: 3770267643138901937}
   damageFlashPanel: {fileID: 3318761036117476638}
-  mainMixer: {fileID: 24100000, guid: d71b370e217db3546b3533208752837f, type: 2}
+  mainMixer: {fileID: 24100000, guid: 5c39b1d83f5154b4c93ea03207ea9286, type: 2}
   musicSlider: {fileID: 3934617990475520686}
   sfxSlider: {fileID: 5418457846313068040}
   totalHostages: 0
@@ -4094,7 +4094,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6697216055984306228}
         m_TargetAssemblyTypeName: ButtonFunctions, Assembly-CSharp
-        m_MethodName: nextLevel
+        m_MethodName: returnToHub
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5016,7 +5016,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6697216055984306228}
         m_TargetAssemblyTypeName: ButtonFunctions, Assembly-CSharp
-        m_MethodName: restart
+        m_MethodName: returnToHub
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

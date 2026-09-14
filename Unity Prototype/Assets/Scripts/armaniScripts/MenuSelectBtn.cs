@@ -60,7 +60,7 @@ public class MenuSelectBtn : MonoBehaviour
                 {
                     UI.SetActive(false);
 
-                    MenuLdr.load(MenuLdr.Scene.Moni);
+                    MenuLdr.load(MenuLdr.Scene.testAssault);
 
                 }
             }
@@ -74,7 +74,7 @@ public class MenuSelectBtn : MonoBehaviour
                 {
                     UI.SetActive(false);
 
-                    MenuLdr.load(MenuLdr.Scene.justinScene);
+                    MenuLdr.load(MenuLdr.Scene.testHostage);
 
                 }
             }
@@ -130,7 +130,7 @@ public class MenuSelectBtn : MonoBehaviour
                 {
                     UI.SetActive(false);
 
-                    MenuLdr.load(MenuLdr.Scene.justinScene);
+                    MenuLdr.load(MenuLdr.Scene.testProtect);
 
                 }
             }

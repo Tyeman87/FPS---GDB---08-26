@@ -13,6 +13,7 @@ public class hostageAI : MonoBehaviour, IDamage, IInteractable
     [Header("References")]
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform player;
+    [SerializeField] GameObject interactUI;
 
     [Header("Hostage Stats")]
     [SerializeField] int HP = 8;
@@ -239,5 +240,15 @@ public class hostageAI : MonoBehaviour, IDamage, IInteractable
             agent.isStopped = false;
             Debug.Log("Hostage resumed following.");
         }
+    }
+
+    public void SetInteractionUI(bool show)
+    {
+        if (interactUI == null)
+        {
+            return;
+        }
+
+        interactUI.SetActive(show);
     }
 }
