@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 5407853fa394f03449e85993045ae410
+<<<<<<<< HEAD:Unity Prototype/Assets/Unity.VisualScripting.Generated/VisualScripting.Flow.meta
+guid: c650ac40c8d5fc14191351c8c8bc651b
+========
+guid: 04ac6ba529b83f543932a38ee17eab2a
+>>>>>>>> 11189f5186d6ca9f37551d467e3306572019f3c1:Unity Prototype/Assets/Scenes/LobbyRoom.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

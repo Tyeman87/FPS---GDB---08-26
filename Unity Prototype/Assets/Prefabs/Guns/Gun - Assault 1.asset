@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee6ee902613e0c48ba955385fcf555b, type: 3}
   m_Name: Gun - Assault 1
   m_EditorClassIdentifier: Assembly-CSharp::gunStats
+  itemCost: 1000
+  itemID: gun_assault1
+  itemName: Assault Rifle 1
   gunModel: {fileID: 5102364676698742929, guid: 7870e6c724576cd4f89b7842dd545cd8, type: 3}
   shootDamage: 1
   shootDist: 300

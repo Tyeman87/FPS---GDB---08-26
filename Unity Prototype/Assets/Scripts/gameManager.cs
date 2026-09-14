@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Audio;
 
 public class gameManager : MonoBehaviour
 {
@@ -10,12 +11,17 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
-    
 
-    [Header("UI")] 
+
+    [Header("UI")]
     [SerializeField] TMP_Text killCountText;
     [SerializeField] TMP_Text hostageCountText;
     [SerializeField] public TMP_Text ammoCounterText;
+    [SerializeField] TMP_Text missionObjectiveText;
+    [SerializeField] TMP_Text winMessageText;
+    [SerializeField] TMP_Text loseMessageText;
+    [SerializeField] public TMP_Text hpArmorAddedText;
+    [SerializeField] public TMP_Text ammoAddedText;
 
     [Header("Player")]
     public bool isPaused;
@@ -24,7 +30,18 @@ public class gameManager : MonoBehaviour
     public Image playerHPBar;
     public Image playerArmorBar;
     public GameObject damageFlashPanel;
-    
+
+    [Header("Audio Settings")]
+    [SerializeField] AudioMixer mainMixer;
+    [SerializeField] Slider musicSlider;
+    [SerializeField] Slider sfxSlider;
+
+
+    private const string MusicPrefKey = "MusicVolume";
+    private const string SFXPrefKey = "SFXVolume";
+    private const float DefaultVolume = 0.25f;
+
+
     public int totalHostages;
     public int rescuedHostages;
 
@@ -34,6 +51,11 @@ public class gameManager : MonoBehaviour
 
     public GameObject playerSpawnPos;
     public GameObject checkpointPopup;
+    public GameObject ammoAddedPopup;
+    public GameObject hpArmorAddedPopup;
+    public GameObject reloadPopup;
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -50,7 +72,7 @@ public class gameManager : MonoBehaviour
         timeScaleOrig = Time.timeScale;
 
         killCountText.text = "Kills: 0";
-        
+
 
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Position");
 
@@ -66,24 +88,34 @@ public class gameManager : MonoBehaviour
         {
             hostageCountText.text = "Rescued: 0/0";
         }
+
+      
+        
     }
 
     void Update()
     {
-        if(Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Cancel"))
         {
-            if(menuActive == null)
+            if (menuActive == null)
             {
                 statePause();
                 menuActive = menuPause;
                 menuActive.SetActive(true);
             }
-            else if(menuActive == menuPause)
+            else if (menuActive == menuPause)
             {
                 stateUnpause();
             }
         }
     }
+
+    private void Start()
+    {
+        LoadAudioSettings();
+        
+    }
+
 
     public void statePause()
     {
@@ -123,17 +155,22 @@ public class gameManager : MonoBehaviour
 
         Debug.Log(
             "Hostage rescued: " +
-            rescuedHostages + 
+            rescuedHostages +
             "/" +
             totalHostages
         );
+
+        if (rescuedHostages >= totalHostages)
+        {
+            setMissionObjective("Return to Extraction");
+        }
     }
-    
+
     private void UpdateHostageUI()
     {
         if (hostageCountText != null)
         {
-            hostageCountText.text = 
+            hostageCountText.text =
             "Rescued: " +
             rescuedHostages +
             " / " +
@@ -168,4 +205,68 @@ public class gameManager : MonoBehaviour
         menuActive = menuWin;
         menuActive.SetActive(true);
     }
+
+    public void missionWin(string message)
+    {
+        winMessageText.text = message;
+        winGame();
+    }
+
+    public void missionLose(string message)
+     {
+        loseMessageText.text = message;
+        youLose();
+     }
+
+    public void setMissionObjective(string objective)
+    {
+        if (missionObjectiveText != null)
+        {
+            missionObjectiveText.text = objective;
+        }
+    }
+
+
+    public void SetMusicVolume(float sliderVal)
+    {
+        sliderVal = Mathf.Clamp(sliderVal, 0.0001f, 1f);
+        float db = Mathf.Log10(sliderVal) * 20;
+
+        mainMixer.SetFloat("musicVol", db);
+        PlayerPrefs.SetFloat(MusicPrefKey, sliderVal);
+    }
+
+    public void SetSFXVolume(float sliderVal)
+    {
+        sliderVal = Mathf.Clamp(sliderVal, 0.0001f, 1f);
+        float db = Mathf.Log10(sliderVal) * 20;
+
+        mainMixer.SetFloat("sfxVol", db);
+        PlayerPrefs.SetFloat(SFXPrefKey, sliderVal);
+    }
+
+    private void LoadAudioSettings()
+    {
+        float savedMusic = PlayerPrefs.GetFloat(MusicPrefKey, DefaultVolume);
+        float savedSFX = PlayerPrefs.GetFloat(SFXPrefKey, DefaultVolume);
+
+        SetMusicVolume(savedMusic);
+        SetSFXVolume(savedSFX);
+
+        if (musicSlider != null)
+        {
+            musicSlider.value = savedMusic;
+            musicSlider.onValueChanged.AddListener(SetMusicVolume);
+        }
+
+        if (sfxSlider != null)
+        {
+            sfxSlider.value = savedSFX;
+            sfxSlider.onValueChanged.AddListener(SetSFXVolume);
+        }
+
+
+    }
+
+
 }

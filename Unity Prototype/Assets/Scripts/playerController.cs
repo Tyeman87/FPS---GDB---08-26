@@ -8,11 +8,11 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
     [System.Serializable]
     public class GunAmmoData
     {
-        public gunStats stats;
+        public GunStats stats;
         public int currMag;
         public int currReserve;
 
-        public GunAmmoData(gunStats gun)
+        public GunAmmoData(GunStats gun)
         {
             stats = gun;
             currMag = gun.magSize;
@@ -33,7 +33,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
     [Range(15, 40)][SerializeField] int gravity;
 
     [Header("GunStuff")]
-    [SerializeField] List<gunStats> startingGuns = new List<gunStats>();//inventory at beginning of level
+    [SerializeField] List<GunStats> startingGuns = new List<GunStats>();//inventory at beginning of level
     [SerializeField] GameObject gunModel;
     List<GunAmmoData> gunInv = new List<GunAmmoData>();// to hold stats + ammo of held guns
 
@@ -64,7 +64,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
     void Start()
     {
         HPOrig = HP;
-        foreach (gunStats gun in startingGuns)
+        foreach (GunStats gun in startingGuns)
         {
             gunInv.Add(new GunAmmoData(gun));
         }
@@ -84,14 +84,11 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
         sprint();
         interact();
         reload();
+        ShowReloadPrompt();
     }
 
     void movement()
     {
-        if (gunInv.Count > 0)
-        {
-            Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * gunInv[gunInvPos].stats.shootDist, Color.red);
-        }
         shootTimer += Time.deltaTime;
 
         if (characterController.isGrounded)
@@ -168,24 +165,25 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
     {
         shootTimer = 0;
         gunInv[gunInvPos].currMag--;//subtract ammo when shooting
-        Debug.Log($"Magazine: {gunInv[gunInvPos].currMag} / {gunInv[gunInvPos].stats.magSize} | Reserve: {gunInv[gunInvPos].currReserve} / {gunInv[gunInvPos].stats.maxReserve} ");
-
+        
         updatePlayerUI();
 
-        gunStats gun = gunInv[gunInvPos].stats;
+        GunStats gun = gunInv[gunInvPos].stats;
 
         audioManager.Instance.audPlayer.PlayOneShot(gunInv[gunInvPos].stats.shootSound[Random.Range(0, gunInv[gunInvPos].stats.shootSound.Length)], gunInv[gunInvPos].stats.shootSoundVol);
 
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, gunInv[gunInvPos].stats.shootDist, ~ignoreLayer, QueryTriggerInteraction.Ignore))
         {
-            Debug.Log(hit.collider.name);
-
             Instantiate(gunInv[gunInvPos].stats.hitEffect, hit.point, Quaternion.identity);
-            IDamage dmg = hit.collider.GetComponent<IDamage>();
+            IDamage dmg = hit.collider.GetComponentInParent<IDamage>();
+
             if (dmg != null)
             {
                 dmg.takeDamage(gunInv[gunInvPos].stats.shootDamage);
+            }
+            else
+            {
             }
         }
     }
@@ -227,7 +225,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
         if (HP <= 0)
         {
             // I'm dead!!!
-            gameManager.instance.youLose();
+            missionManager.instance.LoseMission("PLAYER KILLED");
         }
     }
 
@@ -265,8 +263,6 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
         }
     }
 
-
-
     public void spawnPlayer()
     {
         characterController.transform.position = gameManager.instance.playerSpawnPos.transform.position;
@@ -296,7 +292,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
         }
     }
 
-    public void getGunStats(gunStats gun)
+    public void getGunStats(GunStats gun)
     {
         for(int i = 0; i < gunInv.Count; i++)
         {
@@ -334,5 +330,28 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
             changeGunModel();
         }
         updatePlayerUI();
+    }
+
+    public void AddReserveAmmo(int ammoAmount)
+    {
+        if (gunInv.Count == 0) return;
+
+        GunAmmoData gun = gunInv[gunInvPos];
+        gun.currReserve = Mathf.Min(gun.currReserve + ammoAmount, gun.stats.maxReserve);
+        updatePlayerUI();
+    }
+
+    void ShowReloadPrompt()
+    {
+        if (gunInv.Count == 0) return;
+        if (gunInv[gunInvPos].currMag == 0 && gunInv[gunInvPos].currReserve > 0)
+        {
+            gameManager.instance.reloadPopup.SetActive(true);
+        }
+        else
+        {
+            gameManager.instance.reloadPopup.SetActive(false);
+        }
+
     }
 }
