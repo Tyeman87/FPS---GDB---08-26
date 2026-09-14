@@ -46,6 +46,7 @@ public class gameManager : MonoBehaviour
     public int rescuedHostages;
 
     float timeScaleOrig;
+    int pauseInputSuppressedFrame = -1;
     int gameGoalCount;
     int killCount;
 
@@ -84,6 +85,7 @@ public class gameManager : MonoBehaviour
         {
             Debug.Log("Player Spawn Position FOUND: " + playerSpawnPos.name);
         }
+
         if (hostageCountText != null)
         {
             hostageCountText.text = "Rescued: 0/0";
@@ -97,6 +99,16 @@ public class gameManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel"))
         {
+            if (pauseInputSuppressedFrame == Time.frameCount)
+            {
+                return;
+            }
+
+            if (isPaused && menuActive == null)
+            {
+                return;
+            }
+
             if (menuActive == null)
             {
                 statePause();
@@ -108,6 +120,11 @@ public class gameManager : MonoBehaviour
                 stateUnpause();
             }
         }
+    }
+
+    public void SuppressPauseInputThisFrame()
+    {
+        pauseInputSuppressedFrame = Time.frameCount;
     }
 
     private void Start()
@@ -142,6 +159,7 @@ public class gameManager : MonoBehaviour
     {
         totalHostages++;
         UpdateHostageUI();
+
         Debug.Log(
             "Hostage registered. Total hostages: " +
             totalHostages
@@ -171,10 +189,10 @@ public class gameManager : MonoBehaviour
         if (hostageCountText != null)
         {
             hostageCountText.text =
-            "Rescued: " +
-            rescuedHostages +
-            " / " +
-            totalHostages;
+                "Rescued: " +
+                rescuedHostages +
+                " / " +
+                totalHostages;
         }
     }
 
@@ -213,10 +231,10 @@ public class gameManager : MonoBehaviour
     }
 
     public void missionLose(string message)
-     {
+    {
         loseMessageText.text = message;
         youLose();
-     }
+    }
 
     public void setMissionObjective(string objective)
     {
