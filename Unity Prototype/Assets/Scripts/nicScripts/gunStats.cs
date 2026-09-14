@@ -2,7 +2,7 @@ using UnityEngine;
 
 [CreateAssetMenu]
 
-public class GunStats : ItemStats
+public class gunStats : ScriptableObject
 {
     public GameObject gunModel;
 

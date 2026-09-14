@@ -9,14 +9,4 @@ public class audioManager : MonoBehaviour
     {
         Instance = this;
     }
-
-    void Update()
-    {
-        if (Time.timeScale == 0)
-        {
-            audPlayer.Pause();
-        }
-        else 
-            audPlayer.UnPause();
-    }
 }

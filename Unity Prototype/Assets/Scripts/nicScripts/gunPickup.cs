@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class gunPickup : MonoBehaviour
 {
-    [SerializeField] GunStats gun;
+    [SerializeField] gunStats gun;
     [Range(0, 100)] [SerializeField] float rotationSpeed = 100f;
     [SerializeField] float bobHeight = 0.25f;
     [SerializeField] float bobSpeed = 2f;

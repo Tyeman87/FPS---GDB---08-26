@@ -575,16 +575,14 @@ MonoBehaviour:
   faceTargetSpeed: 10
   FOV: 90
   moveSpeed: 4
-  roamDist: 0
-  roamPauseTime: 0
-  eyePosition: {fileID: 1559942487890406157}
+  roamDist: 5
+  roamPauseTime: 3
   bullet: {fileID: 6964972883987111141, guid: e497d04b3da85d748af41ef0a2efde98, type: 3}
   gunPivot: {fileID: 4446749787455840186}
   shootPosition: {fileID: 4270699528705787131}
   shootRate: 2
   gunRotateSpeed: 10
   bulletDamage: 2
-  isRanged: 0
   colorOrig: {r: 0, g: 0, b: 0, a: 0}
 --- !u!33 &6986632289804971165
 MeshFilter:

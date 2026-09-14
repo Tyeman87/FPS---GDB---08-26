@@ -6,7 +6,6 @@ public class door : MonoBehaviour
     [SerializeField] GameObject UI;
 
     bool canOpenDoor;
-    bool locked;
 
     void Update()
     {
@@ -40,6 +39,4 @@ public class door : MonoBehaviour
             canOpenDoor = false;
         }
     }
-
-
 }

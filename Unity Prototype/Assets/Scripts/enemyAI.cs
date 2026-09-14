@@ -15,7 +15,6 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] float moveSpeed;
     [SerializeField] int roamDist;
     [SerializeField] int roamPauseTime;
-    [SerializeField] Transform eyePosition;
 
     [Header("Weapons")]
     [SerializeField] GameObject bullet;
@@ -25,23 +24,15 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int gunRotateSpeed;
     [SerializeField] int bulletDamage;
 
-    [Header("Attack Types")]
-    [SerializeField] bool isRanged;
-
     public Color colorOrig;
     Vector3 playerDir;
-
-    assaultMode assaultMode;
-    protectMode protectMode;
     
-
 
     float shootTimer;
     bool playerInSight;
     float angleToPlayer;
-    int playerTriggerCount;
 
-
+    
     float roamTimer;
     float stoppingDistOrig;
     bool playerInTrigger;
@@ -57,23 +48,16 @@ public class enemyAI : MonoBehaviour, IDamage
         colorOrig = model.material.color;
         agent.speed = moveSpeed;
         startingPos = transform.position;
-        assaultMode = FindAnyObjectByType<assaultMode>();
-        protectMode = FindAnyObjectByType<protectMode>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerInSight)
+        
+
+        if (playerInSight && canSeePlayer())
         {
-            if (canSeePlayer())
-            {
-                if (isRanged)
-                {
-                    agent.stoppingDistance = 10f;
-                    agent.SetDestination(gameManager.instance.player.transform.position);
-                }
-            }
+
         }
         else
         {
@@ -83,7 +67,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     void checkRoam()
     {
-        if (agent.remainingDistance < 0.1f)
+        if(agent.remainingDistance < 0.1f)
         {
             roamTimer += Time.deltaTime;
             if (roamTimer > roamPauseTime)
@@ -113,68 +97,49 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         if (!agent.enabled || !agent.isOnNavMesh) return false;
         shootTimer += Time.deltaTime;
-        playerDir = gameManager.instance.player.transform.position - eyePosition.position;
+        playerDir = gameManager.instance.player.transform.position - transform.position;
 
-        Vector3 flatPlayerDir = new Vector3(playerDir.x, 0, playerDir.z);
-        angleToPlayer = Vector3.Angle(flatPlayerDir, transform.forward);
+        angleToPlayer = Vector3.Angle(playerDir, transform.forward);
 
         RaycastHit hit;
-
-        if (Physics.Raycast(
-            eyePosition.position,
-            playerDir.normalized,
-            out hit,
-            playerDir.magnitude
-        ))
+        if (Physics.Raycast(transform.position, playerDir.normalized, out hit))
         {
-            if (angleToPlayer < FOV &&
-                hit.collider.GetComponentInParent<playerController>() != null)
+            Debug.DrawRay(transform.position, playerDir.normalized * hit.distance, Color.green);
+            if (angleToPlayer < FOV && hit.collider.CompareTag("Player"))
             {
-                if (isRanged)
-                {
-                    agent.stoppingDistance = 10f;
-                    faceTarget();
-                    gunRotation();
+                agent.SetDestination(gameManager.instance.player.transform.position);
+                faceTarget();
+                gunRotation();
 
-                    if (shootTimer >= shootRate)
-                    {
-                        shoot();
-                    }
-                }
-                else
+                if (shootTimer >= shootRate)
                 {
-                    agent.stoppingDistance = 0;
-                    agent.SetDestination(gameManager.instance.player.transform.position);
-                    faceTarget();
+                    shoot();
                 }
 
                 return true;
             }
         }
+        else
+        {
+            Debug.DrawRay(transform.position, playerDir.normalized, Color.red);
+        }
 
-        return false;
+        return false;        
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponentInParent<playerController>() != null)
+        if (other.CompareTag("Player"))
         {
-            playerTriggerCount++;
             playerInSight = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponentInParent<playerController>() != null)
+        if (other.CompareTag("Player"))
         {
-            playerTriggerCount--;
-
-            if (playerTriggerCount <= 0)
-            {
-                playerTriggerCount = 0;
-                playerInSight = false;
-            }
+            playerInSight = false;
         }
     }
 
@@ -194,18 +159,7 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         shootTimer = 0;
 
-        Vector3 targetDirection =
-            gameManager.instance.player.transform.position
-            - shootPosition.position;
-
-        Quaternion targetRotation =
-            Quaternion.LookRotation(targetDirection);
-
-        GameObject newBullet = Instantiate(
-            bullet,
-            shootPosition.position,
-            targetRotation
-        );
+        GameObject newBullet = Instantiate(bullet, shootPosition.position, gunPivot.rotation);
 
         damage bulletDamageScript = newBullet.GetComponent<damage>();
 
@@ -219,34 +173,19 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         HP -= amount;
         if (agent.enabled && agent.isOnNavMesh)
-        {
-            agent.SetDestination(gameManager.instance.player.transform.position);
+        { 
+            agent.SetDestination(gameManager.instance.player.transform.position); 
         }
 
         if (HP <= 0)
         {
-            if (gameManager.instance != null)
-            {
-                gameManager.instance.addKill();
-            }
+            gameManager.instance.addKill();
 
             if (gameStats.Instance != null)
             {
                 gameStats.Instance.EnemyKilled();
             }
-
-            if (assaultMode != null)
-            {
-                assaultMode.enemyDefeated();
-            }
-
-           
-            if (protectMode != null)
-            {
-                protectMode.enemyDefeated();
-            }
-			Destroy(gameObject);
-            
+            RespawnManager.instance.HandleEnemyDeath(gameObject);
         }
         else
         {
