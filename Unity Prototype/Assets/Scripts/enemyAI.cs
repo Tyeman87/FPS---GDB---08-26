@@ -35,6 +35,7 @@ public class enemyAI : MonoBehaviour, IDamage
     protectMode protectMode;
     
 
+
     float shootTimer;
     bool playerInSight;
     float angleToPlayer;
@@ -82,7 +83,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     void checkRoam()
     {
-        if(agent.remainingDistance < 0.1f)
+        if (agent.remainingDistance < 0.1f)
         {
             roamTimer += Time.deltaTime;
             if (roamTimer > roamPauseTime)
@@ -218,13 +219,16 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         HP -= amount;
         if (agent.enabled && agent.isOnNavMesh)
-        { 
-            agent.SetDestination(gameManager.instance.player.transform.position); 
+        {
+            agent.SetDestination(gameManager.instance.player.transform.position);
         }
 
         if (HP <= 0)
         {
-            gameManager.instance.addKill();
+            if (gameManager.instance != null)
+            {
+                gameManager.instance.addKill();
+            }
 
             if (gameStats.Instance != null)
             {
@@ -236,12 +240,13 @@ public class enemyAI : MonoBehaviour, IDamage
                 assaultMode.enemyDefeated();
             }
 
+           
             if (protectMode != null)
             {
                 protectMode.enemyDefeated();
             }
-
-            RespawnManager.instance.HandleEnemyDeath(gameObject);
+			Destroy(gameObject);
+            
         }
         else
         {

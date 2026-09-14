@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEditor.VersionControl;
+using UnityEngine.Audio;
 
 public class gameManager : MonoBehaviour
 {
@@ -30,6 +30,17 @@ public class gameManager : MonoBehaviour
     public Image playerHPBar;
     public Image playerArmorBar;
     public GameObject damageFlashPanel;
+
+    [Header("Audio Settings")]
+    [SerializeField] AudioMixer mainMixer;
+    [SerializeField] Slider musicSlider;
+    [SerializeField] Slider sfxSlider;
+
+
+    private const string MusicPrefKey = "MusicVolume";
+    private const string SFXPrefKey = "SFXVolume";
+    private const float DefaultVolume = 0.25f;
+
 
     public int totalHostages;
     public int rescuedHostages;
@@ -77,6 +88,9 @@ public class gameManager : MonoBehaviour
         {
             hostageCountText.text = "Rescued: 0/0";
         }
+
+      
+        
     }
 
     void Update()
@@ -95,6 +109,13 @@ public class gameManager : MonoBehaviour
             }
         }
     }
+
+    private void Start()
+    {
+        LoadAudioSettings();
+        
+    }
+
 
     public void statePause()
     {
@@ -204,4 +225,48 @@ public class gameManager : MonoBehaviour
             missionObjectiveText.text = objective;
         }
     }
+
+
+    public void SetMusicVolume(float sliderVal)
+    {
+        sliderVal = Mathf.Clamp(sliderVal, 0.0001f, 1f);
+        float db = Mathf.Log10(sliderVal) * 20;
+
+        mainMixer.SetFloat("musicVol", db);
+        PlayerPrefs.SetFloat(MusicPrefKey, sliderVal);
+    }
+
+    public void SetSFXVolume(float sliderVal)
+    {
+        sliderVal = Mathf.Clamp(sliderVal, 0.0001f, 1f);
+        float db = Mathf.Log10(sliderVal) * 20;
+
+        mainMixer.SetFloat("sfxVol", db);
+        PlayerPrefs.SetFloat(SFXPrefKey, sliderVal);
+    }
+
+    private void LoadAudioSettings()
+    {
+        float savedMusic = PlayerPrefs.GetFloat(MusicPrefKey, DefaultVolume);
+        float savedSFX = PlayerPrefs.GetFloat(SFXPrefKey, DefaultVolume);
+
+        SetMusicVolume(savedMusic);
+        SetSFXVolume(savedSFX);
+
+        if (musicSlider != null)
+        {
+            musicSlider.value = savedMusic;
+            musicSlider.onValueChanged.AddListener(SetMusicVolume);
+        }
+
+        if (sfxSlider != null)
+        {
+            sfxSlider.value = savedSFX;
+            sfxSlider.onValueChanged.AddListener(SetSFXVolume);
+        }
+
+
+    }
+
+
 }
