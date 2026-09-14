@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen
+public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenuBttn
 {
     //for each gun's ammo on the player
     [System.Serializable]

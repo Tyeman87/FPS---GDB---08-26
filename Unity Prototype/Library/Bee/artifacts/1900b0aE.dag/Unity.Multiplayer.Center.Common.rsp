@@ -421,6 +421,7 @@
 -r:"C:/Program Files/Unity/Hub/Editor/6000.5.7f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Xml.XmlDocument.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/6000.5.7f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Xml.XmlSerializer.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/6000.5.7f1/Editor/Data/NetStandard/ref/2.1.0/netstandard.dll"
+-r:"C:/Program Files/Unity/Hub/Editor/6000.5.7f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/6000.5.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll"
 -r:"Library/PackageCache/com.unity.collab-proxy@120d77864ebc/Lib/Editor/TextMateSharp/Onigwrap/OnigwrapPlastic.dll"
 -r:"Library/PackageCache/com.unity.collab-proxy@120d77864ebc/Lib/Editor/TextMateSharp/TextMateSharpPlastic.Grammars.dll"

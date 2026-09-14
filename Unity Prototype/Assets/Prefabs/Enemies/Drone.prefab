@@ -638,6 +638,8 @@ MonoBehaviour:
   faceTargetSpeed: 9
   FOV: 50
   moveSpeed: 4
+  roamDist: 8
+  roamPauseTime: 3
   bullet: {fileID: 6964972883987111141, guid: e497d04b3da85d748af41ef0a2efde98, type: 3}
   gunPivot: {fileID: 362355036784145411}
   shootPosition: {fileID: 1748385074511270139}
