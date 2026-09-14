@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6844546400615857441}
   - component: {fileID: 3752386523662529331}
   - component: {fileID: 3579417263533051368}
+  - component: {fileID: 3179009968827795652}
   m_Layer: 6
   m_Name: Tanky Boi
   m_TagString: Untagged
@@ -37,6 +38,7 @@ Transform:
   m_Children:
   - {fileID: 6748096264909438237}
   - {fileID: 388632866647420165}
+  - {fileID: 3374009969225530759}
   - {fileID: 9133142508291729114}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -61,12 +63,14 @@ MonoBehaviour:
   moveSpeed: 3
   roamDist: 0
   roamPauseTime: 0
+  eyePosition: {fileID: 3374009969225530759}
   bullet: {fileID: 6964972883987111141, guid: e497d04b3da85d748af41ef0a2efde98, type: 3}
   gunPivot: {fileID: 9133142508291729114}
   shootPosition: {fileID: 7181307909152167102}
   shootRate: 1
   gunRotateSpeed: 6
   bulletDamage: 3
+  isRanged: 1
   colorOrig: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &6289929923074468280
 SphereCollider:
@@ -87,7 +91,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 50
+  m_Radius: 30
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &9058446795310152169
 MeshFilter:
@@ -191,6 +195,33 @@ NavMeshAgent:
   m_BaseOffset: 0.99999994
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!54 &3179009968827795652
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938527112484804837}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1827279073496305203
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +233,6 @@ GameObject:
   - component: {fileID: 9201931578796203136}
   - component: {fileID: 2189090049730347300}
   - component: {fileID: 3096206759532186278}
-  - component: {fileID: 2471577431671269336}
   m_Layer: 6
   m_Name: Tank's Gun (5)
   m_TagString: Untagged
@@ -282,29 +312,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2471577431671269336
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1827279073496305203}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &1976537647601854136
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,7 +323,6 @@ GameObject:
   - component: {fileID: 7181307909152167102}
   - component: {fileID: 2893004753857035428}
   - component: {fileID: 4981635320925482192}
-  - component: {fileID: 2364559486156365297}
   m_Layer: 6
   m_Name: Shoot POS
   m_TagString: Untagged
@@ -332,13 +338,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1976537647601854136}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.12599944, y: 4.386667, z: -1.1333348}
+  m_LocalRotation: {x: -0.5216331, y: 0.5112671, z: 0.48221263, w: 0.48371047}
+  m_LocalPosition: {x: -0.12600897, y: 4.3866634, z: -1.1333348}
   m_LocalScale: {x: 1.3333333, y: 0.06666665, z: 1.3333334}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5156091266013921268}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -86.128, y: -172.798, z: 262.11798}
 --- !u!33 &2893004753857035428
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -396,29 +402,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2364559486156365297
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1976537647601854136}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &3092818464427265456
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,7 +413,6 @@ GameObject:
   - component: {fileID: 2689044480102544881}
   - component: {fileID: 7535229890705705542}
   - component: {fileID: 2786030737571369512}
-  - component: {fileID: 2499934859537603304}
   m_Layer: 6
   m_Name: Tank's Gun (3)
   m_TagString: Untagged
@@ -510,29 +492,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2499934859537603304
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3092818464427265456}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &3236643230343952027
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,7 +595,6 @@ GameObject:
   - component: {fileID: 2481509140859615469}
   - component: {fileID: 6263460262808220363}
   - component: {fileID: 6889646824519761734}
-  - component: {fileID: 504998963933861088}
   m_Layer: 6
   m_Name: Tank's Gun (1)
   m_TagString: Untagged
@@ -716,29 +674,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &504998963933861088
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4876632433083885031}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &5260836780092135307
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,7 +685,6 @@ GameObject:
   - component: {fileID: 7073843224566304790}
   - component: {fileID: 5564125660824102700}
   - component: {fileID: 4839903456335230559}
-  - component: {fileID: 484954575921858402}
   m_Layer: 6
   m_Name: Gun Pivot Tank (1)
   m_TagString: Untagged
@@ -830,29 +764,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &484954575921858402
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5260836780092135307}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &5279285191212992509
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,7 +775,6 @@ GameObject:
   - component: {fileID: 4475739012749301772}
   - component: {fileID: 9015098338472293533}
   - component: {fileID: 7581394157561181955}
-  - component: {fileID: 7108674363338091390}
   m_Layer: 6
   m_Name: Tank's Gun (4)
   m_TagString: Untagged
@@ -944,29 +854,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7108674363338091390
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5279285191212992509}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &5728717919278095584
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,7 +865,6 @@ GameObject:
   - component: {fileID: 5156091266013921268}
   - component: {fileID: 8680744747405769705}
   - component: {fileID: 6458610581991416709}
-  - component: {fileID: 6014134510438411469}
   m_Layer: 6
   m_Name: Tank's Gun
   m_TagString: Untagged
@@ -1067,29 +953,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6014134510438411469
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5728717919278095584}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &6105801957403397068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,7 +964,6 @@ GameObject:
   - component: {fileID: 546700596910059462}
   - component: {fileID: 7533553478856821839}
   - component: {fileID: 5630311438059543345}
-  - component: {fileID: 1453578035944278651}
   m_Layer: 6
   m_Name: Tank's Gun (6)
   m_TagString: Untagged
@@ -1181,29 +1043,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &1453578035944278651
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6105801957403397068}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &6322432449123344255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1216,7 +1055,6 @@ GameObject:
   - component: {fileID: 5034183318776848749}
   - component: {fileID: 4700674073986485389}
   - component: {fileID: 7868618590866200937}
-  - component: {fileID: 950302978376248457}
   m_Layer: 6
   m_Name: Tank's Helm
   m_TagString: Untagged
@@ -1236,8 +1074,7 @@ Transform:
   m_LocalPosition: {x: -0.017, y: 0.62, z: 0.016}
   m_LocalScale: {x: 1.3, y: 0.8, z: 1.3}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3374009969225530759}
+  m_Children: []
   m_Father: {fileID: 7743829422452702652}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5034183318776848749
@@ -1311,27 +1148,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &950302978376248457
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6322432449123344255}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7296851928398625787
 GameObject:
   m_ObjectHideFlags: 0
@@ -1357,12 +1173,12 @@ Transform:
   m_GameObject: {fileID: 7296851928398625787}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.020769408, y: 0.09999998, z: -0.006923101}
-  m_LocalScale: {x: 0.7692308, y: 0.89285713, z: 0.7692308}
+  m_LocalPosition: {x: 0.010002136, y: 0.7, z: 0.0069999695}
+  m_LocalScale: {x: 1, y: 0.7142857, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2312724738540277540}
-  m_Father: {fileID: 388632866647420165}
+  m_Father: {fileID: 7743829422452702652}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7609228768843543685
 GameObject:
@@ -1375,7 +1191,6 @@ GameObject:
   - component: {fileID: 7088897546522692282}
   - component: {fileID: 3453656900258233795}
   - component: {fileID: 8063071424608093601}
-  - component: {fileID: 6856603092990454765}
   m_Layer: 6
   m_Name: Tank's Gun (2)
   m_TagString: Untagged
@@ -1455,29 +1270,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6856603092990454765
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7609228768843543685}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &7765508473839732876
 GameObject:
   m_ObjectHideFlags: 0
@@ -1579,7 +1371,6 @@ GameObject:
   - component: {fileID: 6710340420772787653}
   - component: {fileID: 4702230993154110381}
   - component: {fileID: 2066502314672081893}
-  - component: {fileID: 5003978805960368686}
   m_Layer: 6
   m_Name: Gun Pivot Tank
   m_TagString: Untagged
@@ -1659,29 +1450,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5003978805960368686
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7830756091841143706}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &8271573023274198294
 GameObject:
   m_ObjectHideFlags: 0
@@ -1694,7 +1462,6 @@ GameObject:
   - component: {fileID: 7693255884212271596}
   - component: {fileID: 4432199927702908193}
   - component: {fileID: 969290995561950685}
-  - component: {fileID: 5614809323465598125}
   m_Layer: 6
   m_Name: Tank's Vest
   m_TagString: Untagged
@@ -1788,27 +1555,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5614809323465598125
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8271573023274198294}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8428450980483115800
 GameObject:
   m_ObjectHideFlags: 0

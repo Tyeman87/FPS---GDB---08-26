@@ -1,5 +1,0 @@
-sceneSetups:
-- path: Assets/Levels/Nic's Scene.unity
-  isLoaded: 1
-  isActive: 1
-  isSubScene: 0
