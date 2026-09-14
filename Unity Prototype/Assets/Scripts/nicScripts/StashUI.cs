@@ -183,7 +183,7 @@ public class StashUI : MonoBehaviour
         ClearPreviewModel();
     }
 
-    private void ShowPreviewModel(GunStats gun)
+    private void ShowPreviewModel(gunStats gun)
     {
         Transform previewParent = GetPreviewModelParent();
 

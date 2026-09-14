@@ -12,11 +12,11 @@ public class StashContainer : MonoBehaviour, IInteractable
     public class StashedGun
     {
         
-        public GunStats stats;
+        public gunStats stats;
         public int currMag;
         public int currReserve;
 
-        public StashedGun(GunStats gun)
+        public StashedGun(gunStats gun)
         {
             stats = gun;
             currMag = gun.magSize;
@@ -44,7 +44,7 @@ public class StashContainer : MonoBehaviour, IInteractable
         storedGuns.Remove(gun);
     }
 
-    public void StoreGun(GunStats gun, int currMag, int currReserve)
+    public void StoreGun(gunStats gun, int currMag, int currReserve)
     {
         StashedGun newGun = new StashedGun(gun);
         newGun.currMag = currMag;

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Audio;
 
 public class gameManager : MonoBehaviour
 {
@@ -10,12 +11,17 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
-    
 
-    [Header("UI")] 
+
+    [Header("UI")]
     [SerializeField] TMP_Text killCountText;
     [SerializeField] TMP_Text hostageCountText;
     [SerializeField] public TMP_Text ammoCounterText;
+    [SerializeField] TMP_Text missionObjectiveText;
+    [SerializeField] TMP_Text winMessageText;
+    [SerializeField] TMP_Text loseMessageText;
+    [SerializeField] public TMP_Text hpArmorAddedText;
+    [SerializeField] public TMP_Text ammoAddedText;
 
     [Header("Player")]
     public bool isPaused;
@@ -24,17 +30,33 @@ public class gameManager : MonoBehaviour
     public Image playerHPBar;
     public Image playerArmorBar;
     public GameObject damageFlashPanel;
-    
+
+    [Header("Audio Settings")]
+    [SerializeField] AudioMixer mainMixer;
+    [SerializeField] Slider musicSlider;
+    [SerializeField] Slider sfxSlider;
+
+
+    private const string MusicPrefKey = "MusicVolume";
+    private const string SFXPrefKey = "SFXVolume";
+    private const float DefaultVolume = 0.25f;
+
+
     public int totalHostages;
     public int rescuedHostages;
 
     float timeScaleOrig;
-    int pauseInputSuppressedFrame = -1;
     int gameGoalCount;
     int killCount;
 
     public GameObject playerSpawnPos;
     public GameObject checkpointPopup;
+    public GameObject ammoAddedPopup;
+    public GameObject hpArmorAddedPopup;
+    public GameObject reloadPopup;
+
+    int pauseInputSuppressedFrame = -1;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -51,7 +73,7 @@ public class gameManager : MonoBehaviour
         timeScaleOrig = Time.timeScale;
 
         killCountText.text = "Kills: 0";
-        
+
 
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Position");
 
@@ -63,34 +85,26 @@ public class gameManager : MonoBehaviour
         {
             Debug.Log("Player Spawn Position FOUND: " + playerSpawnPos.name);
         }
-
         if (hostageCountText != null)
         {
             hostageCountText.text = "Rescued: 0/0";
         }
+
+
+
     }
 
     void Update()
     {
-        if(Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Cancel"))
         {
-            if (pauseInputSuppressedFrame == Time.frameCount)
-            {
-                return;
-            }
-
-            if (isPaused && menuActive == null)
-            {
-                return;
-            }
-
             if (menuActive == null)
             {
                 statePause();
                 menuActive = menuPause;
                 menuActive.SetActive(true);
             }
-            else if(menuActive == menuPause)
+            else if (menuActive == menuPause)
             {
                 stateUnpause();
             }
@@ -105,7 +119,7 @@ public class gameManager : MonoBehaviour
     private void Start()
     {
         LoadAudioSettings();
-        
+
     }
 
 
@@ -134,7 +148,6 @@ public class gameManager : MonoBehaviour
     {
         totalHostages++;
         UpdateHostageUI();
-
         Debug.Log(
             "Hostage registered. Total hostages: " +
             totalHostages
@@ -148,21 +161,26 @@ public class gameManager : MonoBehaviour
 
         Debug.Log(
             "Hostage rescued: " +
-            rescuedHostages + 
+            rescuedHostages +
             "/" +
             totalHostages
         );
+
+        if (rescuedHostages >= totalHostages)
+        {
+            setMissionObjective("Return to Extraction");
+        }
     }
-    
+
     private void UpdateHostageUI()
     {
         if (hostageCountText != null)
         {
             hostageCountText.text =
-                "Rescued: " +
-                rescuedHostages +
-                " / " +
-                totalHostages;
+            "Rescued: " +
+            rescuedHostages +
+            " / " +
+            totalHostages;
         }
     }
 
@@ -255,6 +273,7 @@ public class gameManager : MonoBehaviour
 
 
     }
+
 
 
 }

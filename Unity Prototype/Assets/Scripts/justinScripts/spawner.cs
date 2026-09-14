@@ -1,16 +1,9 @@
-using System.Security.Cryptography;
 using UnityEngine;
-using UnityEngine.AI;
 
-
-/* 
- IMPORTANT:
-    - Not yet complete, do not use
- */
 public class spawner : MonoBehaviour
 {
     [SerializeField] GameObject objectToSpawn;
-    [SerializeField] int spawnAmount;
+    [SerializeField] public int spawnAmount;
     [SerializeField] int spawnDelay;
 
     int spawnCount;
@@ -52,5 +45,14 @@ public class spawner : MonoBehaviour
 
 
         Instantiate(objectToSpawn, spawnPos, Quaternion.Euler(0, Random.Range(0, 360), 0));
+    }
+
+    public void ResetSpawner()
+    {
+        spawnCount = 0;
+        spawnTimer = 0;
+        spawning = true;
+
+        Debug.Log("Spawner reset for next wave.");
     }
 }
