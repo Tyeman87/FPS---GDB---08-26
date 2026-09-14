@@ -32,6 +32,8 @@ public class enemyAI : MonoBehaviour, IDamage
     Vector3 playerDir;
 
     assaultMode assaultMode;
+    protectMode protectMode;
+    
 
 
     float shootTimer;
@@ -56,6 +58,7 @@ public class enemyAI : MonoBehaviour, IDamage
         agent.speed = moveSpeed;
         startingPos = transform.position;
         assaultMode = FindAnyObjectByType<assaultMode>();
+        protectMode = FindAnyObjectByType<protectMode>();
     }
 
     // Update is called once per frame
@@ -237,7 +240,13 @@ public class enemyAI : MonoBehaviour, IDamage
                 assaultMode.enemyDefeated();
             }
 
-            Destroy(gameObject);
+           
+            if (protectMode != null)
+            {
+                protectMode.enemyDefeated();
+            }
+			Destroy(gameObject);
+            
         }
         else
         {

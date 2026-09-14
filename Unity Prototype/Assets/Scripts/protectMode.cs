@@ -2,50 +2,103 @@ using UnityEngine;
 
 public class protectMode : MonoBehaviour
 {
-    [SerializeField] float survivalTime = 60f;
+    [Header("Wave Settings")]
+    [SerializeField] int totalWaves = 3;
+    [SerializeField] float timeBetweenWaves = 10f;
 
-    private float timer;
+    private int currentWave = 0;
+    private int enemiesRemaining = 0;
+    private float waveTimer;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private spawner[] levelSpawners;
+
+    private bool waitingForNextWave = false;
+
     private void Start()
     {
-        timer = survivalTime;
+        levelSpawners = FindObjectsByType<spawner>();
 
-        Debug.Log("Protect Mission Started. Survive for " + survivalTime + " seconds.");
+        StartNextWave();
+    }
+
+    private void Update()
+    {
+        if (waitingForNextWave)
+        {
+            waveTimer -= Time.deltaTime;
+
+            gameManager.instance.setMissionObjective(
+                "WAVE " + currentWave + " COMPLETE\n" +
+                "NEXT WAVE IN: " + Mathf.Ceil(waveTimer)
+            );
+
+            if (waveTimer <= 0)
+            {
+                StartNextWave();
+            }
+        }
+    }
+
+    private void StartNextWave()
+    {
+        currentWave++;
+        enemiesRemaining = 0;
+        waitingForNextWave = false;
+
+        Debug.Log("Starting Protect Wave " + currentWave);
+
+        foreach (spawner spawner in levelSpawners)
+        {
+            if (spawner != null)
+            {
+                enemiesRemaining += spawner.spawnAmount;
+                spawner.ResetSpawner();
+            }
+        }
 
         gameManager.instance.setMissionObjective(
-        "PROTECT THE OBJECTIVE\n" +
-        "SURVIVE: " + Mathf.CeilToInt(timer) + " SECONDS"
+            "PROTECT THE OBJECTIVE\n" +
+            "WAVE " + currentWave + " / " + totalWaves + "\n" +
+            enemiesRemaining + " ENEMIES REMAINING"
         );
     }
 
-    // Update is called once per frame
-    private void Update()
+    public void enemyDefeated()
     {
-        if (missionManager.instance == null)
+        if (waitingForNextWave)
         {
             return;
         }
 
-        if (missionManager.instance.CurrentState != missionManager.MissionState.Active)
-        {
-            return;
-        }
+        enemiesRemaining--;
 
-        timer -= Time.deltaTime;
+        Debug.Log("Protect enemy defeated. Enemies Remaining: " + enemiesRemaining);
 
         gameManager.instance.setMissionObjective(
-        "PROTECT THE OBJECTIVE\n" +
-        "SURVIVE: " + Mathf.CeilToInt(timer) + " SECONDS"
+            "PROTECT THE OBJECTIVE\n" +
+            "WAVE " + currentWave + " / " + totalWaves + "\n" +
+            enemiesRemaining + " ENEMIES REMAINING"
         );
 
-        if (timer < 0)
+        if (enemiesRemaining <= 0)
         {
-            timer = 0;
+            if (currentWave >= totalWaves)
+            {
+                Debug.Log("All Protect Waves Complete!");
 
-            Debug.Log("Protect Mission Survived!");
+                missionManager.instance.WinMission();
+            }
+            else
+            {
+                waitingForNextWave = true;
+                waveTimer = timeBetweenWaves;
 
-            missionManager.instance.WinMission();
+                Debug.Log(
+                    "Protect Wave " + currentWave +
+                    " Complete! Next wave in " +
+                    timeBetweenWaves + " seconds."
+                );
+            }
         }
     }
 }

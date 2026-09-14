@@ -221,6 +221,23 @@ public class hostageAI : MonoBehaviour, IDamage, IInteractable
             return;
         }
 
-        RescueHostage();
+        if (!rescued)
+        {
+            RescueHostage();
+            return;
+        }
+
+        followingPlayer = !followingPlayer;
+
+        if (!followingPlayer)
+        {
+            agent.isStopped = true;
+            Debug.Log("Hostage stopped following.");
+        }
+        else
+        {
+            agent.isStopped = false;
+            Debug.Log("Hostage resumed following.");
+        }
     }
 }

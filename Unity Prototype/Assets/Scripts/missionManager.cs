@@ -99,7 +99,8 @@ public class missionManager : MonoBehaviour
 
     public bool ShouldRespawnEnemies()
     {
-        if (currentGameMode == GameMode.Assault)
+        if (currentGameMode == GameMode.Assault ||
+        currentGameMode == GameMode.Protect)
         {
             return false;
         }
