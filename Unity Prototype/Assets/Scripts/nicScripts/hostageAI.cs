@@ -12,6 +12,7 @@ public class hostageAI : MonoBehaviour
     [Header("References")]
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform player;
+    [SerializeField] GameObject interactUI;
 
     [Header("Rescue Settings")]
     [SerializeField] RescueType rescueType = RescueType.JailCell;
@@ -183,5 +184,62 @@ public class hostageAI : MonoBehaviour
         Debug.Log(
             "HOSTAGE RESCUED!"
         );
+    }
+    public void takeDamage(int amount)
+    {
+        HP -= amount;
+
+        Debug.Log("Hostage took " + amount + " damage. HP: " + HP);
+
+        if (HP <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log("HOSTAGE DIED!");
+
+        missionManager.instance.LoseMission("HOSTAGE KILLED");
+
+        Destroy(gameObject);
+    }
+
+    public void Interact()
+    {
+        if (rescueType != RescueType.PlayerInteraction)
+        {
+            return;
+        }
+
+        if (!rescued)
+        {
+            RescueHostage();
+            return;
+        }
+
+        followingPlayer = !followingPlayer;
+
+        if (!followingPlayer)
+        {
+            agent.isStopped = true;
+            Debug.Log("Hostage stopped following.");
+        }
+        else
+        {
+            agent.isStopped = false;
+            Debug.Log("Hostage resumed following.");
+        }
+    }
+
+    public void SetInteractionUI(bool show)
+    {
+        if (interactUI == null)
+        {
+            return;
+        }
+
+        interactUI.SetActive(show);
     }
 }
