@@ -83,7 +83,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     void checkRoam()
     {
-        if (agent.remainingDistance < 0.1f)
+        if (agent.isOnNavMesh && agent.remainingDistance < 0.1f)
         {
             roamTimer += Time.deltaTime;
             if (roamTimer > roamPauseTime)

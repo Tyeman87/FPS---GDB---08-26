@@ -273,7 +273,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
 
     public void spawnPlayer()
     {
-        characterController.transform.position = gameManager.instance.playerSpawnPos.transform.position;
+        characterController.transform.position = gameManager.instance.playerSpawnPos.transform.position; 
         Physics.SyncTransforms();
         HP = HPOrig;
         updatePlayerUI();
