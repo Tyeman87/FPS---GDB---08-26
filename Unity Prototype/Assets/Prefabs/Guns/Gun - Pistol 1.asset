@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gun - Pistol 1
   m_EditorClassIdentifier: Assembly-CSharp::gunStats
   itemCost: 0
-  itemID: gun_pistol1
+  itemID: 003
   itemName: Pistol 1
   gunModel: {fileID: 1939067583041364680, guid: 45c3517e6c067c3409caf711e93603c7, type: 3}
   shootDamage: 1
@@ -21,6 +21,7 @@ MonoBehaviour:
   shootRate: 0.5
   magSize: 5
   maxReserve: 50
+  weaponIcon: {fileID: 0}
   hitEffect: {fileID: 5584602140419805224, guid: 25246989ef8fb1e49a5425378d295c10, type: 3}
   shootSound:
   - {fileID: 8300000, guid: 79e0e3085f3f0e94a9068b0c05a898f9, type: 3}
