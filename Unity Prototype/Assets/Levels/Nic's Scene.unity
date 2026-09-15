@@ -43888,6 +43888,75 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0189909ffb841f04db5e005272d7c800, type: 3}
+--- !u!1001 &5127964605610865302
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7817557445483228092, guid: 4ce7951245b62314eab9772c13bfaf0a, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 916831750}
+    - target: {fileID: 7817557445483228092, guid: 4ce7951245b62314eab9772c13bfaf0a, type: 3}
+      propertyPath: stashUI
+      value: 
+      objectReference: {fileID: 1219359547}
+    - target: {fileID: 7817557445483228092, guid: 4ce7951245b62314eab9772c13bfaf0a, type: 3}
+      propertyPath: stashPrompt
+      value: 
+      objectReference: {fileID: 1984025521}
+    - target: {fileID: 8539209540518760720, guid: 4ce7951245b62314eab9772c13bfaf0a, type: 3}
+      propertyPath: m_Name
+      value: StashContainer
+      objectReference: {fileID: 0}
+    - target: {fileID: 9064212750993918890, guid: 4ce7951245b62314eab9772c13bfaf0a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 24.784348
+      objectReference: {fileID: 0}
+    - target: {fileID: 9064212750993918890, guid: 4ce7951245b62314eab9772c13bfaf0a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.4219331
+      objectReference: {fileID: 0}
+    - target: {fileID: 9064212750993918890, guid: 4ce7951245b62314eab9772c13bfaf0a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -57.07077
+      objectReference: {fileID: 0}
+    - target: {fileID: 9064212750993918890, guid: 4ce7951245b62314eab9772c13bfaf0a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9064212750993918890, guid: 4ce7951245b62314eab9772c13bfaf0a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9064212750993918890, guid: 4ce7951245b62314eab9772c13bfaf0a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9064212750993918890, guid: 4ce7951245b62314eab9772c13bfaf0a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9064212750993918890, guid: 4ce7951245b62314eab9772c13bfaf0a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9064212750993918890, guid: 4ce7951245b62314eab9772c13bfaf0a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9064212750993918890, guid: 4ce7951245b62314eab9772c13bfaf0a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4ce7951245b62314eab9772c13bfaf0a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -43901,5 +43970,9 @@ SceneRoots:
   - {fileID: 2000922191}
   - {fileID: 1178052456}
   - {fileID: 1376412519}
+<<<<<<< Updated upstream
   - {fileID: 666530494099909410}
+=======
+  - {fileID: 5127964605610865302}
+>>>>>>> Stashed changes
   - {fileID: 4185621422869682932}
