@@ -28,6 +28,15 @@ public class enemyAI : MonoBehaviour, IDamage
     [Header("Attack Types")]
     [SerializeField] bool isRanged;
 
+    [Header("Hearing")]
+    [SerializeField] private UnityEngine.UI.Slider stealthBar;
+    [SerializeField] private float hearingThreshold = 0.75f;
+    [SerializeField] private float hearingDelay = 2f;
+
+    private float hearingTimer = 0f;
+    private bool heardPlayer = false;
+    private Vector3 noiseLocation;
+
     public Color colorOrig;
     Vector3 playerDir;
 
@@ -64,6 +73,12 @@ public class enemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
+
+        if (!heardPlayer)
+        {
+            CheckPlayerNoise();
+        }
+
         if (playerInSight)
         {
             if (canSeePlayer())
@@ -259,5 +274,30 @@ public class enemyAI : MonoBehaviour, IDamage
         model.material.color = Color.red;
         yield return new WaitForSeconds(0.1f);
         model.material.color = colorOrig;
+    }
+
+    private void CheckPlayerNoise()
+    {
+        if (stealthBar == null)
+            return;
+
+        if (stealthBar.value >= hearingThreshold)
+        {
+            hearingTimer += Time.deltaTime;
+
+            if (hearingTimer >= hearingDelay)
+            {
+                heardPlayer = true;
+                hearingTimer = 0f;
+
+                noiseLocation = gameManager.instance.player.transform.position;
+
+                Debug.Log("Enemy heard the player!");
+            }
+        }
+        else
+        {
+            hearingTimer = 0f;
+        }
     }
 }
