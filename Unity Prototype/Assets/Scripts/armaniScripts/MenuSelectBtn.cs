@@ -32,7 +32,7 @@ public class MenuSelectBtn : MonoBehaviour
                 {
                     UI.SetActive(false);
 
-                    MenuLdr.load(MenuLdr.Scene.Moni);
+                    MenuLdr.load(MenuLdr.Scene.shopScene);
 
                 }
             }
@@ -46,7 +46,6 @@ public class MenuSelectBtn : MonoBehaviour
                 {
                     UI.SetActive(false);
 
-                    MenuLdr.load(MenuLdr.Scene.justinScene);
 
                 }
             }
@@ -88,26 +87,13 @@ public class MenuSelectBtn : MonoBehaviour
                 {
                     UI.SetActive(false);
 
-                    MenuLdr.load(MenuLdr.Scene.Moni);
+                    
 
                 }
             }
 
         }
-        else if (MenuType == MenuItem.Loadout)
-        {
-            if (canPressMenu)
-            {
-                if (Input.GetButtonDown("Interact"))
-                {
-                    UI.SetActive(false);
-
-                    MenuLdr.load(MenuLdr.Scene.justinScene);
-
-                }
-            }
-
-        }
+      
         else if (MenuType == MenuItem.Stealth)
         {
             if (canPressMenu)
