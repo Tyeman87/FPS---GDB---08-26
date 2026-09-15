@@ -23,15 +23,19 @@ public class StashUI : MonoBehaviour
     private void Start()
     {
         stashPanel.SetActive(false);
+
         takeButton.onClick.AddListener(TakeSelectedGun);
+
         takeButton.interactable = false;
     }
 
     private void Update()
     {
-        if (stashPanel.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+        if (stashPanel.activeSelf &&
+            Input.GetKeyDown(KeyCode.Escape))
         {
             gameManager.instance.SuppressPauseInputThisFrame();
+
             CloseStash();
         }
     }
@@ -41,13 +45,17 @@ public class StashUI : MonoBehaviour
         currentStash = stash;
 
         player.enabled = false;
+
         HideMainUI();
+
         stashPanel.SetActive(true);
 
         gameManager.instance.isPaused = true;
 
         ClearSelection();
+
         PopulateItemList();
+
         UnlockCursor();
     }
 
@@ -58,42 +66,64 @@ public class StashUI : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        List<StashContainer.StashedGun> storedGuns = currentStash.GetStoredGuns();
+        List<StashContainer.StashedGun> storedGuns =
+            currentStash.GetStoredGuns();
 
         foreach (StashContainer.StashedGun gun in storedGuns)
         {
-            GameObject newButton = Instantiate(stashItemButtonPrefab, itemListContent);
-            TextMeshProUGUI buttonText = newButton.GetComponentInChildren<TextMeshProUGUI>();
+            GameObject newButton =
+                Instantiate(
+                    stashItemButtonPrefab,
+                    itemListContent
+                );
+
+            TextMeshProUGUI buttonText =
+                newButton.GetComponentInChildren<TextMeshProUGUI>();
 
             if (buttonText != null)
             {
                 buttonText.text = gun.stats.name;
+
                 buttonText.raycastTarget = false;
             }
 
-            Button button = newButton.GetComponent<Button>();
+            Button button =
+                newButton.GetComponent<Button>();
 
             if (button != null)
             {
-                Debug.Log("BUTTON CREATED: " + gun.stats.name);
+                Debug.Log(
+                    "BUTTON CREATED: " +
+                    gun.stats.name
+                );
 
                 button.onClick.AddListener(() =>
                 {
-                    Debug.Log("BUTTON CLICKED: " + gun.stats.name);
+                    Debug.Log(
+                        "BUTTON CLICKED: " +
+                        gun.stats.name
+                    );
+
                     SelectItem(gun);
                 });
             }
         }
     }
 
-    private void SelectItem(StashContainer.StashedGun gun)
+    private void SelectItem(
+        StashContainer.StashedGun gun)
     {
-        Debug.Log("STASH ITEM CLICKED: " + gun.stats.name);
+        Debug.Log(
+            "STASH ITEM CLICKED: " +
+            gun.stats.name
+        );
 
         selectedGun = gun;
+
         takeButton.interactable = true;
 
-        selectedItemName.text = gun.stats.name;
+        selectedItemName.text =
+            gun.stats.name;
 
         selectedItemStats.text =
             $"Magazine: {gun.currMag} / {gun.stats.magSize}\n" +
@@ -111,34 +141,47 @@ public class StashUI : MonoBehaviour
             return;
         }
 
-        player.AddStoredGun(selectedGun.stats, selectedGun.currMag, selectedGun.currReserve);
+        player.AddStoredGun(
+            selectedGun.stats,
+            selectedGun.currMag,
+            selectedGun.currReserve
+        );
+
         currentStash.RemoveGun(selectedGun);
 
         ClearSelection();
+
         PopulateItemList();
     }
 
     public void CloseStash()
     {
         player.enabled = true;
+
         ShowMainUI();
+
         stashPanel.SetActive(false);
 
         gameManager.instance.isPaused = false;
 
         ClearSelection();
+
         LockCursor();
     }
 
     public void LockCursor()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState =
+            CursorLockMode.Locked;
+
         Cursor.visible = false;
     }
 
     public void UnlockCursor()
     {
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState =
+            CursorLockMode.None;
+
         Cursor.visible = true;
     }
 
@@ -149,15 +192,19 @@ public class StashUI : MonoBehaviour
             return;
         }
 
-        mainUICanvasGroup = mainUI.GetComponent<CanvasGroup>();
+        mainUICanvasGroup =
+            mainUI.GetComponent<CanvasGroup>();
 
         if (mainUICanvasGroup == null)
         {
-            mainUICanvasGroup = mainUI.AddComponent<CanvasGroup>();
+            mainUICanvasGroup =
+                mainUI.AddComponent<CanvasGroup>();
         }
 
         mainUICanvasGroup.alpha = 0f;
+
         mainUICanvasGroup.interactable = false;
+
         mainUICanvasGroup.blocksRaycasts = false;
     }
 
@@ -169,43 +216,68 @@ public class StashUI : MonoBehaviour
         }
 
         mainUICanvasGroup.alpha = 1f;
+
         mainUICanvasGroup.interactable = true;
+
         mainUICanvasGroup.blocksRaycasts = true;
     }
 
     private void ClearSelection()
     {
         selectedGun = null;
+
         takeButton.interactable = false;
 
         selectedItemName.text = "";
+
         selectedItemStats.text = "";
+
         ClearPreviewModel();
     }
 
     private void ShowPreviewModel(GunStats gun)
     {
-        Transform previewParent = GetPreviewModelParent();
+        Transform previewParent =
+            GetPreviewModelParent();
 
-        if (previewParent == null || gun == null || gun.gunModel == null)
+        if (previewParent == null ||
+            gun == null ||
+            gun.gunModel == null)
         {
             return;
         }
 
         ClearPreviewModel();
 
-        GameObject previewModel = Instantiate(gun.gunModel, previewParent);
-        previewModel.transform.localPosition = Vector3.zero;
-        previewModel.transform.localRotation = Quaternion.identity;
-        previewModel.transform.localScale = Vector3.one;
+        GameObject previewModel =
+            Instantiate(
+                gun.gunModel,
+                previewParent
+            );
 
-        SetLayerRecursively(previewModel, previewParent.gameObject.layer);
-        DisablePreviewGameplayComponents(previewModel);
+        previewModel.transform.localPosition =
+            Vector3.zero;
+
+        previewModel.transform.localRotation =
+            Quaternion.identity;
+
+        previewModel.transform.localScale =
+            Vector3.one;
+
+        SetLayerRecursively(
+            previewModel,
+            previewParent.gameObject.layer
+        );
+
+        DisablePreviewGameplayComponents(
+            previewModel
+        );
     }
 
     private void ClearPreviewModel()
     {
-        Transform previewParent = GetPreviewModelParent();
+        Transform previewParent =
+            GetPreviewModelParent();
 
         if (previewParent == null)
         {
@@ -225,39 +297,52 @@ public class StashUI : MonoBehaviour
             return previewModelParent;
         }
 
-        Transform stashCanvasTransform = transform.Find("StashPreviewModel");
+        Transform stashCanvasTransform =
+            transform.Find("StashPreviewModel");
 
         if (stashCanvasTransform != null)
         {
-            previewModelParent = stashCanvasTransform;
+            previewModelParent =
+                stashCanvasTransform;
         }
 
         return previewModelParent;
     }
 
-    private void SetLayerRecursively(GameObject obj, int layer)
+    private void SetLayerRecursively(
+        GameObject obj,
+        int layer)
     {
         obj.layer = layer;
 
         foreach (Transform child in obj.transform)
         {
-            SetLayerRecursively(child.gameObject, layer);
+            SetLayerRecursively(
+                child.gameObject,
+                layer
+            );
         }
     }
 
-    private void DisablePreviewGameplayComponents(GameObject previewModel)
+    private void DisablePreviewGameplayComponents(
+        GameObject previewModel)
     {
-        foreach (Collider collider in previewModel.GetComponentsInChildren<Collider>())
+        foreach (
+            Collider collider
+            in previewModel.GetComponentsInChildren<Collider>())
         {
             collider.enabled = false;
         }
 
-        foreach (Rigidbody rb in previewModel.GetComponentsInChildren<Rigidbody>())
+        foreach (
+            Rigidbody rb
+            in previewModel.GetComponentsInChildren<Rigidbody>())
         {
             rb.isKinematic = true;
         }
 
-        gunPickup pickup = previewModel.GetComponentInChildren<gunPickup>();
+        gunPickup pickup =
+            previewModel.GetComponentInChildren<gunPickup>();
 
         if (pickup != null)
         {
