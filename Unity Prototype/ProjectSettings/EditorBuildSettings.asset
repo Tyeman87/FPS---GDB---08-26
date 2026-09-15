@@ -17,8 +17,20 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/justinScene.unity
     guid: c23e61192ffb3e9499bf0a08ef3dfda1
+  - enabled: 0
+    path: Assets/Scenes/New Scene.unity
+    guid: 5407853fa394f03449e85993045ae410
   - enabled: 1
     path: Assets/Scenes/Moni.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Test Scenes/testAssault.unity
+    guid: 400493a7deb51e546bf4cd925ba7e648
+  - enabled: 1
+    path: Assets/Scenes/Test Scenes/testHostage.unity
+    guid: 0913b459934ca7c4da65bcab8bdc87da
+  - enabled: 1
+    path: Assets/Scenes/Test Scenes/testProtect.unity
+    guid: 47b5894ecddaeaa409e2425bd4a03568
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

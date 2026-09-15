@@ -45,4 +45,12 @@ public class ButtonFunctions : MonoBehaviour
     {
         // Delete saved game and start fresh
     }
+
+    public void returnToHub()
+    {
+        Debug.Log("RETURNING TO LOBBY ROOM");
+
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("LobbyRoom");
+    }
 }
