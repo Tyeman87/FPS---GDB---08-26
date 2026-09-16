@@ -33,6 +33,14 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] private float hearingThreshold = 0.75f;
     [SerializeField] private float hearingDelay = 2f;
 
+    [Header("Investigation")]
+    [SerializeField] private float investigationRadius = 5f;
+    [SerializeField] private float investigationTime = 3f;
+
+    private float investigationTimer = 0f;
+    private bool investigating = false;
+    private Vector3 searchLocation;
+
     private float hearingTimer = 0f;
     private bool heardPlayer = false;
     private Vector3 noiseLocation;
@@ -73,12 +81,6 @@ public class enemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-
-        if (!heardPlayer)
-        {
-            CheckPlayerNoise();
-        }
-
         if (playerInSight)
         {
             if (canSeePlayer())
@@ -93,6 +95,21 @@ public class enemyAI : MonoBehaviour, IDamage
         else
         {
             checkRoam();
+        }
+
+        if (heardPlayer)
+        {
+            Debug.Log("Heard player. On NavMesh: " + agent.isOnNavMesh);
+
+            if (agent.isOnNavMesh)
+            {
+                agent.SetDestination(noiseLocation);
+            }
+        }
+
+        if (!heardPlayer)
+        {
+            CheckPlayerNoise();
         }
     }
 
@@ -131,6 +148,7 @@ public class enemyAI : MonoBehaviour, IDamage
         playerDir = gameManager.instance.player.transform.position - eyePosition.position;
 
         Vector3 flatPlayerDir = new Vector3(playerDir.x, 0, playerDir.z);
+        Debug.Log("Player distance: " + playerDir.magnitude);
         angleToPlayer = Vector3.Angle(flatPlayerDir, transform.forward);
 
         RaycastHit hit;
@@ -142,6 +160,7 @@ public class enemyAI : MonoBehaviour, IDamage
             playerDir.magnitude
         ))
         {
+            Debug.Log("Raycast hit: " + hit.collider.name);
             if (angleToPlayer < FOV &&
                 hit.collider.GetComponentInParent<playerController>() != null)
             {
@@ -165,6 +184,21 @@ public class enemyAI : MonoBehaviour, IDamage
 
                 return true;
             }
+        }
+
+        if (heardPlayer && !investigating)
+        {
+            agent.SetDestination(noiseLocation);
+
+            if (agent.remainingDistance <= 1f)
+            {
+                investigating = true;
+                investigationTimer = 0f;
+            }
+        }
+        else if (heardPlayer && investigating)
+        {
+            SearchNoiseArea();
         }
 
         return false;
@@ -298,6 +332,36 @@ public class enemyAI : MonoBehaviour, IDamage
         else
         {
             hearingTimer = 0f;
+        }
+    }
+
+    private void SearchNoiseArea()
+    {
+        investigationTimer += Time.deltaTime;
+
+        if (investigationTimer >= investigationTime)
+        {
+            investigating = false;
+            heardPlayer = false;
+            hearingTimer = 0f;
+
+            agent.ResetPath();
+
+            return;
+        }
+
+        if (!agent.hasPath || agent.remainingDistance <= 0.5f)
+        {
+            Vector3 randomPoint = noiseLocation + Random.insideUnitSphere * investigationRadius;
+            randomPoint.y = noiseLocation.y;
+
+            UnityEngine.AI.NavMeshHit hit;
+
+            if (UnityEngine.AI.NavMesh.SamplePosition(randomPoint, out hit, investigationRadius, UnityEngine.AI.NavMesh.AllAreas))
+            {
+                searchLocation = hit.position;
+                agent.SetDestination(searchLocation);
+            }
         }
     }
 }

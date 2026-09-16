@@ -14,7 +14,6 @@ public class stealthBar : MonoBehaviour
 
     private void Update()
     {
-
         if (StealthGameMode.Instance == null || !StealthGameMode.Instance.stealthModeActive)
             return;
 
@@ -24,7 +23,7 @@ public class stealthBar : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        bool isMoving = Mathf.Abs(horizontal) > 1.0f || Mathf.Abs(vertical) > 1.0f;
+        bool isMoving = vertical != 0 || horizontal != 0;
 
         bool isCrouching = Input.GetKey(KeyCode.LeftControl);
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
