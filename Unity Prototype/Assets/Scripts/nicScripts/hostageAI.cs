@@ -28,6 +28,10 @@ public class hostageAI : MonoBehaviour, IDamage, IInteractable
 
     private bool rescued = false;
     private bool followingPlayer = false;
+    private bool IsRescued()
+    {
+        return rescued;
+    }
 
     private void Start()
     {
