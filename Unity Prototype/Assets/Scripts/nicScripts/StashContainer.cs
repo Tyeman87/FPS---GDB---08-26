@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +10,6 @@ public class StashContainer : MonoBehaviour, IInteractable
     [System.Serializable]
     public class StashedGun
     {
-        
         public GunStats stats;
         public int currMag;
         public int currReserve;
@@ -25,12 +23,25 @@ public class StashContainer : MonoBehaviour, IInteractable
     }
 
     [Header("Stored Guns")]
-    [SerializeField] List<StashedGun> storedGuns = new List<StashedGun>();
+    [SerializeField]
+    private List<StashedGun> storedGuns = new List<StashedGun>();
+
+    private bool waitingForInput = false;
+
+    private void Start()
+    {
+        if (SaveDataManager.Instance != null)
+        {
+            SaveDataManager.Instance.LoadStash(this);
+        }
+    }
 
     public void Interact()
     {
         Debug.Log("Stash Interact called!");
+
         stashPrompt.SetActive(true);
+
         waitingForInput = true;
     }
 
@@ -41,20 +52,53 @@ public class StashContainer : MonoBehaviour, IInteractable
 
     public void RemoveGun(StashedGun gun)
     {
+        if (gun == null)
+        {
+            return;
+        }
+
         storedGuns.Remove(gun);
+
+        Debug.Log($"Removed {gun.stats.name} from stash.");
+
+        SaveDataManager.Instance.SaveStash(storedGuns);
     }
 
-    public void StoreGun(GunStats gun, int currMag, int currReserve)
+    public void StoreGun(
+        GunStats gun,
+        int currMag,
+        int currReserve,
+        bool save = true)
     {
+        if (gun == null)
+        {
+            Debug.LogWarning("Tried to store a null gun.");
+            return;
+        }
+
         StashedGun newGun = new StashedGun(gun);
+
         newGun.currMag = currMag;
         newGun.currReserve = currReserve;
 
         storedGuns.Add(newGun);
 
-        Debug.Log($"Stored {gun.name} | Ammo: {currMag} / {currReserve}");
+        Debug.Log(
+            $"Stored {gun.name} | " +
+            $"Ammo: {currMag} / {currReserve}"
+        );
+
+        if (save)
+        {
+            SaveDataManager.Instance.SaveStash(storedGuns);
+        }
     }
-    private bool waitingForInput = false;
+
+    public void ClearStash()
+    {
+        storedGuns.Clear();
+    }
+
     private void Update()
     {
         if (!stashPrompt.activeSelf)
@@ -75,16 +119,23 @@ public class StashContainer : MonoBehaviour, IInteractable
         if (Input.GetKeyDown(KeyCode.Q))
         {
             stashUI.OpenStash(this);
+
             stashPrompt.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            playerController.GunAmmoData gun = player.GetCurrentGun();
+            playerController.GunAmmoData gun =
+                player.GetCurrentGun();
 
             if (gun != null)
             {
-                StoreGun(gun.stats, gun.currMag, gun.currReserve);
+                StoreGun(
+                    gun.stats,
+                    gun.currMag,
+                    gun.currReserve
+                );
+
                 player.RemoveCurrentGun();
             }
 

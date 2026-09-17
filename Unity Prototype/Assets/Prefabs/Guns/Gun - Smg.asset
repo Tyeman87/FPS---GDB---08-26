@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gun - Smg
   m_EditorClassIdentifier: Assembly-CSharp::gunStats
   itemCost: 10000
-  itemID: gun_smg1
+  itemID: 000
   itemName: SMG 1
   gunModel: {fileID: 5049443059584821746, guid: 5d26839961eff72408f1751525343de2, type: 3}
   shootDamage: 2
@@ -21,6 +21,7 @@ MonoBehaviour:
   shootRate: 0.1
   magSize: 40
   maxReserve: 300
+  weaponIcon: {fileID: 0}
   hitEffect: {fileID: 5584602140419805224, guid: 4d5386e8a70034148885447cd6a0a582, type: 3}
   shootSound:
   - {fileID: 8300000, guid: 79e0e3085f3f0e94a9068b0c05a898f9, type: 3}
