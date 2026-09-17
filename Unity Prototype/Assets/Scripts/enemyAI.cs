@@ -46,6 +46,11 @@ public class enemyAI : MonoBehaviour, IDamage
     private bool investigating = false;
     private Vector3 searchLocation;
 
+    [Header("Stealth Detection")]
+    [SerializeField] private float detectionTime = 5f;
+
+    private float detectionTimer = 0f;
+
 
     public Color colorOrig;
     Vector3 playerDir;
@@ -187,6 +192,18 @@ public class enemyAI : MonoBehaviour, IDamage
             if (angleToPlayer < FOV &&
                 hit.collider.GetComponentInParent<playerController>() != null)
             {
+                detectionTimer += Time.deltaTime;
+
+                if (detectionTimer >= detectionTime)
+                {
+                    if (missionManager.instance != null)
+                    {
+                        missionManager.instance.LoseMission("STEALTH DETECTED");
+                    }
+
+                    detectionTimer = 0f;
+                }
+
                 if (isRanged)
                 {
                     agent.stoppingDistance = 10f;
@@ -208,6 +225,8 @@ public class enemyAI : MonoBehaviour, IDamage
                 return true;
             }
         }
+
+        detectionTimer = 0f;
 
         return false;
     }
