@@ -10,6 +10,15 @@ public class ExtractionZone : MonoBehaviour
             if (hostage != null && hostage.IsRescued())
             {
                 Debug.Log("PLAYER REACHED EXTRACTION WITH HOSTAGE!");
+
+                if (missionManager.instance != null)
+                {
+                    missionManager.instance.WinMission();
+                }
+                else
+                {
+                    Debug.LogError("Extraction could not find MissionManager!");
+                }
             }
             else
             {
