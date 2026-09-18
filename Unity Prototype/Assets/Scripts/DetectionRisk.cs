@@ -15,8 +15,6 @@ public class DetectionRisk : MonoBehaviour
         if (detectionRiskBar == null)
             return;
 
-        detectionRiskBar.value -= decreaseSpeed * Time.deltaTime;
-
-        detectionRiskBar.value = Mathf.Clamp01(detectionRiskBar.value);
+        detectionRiskBar.value = Mathf.MoveTowards(detectionRiskBar.value, 0f, decreaseSpeed * Time.deltaTime);
     }
 }

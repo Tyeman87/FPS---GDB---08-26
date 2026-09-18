@@ -123,9 +123,19 @@ public class enemyAI : MonoBehaviour, IDamage
                 detectionIndicator.SetActive(true);
             }
 
+            if (detectionRiskBar != null)
+            {
+                detectionRiskBar.value = 0.5f;
+            }
+
             if (detectionText != null)
             {
                 detectionText.text = "?";
+            }
+
+            if (detectionRiskBar != null && investigating)
+            {
+                detectionRiskBar.value = 0.5f;
             }
 
             Debug.Log("Heard player. On NavMesh: " + agent.isOnNavMesh);
@@ -227,6 +237,11 @@ public class enemyAI : MonoBehaviour, IDamage
 
                 detectionTimer += Time.deltaTime;
 
+                if (detectionRiskBar != null)
+                {
+                    detectionRiskBar.value = detectionTimer / detectionTime;
+                }
+
                 if (detectionTimer >= detectionTime)
                 {
                     if (missionManager.instance != null)
@@ -260,6 +275,11 @@ public class enemyAI : MonoBehaviour, IDamage
         }
 
         detectionTimer = 0f;
+
+        if (detectionRiskBar != null)
+        {
+            detectionRiskBar.value = 0f;
+        }
 
         if (detectionIndicator != null)
         {
@@ -387,6 +407,12 @@ public class enemyAI : MonoBehaviour, IDamage
             if (hearingTimer >= hearingDelay)
             {
                 heardPlayer = true;
+
+                if (detectionRiskBar != null)
+                {
+                    detectionRiskBar.value = 0.5f;
+                }
+
                 investigating = false;
                 hearingTimer = 0f;
 
