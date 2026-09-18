@@ -1,0 +1,258 @@
+using UnityEngine;
+using UnityEngine.AI;
+
+public class hostageAI : MonoBehaviour, IDamage, IInteractable
+{
+    public enum RescueType
+    {
+        JailCell,
+        PlayerProximity,
+        PlayerInteraction
+    }
+
+    [Header("References")]
+    [SerializeField] NavMeshAgent agent;
+    [SerializeField] Transform player;
+    [SerializeField] GameObject interactUI;
+
+    [Header("Hostage Stats")]
+    [SerializeField] int HP = 8;
+
+    [Header("Rescue Settings")]
+    [SerializeField] RescueType rescueType = RescueType.JailCell;
+
+    [SerializeField] float rescueDistance = 5f;
+
+    [Header("Follow Settings")]
+    [SerializeField] float followDistance = 2f;
+
+    private bool rescued = false;
+    private bool followingPlayer = false;
+    public bool IsRescued()
+    {
+        return rescued;
+    }
+
+    private void Start()
+    {
+        if (agent == null)
+        {
+            agent = GetComponent<NavMeshAgent>();
+        }
+
+        GameObject playerObject =
+            GameObject.FindGameObjectWithTag("Player");
+
+        if (playerObject != null)
+        {
+            player = playerObject.transform;
+        }
+        else
+        {
+            Debug.LogError("Hostage could not find Player!");
+        }
+
+        if (!agent.isOnNavMesh)
+        {
+            Debug.LogError(
+                "HOSTAGE IS NOT ON THE NAVMESH!"
+            );
+
+            return;
+        }
+
+        if (gameManager.instance != null)
+        {
+            gameManager.instance.RegisterHostage();
+        }
+        else
+        {
+            Debug.LogError("Hostage could not find GameManager!");
+        }
+
+        if (rescueType == RescueType.JailCell || rescueType == RescueType.PlayerInteraction)
+        {
+            agent.isStopped = true;
+
+            if (rescueType == RescueType.PlayerInteraction)
+            {
+                Debug.Log("Hostage is waiting for player interaction.");
+            }
+            else
+            {
+                Debug.Log("Hostage is waiting in jail cell.");
+            }
+        }
+
+        else if (rescueType == RescueType.PlayerProximity)
+        {
+            agent.isStopped = true;
+
+            Debug.Log(
+                "Hostage is waiting for player."
+            );
+        }
+    }
+
+    private void Update()
+    {
+        if (player == null)
+        {
+            return;
+        }
+
+        if (!rescued &&
+            rescueType == RescueType.PlayerProximity)
+        {
+            float distance = Vector3.Distance(
+                transform.position,
+                player.position
+            );
+
+            if (distance <= rescueDistance)
+            {
+                RescueHostage();
+            }
+        }
+
+        if (!followingPlayer)
+        {
+            return;
+        }
+
+        float followDistanceFromPlayer =
+            Vector3.Distance(
+                transform.position,
+                player.position
+            );
+
+        if (followDistanceFromPlayer > followDistance)
+        {
+            agent.isStopped = false;
+
+            agent.SetDestination(
+                player.position
+            );
+        }
+        else
+        {
+            agent.isStopped = true;
+        }
+    }
+
+    public void OpenCell()
+    {
+        Debug.Log("HOSTAGE CELL OPENED!");
+
+        if (rescueType != RescueType.JailCell)
+        {
+            return;
+        }
+
+        RescueHostage();
+    }
+
+    private void RescueHostage()
+    {
+        if (rescued)
+        {
+            return;
+        }
+
+        rescued = true;
+        followingPlayer = true;
+
+        if (agent == null)
+        {
+            Debug.LogError(
+                "Hostage has no NavMeshAgent!"
+            );
+
+            return;
+        }
+
+        if (!agent.isOnNavMesh)
+        {
+            Debug.LogError(
+                "Hostage is NOT on the NavMesh!"
+            );
+
+            return;
+        }
+
+        agent.isStopped = false;
+
+        // Tell GameManager
+        if (gameManager.instance != null)
+        {
+            gameManager.instance.hostageRescued();
+        }
+        else
+        {
+            Debug.LogError(
+                "Hostage could not find GameManager!"
+            );
+        }
+
+        Debug.Log(
+            "HOSTAGE RESCUED!"
+        );
+    }
+    public void takeDamage(int amount)
+    {
+        HP -= amount;
+
+        Debug.Log("Hostage took " + amount + " damage. HP: " + HP);
+
+        if (HP <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log("HOSTAGE DIED!");
+
+        missionManager.instance.LoseMission("HOSTAGE KILLED");
+
+        Destroy(gameObject);
+    }
+
+    public void Interact()
+    {
+        if (rescueType != RescueType.PlayerInteraction)
+        {
+            return;
+        }
+
+        if (!rescued)
+        {
+            RescueHostage();
+            return;
+        }
+
+        followingPlayer = !followingPlayer;
+
+        if (!followingPlayer)
+        {
+            agent.isStopped = true;
+            Debug.Log("Hostage stopped following.");
+        }
+        else
+        {
+            agent.isStopped = false;
+            Debug.Log("Hostage resumed following.");
+        }
+    }
+
+    public void SetInteractionUI(bool show)
+    {
+        if (interactUI == null)
+        {
+            return;
+        }
+
+        interactUI.SetActive(show);
+    }
+}
