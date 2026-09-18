@@ -56,6 +56,9 @@ public class enemyAI : MonoBehaviour, IDamage
 
     [SerializeField] private TMPro.TMP_Text detectionText;
 
+    [Header("Detection Risk")]
+    [SerializeField] private UnityEngine.UI.Slider detectionRiskBar;
+
 
     public Color colorOrig;
     Vector3 playerDir;
