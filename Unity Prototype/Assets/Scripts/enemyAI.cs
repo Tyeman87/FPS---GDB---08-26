@@ -51,6 +51,11 @@ public class enemyAI : MonoBehaviour, IDamage
 
     private float detectionTimer = 0f;
 
+    [Header("Detection Indicator")]
+    [SerializeField] private GameObject detectionIndicator;
+
+    [SerializeField] private TMPro.TMP_Text detectionText;
+
 
     public Color colorOrig;
     Vector3 playerDir;
@@ -110,6 +115,11 @@ public class enemyAI : MonoBehaviour, IDamage
         }
         else if (heardPlayer)
         {
+            if (detectionIndicator != null)
+            {
+                detectionIndicator.SetActive(false);
+            }
+
             Debug.Log("Heard player. On NavMesh: " + agent.isOnNavMesh);
 
             if (agent.isOnNavMesh)
@@ -132,6 +142,11 @@ public class enemyAI : MonoBehaviour, IDamage
         }
         else
         {
+            if (detectionIndicator != null)
+            {
+                detectionIndicator.SetActive(false);
+            }
+
             checkRoam();
         }
 
@@ -192,6 +207,16 @@ public class enemyAI : MonoBehaviour, IDamage
             if (angleToPlayer < FOV &&
                 hit.collider.GetComponentInParent<playerController>() != null)
             {
+                if (detectionIndicator != null)
+                {
+                    detectionIndicator.SetActive(true);
+                }
+
+                if (detectionText != null)
+                {
+                    detectionText.text = "!";
+                }
+
                 detectionTimer += Time.deltaTime;
 
                 if (detectionTimer >= detectionTime)
@@ -227,6 +252,11 @@ public class enemyAI : MonoBehaviour, IDamage
         }
 
         detectionTimer = 0f;
+
+        if (detectionIndicator != null)
+        {
+            detectionIndicator.SetActive(false);
+        }
 
         return false;
     }
@@ -353,6 +383,16 @@ public class enemyAI : MonoBehaviour, IDamage
                 hearingTimer = 0f;
 
                 noiseLocation = gameManager.instance.player.transform.position;
+
+                if (detectionIndicator != null)
+                {
+                    detectionIndicator.SetActive(true);
+                }
+
+                if (detectionText != null)
+                {
+                    detectionText.text = "?";
+                }
 
                 Debug.Log("Enemy heard the player!");
             }
