@@ -117,7 +117,12 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             if (detectionIndicator != null)
             {
-                detectionIndicator.SetActive(false);
+                detectionIndicator.SetActive(true);
+            }
+
+            if (detectionText != null)
+            {
+                detectionText.text = "?";
             }
 
             Debug.Log("Heard player. On NavMesh: " + agent.isOnNavMesh);
