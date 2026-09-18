@@ -45,6 +45,7 @@ public class enemyAI : MonoBehaviour, IDamage
     private float investigationTimer = 0f;
     private bool investigating = false;
     private Vector3 searchLocation;
+    private Vector3 startingPosition;
 
     [Header("Stealth Detection")]
     [SerializeField] private float detectionTime = 5f;
@@ -131,11 +132,6 @@ public class enemyAI : MonoBehaviour, IDamage
             if (detectionText != null)
             {
                 detectionText.text = "?";
-            }
-
-            if (detectionRiskBar != null && investigating)
-            {
-                detectionRiskBar.value = 0.5f;
             }
 
             Debug.Log("Heard player. On NavMesh: " + agent.isOnNavMesh);
@@ -448,7 +444,7 @@ public class enemyAI : MonoBehaviour, IDamage
             heardPlayer = false;
             hearingTimer = 0f;
 
-            agent.ResetPath();
+            agent.SetDestination(startingPos);
 
             return;
         }
