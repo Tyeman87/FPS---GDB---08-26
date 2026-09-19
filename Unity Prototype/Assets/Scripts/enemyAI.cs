@@ -60,6 +60,19 @@ public class enemyAI : MonoBehaviour, IDamage
     [Header("Detection Risk")]
     [SerializeField] private UnityEngine.UI.Slider detectionRiskBar;
 
+    private void FindDetectionRiskBar()
+    {
+        if (detectionRiskBar == null)
+        {
+            DetectionRisk risk = FindAnyObjectByType<DetectionRisk>();
+
+            if (risk != null)
+            {
+                detectionRiskBar = risk.detectionRiskBar;
+            }
+        }
+    }
+
 
     public Color colorOrig;
     Vector3 playerDir;
@@ -119,6 +132,7 @@ public class enemyAI : MonoBehaviour, IDamage
         }
         else if (heardPlayer)
         {
+            Debug.Log("HEARD PLAYER SECTION ACTIVE");
             if (detectionIndicator != null)
             {
                 detectionIndicator.SetActive(true);
