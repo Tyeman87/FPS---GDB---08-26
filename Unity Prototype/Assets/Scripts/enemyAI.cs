@@ -170,6 +170,10 @@ public class enemyAI : MonoBehaviour, IDamage
                         investigating = true;
                         investigationTimer = 0f;
                     }
+                    if (detectionMessage != null)
+                    {
+                        detectionMessage.SetActive(true);
+                    }
                 }
                 else
                 {
@@ -471,6 +475,11 @@ public class enemyAI : MonoBehaviour, IDamage
             investigating = false;
             heardPlayer = false;
             hearingTimer = 0f;
+
+            if (detectionMessage != null)
+            {
+                detectionMessage.SetActive(false);
+            }
 
             agent.SetDestination(startingPos);
 
