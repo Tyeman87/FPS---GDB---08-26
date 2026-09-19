@@ -51,6 +51,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
     int jumpCount;
     int HPOrig;
     int gunInvPos;
+    public int keyCount;
 
     float shootTimer;
 
@@ -63,6 +64,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        keyCount = 0;
         HPOrig = HP;
         foreach (GunStats gun in startingGuns)
         {
@@ -119,6 +121,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
 
         selectGun();
     }
+
 
     void sprint()
     {
