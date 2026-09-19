@@ -15,4 +15,12 @@ public class DetectionRisk : MonoBehaviour
         if (detectionRiskBar == null)
             return;
     }
+
+    public void DrainRisk()
+    {
+        if (detectionRiskBar == null)
+            return;
+
+        detectionRiskBar.value = Mathf.MoveTowards(detectionRiskBar.value, 0f, decreaseSpeed * Time.deltaTime);
+    }
 }

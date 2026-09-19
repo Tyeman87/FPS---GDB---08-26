@@ -49,8 +49,8 @@ public class enemyAI : MonoBehaviour, IDamage
 
     [Header("Stealth Detection")]
     [SerializeField] private float detectionTime = 5f;
-
     private float detectionTimer = 0f;
+    [SerializeField] private GameObject detectionMessage;
 
     [Header("Detection Indicator")]
     [SerializeField] private GameObject detectionIndicator;
@@ -59,6 +59,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     [Header("Detection Risk")]
     [SerializeField] private UnityEngine.UI.Slider detectionRiskBar;
+    private DetectionRisk detectionRisk;
 
     private void FindDetectionRiskBar()
     {
@@ -68,7 +69,14 @@ public class enemyAI : MonoBehaviour, IDamage
 
             if (risk != null)
             {
+                detectionRisk = risk;
                 detectionRiskBar = risk.detectionRiskBar;
+
+                Debug.Log("DETECTION RISK BAR FOUND");
+            }
+            else
+            {
+                Debug.Log("DETECTION RISK BAR NOT FOUND");
             }
         }
     }
@@ -99,6 +107,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
     void Start()
     {
+        FindDetectionRiskBar();
         HP = maxHP;
         colorOrig = model.material.color;
         agent.speed = moveSpeed;
@@ -173,6 +182,11 @@ public class enemyAI : MonoBehaviour, IDamage
             if (detectionIndicator != null)
             {
                 detectionIndicator.SetActive(false);
+            }
+
+            if (detectionRisk != null)
+            {
+                detectionRisk.DrainRisk();
             }
 
             checkRoam();
