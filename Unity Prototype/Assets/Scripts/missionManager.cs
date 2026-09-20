@@ -75,6 +75,10 @@ public class missionManager : MonoBehaviour
         {
             message = "OBJECTIVE PROTECTED!";
         }
+        else if (currentGameMode == GameMode.Stealth)
+        {
+            message = "HOSTAGE EXTRACTED";
+        }
 
         Debug.Log($"Mission '{missionName}' completed successfully!");
 
@@ -121,6 +125,10 @@ public class missionManager : MonoBehaviour
         else if (FindAnyObjectByType<protectMode>() != null)
         {
             currentGameMode = GameMode.Protect;
+        }
+        else if (FindAnyObjectByType<StealthGameMode>() != null)
+        {
+            currentGameMode = GameMode.Stealth;
         }
         else
         {

@@ -7,6 +7,7 @@ TagManager:
   - EnemySpawner
   - Spawner_SpeedyGonzales
   - Player Spawn Position
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,6 @@ TagManager:
   - Flame
   - StashPreview
   - EnemyDetection
-  - 
   - 
   - 
   - 
