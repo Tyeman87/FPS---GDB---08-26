@@ -687,12 +687,31 @@ MonoBehaviour:
   moveSpeed: 0.1
   roamDist: 1
   roamPauseTime: 1
+  eyePosition: {fileID: 7381838360409893747}
   bullet: {fileID: 6964972883987111141, guid: e497d04b3da85d748af41ef0a2efde98, type: 3}
   gunPivot: {fileID: 5949990998344718369}
   shootPosition: {fileID: 5949990998344718369}
   shootRate: 3
   gunRotateSpeed: 1
   bulletDamage: 5
+  isRanged: 1
+  stealthBar: {fileID: 0}
+  hearingThreshold: 0.75
+  hearingDelay: 2
+  investigationRadius: 5
+  investigationTime: 3
+  detectionTime: 5
+  audHurt:
+  - {fileID: 8300000, guid: 68ae155f8f553d743aab8a9dc59ffd03, type: 3}
+  - {fileID: 8300000, guid: 3fc9f63aa3ee8b54d92d63fb54cc28ff, type: 3}
+  - {fileID: 8300000, guid: c40b15f48c6da174d88ec6dd3ad6db6e, type: 3}
+  - {fileID: 8300000, guid: fdc79ef2f536fcc41975d3ebcc5d5b3e, type: 3}
+  audHurtVol: 0.2
+  audDeath:
+  - {fileID: 8300000, guid: ffc86857499952743874bf8f09c1f2cf, type: 3}
+  - {fileID: 8300000, guid: 754528019529dfd4bb6f3e61d3c28948, type: 3}
+  - {fileID: 8300000, guid: f8beeb0ccc30bd94d9ca05d6b435afed, type: 3}
+  audDeathVol: 0.5
   colorOrig: {r: 0, g: 0, b: 0, a: 0}
 --- !u!195 &754074834403600751
 NavMeshAgent:
