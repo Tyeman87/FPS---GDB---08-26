@@ -7,7 +7,8 @@ public static class MenuLdr
 
     public enum Scene
     {
-        Moni, justinScene, testAssault, testProtect, testHostage, LoadingScene
+        Moni, justinScene, testAssault, testProtect, testHostage, LoadingScene, shopScene
+
 
     }
 
