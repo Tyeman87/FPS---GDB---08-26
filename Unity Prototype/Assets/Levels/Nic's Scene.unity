@@ -2432,10 +2432,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI with Killcount
       objectReference: {fileID: 0}
-    - target: {fileID: 1271141148987517842, guid: 5237abdd7af8b0542a9d6e1104f3d47f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2024665836070932157, guid: 5237abdd7af8b0542a9d6e1104f3d47f, type: 3}
       propertyPath: player
       value: 
@@ -2448,6 +2444,14 @@ PrefabInstance:
       propertyPath: playerSpawnPos
       value: 
       objectReference: {fileID: 302759567}
+    - target: {fileID: 2024665836070932157, guid: 5237abdd7af8b0542a9d6e1104f3d47f, type: 3}
+      propertyPath: grenadeCountText
+      value: 
+      objectReference: {fileID: 1801849674}
+    - target: {fileID: 2024665836070932157, guid: 5237abdd7af8b0542a9d6e1104f3d47f, type: 3}
+      propertyPath: grenadeIconImage
+      value: 
+      objectReference: {fileID: 1514050339}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28245,12 +28249,16 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 7d2b5502ee4a87b4ea8801db1c3eab3c, type: 2}
     - target: {fileID: 7135985024536278658, guid: 1fe06d92e8eccad458395faa7da4cf7f, type: 3}
       propertyPath: allGrenades.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7135985024536278658, guid: 1fe06d92e8eccad458395faa7da4cf7f, type: 3}
       propertyPath: 'allGrenades.Array.data[0]'
       value: 
       objectReference: {fileID: 11400000, guid: 82e4895a1d47efa45aa7f67b802ee85f, type: 2}
+    - target: {fileID: 7135985024536278658, guid: 1fe06d92e8eccad458395faa7da4cf7f, type: 3}
+      propertyPath: 'allGrenades.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ce653a69f81e9464b84ab068ca45e09a, type: 2}
     - target: {fileID: 7135985024536278658, guid: 1fe06d92e8eccad458395faa7da4cf7f, type: 3}
       propertyPath: defaultUnlockedGuns.Array.size
       value: 2
@@ -28265,12 +28273,16 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 39d21f5746513df4484554b17a9d3e41, type: 2}
     - target: {fileID: 7135985024536278658, guid: 1fe06d92e8eccad458395faa7da4cf7f, type: 3}
       propertyPath: defaultUnlockedGrenades.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7135985024536278658, guid: 1fe06d92e8eccad458395faa7da4cf7f, type: 3}
       propertyPath: 'defaultUnlockedGrenades.Array.data[0]'
       value: 
       objectReference: {fileID: 11400000, guid: 82e4895a1d47efa45aa7f67b802ee85f, type: 2}
+    - target: {fileID: 7135985024536278658, guid: 1fe06d92e8eccad458395faa7da4cf7f, type: 3}
+      propertyPath: 'defaultUnlockedGrenades.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ce653a69f81e9464b84ab068ca45e09a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31020,6 +31032,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1507717960}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1514050339 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8830243373509630044, guid: 5237abdd7af8b0542a9d6e1104f3d47f, type: 3}
+  m_PrefabInstance: {fileID: 89263528}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &1515636913
 GameObject:
   m_ObjectHideFlags: 0
@@ -37058,6 +37081,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1801526724}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1801849674 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 813236035422994228, guid: 5237abdd7af8b0542a9d6e1104f3d47f, type: 3}
+  m_PrefabInstance: {fileID: 89263528}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1805769925
 GameObject:
   m_ObjectHideFlags: 0
@@ -44262,6 +44296,10 @@ PrefabInstance:
     - target: {fileID: 7387340560147317169, guid: 57f7e4dc99ce1024cb91b3d0d1f8f5b4, type: 3}
       propertyPath: m_Name
       value: LoadoutCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7387340560147317169, guid: 57f7e4dc99ce1024cb91b3d0d1f8f5b4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

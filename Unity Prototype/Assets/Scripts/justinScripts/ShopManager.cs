@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ShopManager : MonoBehaviour
 {
@@ -13,21 +14,16 @@ public class ShopManager : MonoBehaviour
     public Transform slotContainer;
     public TextMeshProUGUI playerCreditsText;
 
-    public static ShopManager Instance
-    {
-        get;
-        private set;
-    }
-
-    private List<ShopSlot> activeSlots = new List<ShopSlot>();
-
-    private Coroutine flashCoroutine;
-
     [Header("Audio")]
     [SerializeField] AudioClip cashRegSfx;
     [SerializeField] AudioSource cashSrc;
-    [Range(0f, 1f)][SerializeField] float cashVol = 0.6f;
-    [Range(0.1f, 2f)][SerializeField] float fadeDuration = 0.4f;
+    [Range(0f, 1f)] [SerializeField] float cashVol = 0.6f;
+    [Range(0.1f, 2f)] [SerializeField] float fadeDuration = 0.4f;
+
+    public static ShopManager Instance { get; private set; }
+
+    private List<ShopSlot> activeSlots = new List<ShopSlot>();
+    private Coroutine flashCoroutine;
 
     private void Awake()
     {
@@ -43,10 +39,16 @@ public class ShopManager : MonoBehaviour
     private void Start()
     {
         BuildShop();
-
         UpdateCreditsUI();
-
         RefreshShopSlots();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            CloseShop();
+        }
     }
 
     private void BuildShop()
@@ -64,21 +66,18 @@ public class ShopManager : MonoBehaviour
         if (shopSlotTemplate == null)
         {
             Debug.LogError("ShopManager: Shop Slot Template is not assigned.", this);
-
             return;
         }
 
         if (slotContainer == null)
         {
             Debug.LogError("ShopManager: Slot Container is not assigned.", this);
-
             return;
         }
 
         if (availableItems == null)
         {
             Debug.LogWarning("ShopManager: No available items assigned.", this);
-
             return;
         }
 
@@ -90,20 +89,10 @@ public class ShopManager : MonoBehaviour
             }
 
             ShopSlot newSlot = Instantiate(shopSlotTemplate, slotContainer);
-
             newSlot.shopItem = shopItem;
-
             newSlot.Initialize();
 
             activeSlots.Add(newSlot);
-        }
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            CloseShop();
         }
     }
 
@@ -117,25 +106,17 @@ public class ShopManager : MonoBehaviour
         if (SaveDataManager.Instance == null)
         {
             playerCreditsText.text = "Credits: $0";
-
             return;
         }
 
-        playerCreditsText.text =
-            $"Credits: $" +
-            $"{SaveDataManager.Instance.PlayerCredits}";
+        playerCreditsText.text = $"Credits: ${SaveDataManager.Instance.PlayerCredits}";
     }
 
     public void flashCreditsRed()
     {
         if (playerCreditsText == null)
         {
-            Debug.LogError(
-                "playerCreditsText is not assigned " +
-                "in the ShopManager Inspector!",
-                this
-            );
-
+            Debug.LogError("playerCreditsText is not assigned in the ShopManager Inspector!", this);
             return;
         }
 
@@ -150,15 +131,16 @@ public class ShopManager : MonoBehaviour
     private IEnumerator FlashRedCoroutine()
     {
         playerCreditsText.faceColor = Color.red;
-        yield return new WaitForSecondsRealtime(0.1f);
-        playerCreditsText.faceColor = Color.white;
 
+        yield return new WaitForSecondsRealtime(0.1f);
+
+        playerCreditsText.faceColor = Color.white;
         flashCoroutine = null;
     }
 
     public void RefreshShopSlots()
     {
-        foreach ( ShopSlot slot in activeSlots)
+        foreach (ShopSlot slot in activeSlots)
         {
             if (slot != null)
             {
@@ -169,39 +151,56 @@ public class ShopManager : MonoBehaviour
 
     public void playCashRegistSfx()
     {
-        if (cashRegSfx == null || cashSrc == null) return;
+        if (cashRegSfx == null || cashSrc == null)
+        {
+            return;
+        }
+
         cashSrc.clip = cashRegSfx;
         cashSrc.volume = cashVol;
         cashSrc.Play();
+
         StartCoroutine(FadeOut(cashSrc, fadeDuration));
-
-
     }
 
-    IEnumerator FadeOut(AudioSource src, float dur)
+    private IEnumerator FadeOut(AudioSource src, float dur)
     {
         float start = src.volume;
         float elapsed = 0f;
+
         while (elapsed < dur && src.isPlaying)
         {
             elapsed += Time.unscaledDeltaTime;
             src.volume = Mathf.Lerp(start, 0f, elapsed / dur);
+
             yield return null;
         }
+
         src.volume = 0f;
     }
 
     public void CloseShop()
     {
-        Scene shope = SceneManager.GetSceneByName("shopScene");
-        SceneManager.UnloadSceneAsync(shope).completed += _ =>
+        Scene shopScene = SceneManager.GetSceneByName("shopScene");
+
+        if (!shopScene.IsValid() || !shopScene.isLoaded)
+        {
+            Debug.LogWarning("ShopManager: shopScene is not currently loaded.");
+            return;
+        }
+
+        SceneManager.UnloadSceneAsync(shopScene).completed += _ =>
         {
             Scene hub = SceneManager.GetActiveScene();
             SceneManager.SetActiveScene(hub);
-            gameManager.instance.stateUnpause();
+
+            if (gameManager.instance != null)
+            {
+                gameManager.instance.stateUnpause();
+            }
         };
     }
-}
+
     private void OnDestroy()
     {
         if (Instance == this)
