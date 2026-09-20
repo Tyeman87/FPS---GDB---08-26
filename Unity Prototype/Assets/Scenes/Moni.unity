@@ -899,6 +899,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8022834353896613701, guid: 5d9e55400ebc4234abe7d9801b705670, type: 3}
+      propertyPath: roamDist
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022834353896613701, guid: 5d9e55400ebc4234abe7d9801b705670, type: 3}
+      propertyPath: roamPauseTime
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1126,6 +1134,14 @@ PrefabInstance:
     - target: {fileID: 7743829422452702652, guid: f39f26e6d438aeb4cbd73dade74cac4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732551328266769177, guid: f39f26e6d438aeb4cbd73dade74cac4a, type: 3}
+      propertyPath: roamDist
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8732551328266769177, guid: f39f26e6d438aeb4cbd73dade74cac4a, type: 3}
+      propertyPath: roamPauseTime
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
