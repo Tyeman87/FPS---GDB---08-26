@@ -31,4 +31,14 @@ public static class MenuLdr
             onLoaderCallback = null;
         }
     }
+
+    public static void loadAdditive(Scene scene)
+    {
+        AsyncOperation op = SceneManager.LoadSceneAsync(scene.ToString(), LoadSceneMode.Additive);
+        op.completed += _ =>
+        {
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName(scene.ToString()));
+        };
+    }
+
 }

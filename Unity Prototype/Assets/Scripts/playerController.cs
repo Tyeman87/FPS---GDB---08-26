@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenuBttn
@@ -44,6 +45,8 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
     [Range(0, 1)][SerializeField] float audJumpVol;
     [SerializeField] AudioClip[] audSteps;
     [Range(0, 1)][SerializeField] float audStepsVol;
+    public AudioClip[] reloadSound;
+    [Range(0, 1)][SerializeField] float reloadSoundVol;
 
     [Header("Interaction")]
     [SerializeField] float interactDistance = 3f;
@@ -51,6 +54,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
     int jumpCount;
     int HPOrig;
     int gunInvPos;
+    public int keyCount;
 
     float shootTimer;
 
@@ -63,6 +67,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        keyCount = 0;
         HPOrig = HP;
         foreach (GunStats gun in startingGuns)
         {
@@ -120,6 +125,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
         selectGun();
     }
 
+
     void sprint()
     {
         if (Input.GetButtonDown("Sprint"))
@@ -165,7 +171,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
     {
         shootTimer = 0;
         gunInv[gunInvPos].currMag--;//subtract ammo when shooting
-        
+
         updatePlayerUI();
 
         GunStats gun = gunInv[gunInvPos].stats;
@@ -201,12 +207,12 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
 
             gun.currMag += reloadAmt;
             gun.currReserve -= reloadAmt;
-            Debug.Log($"Reloaded {reloadAmt} rounds");
+            audioManager.Instance.audPlayer.PlayOneShot(reloadSound[Random.Range(0, reloadSound.Count() - 1)]);
 
             updatePlayerUI();//update player ui so they see the changes from the reload
         }
     }
-    
+
 
     public void takeDamage(int amount)
     {
@@ -241,7 +247,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
         gameManager.instance.playerArmorBar.fillAmount = (float)armor / armorMax;
-        
+
         if (gunInv.Count > 0)
         {
             gameManager.instance.ammoCounterText.text =
@@ -302,7 +308,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
 
     public void getGunStats(GunStats gun)
     {
-        for(int i = 0; i < gunInv.Count; i++)
+        for (int i = 0; i < gunInv.Count; i++)
         {
             if (gunInv[i].stats == gun)//if gun picked up is already in inventory, fill ammo
             {

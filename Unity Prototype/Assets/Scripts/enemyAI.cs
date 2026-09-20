@@ -28,6 +28,30 @@ public class enemyAI : MonoBehaviour, IDamage
     [Header("Attack Types")]
     [SerializeField] bool isRanged;
 
+    [Header("Hearing")]
+    [SerializeField] private UnityEngine.UI.Slider stealthBar;
+    [SerializeField] private float hearingThreshold = 0.75f;
+    [SerializeField] private float hearingDelay = 2f;
+    private float hearingTimer = 0f;
+    private bool heardPlayer = false;
+    private Vector3 noiseLocation;
+
+
+    [Header("Investigation")]
+    [SerializeField] private float investigationRadius = 5f;
+    [SerializeField] private float investigationTime = 3f;
+
+
+    private float investigationTimer = 0f;
+    private bool investigating = false;
+    private Vector3 searchLocation;
+
+    [Header("Stealth Detection")]
+    [SerializeField] private float detectionTime = 5f;
+
+    private float detectionTimer = 0f;
+
+
     public Color colorOrig;
     Vector3 playerDir;
 
@@ -68,10 +92,41 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             if (canSeePlayer())
             {
-                if (isRanged)
+                heardPlayer = false;
+                investigating = false;
+                investigationTimer = 0f;
+
+                if (!isRanged)
+                {
+                    agent.stoppingDistance = 0f;
+                    agent.SetDestination(gameManager.instance.player.transform.position);
+                }
+                else
                 {
                     agent.stoppingDistance = 10f;
                     agent.SetDestination(gameManager.instance.player.transform.position);
+                }
+            }
+        }
+        else if (heardPlayer)
+        {
+            Debug.Log("Heard player. On NavMesh: " + agent.isOnNavMesh);
+
+            if (agent.isOnNavMesh)
+            {
+                if (!investigating)
+                {
+                    agent.SetDestination(noiseLocation);
+
+                    if (!agent.pathPending && agent.remainingDistance <= 2f)
+                    {
+                        investigating = true;
+                        investigationTimer = 0f;
+                    }
+                }
+                else
+                {
+                    SearchNoiseArea();
                 }
             }
         }
@@ -79,11 +134,16 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             checkRoam();
         }
+
+        if (!heardPlayer)
+        {
+            CheckPlayerNoise();
+        }
     }
 
     void checkRoam()
     {
-        if (agent.remainingDistance < 0.1f)
+        if (agent.isOnNavMesh && agent.remainingDistance < 0.1f)
         {
             roamTimer += Time.deltaTime;
             if (roamTimer > roamPauseTime)
@@ -116,6 +176,7 @@ public class enemyAI : MonoBehaviour, IDamage
         playerDir = gameManager.instance.player.transform.position - eyePosition.position;
 
         Vector3 flatPlayerDir = new Vector3(playerDir.x, 0, playerDir.z);
+        Debug.Log("Player distance: " + playerDir.magnitude);
         angleToPlayer = Vector3.Angle(flatPlayerDir, transform.forward);
 
         RaycastHit hit;
@@ -127,9 +188,22 @@ public class enemyAI : MonoBehaviour, IDamage
             playerDir.magnitude
         ))
         {
+            Debug.Log("Raycast hit: " + hit.collider.name);
             if (angleToPlayer < FOV &&
                 hit.collider.GetComponentInParent<playerController>() != null)
             {
+                detectionTimer += Time.deltaTime;
+
+                if (detectionTimer >= detectionTime)
+                {
+                    if (missionManager.instance != null)
+                    {
+                        missionManager.instance.LoseMission("STEALTH DETECTED");
+                    }
+
+                    detectionTimer = 0f;
+                }
+
                 if (isRanged)
                 {
                     agent.stoppingDistance = 10f;
@@ -151,6 +225,8 @@ public class enemyAI : MonoBehaviour, IDamage
                 return true;
             }
         }
+
+        detectionTimer = 0f;
 
         return false;
     }
@@ -259,5 +335,62 @@ public class enemyAI : MonoBehaviour, IDamage
         model.material.color = Color.red;
         yield return new WaitForSeconds(0.1f);
         model.material.color = colorOrig;
+    }
+
+    private void CheckPlayerNoise()
+    {
+        if (stealthBar == null)
+            return;
+
+        if (stealthBar.value >= hearingThreshold)
+        {
+            hearingTimer += Time.deltaTime;
+
+            if (hearingTimer >= hearingDelay)
+            {
+                heardPlayer = true;
+                investigating = false;
+                hearingTimer = 0f;
+
+                noiseLocation = gameManager.instance.player.transform.position;
+
+                Debug.Log("Enemy heard the player!");
+            }
+        }
+        else
+        {
+            hearingTimer = 0f;
+        }
+    }
+
+    private void SearchNoiseArea()
+    {
+        Debug.Log("SEARCHING NOISE AREA");
+        investigationTimer += Time.deltaTime;
+
+        if (investigationTimer >= investigationTime)
+        {
+            investigating = false;
+            heardPlayer = false;
+            hearingTimer = 0f;
+
+            agent.ResetPath();
+
+            return;
+        }
+
+        if (!agent.hasPath || agent.remainingDistance <= 0.5f)
+        {
+            Vector3 randomPoint = noiseLocation + Random.insideUnitSphere * investigationRadius;
+            randomPoint.y = noiseLocation.y;
+
+            UnityEngine.AI.NavMeshHit hit;
+
+            if (UnityEngine.AI.NavMesh.SamplePosition(randomPoint, out hit, investigationRadius, UnityEngine.AI.NavMesh.AllAreas))
+            {
+                searchLocation = hit.position;
+                agent.SetDestination(searchLocation);
+            }
+        }
     }
 }

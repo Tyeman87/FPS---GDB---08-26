@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gun - Assault 2
   m_EditorClassIdentifier: Assembly-CSharp::gunStats
   itemCost: 2000
-  itemID: gun_assault2
+  itemID: 002
   itemName: Assault Rifle 2
   gunModel: {fileID: 5166629313087248835, guid: a218c21bc250f064588d8b8a1c7cea81, type: 3}
   shootDamage: 1
@@ -21,6 +21,7 @@ MonoBehaviour:
   shootRate: 0.1
   magSize: 50
   maxReserve: 300
+  weaponIcon: {fileID: 0}
   hitEffect: {fileID: 5584602140419805224, guid: 6d2ab2bfa7deb87469243d7b8de20229, type: 3}
   shootSound:
   - {fileID: 8300000, guid: 79e0e3085f3f0e94a9068b0c05a898f9, type: 3}

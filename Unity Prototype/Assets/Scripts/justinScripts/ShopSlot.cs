@@ -42,6 +42,7 @@ public class ShopSlot : MonoBehaviour
         {
             ShopManager.Instance.UpdateCreditsUI();
             RefreshSlotState();
+            ShopManager.Instance.playCashRegistSfx();
 
         }
         else

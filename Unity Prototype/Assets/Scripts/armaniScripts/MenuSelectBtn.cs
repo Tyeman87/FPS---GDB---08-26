@@ -1,4 +1,3 @@
-using CodeMonkey.Utils;
 using UnityEngine;
 using static damage;
 
@@ -32,7 +31,7 @@ public class MenuSelectBtn : MonoBehaviour
                 {
                     UI.SetActive(false);
 
-                    MenuLdr.load(MenuLdr.Scene.Moni);
+                    OpenShop();
 
                 }
             }
@@ -161,7 +160,9 @@ public class MenuSelectBtn : MonoBehaviour
         }
     }
 
-
-
- 
+    public void OpenShop()
+    {
+        gameManager.instance.statePause();
+        MenuLdr.loadAdditive(MenuLdr.Scene.shopScene);
+    }
 }
