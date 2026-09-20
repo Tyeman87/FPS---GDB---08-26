@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenuBttn
 {
@@ -49,11 +50,18 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
     [SerializeField] AudioClip[] audJump;
     [Range(0, 1)] [SerializeField] float audJumpVol;
     [SerializeField] AudioClip[] audSteps;
-    [Range(0, 1)] [SerializeField] float audStepsVol;
-    [Header("Interaction")] [SerializeField] float interactDistance = 3f;
+    [Range(0, 1)][SerializeField] float audStepsVol;
+    public AudioClip[] reloadSound;
+    [Range(0, 1)][SerializeField] float reloadSoundVol;
+
+    [Header("Interaction")]
+    [SerializeField] float interactDistance = 3f;
+
     int jumpCount;
     int HPOrig;
     int gunInvPos;
+    public int keyCount;
+
     float shootTimer;
     Vector3 moveDir;
     Vector3 playerVel;
@@ -61,6 +69,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
     bool isPlayingStep;
     void Start()
     {
+        keyCount = 0;
         HPOrig = HP;
         if (!SaveDataManager.Instance.StartingGearGiven())
         {
@@ -196,7 +205,8 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
     void shoot()
     {
         shootTimer = 0;
-        gunInv[gunInvPos].currMag--;
+        gunInv[gunInvPos].currMag--;//subtract ammo when shooting
+
         updatePlayerUI();
         GunStats gun = gunInv[gunInvPos].stats;
         audioManager.Instance.audPlayer.PlayOneShot(gun.shootSound[Random.Range(0, gun.shootSound.Length)], gun.shootSoundVol);
@@ -271,6 +281,9 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
             return;
         }
 
+            gun.currMag += reloadAmt;
+            gun.currReserve -= reloadAmt;
+            audioManager.Instance.audPlayer.PlayOneShot(reloadSound[Random.Range(0, reloadSound.Count() - 1)]);
         Rigidbody rb = grenadeObject.GetComponent<Rigidbody>();
         if (rb == null)
         {
@@ -279,7 +292,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
             return;
         }
 
-        projectile.Initialize(grenade, gameObject);
+                                  projectile.Initialize(grenade, gameObject);
         rb.linearVelocity = CalculateGrenadeVelocity(throwPosition, targetPoint);
         rb.angularVelocity = Random.insideUnitSphere * 8f;
         Debug.Log("THREW GRENADE: " + grenade.itemName + " | Damage: " + grenade.damage + " | Radius: " + grenade.blastRadius + " | Range: " + grenade.throwRange);
@@ -366,6 +379,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
     {
         gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
         gameManager.instance.playerArmorBar.fillAmount = (float)armor / armorMax;
+
         if (gunInv.Count > 0)
         {
             gameManager.instance.ammoCounterText.text = $"{gunInv[gunInvPos].currMag} / " + $"{gunInv[gunInvPos].currReserve}";

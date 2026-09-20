@@ -1438,12 +1438,20 @@ MonoBehaviour:
   moveSpeed: 4
   roamDist: 2
   roamPauseTime: 1
+  eyePosition: {fileID: 3814818413978270028}
   bullet: {fileID: 5614957210237989777, guid: bd81b90c2b250f84c879b12ba0a85f77, type: 3}
   gunPivot: {fileID: 3643653682235363325}
   shootPosition: {fileID: 7472316353242505961}
   shootRate: 0.1
   gunRotateSpeed: 345
   bulletDamage: 2
+  isRanged: 0
+  stealthBar: {fileID: 0}
+  hearingThreshold: 0.75
+  hearingDelay: 2
+  investigationRadius: 5
+  investigationTime: 3
+  detectionTime: 5
   colorOrig: {r: 0, g: 0, b: 0, a: 0}
 --- !u!33 &5200536922452790399
 MeshFilter:
