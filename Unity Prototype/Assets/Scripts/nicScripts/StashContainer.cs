@@ -60,15 +60,12 @@ public class StashContainer : MonoBehaviour, IInteractable
         storedGuns.Remove(gun);
 
         Debug.Log($"Removed {gun.stats.name} from stash.");
-
-        SaveDataManager.Instance.SaveStash(storedGuns);
     }
 
     public void StoreGun(
         GunStats gun,
         int currMag,
-        int currReserve,
-        bool save = true)
+        int currReserve)
     {
         if (gun == null)
         {
@@ -87,11 +84,6 @@ public class StashContainer : MonoBehaviour, IInteractable
             $"Stored {gun.name} | " +
             $"Ammo: {currMag} / {currReserve}"
         );
-
-        if (save)
-        {
-            SaveDataManager.Instance.SaveStash(storedGuns);
-        }
     }
 
     public void ClearStash()

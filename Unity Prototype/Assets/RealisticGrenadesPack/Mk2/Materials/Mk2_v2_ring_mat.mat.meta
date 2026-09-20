@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: cb36d10d0a67dfb4e9f0c9b8313597fb
+timeCreated: 1488579043
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 53211
+  packageName: Realistic Grenades Pack
+  packageVersion: 1.0.2
+  assetPath: Assets/RealisticGrenadesPack/Mk2/Materials/Mk2_v2_ring_mat.mat
+  uploadId: 165610

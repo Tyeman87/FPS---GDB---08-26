@@ -29,6 +29,15 @@ public class levelManager : MonoBehaviour
         currentLevel++;
         difficultyMultiplier += difficultyIncreaseRate;
 
+        if (gameManager.instance != null && 
+            gameManager.instance.playerScript != null)
+        {
+            SaveDataManager.Instance.SavePlayerInventory(
+                gameManager.instance.playerScript.GetGunInventory(),
+                gameManager.instance.playerScript.GetGunIndex()
+            );
+        }
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2033ebe4abc6ff74cbf6d4837e1cbb5e
+timeCreated: 1451629162
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 53211
+  packageName: Realistic Grenades Pack
+  packageVersion: 1.0.2
+  assetPath: Assets/RealisticGrenadesPack/Smoke/SmokeGrenadeRed.mat
+  uploadId: 165610
