@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c25a27d1bc2faef41b7d6049443532bf
+timeCreated: 1451875938
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 53211
+  packageName: Realistic Grenades Pack
+  packageVersion: 1.0.2
+  assetPath: Assets/RealisticGrenadesPack/Stun/StunGrenade.mat
+  uploadId: 165610

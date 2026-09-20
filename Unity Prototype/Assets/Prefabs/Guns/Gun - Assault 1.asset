@@ -16,13 +16,20 @@ MonoBehaviour:
   itemID: 001
   itemName: Assault Rifle 1
   gunModel: {fileID: 5102364676698742929, guid: 7870e6c724576cd4f89b7842dd545cd8, type: 3}
+  iconModel: {fileID: 0}
   shootDamage: 1
   shootDist: 300
   shootRate: 0.2
   magSize: 30
   maxReserve: 90
-  weaponIcon: {fileID: 0}
+  weaponIcon: {fileID: 21300000, guid: c6831434fc754384b87fbc1852dc3a73, type: 3}
   hitEffect: {fileID: 5584602140419805224, guid: 25246989ef8fb1e49a5425378d295c10, type: 3}
   shootSound:
   - {fileID: 8300000, guid: 79e0e3085f3f0e94a9068b0c05a898f9, type: 3}
   shootSoundVol: 0.2
+  maxDamage: 0
+  minShootRate: 0
+  maxMagSize: 0
+  damageUpgradeAmount: 1
+  shootRateUpgradeAmount: 0.05
+  magSizeUpgradeAmount: 1

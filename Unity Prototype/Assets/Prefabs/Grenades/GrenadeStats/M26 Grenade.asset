@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 379a6b23b75e0514f855e271c2cd26f0, type: 3}
+  m_Name: M26 Grenade
+  m_EditorClassIdentifier: Assembly-CSharp::GrenadeItemStats
+  itemCost: 500
+  itemID: 100
+  itemName: M26 Grenade
+  grenadeModel: {fileID: 1279450109377205835, guid: 180c43f4a0ba9704a8a29bdf85747dc7, type: 3}
+  grenadePrefab: {fileID: 7079672611691449744, guid: 147e4194593dcf24990f5befe1cb22c2, type: 3}
+  grenadeIcon: {fileID: 21300000, guid: 9ea9be8bdf6c613449b107410caf8a4c, type: 3}
+  damage: 75
+  blastRadius: 5
+  throwRange: 15

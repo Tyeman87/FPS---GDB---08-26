@@ -7,6 +7,7 @@ public class StashUI : MonoBehaviour
 {
     [Header("UI References")]
     [SerializeField] private GameObject stashPanel;
+    [SerializeField] private GameObject loadoutPanel;
     [SerializeField] private Transform itemListContent;
     [SerializeField] private TextMeshProUGUI selectedItemName;
     [SerializeField] private TextMeshProUGUI selectedItemStats;
@@ -24,29 +25,65 @@ public class StashUI : MonoBehaviour
     {
         stashPanel.SetActive(false);
 
-        takeButton.onClick.AddListener(TakeSelectedGun);
+        if (loadoutPanel != null)
+        {
+            loadoutPanel.SetActive(false);
+        }
+
+        takeButton.onClick.AddListener(
+            TakeSelectedGun
+        );
 
         takeButton.interactable = false;
     }
 
     private void Update()
     {
-        if (stashPanel.activeSelf &&
-            Input.GetKeyDown(KeyCode.Escape))
+        // ESC closes the stash/loadout UI completely.
+        if (
+            stashPanel.activeSelf &&
+            Input.GetKeyDown(KeyCode.Escape)
+        )
         {
-            gameManager.instance.SuppressPauseInputThisFrame();
+            gameManager.instance
+                .SuppressPauseInputThisFrame();
 
             CloseStash();
+
+            return;
+        }
+
+        // ESC while in Loadout returns to the stash.
+        if (
+            loadoutPanel != null &&
+            loadoutPanel.activeSelf &&
+            Input.GetKeyDown(KeyCode.Escape)
+        )
+        {
+            gameManager.instance
+                .SuppressPauseInputThisFrame();
+
+            CloseLoadout();
         }
     }
 
-    public void OpenStash(StashContainer stash)
+    // =========================================================
+    // OPEN STASH
+    // =========================================================
+
+    public void OpenStash(
+        StashContainer stash)
     {
         currentStash = stash;
 
         player.enabled = false;
 
         HideMainUI();
+
+        if (loadoutPanel != null)
+        {
+            loadoutPanel.SetActive(false);
+        }
 
         stashPanel.SetActive(true);
 
@@ -59,6 +96,63 @@ public class StashUI : MonoBehaviour
         UnlockCursor();
     }
 
+    // =========================================================
+    // OPEN LOADOUT
+    // =========================================================
+
+    public void OpenLoadout()
+    {
+        if (loadoutPanel == null)
+        {
+            Debug.LogWarning(
+                "Loadout Panel has not been assigned to StashUI."
+            );
+
+            return;
+        }
+
+        // Hide stash.
+        stashPanel.SetActive(false);
+
+        // Show loadout.
+        loadoutPanel.SetActive(true);
+
+        // Keep player disabled.
+        player.enabled = false;
+
+        // Keep game paused.
+        gameManager.instance.isPaused = true;
+
+        // Keep cursor available for UI.
+        UnlockCursor();
+    }
+
+    // =========================================================
+    // CLOSE LOADOUT / RETURN TO STASH
+    // =========================================================
+
+    public void CloseLoadout()
+    {
+        if (loadoutPanel == null)
+        {
+            return;
+        }
+
+        loadoutPanel.SetActive(false);
+
+        stashPanel.SetActive(true);
+
+        player.enabled = false;
+
+        gameManager.instance.isPaused = true;
+
+        UnlockCursor();
+    }
+
+    // =========================================================
+    // POPULATE STASH
+    // =========================================================
+
     private void PopulateItemList()
     {
         foreach (Transform child in itemListContent)
@@ -69,7 +163,9 @@ public class StashUI : MonoBehaviour
         List<StashContainer.StashedGun> storedGuns =
             currentStash.GetStoredGuns();
 
-        foreach (StashContainer.StashedGun gun in storedGuns)
+        foreach (
+            StashContainer.StashedGun gun
+            in storedGuns)
         {
             GameObject newButton =
                 Instantiate(
@@ -78,13 +174,17 @@ public class StashUI : MonoBehaviour
                 );
 
             TextMeshProUGUI buttonText =
-                newButton.GetComponentInChildren<TextMeshProUGUI>();
+                newButton.GetComponentInChildren<
+                    TextMeshProUGUI
+                >();
 
             if (buttonText != null)
             {
-                buttonText.text = gun.stats.name;
+                buttonText.text =
+                    gun.stats.name;
 
-                buttonText.raycastTarget = false;
+                buttonText.raycastTarget =
+                    false;
             }
 
             Button button =
@@ -110,6 +210,10 @@ public class StashUI : MonoBehaviour
         }
     }
 
+    // =========================================================
+    // SELECT STASH ITEM
+    // =========================================================
+
     private void SelectItem(
         StashContainer.StashedGun gun)
     {
@@ -131,8 +235,14 @@ public class StashUI : MonoBehaviour
             $"Damage: {gun.stats.shootDamage}\n" +
             $"Range: {gun.stats.shootDist}";
 
-        ShowPreviewModel(gun.stats);
+        ShowPreviewModel(
+            gun.stats
+        );
     }
+
+    // =========================================================
+    // TAKE GUN
+    // =========================================================
 
     private void TakeSelectedGun()
     {
@@ -147,20 +257,42 @@ public class StashUI : MonoBehaviour
             selectedGun.currReserve
         );
 
-        currentStash.RemoveGun(selectedGun);
+        currentStash.RemoveGun(
+            selectedGun
+        );
 
         ClearSelection();
 
         PopulateItemList();
     }
 
+    // =========================================================
+    // CLOSE STASH
+    // =========================================================
+
     public void CloseStash()
     {
+        SaveDataManager.Instance
+            .SavePlayerInventory(
+                player.GetGunInventory(),
+                player.GetGunIndex()
+            );
+
+        SaveDataManager.Instance
+            .SaveStash(
+                currentStash.GetStoredGuns()
+            );
+
         player.enabled = true;
 
         ShowMainUI();
 
         stashPanel.SetActive(false);
+
+        if (loadoutPanel != null)
+        {
+            loadoutPanel.SetActive(false);
+        }
 
         gameManager.instance.isPaused = false;
 
@@ -168,6 +300,10 @@ public class StashUI : MonoBehaviour
 
         LockCursor();
     }
+
+    // =========================================================
+    // CURSOR
+    // =========================================================
 
     public void LockCursor()
     {
@@ -184,6 +320,10 @@ public class StashUI : MonoBehaviour
 
         Cursor.visible = true;
     }
+
+    // =========================================================
+    // MAIN UI
+    // =========================================================
 
     private void HideMainUI()
     {
@@ -203,9 +343,11 @@ public class StashUI : MonoBehaviour
 
         mainUICanvasGroup.alpha = 0f;
 
-        mainUICanvasGroup.interactable = false;
+        mainUICanvasGroup.interactable =
+            false;
 
-        mainUICanvasGroup.blocksRaycasts = false;
+        mainUICanvasGroup.blocksRaycasts =
+            false;
     }
 
     private void ShowMainUI()
@@ -217,10 +359,16 @@ public class StashUI : MonoBehaviour
 
         mainUICanvasGroup.alpha = 1f;
 
-        mainUICanvasGroup.interactable = true;
+        mainUICanvasGroup.interactable =
+            true;
 
-        mainUICanvasGroup.blocksRaycasts = true;
+        mainUICanvasGroup.blocksRaycasts =
+            true;
     }
+
+    // =========================================================
+    // CLEAR SELECTION
+    // =========================================================
 
     private void ClearSelection()
     {
@@ -235,14 +383,21 @@ public class StashUI : MonoBehaviour
         ClearPreviewModel();
     }
 
-    private void ShowPreviewModel(GunStats gun)
+    // =========================================================
+    // PREVIEW MODEL
+    // =========================================================
+
+    private void ShowPreviewModel(
+        GunStats gun)
     {
         Transform previewParent =
             GetPreviewModelParent();
 
-        if (previewParent == null ||
+        if (
+            previewParent == null ||
             gun == null ||
-            gun.gunModel == null)
+            gun.gunModel == null
+        )
         {
             return;
         }
@@ -298,7 +453,9 @@ public class StashUI : MonoBehaviour
         }
 
         Transform stashCanvasTransform =
-            transform.Find("StashPreviewModel");
+            transform.Find(
+                "StashPreviewModel"
+            );
 
         if (stashCanvasTransform != null)
         {
@@ -329,20 +486,24 @@ public class StashUI : MonoBehaviour
     {
         foreach (
             Collider collider
-            in previewModel.GetComponentsInChildren<Collider>())
+            in previewModel.GetComponentsInChildren<Collider>()
+        )
         {
             collider.enabled = false;
         }
 
         foreach (
             Rigidbody rb
-            in previewModel.GetComponentsInChildren<Rigidbody>())
+            in previewModel.GetComponentsInChildren<Rigidbody>()
+        )
         {
             rb.isKinematic = true;
         }
 
         gunPickup pickup =
-            previewModel.GetComponentInChildren<gunPickup>();
+            previewModel.GetComponentInChildren<
+                gunPickup
+            >();
 
         if (pickup != null)
         {
