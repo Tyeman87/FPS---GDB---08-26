@@ -73,7 +73,7 @@ public class MenuSelectBtn : MonoBehaviour
                 {
                     UI.SetActive(false);
 
-                    MenuLdr.load(MenuLdr.Scene.testHostage);
+                    MenuLdr.load(MenuLdr.Scene.rescueLvlJustin);
 
                 }
             }
