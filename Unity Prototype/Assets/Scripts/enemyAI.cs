@@ -8,7 +8,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] public Renderer model;
 
     [Header("Enemy Stats")]
-    [Range(1, 10)][SerializeField] public int HP;
+    [Range(1, 100)][SerializeField] public int HP;
     [SerializeField] public int maxHP;
     [SerializeField] int faceTargetSpeed;
     [SerializeField] int FOV;
@@ -48,6 +48,9 @@ public class enemyAI : MonoBehaviour, IDamage
 
     [Header("Stealth Detection")]
     [SerializeField] private float detectionTime = 5f;
+
+    [Header("Audio")]
+    [SerializeField] AudioClip[] gunshotClips;
 
     private float detectionTimer = 0f;
 
@@ -269,6 +272,11 @@ public class enemyAI : MonoBehaviour, IDamage
     void shoot()
     {
         shootTimer = 0;
+
+        if (audioManager.Instance != null && gunshotClips.Length > 0)
+        {
+            audioManager.Instance.audPlayer.PlayOneShot(gunshotClips[Random.Range(0, gunshotClips.Length)]);
+        }
 
         Vector3 targetDirection =
             gameManager.instance.player.transform.position

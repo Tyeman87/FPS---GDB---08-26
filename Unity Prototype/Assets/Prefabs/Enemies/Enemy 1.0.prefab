@@ -570,8 +570,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::enemyAI
   agent: {fileID: 7836691616530714333}
   model: {fileID: 6515721808002073225}
-  HP: 5
-  maxHP: 5
+  HP: 10
+  maxHP: 10
   faceTargetSpeed: 10
   FOV: 90
   moveSpeed: 4
@@ -584,7 +584,15 @@ MonoBehaviour:
   shootRate: 2
   gunRotateSpeed: 10
   bulletDamage: 2
-  isRanged: 0
+  isRanged: 1
+  stealthBar: {fileID: 0}
+  hearingThreshold: 0.75
+  hearingDelay: 2
+  investigationRadius: 5
+  investigationTime: 3
+  detectionTime: 5
+  gunshotClips:
+  - {fileID: 8300000, guid: 550bdf08095d36d43b02b9e9cea3c286, type: 3}
   colorOrig: {r: 0, g: 0, b: 0, a: 0}
 --- !u!33 &6986632289804971165
 MeshFilter:

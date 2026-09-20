@@ -1,4 +1,6 @@
+using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class missionManager : MonoBehaviour
 {
@@ -23,6 +25,8 @@ public class missionManager : MonoBehaviour
     [Header("Mission Settings")]
     [SerializeField] string missionName;
     [SerializeField] GameMode currentGameMode;
+    [SerializeField] public int rewardMoney = 500;
+    //[SerializeField] string lobbyRoomName = "LobbyRoom";
     private MissionState currentState = MissionState.NotStarted;
     public MissionState CurrentState => currentState;
 
@@ -60,6 +64,11 @@ public class missionManager : MonoBehaviour
         missionComplete = true;
         missionActive = false;
         currentState = MissionState.Completed;
+
+        if (SaveDataManager.Instance != null)
+        {
+            SaveDataManager.Instance.AddCredits(rewardMoney);
+        }
 
         string message = "";
 
@@ -100,6 +109,7 @@ public class missionManager : MonoBehaviour
 
         gameManager.instance.missionLose(message);
     }
+
 
     public bool ShouldRespawnEnemies()
     {

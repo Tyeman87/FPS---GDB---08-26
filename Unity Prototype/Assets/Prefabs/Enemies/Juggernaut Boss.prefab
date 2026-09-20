@@ -1452,6 +1452,8 @@ MonoBehaviour:
   investigationRadius: 5
   investigationTime: 3
   detectionTime: 5
+  gunshotClips:
+  - {fileID: 8300000, guid: 550bdf08095d36d43b02b9e9cea3c286, type: 3}
   colorOrig: {r: 0, g: 0, b: 0, a: 0}
 --- !u!33 &5200536922452790399
 MeshFilter:
