@@ -337,6 +337,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::door
   model: {fileID: 9125370186558997080}
   UI: {fileID: 7037550742939641466}
+  doorOpenSound:
+  - {fileID: 8300000, guid: 4b66f0c5f1c594a6e9d91b86f719108c, type: 3}
+  - {fileID: 8300000, guid: 6cc4537865ae1479b9e7ac12ab172909, type: 3}
+  doorShutSound:
+  - {fileID: 8300000, guid: c52f0b0e644464ca0b066d80091a5c8f, type: 3}
+  - {fileID: 8300000, guid: 0210c1127dd754ced9c723f73428cc1c, type: 3}
+  - {fileID: 8300000, guid: 04213f14ae5074a84b3c41aef6b6a00f, type: 3}
+  - {fileID: 8300000, guid: b88eb643c13ba4470b51a26e2823b565, type: 3}
+  - {fileID: 8300000, guid: 898f03a7c6c254aa2bffc1050c10ea08, type: 3}
+  doorLockedSound:
+  - {fileID: 8300000, guid: cfb34fff51b0847e599e6831ba854864, type: 3}
+  isLocked: 0
 --- !u!65 &2486674021813203137
 BoxCollider:
   m_ObjectHideFlags: 0

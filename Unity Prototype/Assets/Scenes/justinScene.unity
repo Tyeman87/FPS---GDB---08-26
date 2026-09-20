@@ -29350,6 +29350,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::door
   model: {fileID: 6874432004381071744}
   UI: {fileID: 6533314347517838729}
+  doorOpenSound: []
+  doorShutSound: []
+  doorLockedSound: []
   isLocked: 0
 --- !u!222 &1698534709858784927
 CanvasRenderer:

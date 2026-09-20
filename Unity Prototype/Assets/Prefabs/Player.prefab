@@ -315,12 +315,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c40b15f48c6da174d88ec6dd3ad6db6e, type: 3}
   - {fileID: 8300000, guid: 68ae155f8f553d743aab8a9dc59ffd03, type: 3}
   - {fileID: 8300000, guid: 3fc9f63aa3ee8b54d92d63fb54cc28ff, type: 3}
-  audHurtVol: 0.5
+  audHurtVol: 0.35
   audJump:
   - {fileID: 8300000, guid: 7a6f88ccde2f340409ec0eb14cb1c24f, type: 3}
   - {fileID: 8300000, guid: a6cd3129be23fcb4ea9c540597405e5f, type: 3}
   - {fileID: 8300000, guid: 957fbd2697f293c40a64925d16de7fbd, type: 3}
-  audJumpVol: 0.5
+  audJumpVol: 0.3
   audSteps:
   - {fileID: 8300000, guid: 04f73d504b17cbb4087251a1f7ddb5f5, type: 3}
   - {fileID: 8300000, guid: b71555bf73c51764786fda85333acd65, type: 3}
@@ -331,7 +331,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a33a31bae2b81734b8556698c0940fe3, type: 3}
   - {fileID: 8300000, guid: 1dcd1b5d2397f5642933a18982633330, type: 3}
   - {fileID: 8300000, guid: 8df4a6b4d6fedd34c8bd1f5ea2f37ce8, type: 3}
-  audStepsVol: 0.2
+  audStepsVol: 0.1
+  reloadSound:
+  - {fileID: 8300000, guid: 679b87e5cf03ef547a3d3a2ef2c7f63c, type: 3}
+  reloadSoundVol: 0
   interactDistance: 5
   keyCount: 0
 --- !u!33 &4326116532634170512
