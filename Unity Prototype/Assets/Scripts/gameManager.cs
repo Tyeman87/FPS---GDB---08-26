@@ -148,8 +148,11 @@ public class gameManager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
-        menuActive.SetActive(false);
-        menuActive = null;
+        if (menuActive != null)
+        {
+            menuActive.SetActive(false);
+            menuActive = null;
+        }
     }
 
     public void RegisterHostage()

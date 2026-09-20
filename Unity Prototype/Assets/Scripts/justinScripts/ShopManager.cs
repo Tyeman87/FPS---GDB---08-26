@@ -16,6 +16,12 @@ public class ShopManager : MonoBehaviour
     private Coroutine flashCoroutine;
     private Color originalTextColor = Color.white;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip cashRegSfx;
+    [SerializeField] AudioSource cashSrc;
+    [Range(0f, 1f)][SerializeField] float cashVol = 0.6f;
+    [Range(0.1f, 2f)][SerializeField] float fadeDuration = 0.4f;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -46,6 +52,14 @@ public class ShopManager : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            CloseShop();
+        }
+    }
+
     public void UpdateCreditsUI()
     {
         if (playerCreditsText != null && SaveDataManager.Instance != null)
@@ -72,7 +86,7 @@ public class ShopManager : MonoBehaviour
     private IEnumerator FlashRedCoroutine()
     {
         playerCreditsText.faceColor = Color.red;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSecondsRealtime(0.1f);
         playerCreditsText.faceColor = Color.white;
 
     }
@@ -86,5 +100,40 @@ public class ShopManager : MonoBehaviour
                 slot.RefreshSlotState();
             }
         }
+    }
+
+    public void playCashRegistSfx()
+    {
+        if (cashRegSfx == null || cashSrc == null) return;
+        cashSrc.clip = cashRegSfx;
+        cashSrc.volume = cashVol;
+        cashSrc.Play();
+        StartCoroutine(FadeOut(cashSrc, fadeDuration));
+
+
+    }
+
+    IEnumerator FadeOut(AudioSource src, float dur)
+    {
+        float start = src.volume;
+        float elapsed = 0f;
+        while (elapsed < dur && src.isPlaying)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            src.volume = Mathf.Lerp(start, 0f, elapsed / dur);
+            yield return null;
+        }
+        src.volume = 0f;
+    }
+
+    public void CloseShop()
+    {
+        Scene shope = SceneManager.GetSceneByName("shopScene");
+        SceneManager.UnloadSceneAsync(shope).completed += _ =>
+        {
+            Scene hub = SceneManager.GetActiveScene();
+            SceneManager.SetActiveScene(hub);
+            gameManager.instance.stateUnpause();
+        };
     }
 }
