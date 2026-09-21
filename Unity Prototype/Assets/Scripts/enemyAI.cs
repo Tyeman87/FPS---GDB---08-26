@@ -205,7 +205,9 @@ public class enemyAI : MonoBehaviour, IDamage
 
                 if (detectionTimer >= detectionTime)
                 {
-                    if (missionManager.instance != null)
+                    if (missionManager.instance != null &&
+                    missionManager.instance.CurrentState == missionManager.MissionState.Active &&
+                    missionManager.instance.IsStealthMode())
                     {
                         missionManager.instance.LoseMission("STEALTH DETECTED");
                     }
@@ -331,25 +333,44 @@ public class enemyAI : MonoBehaviour, IDamage
                 assaultMode.enemyDefeated();
             }
 
-           
             if (protectMode != null)
             {
                 protectMode.enemyDefeated();
             }
-			Destroy(gameObject);
 
+            if (audioManager.Instance != null &&
+                audioManager.Instance.audPlayer != null &&
+                audDeath != null &&
+                audDeath.Length > 0)
+            {
+                audioManager.Instance.audPlayer.PlayOneShot(
+                    audDeath[Random.Range(0, audDeath.Length)],
+                    audDeathVol
+                );
+            }
 
-            audioManager.Instance.audPlayer.PlayOneShot(audDeath[Random.Range(0, audDeath.Length)], audDeathVol);
-
+            Destroy(gameObject);
         }
         else
         {
             StartCoroutine(flashRed());
+
+            if (audioManager.Instance != null &&
+                audioManager.Instance.audPlayer != null &&
+                audHurt != null &&
+                audHurt.Length > 0)
+            {
+                audioManager.Instance.audPlayer.PlayOneShot(
+                    audHurt[Random.Range(0, audHurt.Length)],
+                    audHurtVol
+                );
+            }
         }
 
-        DmgCounter.instance.addDmg(amount);
-
-        audioManager.Instance.audPlayer.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
+        if (DmgCounter.instance != null)
+        {
+            DmgCounter.instance.addDmg(amount);
+        }
     }
 
     IEnumerator flashRed()

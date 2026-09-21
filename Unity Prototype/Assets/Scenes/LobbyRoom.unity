@@ -333,27 +333,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3210270548762231797, guid: 0189909ffb841f04db5e005272d7c800, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3210270548762231797, guid: 0189909ffb841f04db5e005272d7c800, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3210270548762231797, guid: 0189909ffb841f04db5e005272d7c800, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 3210270548762231797, guid: 0189909ffb841f04db5e005272d7c800, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 3210270548762231797, guid: 0189909ffb841f04db5e005272d7c800, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 3698744047054466202, guid: 0189909ffb841f04db5e005272d7c800, type: 3}
       propertyPath: m_Name
       value: StashCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698744047054466202, guid: 0189909ffb841f04db5e005272d7c800, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8025731320350731829, guid: 0189909ffb841f04db5e005272d7c800, type: 3}
       propertyPath: mainUI
@@ -363,6 +367,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 208045581}
+    - target: {fileID: 8957104924794540380, guid: 0189909ffb841f04db5e005272d7c800, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 580775222364502341, guid: 0189909ffb841f04db5e005272d7c800, type: 3}
     m_RemovedGameObjects: []
@@ -810,6 +818,10 @@ PrefabInstance:
     - target: {fileID: 7700024888586646000, guid: 0d98b52ec71e295418bfab8f7120e57a, type: 3}
       propertyPath: m_Name
       value: StashContainer Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700024888586646000, guid: 0d98b52ec71e295418bfab8f7120e57a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4891033185825258377, guid: 0d98b52ec71e295418bfab8f7120e57a, type: 3}
