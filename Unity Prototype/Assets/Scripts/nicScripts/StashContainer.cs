@@ -32,11 +32,14 @@ public class StashContainer : MonoBehaviour, IInteractable
     [Header("Loadout Guns")]
     [SerializeField] private List<StashedGun> storedGuns = new List<StashedGun>();
 
-    private bool waitingForInput = false;
-
     private void Start()
     {
         RefreshFromLoadout();
+
+        if (stashPrompt != null)
+        {
+            stashPrompt.SetActive(false);
+        }
     }
 
     public void Interact()
@@ -45,8 +48,18 @@ public class StashContainer : MonoBehaviour, IInteractable
 
         RefreshFromLoadout();
 
-        stashPrompt.SetActive(true);
-        waitingForInput = true;
+        if (stashPrompt != null)
+        {
+            stashPrompt.SetActive(false);
+        }
+
+        if (stashUI == null)
+        {
+            Debug.LogError("StashContainer: StashUI is not assigned.");
+            return;
+        }
+
+        stashUI.OpenStash(this);
     }
 
     public void RefreshFromLoadout()
@@ -157,31 +170,5 @@ public class StashContainer : MonoBehaviour, IInteractable
     public void ClearStash()
     {
         storedGuns.Clear();
-    }
-
-    private void Update()
-    {
-        if (!stashPrompt.activeSelf)
-        {
-            return;
-        }
-
-        if (Input.GetKeyUp(KeyCode.E))
-        {
-            waitingForInput = false;
-        }
-
-        if (waitingForInput)
-        {
-            return;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            RefreshFromLoadout();
-
-            stashUI.OpenStash(this);
-            stashPrompt.SetActive(false);
-        }
     }
 }

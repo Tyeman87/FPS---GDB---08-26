@@ -28557,7 +28557,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.13333334
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 87a422cf8cd166c4c9826b483665aa62, type: 2}
   m_BuildHeightMesh: 0
@@ -44293,6 +44293,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6122705405686974209, guid: 57f7e4dc99ce1024cb91b3d0d1f8f5b4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7387340560147317169, guid: 57f7e4dc99ce1024cb91b3d0d1f8f5b4, type: 3}
       propertyPath: m_Name
       value: LoadoutCanvas
@@ -44454,8 +44458,7 @@ PrefabInstance:
       propertyPath: loadoutPanel
       value: 
       objectReference: {fileID: 295329144}
-    m_RemovedComponents:
-    - {fileID: 6593358759702374883, guid: 0189909ffb841f04db5e005272d7c800, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2659263007167524681, guid: 0189909ffb841f04db5e005272d7c800, type: 3}
@@ -44471,6 +44474,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2647819620355500897, guid: 0d98b52ec71e295418bfab8f7120e57a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2647819620355500897, guid: 0d98b52ec71e295418bfab8f7120e57a, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4891033185825258377, guid: 0d98b52ec71e295418bfab8f7120e57a, type: 3}
       propertyPath: player
       value: 
@@ -44526,6 +44537,10 @@ PrefabInstance:
     - target: {fileID: 7700024888586646000, guid: 0d98b52ec71e295418bfab8f7120e57a, type: 3}
       propertyPath: m_Name
       value: StashContainer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204159559010357285, guid: 0d98b52ec71e295418bfab8f7120e57a, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
