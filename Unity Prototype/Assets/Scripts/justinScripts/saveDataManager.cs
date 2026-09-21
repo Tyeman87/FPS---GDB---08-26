@@ -76,7 +76,7 @@ public class SaveDataManager : MonoBehaviour
         // TEST SAVE
         if (Input.GetButtonDown("SaveGame"))
         {
-            data.playerCredits += 100;
+            
 
             Debug.Log($"Total credits: {data.playerCredits}. Saved game.");
 
@@ -108,6 +108,17 @@ public class SaveDataManager : MonoBehaviour
             {
                 ShopManager.Instance.UpdateCreditsUI();
             }
+        }
+    }
+
+    public void AddCredits(int amount)
+    {
+        data.playerCredits += amount;
+        Save();
+
+        if (ShopManager.Instance != null)
+        {
+            ShopManager.Instance.UpdateCreditsUI();
         }
     }
 

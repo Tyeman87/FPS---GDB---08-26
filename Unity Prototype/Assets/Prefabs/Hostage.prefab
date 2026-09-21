@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 3189641945790723555}
   - component: {fileID: 527472700875339354}
   - component: {fileID: 7093972514851741146}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hostage
   m_TagString: Untagged
   m_Icon: {fileID: 0}

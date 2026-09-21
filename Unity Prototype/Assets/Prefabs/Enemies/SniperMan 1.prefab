@@ -687,7 +687,7 @@ MonoBehaviour:
   moveSpeed: 0.1
   roamDist: 1
   roamPauseTime: 1
-  eyePosition: {fileID: 7381838360409893747}
+  eyePosition: {fileID: 0}
   bullet: {fileID: 6964972883987111141, guid: e497d04b3da85d748af41ef0a2efde98, type: 3}
   gunPivot: {fileID: 5949990998344718369}
   shootPosition: {fileID: 5949990998344718369}
@@ -712,6 +712,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 754528019529dfd4bb6f3e61d3c28948, type: 3}
   - {fileID: 8300000, guid: f8beeb0ccc30bd94d9ca05d6b435afed, type: 3}
   audDeathVol: 0.5
+  gunshotClips:
+  - {fileID: 8300000, guid: 550bdf08095d36d43b02b9e9cea3c286, type: 3}
   colorOrig: {r: 0, g: 0, b: 0, a: 0}
 --- !u!195 &754074834403600751
 NavMeshAgent:
