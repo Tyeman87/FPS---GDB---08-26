@@ -39,7 +39,7 @@ EditorBuildSettings:
     path: Assets/Scenes/shopScene.unity
     guid: 22791eb520e6a5841b7ac9930629947f
   - enabled: 1
-    path: Assets/Scenes/rescueLvl-Justin.unity
+    path: Assets/Scenes/rescueLvlJustin.unity
     guid: 656700265275ab34dae710f250e40dae
   - enabled: 1
     path: Assets/Scenes/LoadingScene.unity
