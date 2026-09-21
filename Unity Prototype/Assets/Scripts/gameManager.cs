@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-
 public class gameManager : MonoBehaviour
 {
     public static gameManager instance;
@@ -11,7 +10,6 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
-
 
     [Header("UI")]
     [SerializeField] TMP_Text killCountText;
@@ -25,6 +23,10 @@ public class gameManager : MonoBehaviour
     [SerializeField] public TMP_Text keyCounterText;
     [SerializeField] TMP_Text creditsAwardedText;
 
+    [Header("Grenade UI")]
+    [SerializeField] Image grenadeIconImage;
+    [SerializeField] TMP_Text grenadeCountText;
+
     [Header("Player")]
     public bool isPaused;
     public GameObject player;
@@ -32,13 +34,6 @@ public class gameManager : MonoBehaviour
     public Image playerHPBar;
     public Image playerArmorBar;
     public GameObject damageFlashPanel;
-
-
-
-
-
-
-
 
     public int totalHostages;
     public int rescuedHostages;
@@ -54,9 +49,6 @@ public class gameManager : MonoBehaviour
     public GameObject hpArmorAddedPopup;
     public GameObject reloadPopup;
 
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         instance = this;
@@ -70,8 +62,26 @@ public class gameManager : MonoBehaviour
 
         timeScaleOrig = Time.timeScale;
 
-        killCountText.text = "Kills: 0";
+        if (killCountText != null)
+        {
+            killCountText.text = "Kills: 0";
+        }
 
+        if (hostageCountText != null)
+        {
+            hostageCountText.text = "Rescued: 0/0";
+        }
+
+        if (grenadeIconImage != null)
+        {
+            grenadeIconImage.sprite = null;
+            grenadeIconImage.enabled = false;
+        }
+
+        if (grenadeCountText != null)
+        {
+            grenadeCountText.text = "x0";
+        }
 
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Position");
 
@@ -83,18 +93,17 @@ public class gameManager : MonoBehaviour
         {
             Debug.Log("Player Spawn Position FOUND: " + playerSpawnPos.name);
         }
+    }
 
-        if (hostageCountText != null)
-        {
-            hostageCountText.text = "Rescued: 0/0";
-        }
-
-      
-        
+    private void Start()
+    {
+        UpdateGrenadeUI();
     }
 
     void Update()
     {
+        UpdateGrenadeUI();
+
         if (Input.GetButtonDown("Cancel"))
         {
             if (pauseInputSuppressedFrame == Time.frameCount)
@@ -125,13 +134,6 @@ public class gameManager : MonoBehaviour
         pauseInputSuppressedFrame = Time.frameCount;
     }
 
-    private void Start()
-    {
-        
-        
-    }
-
-
     public void statePause()
     {
         isPaused = true;
@@ -156,15 +158,55 @@ public class gameManager : MonoBehaviour
         }
     }
 
+    public void UpdateGrenadeUI()
+    {
+        if (grenadeIconImage == null || grenadeCountText == null)
+        {
+            return;
+        }
+
+        if (playerScript == null)
+        {
+            player = GameObject.FindWithTag("Player");
+
+            if (player != null)
+            {
+                playerScript = player.GetComponent<playerController>();
+            }
+        }
+
+        if (playerScript == null)
+        {
+            grenadeIconImage.sprite = null;
+            grenadeIconImage.enabled = false;
+            grenadeCountText.text = "x0";
+            return;
+        }
+
+        GrenadeItemStats currentGrenade = playerScript.GetCurrentGrenade();
+        int grenadeAmount = playerScript.GetCurrentGrenadeAmount();
+
+        if (currentGrenade == null || grenadeAmount <= 0)
+        {
+            grenadeIconImage.sprite = null;
+            grenadeIconImage.enabled = false;
+            grenadeCountText.text = "x0";
+            return;
+        }
+
+        grenadeIconImage.sprite = currentGrenade.grenadeIcon;
+        grenadeIconImage.enabled = currentGrenade.grenadeIcon != null;
+        grenadeIconImage.preserveAspect = true;
+
+        grenadeCountText.text = "x" + grenadeAmount;
+    }
+
     public void RegisterHostage()
     {
         totalHostages++;
         UpdateHostageUI();
 
-        Debug.Log(
-            "Hostage registered. Total hostages: " +
-            totalHostages
-        );
+        Debug.Log("Hostage registered. Total hostages: " + totalHostages);
     }
 
     public void hostageRescued()
@@ -172,12 +214,7 @@ public class gameManager : MonoBehaviour
         rescuedHostages++;
         UpdateHostageUI();
 
-        Debug.Log(
-            "Hostage rescued: " +
-            rescuedHostages +
-            "/" +
-            totalHostages
-        );
+        Debug.Log("Hostage rescued: " + rescuedHostages + "/" + totalHostages);
 
         if (rescuedHostages >= totalHostages)
         {
@@ -189,11 +226,7 @@ public class gameManager : MonoBehaviour
     {
         if (hostageCountText != null)
         {
-            hostageCountText.text =
-                "Rescued: " +
-                rescuedHostages +
-                " / " +
-                totalHostages;
+            hostageCountText.text = "Rescued: " + rescuedHostages + " / " + totalHostages;
         }
     }
 
@@ -201,7 +234,10 @@ public class gameManager : MonoBehaviour
     {
         killCount++;
 
-        killCountText.text = "Kills: " + killCount;
+        if (killCountText != null)
+        {
+            killCountText.text = "Kills: " + killCount;
+        }
     }
 
     public int getKillCount()
@@ -254,9 +290,4 @@ public class gameManager : MonoBehaviour
             missionObjectiveText.text = objective;
         }
     }
-
-
-
-
-
 }

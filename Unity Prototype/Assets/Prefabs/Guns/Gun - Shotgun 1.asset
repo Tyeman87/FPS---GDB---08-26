@@ -16,13 +16,20 @@ MonoBehaviour:
   itemID: 005
   itemName: Shotgun 1
   gunModel: {fileID: 7402851512432412455, guid: 89334e2249ee6034ea3c73d05dbbc729, type: 3}
+  iconModel: {fileID: 0}
   shootDamage: 5
   shootDist: 10
   shootRate: 1
   magSize: 5
   maxReserve: 50
-  weaponIcon: {fileID: 0}
+  weaponIcon: {fileID: 21300000, guid: 18a5223ff01213a4980932b6601e5b10, type: 3}
   hitEffect: {fileID: 5584602140419805224, guid: 965221b72cdf3694ba411a9830b83587, type: 3}
   shootSound:
   - {fileID: 8300000, guid: 79e0e3085f3f0e94a9068b0c05a898f9, type: 3}
   shootSoundVol: 0.1
+  maxDamage: 0
+  minShootRate: 0
+  maxMagSize: 0
+  damageUpgradeAmount: 1
+  shootRateUpgradeAmount: 0.05
+  magSizeUpgradeAmount: 1
