@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 34b833efec419f94f9b6f9b28d1c8665
+timeCreated: 1451518081
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 53211
+  packageName: Realistic Grenades Pack
+  packageVersion: 1.0.2
+  assetPath: Assets/RealisticGrenadesPack/M67/Grenade_M67.mat
+  uploadId: 165610

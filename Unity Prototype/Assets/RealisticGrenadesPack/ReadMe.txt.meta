@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 31410a448af5ef44788852030a257d9e
+timeCreated: 1452575961
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 53211
+  packageName: Realistic Grenades Pack
+  packageVersion: 1.0.2
+  assetPath: Assets/RealisticGrenadesPack/ReadMe.txt
+  uploadId: 165610

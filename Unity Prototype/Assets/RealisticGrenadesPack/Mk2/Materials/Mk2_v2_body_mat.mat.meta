@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b199e04928a8cd84896ce2f82c7e42bc
+timeCreated: 1488579044
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 53211
+  packageName: Realistic Grenades Pack
+  packageVersion: 1.0.2
+  assetPath: Assets/RealisticGrenadesPack/Mk2/Materials/Mk2_v2_body_mat.mat
+  uploadId: 165610

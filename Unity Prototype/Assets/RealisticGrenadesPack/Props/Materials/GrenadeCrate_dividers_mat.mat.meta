@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d77f86298a7221d4aa0e8f929af3a35d
+timeCreated: 1488585930
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 53211
+  packageName: Realistic Grenades Pack
+  packageVersion: 1.0.2
+  assetPath: Assets/RealisticGrenadesPack/Props/Materials/GrenadeCrate_dividers_mat.mat
+  uploadId: 165610

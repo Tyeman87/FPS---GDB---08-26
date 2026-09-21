@@ -558,7 +558,6 @@ GameObject:
   - component: {fileID: 483145017986626789}
   - component: {fileID: 6379873783585181307}
   - component: {fileID: 5995324311743401389}
-  - component: {fileID: 6593358759702374883}
   m_Layer: 5
   m_Name: StashCanvas
   m_TagString: Untagged
@@ -602,6 +601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StashUI
   stashPanel: {fileID: 8957104924794540380}
+  loadoutPanel: {fileID: 0}
   itemListContent: {fileID: 212296552798510516}
   selectedItemName: {fileID: 4545584389818993317}
   selectedItemStats: {fileID: 628001265580517584}
@@ -610,6 +610,7 @@ MonoBehaviour:
   player: {fileID: 0}
   stashItemButtonPrefab: {fileID: 2105083361735033818, guid: a7af5c37c7020084280a9fdb5f803bb8, type: 3}
   previewModelParent: {fileID: 0}
+  grenadesGivenWhenTaken: 3
 --- !u!223 &483145017986626789
 Canvas:
   m_ObjectHideFlags: 0
@@ -674,18 +675,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6593358759702374883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3698744047054466202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 636823cb4f6792c4fa3c1e5de4ac32c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIClickDebugger
 --- !u!1 &4378277865014515993
 GameObject:
   m_ObjectHideFlags: 0
