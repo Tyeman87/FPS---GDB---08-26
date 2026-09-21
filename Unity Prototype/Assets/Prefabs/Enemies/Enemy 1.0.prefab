@@ -570,8 +570,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::enemyAI
   agent: {fileID: 7836691616530714333}
   model: {fileID: 6515721808002073225}
-  HP: 5
-  maxHP: 5
+  HP: 10
+  maxHP: 10
   faceTargetSpeed: 10
   FOV: 90
   moveSpeed: 4
@@ -602,6 +602,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 754528019529dfd4bb6f3e61d3c28948, type: 3}
   - {fileID: 8300000, guid: f8beeb0ccc30bd94d9ca05d6b435afed, type: 3}
   audDeathVol: 0.5
+  gunshotClips:
+  - {fileID: 8300000, guid: 550bdf08095d36d43b02b9e9cea3c286, type: 3}
   colorOrig: {r: 0, g: 0, b: 0, a: 0}
 --- !u!33 &6986632289804971165
 MeshFilter:

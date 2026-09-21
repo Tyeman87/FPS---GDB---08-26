@@ -28,7 +28,7 @@ public class pickup : MonoBehaviour
             gameManager.instance.playerScript.addHealth(healAmount);
             gameManager.instance.playerScript.addArmor(armorAmount);
             gameManager.instance.playerScript.updatePlayerUI();
-            displayPopup();
+            
             //deactivate mesh and collider for duration of timer
             GetComponent<BoxCollider>().enabled = false;
             GetComponent<MeshRenderer>().enabled = false;

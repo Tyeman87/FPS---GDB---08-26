@@ -138,6 +138,15 @@ public class hostageAI : MonoBehaviour, IDamage, IInteractable
         {
             agent.isStopped = true;
         }
+
+        if (agent != null)
+        {
+            Animator anim = GetComponentInChildren<Animator>();
+            if (anim != null)
+            {
+                anim.SetFloat("Speed", agent.velocity.magnitude);
+            }
+        }
     }
 
     public void OpenCell()
