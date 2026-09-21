@@ -44,8 +44,6 @@ public class StashContainer : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        Debug.Log("Stash Interact called!");
-
         RefreshFromLoadout();
 
         if (stashPrompt != null)
@@ -55,7 +53,6 @@ public class StashContainer : MonoBehaviour, IInteractable
 
         if (stashUI == null)
         {
-            Debug.LogError("StashContainer: StashUI is not assigned.");
             return;
         }
 
@@ -68,7 +65,6 @@ public class StashContainer : MonoBehaviour, IInteractable
 
         if (SaveDataManager.Instance == null)
         {
-            Debug.LogWarning("StashContainer: SaveDataManager not found.");
             return;
         }
 
@@ -77,14 +73,11 @@ public class StashContainer : MonoBehaviour, IInteractable
 
         if (preset == null)
         {
-            Debug.LogWarning("StashContainer: Active loadout preset was not found.");
             return;
         }
 
         AddLoadoutGun(preset.gun1ID);
         AddLoadoutGun(preset.gun2ID);
-
-        Debug.Log("Stash refreshed from Loadout Preset " + (presetIndex + 1) + ". Guns available: " + storedGuns.Count);
     }
 
     private void AddLoadoutGun(string itemID)
@@ -98,7 +91,6 @@ public class StashContainer : MonoBehaviour, IInteractable
 
         if (gun == null)
         {
-            Debug.LogWarning("StashContainer: Could not find loadout gun with ID " + itemID);
             return;
         }
 

@@ -64,10 +64,6 @@ public class GrenadeProjectile : MonoBehaviour
 
         if (stats == null)
         {
-            Debug.LogError(
-                "GrenadeProjectile exploded without GrenadeItemStats."
-            );
-
             Destroy(
                 gameObject
             );
@@ -120,14 +116,6 @@ public class GrenadeProjectile : MonoBehaviour
                 stats.damage
             );
         }
-
-        Debug.Log(
-            "GRENADE EXPLODED | Damage: " +
-            stats.damage +
-            " | Radius: " +
-            stats.blastRadius
-        );
-
         Destroy(
             gameObject
         );
@@ -137,10 +125,6 @@ public class GrenadeProjectile : MonoBehaviour
     {
         if (explosionEffect == null)
         {
-            Debug.LogWarning(
-                "Grenade exploded but no Explosion Effect is assigned."
-            );
-
             return;
         }
 
@@ -288,19 +272,6 @@ public class GrenadeProjectile : MonoBehaviour
             renderer.enabled =
                 true;
         }
-
-        Debug.Log(
-            "EXPLOSION FX STARTED: " +
-            effect.name +
-            " | Animators: " +
-            animators.Length +
-            " | Legacy Animations: " +
-            animations.Length +
-            " | Particle Systems: " +
-            particleSystems.Length +
-            " | Renderers: " +
-            renderers.Length
-        );
     }
 
     private void OnDrawGizmosSelected()
