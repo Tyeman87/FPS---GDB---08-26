@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0146e54595cb68c46b5cef42f4e77083
+timeCreated: 1488585930
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 53211
+  packageName: Realistic Grenades Pack
+  packageVersion: 1.0.2
+  assetPath: Assets/RealisticGrenadesPack/Props/Materials/GrenadeCrate_lid_mat.mat
+  uploadId: 165610

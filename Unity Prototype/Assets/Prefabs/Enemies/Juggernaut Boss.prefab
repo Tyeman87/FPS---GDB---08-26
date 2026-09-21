@@ -1146,8 +1146,7 @@ Transform:
   m_LocalPosition: {x: -0.026578905, y: 0.53499997, z: -0.042105727}
   m_LocalScale: {x: 1.3157895, y: 1.25, z: 1.3157895}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3814818413978270028}
+  m_Children: []
   m_Father: {fileID: 5302198284209647554}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8334249099535049228
@@ -1399,6 +1398,7 @@ Transform:
   - {fileID: 3036551523996843650}
   - {fileID: 6310714545718156402}
   - {fileID: 418033915824099616}
+  - {fileID: 3814818413978270028}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2145705370391800948
@@ -1445,13 +1445,26 @@ MonoBehaviour:
   shootRate: 0.1
   gunRotateSpeed: 345
   bulletDamage: 2
-  isRanged: 0
+  isRanged: 1
   stealthBar: {fileID: 0}
   hearingThreshold: 0.75
   hearingDelay: 2
   investigationRadius: 5
   investigationTime: 3
   detectionTime: 5
+  audHurt:
+  - {fileID: 8300000, guid: 68ae155f8f553d743aab8a9dc59ffd03, type: 3}
+  - {fileID: 8300000, guid: 3fc9f63aa3ee8b54d92d63fb54cc28ff, type: 3}
+  - {fileID: 8300000, guid: c40b15f48c6da174d88ec6dd3ad6db6e, type: 3}
+  - {fileID: 8300000, guid: fdc79ef2f536fcc41975d3ebcc5d5b3e, type: 3}
+  audHurtVol: 0.2
+  audDeath:
+  - {fileID: 8300000, guid: ffc86857499952743874bf8f09c1f2cf, type: 3}
+  - {fileID: 8300000, guid: 754528019529dfd4bb6f3e61d3c28948, type: 3}
+  - {fileID: 8300000, guid: f8beeb0ccc30bd94d9ca05d6b435afed, type: 3}
+  audDeathVol: 0.5
+  gunshotClips:
+  - {fileID: 8300000, guid: 550bdf08095d36d43b02b9e9cea3c286, type: 3}
   colorOrig: {r: 0, g: 0, b: 0, a: 0}
 --- !u!33 &5200536922452790399
 MeshFilter:
@@ -2730,12 +2743,12 @@ Transform:
   m_GameObject: {fileID: 8174478266681210170}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.020769408, y: 0.09999998, z: -0.006923101}
-  m_LocalScale: {x: 0.7692308, y: 0.89285713, z: 0.7692308}
+  m_LocalPosition: {x: 0.00074938725, y: 0.65999997, z: -0.051215075}
+  m_LocalScale: {x: 1.0121458, y: 1.1160715, z: 1.0121458}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6172840186092521425}
-  m_Father: {fileID: 3036551523996843650}
+  m_Father: {fileID: 5302198284209647554}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8939381462052700703
 GameObject:

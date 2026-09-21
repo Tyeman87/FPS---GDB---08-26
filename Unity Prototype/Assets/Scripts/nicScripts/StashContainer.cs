@@ -20,19 +20,25 @@ public class StashContainer : MonoBehaviour, IInteractable
             currMag = gun.magSize;
             currReserve = gun.maxReserve;
         }
+
+        public StashedGun(GunStats gun, int mag, int reserve)
+        {
+            stats = gun;
+            currMag = mag;
+            currReserve = reserve;
+        }
     }
 
-    [Header("Stored Guns")]
-    [SerializeField]
-    private List<StashedGun> storedGuns = new List<StashedGun>();
-
-    private bool waitingForInput = false;
+    [Header("Loadout Guns")]
+    [SerializeField] private List<StashedGun> storedGuns = new List<StashedGun>();
 
     private void Start()
     {
-        if (SaveDataManager.Instance != null)
+        RefreshFromLoadout();
+
+        if (stashPrompt != null)
         {
-            SaveDataManager.Instance.LoadStash(this);
+            stashPrompt.SetActive(false);
         }
     }
 
@@ -40,9 +46,99 @@ public class StashContainer : MonoBehaviour, IInteractable
     {
         Debug.Log("Stash Interact called!");
 
-        stashPrompt.SetActive(true);
+        RefreshFromLoadout();
 
-        waitingForInput = true;
+        if (stashPrompt != null)
+        {
+            stashPrompt.SetActive(false);
+        }
+
+        if (stashUI == null)
+        {
+            Debug.LogError("StashContainer: StashUI is not assigned.");
+            return;
+        }
+
+        stashUI.OpenStash(this);
+    }
+
+    public void RefreshFromLoadout()
+    {
+        storedGuns.Clear();
+
+        if (SaveDataManager.Instance == null)
+        {
+            Debug.LogWarning("StashContainer: SaveDataManager not found.");
+            return;
+        }
+
+        int presetIndex = SaveDataManager.Instance.GetActiveLoadoutPresetIndex();
+        SaveDataManager.LoadoutPresetSaveData preset = SaveDataManager.Instance.GetLoadoutPreset(presetIndex);
+
+        if (preset == null)
+        {
+            Debug.LogWarning("StashContainer: Active loadout preset was not found.");
+            return;
+        }
+
+        AddLoadoutGun(preset.gun1ID);
+        AddLoadoutGun(preset.gun2ID);
+
+        Debug.Log("Stash refreshed from Loadout Preset " + (presetIndex + 1) + ". Guns available: " + storedGuns.Count);
+    }
+
+    private void AddLoadoutGun(string itemID)
+    {
+        if (string.IsNullOrEmpty(itemID))
+        {
+            return;
+        }
+
+        GunStats gun = SaveDataManager.Instance.GetGunByID(itemID);
+
+        if (gun == null)
+        {
+            Debug.LogWarning("StashContainer: Could not find loadout gun with ID " + itemID);
+            return;
+        }
+
+        foreach (StashedGun existingGun in storedGuns)
+        {
+            if (existingGun.stats == gun)
+            {
+                return;
+            }
+        }
+
+        int magSize = GetCurrentMagSize(gun);
+        StashedGun loadoutGun = new StashedGun(gun, magSize, gun.maxReserve);
+
+        storedGuns.Add(loadoutGun);
+    }
+
+    private int GetCurrentMagSize(GunStats gun)
+    {
+        if (gun == null)
+        {
+            return 0;
+        }
+
+        if (SaveDataManager.Instance == null)
+        {
+            return gun.magSize;
+        }
+
+        WeaponUpgradeData upgradeData = SaveDataManager.Instance.GetWeaponUpgradeData(gun.itemID);
+
+        if (upgradeData == null)
+        {
+            return gun.magSize;
+        }
+
+        int magSize = gun.magSize + (gun.magSizeUpgradeAmount * upgradeData.magSizeUpgradeLevel);
+        int maxMagSize = gun.maxMagSize > 0 ? gun.maxMagSize : gun.magSize;
+
+        return Mathf.Min(magSize, maxMagSize);
     }
 
     public List<StashedGun> GetStoredGuns()
@@ -58,88 +154,21 @@ public class StashContainer : MonoBehaviour, IInteractable
         }
 
         storedGuns.Remove(gun);
-
-        Debug.Log($"Removed {gun.stats.name} from stash.");
-
-        SaveDataManager.Instance.SaveStash(storedGuns);
     }
 
-    public void StoreGun(
-        GunStats gun,
-        int currMag,
-        int currReserve,
-        bool save = true)
+    public void StoreGun(GunStats gun, int currMag, int currReserve)
     {
         if (gun == null)
         {
-            Debug.LogWarning("Tried to store a null gun.");
             return;
         }
 
-        StashedGun newGun = new StashedGun(gun);
-
-        newGun.currMag = currMag;
-        newGun.currReserve = currReserve;
-
+        StashedGun newGun = new StashedGun(gun, currMag, currReserve);
         storedGuns.Add(newGun);
-
-        Debug.Log(
-            $"Stored {gun.name} | " +
-            $"Ammo: {currMag} / {currReserve}"
-        );
-
-        if (save)
-        {
-            SaveDataManager.Instance.SaveStash(storedGuns);
-        }
     }
 
     public void ClearStash()
     {
         storedGuns.Clear();
-    }
-
-    private void Update()
-    {
-        if (!stashPrompt.activeSelf)
-        {
-            return;
-        }
-
-        if (Input.GetKeyUp(KeyCode.E))
-        {
-            waitingForInput = false;
-        }
-
-        if (waitingForInput)
-        {
-            return;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            stashUI.OpenStash(this);
-
-            stashPrompt.SetActive(false);
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            playerController.GunAmmoData gun =
-                player.GetCurrentGun();
-
-            if (gun != null)
-            {
-                StoreGun(
-                    gun.stats,
-                    gun.currMag,
-                    gun.currReserve
-                );
-
-                player.RemoveCurrentGun();
-            }
-
-            stashPrompt.SetActive(false);
-        }
     }
 }

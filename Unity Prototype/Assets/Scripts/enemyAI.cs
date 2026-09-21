@@ -8,7 +8,7 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] public Renderer model;
 
     [Header("Enemy Stats")]
-    [Range(1, 10)][SerializeField] public int HP;
+    [Range(1, 100)][SerializeField] public int HP;
     [SerializeField] public int maxHP;
     [SerializeField] int faceTargetSpeed;
     [SerializeField] int FOV;
@@ -48,6 +48,15 @@ public class enemyAI : MonoBehaviour, IDamage
 
     [Header("Stealth Detection")]
     [SerializeField] private float detectionTime = 5f;
+
+
+    [Header("Audio")]
+    [SerializeField] AudioClip[] audHurt;
+    [Range(0, 1)][SerializeField] float audHurtVol;
+    [SerializeField] AudioClip[] audDeath;
+    [Range(0, 1)][SerializeField] float audDeathVol;
+    [SerializeField] AudioClip[] gunshotClips;
+
 
     private float detectionTimer = 0f;
 
@@ -270,6 +279,11 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         shootTimer = 0;
 
+        if (audioManager.Instance != null && gunshotClips.Length > 0)
+        {
+            audioManager.Instance.audPlayer.PlayOneShot(gunshotClips[Random.Range(0, gunshotClips.Length)]);
+        }
+
         Vector3 targetDirection =
             gameManager.instance.player.transform.position
             - shootPosition.position;
@@ -294,6 +308,7 @@ public class enemyAI : MonoBehaviour, IDamage
     public void takeDamage(int amount)
     {
         HP -= amount;
+
         if (agent.enabled && agent.isOnNavMesh)
         {
             agent.SetDestination(gameManager.instance.player.transform.position);
@@ -322,12 +337,19 @@ public class enemyAI : MonoBehaviour, IDamage
                 protectMode.enemyDefeated();
             }
 			Destroy(gameObject);
-            
+
+
+            audioManager.Instance.audPlayer.PlayOneShot(audDeath[Random.Range(0, audDeath.Length)], audDeathVol);
+
         }
         else
         {
             StartCoroutine(flashRed());
         }
+
+        DmgCounter.instance.addDmg(amount);
+
+        audioManager.Instance.audPlayer.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
     }
 
     IEnumerator flashRed()
