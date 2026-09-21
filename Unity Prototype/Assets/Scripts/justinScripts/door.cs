@@ -14,6 +14,8 @@ public class door : MonoBehaviour
     bool canOpenDoor;
     public bool isLocked;
 
+    private int entitiesInTrigger = 0;
+
     void Update()
     {
         if (canOpenDoor)
@@ -60,30 +62,51 @@ public class door : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        IOpen open = other.GetComponent<IOpen>();
-        if (open != null)
+        bool isPlayer = other.GetComponent<IOpen>() != null;
+        bool isHostage = other.GetComponent<hostageAI>() != null || other.GetComponentInParent<hostageAI>() != null;
+
+        if (isPlayer || isHostage)
         {
-            canOpenDoor = true;
-            UI.SetActive(true);
+            entitiesInTrigger++;
+
+            if (isPlayer)
+            {
+                canOpenDoor = true;
+                if (model.activeSelf)
+                {
+                    UI.SetActive(true);
+                }
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        IOpen open = other.GetComponent<IOpen>();
-        if (open != null)
-        {
-            bool wasClosed = model.activeSelf;
-            model.SetActive(true);
-            UI.SetActive(false);
-            canOpenDoor = false;
+        bool isPlayer = other.GetComponent<IOpen>() != null;
+        bool isHostage = other.GetComponent<hostageAI>() != null || other.GetComponentInParent<hostageAI>() != null;
 
-            if (!wasClosed && doorShutSound != null && doorShutSound.Length > 0)
+        if (isPlayer || isHostage)
+        {
+            entitiesInTrigger = Mathf.Max(0, entitiesInTrigger - 1);
+
+            if (isPlayer)
             {
-                audioManager.Instance.audPlayer.PlayOneShot(doorShutSound[Random.Range(0, doorShutSound.Length)]);
+                {
+                    canOpenDoor = false;
+                    UI.SetActive(false);
+                }
+
+                if (entitiesInTrigger == 0)
+                {
+                    bool wasOpen = !model.activeSelf;
+                    model.SetActive(true);
+
+                    if (wasOpen && doorShutSound != null && doorShutSound.Length > 0)
+                    {
+                        audioManager.Instance.audPlayer.PlayOneShot(doorShutSound[Random.Range(0, doorShutSound.Length)]);
+                    }
+                }
             }
         }
     }
-
-
 }
