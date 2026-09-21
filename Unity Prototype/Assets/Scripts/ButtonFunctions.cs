@@ -25,6 +25,8 @@ public class ButtonFunctions : MonoBehaviour
 
     public void respawnPlayer()
     {
+        missionManager.instance.StartMission();
+
         gameManager.instance.playerScript.spawnPlayer();
         gameManager.instance.stateUnpause();
     }
