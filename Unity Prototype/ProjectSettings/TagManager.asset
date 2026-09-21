@@ -8,6 +8,7 @@ TagManager:
   - Spawner_SpeedyGonzales
   - Player Spawn Position
   - Enemy
+  - CinemachineTarget
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Flame
   - StashPreview
   - EnemyDetection
-  - 
+  - Hostage
   - 
   - 
   - 

@@ -105,7 +105,7 @@ public class SaveDataManager : MonoBehaviour
 
         if (Input.GetButtonDown("SaveGame"))
         {
-            data.playerCredits += 100;
+            
 
             Save();
 
@@ -233,6 +233,17 @@ public class SaveDataManager : MonoBehaviour
         }
 
         return changed;
+    }
+
+    public void AddCredits(int amount)
+    {
+        data.playerCredits += amount;
+        Save();
+
+        if (ShopManager.Instance != null)
+        {
+            ShopManager.Instance.UpdateCreditsUI();
+        }
     }
 
     public bool IsItemUnlocked(string itemID)

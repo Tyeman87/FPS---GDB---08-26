@@ -21,6 +21,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] public TMP_Text hpArmorAddedText;
     [SerializeField] public TMP_Text ammoAddedText;
     [SerializeField] public TMP_Text keyCounterText;
+    [SerializeField] TMP_Text creditsAwardedText;
 
     [Header("Grenade UI")]
     [SerializeField] Image grenadeIconImage;
@@ -256,8 +257,18 @@ public class gameManager : MonoBehaviour
     {
         statePause();
 
+        if (creditsAwardedText != null)
+        {
+            int awarded = (missionManager.instance != null) ? missionManager.instance.rewardMoney : 0;
+            int total = (SaveDataManager.Instance != null) ? SaveDataManager.Instance.PlayerCredits : 0;
+
+            creditsAwardedText.text = $"Awarded: {awarded} Credits\nTotal: {total} Credits";
+        }
+
+
         menuActive = menuWin;
         menuActive.SetActive(true);
+        
     }
 
     public void missionWin(string message)

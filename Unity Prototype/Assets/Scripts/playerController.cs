@@ -798,17 +798,9 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
                 Camera.main.transform.forward
             );
 
-        if (
-            Physics.Raycast(
-                ray,
-                out RaycastHit hit,
-                interactDistance,
-                ~ignoreLayer
-            )
-        )
-        {
-            IInteractable interactable =
-                hit.collider.GetComponentInParent<IInteractable>();
+            if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, ~ignoreLayer, QueryTriggerInteraction.Ignore))
+            {
+                IInteractable interactable = hit.collider.GetComponentInParent<IInteractable>();
 
             if (interactable != null)
             {
