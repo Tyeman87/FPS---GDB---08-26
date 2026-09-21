@@ -308,6 +308,11 @@ MonoBehaviour:
   startingGuns:
   - {fileID: 11400000, guid: 4f19344b106e9c84cb29ba45ece7deeb, type: 2}
   gunModel: {fileID: 6526621469927365538}
+  grenadeThrowPoint: {fileID: 0}
+  grenadeThrowKey: 113
+  grenadeSwitchKey: 103
+  maxGrenadesPerType: 3
+  reloadKey: 116
   audHurt:
   - {fileID: 8300000, guid: a2c59b878a779364a869d7d6e21af421, type: 3}
   - {fileID: 8300000, guid: 162dbed01ea9c064da94ea92df321443, type: 3}
