@@ -14,15 +14,6 @@ public class UIClickDebugger : MonoBehaviour
         {
             eventSystem = FindFirstObjectByType<EventSystem>();
         }
-
-        if (eventSystem == null)
-        {
-            Debug.LogError("UIClickDebugger: No EventSystem found!");
-        }
-        else
-        {
-            Debug.Log("UIClickDebugger found EventSystem: " + eventSystem.name);
-        }
     }
 
     private void Update()
@@ -32,7 +23,6 @@ public class UIClickDebugger : MonoBehaviour
 
         if (eventSystem == null)
         {
-            Debug.LogError("UIClickDebugger: EventSystem is null.");
             return;
         }
 
@@ -43,17 +33,13 @@ public class UIClickDebugger : MonoBehaviour
 
         eventSystem.RaycastAll(pointerData, results);
 
-        Debug.Log("===== UI CLICK =====");
-
         if (results.Count == 0)
         {
-            Debug.Log("Nothing was clicked.");
         }
         else
         {
             foreach (RaycastResult result in results)
             {
-                Debug.Log("Hit: " + result.gameObject.name);
             }
         }
     }

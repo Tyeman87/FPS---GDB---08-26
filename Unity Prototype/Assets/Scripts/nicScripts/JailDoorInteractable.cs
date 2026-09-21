@@ -48,8 +48,6 @@ public class JailDoorInteractable : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        Debug.Log("Jail door interacted with!");
-
         SetOpen(!isOpen);
     }
 
@@ -68,9 +66,6 @@ public class JailDoorInteractable : MonoBehaviour, IInteractable
             }
             else
             {
-                Debug.LogError(
-                    "JailDoorInteractable: No hostage found in spawner!"
-                );
             }
         }
 

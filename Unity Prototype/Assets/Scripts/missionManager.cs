@@ -147,4 +147,9 @@ public class missionManager : MonoBehaviour
 
         Debug.Log("Detected Game Mode: " + currentGameMode);
     }
+
+    public bool IsStealthMode()
+    {
+        return currentGameMode == GameMode.Stealth;
+    }
 }
