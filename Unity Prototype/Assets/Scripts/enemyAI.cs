@@ -216,7 +216,9 @@ public class enemyAI : MonoBehaviour, IDamage
             eyePosition.position,
             playerDir.normalized,
             out hit,
-            playerDir.magnitude
+            playerDir.magnitude,
+            Physics.DefaultRaycastLayers,
+            QueryTriggerInteraction.Ignore
         ))
         {
             Debug.Log("Raycast hit: " + hit.collider.name);
