@@ -85,7 +85,6 @@ public class StashUI : MonoBehaviour
     {
         if (loadoutPanel == null)
         {
-            Debug.LogWarning("Loadout Panel has not been assigned to StashUI.");
             return;
         }
 
@@ -284,15 +283,11 @@ public class StashUI : MonoBehaviour
 
                 player.SetGunIndex(i);
 
-                Debug.Log("Lobby test gun refreshed: " + selectedGun.stats.itemName);
-
                 return;
             }
         }
 
         player.AddStoredGun(selectedGun.stats, selectedGun.currMag, selectedGun.currReserve);
-
-        Debug.Log("Lobby test gun given: " + selectedGun.stats.itemName);
     }
 
     private void TakeSelectedGrenade()
@@ -308,8 +303,6 @@ public class StashUI : MonoBehaviour
         {
             gameManager.instance.UpdateGrenadeUI();
         }
-
-        Debug.Log("Lobby test grenades given: " + selectedGrenade.itemName + " x" + grenadesGivenWhenTaken);
     }
 
     public void CloseStash()

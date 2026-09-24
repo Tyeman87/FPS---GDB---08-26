@@ -19,7 +19,6 @@ public class TableInteractable : MonoBehaviour, IInteractable
 
         if (player == null)
         {
-            Debug.LogWarning("TableInteractable could not find Player.");
             return;
         }
 

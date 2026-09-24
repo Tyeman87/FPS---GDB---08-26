@@ -79,7 +79,6 @@ public class LoadoutManager : MonoBehaviour
         }
 
         LoadPreset(activePresetIndex);
-        Debug.Log("Selected Preset " + (activePresetIndex + 1));
     }
 
     private void LoadPreset(int presetIndex)
@@ -721,7 +720,6 @@ public class LoadoutManager : MonoBehaviour
     {
         if (player == null)
         {
-            Debug.LogError("LoadoutManager: Player is not assigned.");
             return;
         }
 
@@ -771,17 +769,6 @@ public class LoadoutManager : MonoBehaviour
 
         SaveDataManager.Instance.SavePlayerInventory(player.GetGunInventory(), equippedIndex);
         SaveDataManager.Instance.Save();
-
-        Debug.Log(
-            "Preset " + (activePresetIndex + 1) +
-            " equipped." +
-            " | Gun 1: " + GetItemName(selectedGun1) +
-            " | Gun 2: " + GetItemName(selectedGun2) +
-            " | Grenade 1: " + GetItemName(selectedGrenade1) +
-            " x" + (selectedGrenade1 != null ? GrenadesPerSlot : 0) +
-            " | Grenade 2: " + GetItemName(selectedGrenade2) +
-            " x" + (selectedGrenade2 != null ? GrenadesPerSlot : 0)
-        );
     }
 
     private int GetCurrentMagSize(GunStats gun)

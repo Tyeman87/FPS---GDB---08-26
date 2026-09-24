@@ -17,19 +17,11 @@ public class HostageSpawner : MonoBehaviour
     {
         if (hostagePrefab == null)
         {
-            Debug.LogError(
-                "HostageSpawner: No hostage prefab assigned!"
-            );
-
             return null;
         }
 
         if (spawnPoint == null)
         {
-            Debug.LogError(
-                "HostageSpawner: No spawn point assigned!"
-            );
-
             return null;
         }
 
@@ -44,17 +36,10 @@ public class HostageSpawner : MonoBehaviour
 
         if (spawnedHostage == null)
         {
-            Debug.LogError(
-                "Hostage prefab does not have a hostageAI component!"
-            );
-
             Destroy(hostage);
 
             return null;
         }
-
-        Debug.Log("Hostage spawned!");
-
         return spawnedHostage;
     }
 

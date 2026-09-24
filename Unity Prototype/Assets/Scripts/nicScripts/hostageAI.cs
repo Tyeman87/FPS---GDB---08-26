@@ -49,15 +49,10 @@ public class hostageAI : MonoBehaviour, IDamage, IInteractable
         }
         else
         {
-            Debug.LogError("Hostage could not find Player!");
         }
 
         if (!agent.isOnNavMesh)
         {
-            Debug.LogError(
-                "HOSTAGE IS NOT ON THE NAVMESH!"
-            );
-
             return;
         }
 
@@ -67,7 +62,6 @@ public class hostageAI : MonoBehaviour, IDamage, IInteractable
         }
         else
         {
-            Debug.LogError("Hostage could not find GameManager!");
         }
 
         if (rescueType == RescueType.JailCell || rescueType == RescueType.PlayerInteraction)
@@ -76,21 +70,15 @@ public class hostageAI : MonoBehaviour, IDamage, IInteractable
 
             if (rescueType == RescueType.PlayerInteraction)
             {
-                Debug.Log("Hostage is waiting for player interaction.");
             }
             else
             {
-                Debug.Log("Hostage is waiting in jail cell.");
             }
         }
 
         else if (rescueType == RescueType.PlayerProximity)
         {
             agent.isStopped = true;
-
-            Debug.Log(
-                "Hostage is waiting for player."
-            );
         }
     }
 
@@ -151,8 +139,6 @@ public class hostageAI : MonoBehaviour, IDamage, IInteractable
 
     public void OpenCell()
     {
-        Debug.Log("HOSTAGE CELL OPENED!");
-
         if (rescueType != RescueType.JailCell)
         {
             return;
@@ -173,19 +159,11 @@ public class hostageAI : MonoBehaviour, IDamage, IInteractable
 
         if (agent == null)
         {
-            Debug.LogError(
-                "Hostage has no NavMeshAgent!"
-            );
-
             return;
         }
 
         if (!agent.isOnNavMesh)
         {
-            Debug.LogError(
-                "Hostage is NOT on the NavMesh!"
-            );
-
             return;
         }
 
@@ -198,21 +176,11 @@ public class hostageAI : MonoBehaviour, IDamage, IInteractable
         }
         else
         {
-            Debug.LogError(
-                "Hostage could not find GameManager!"
-            );
         }
-
-        Debug.Log(
-            "HOSTAGE RESCUED!"
-        );
     }
     public void takeDamage(int amount)
     {
         HP -= amount;
-
-        Debug.Log("Hostage took " + amount + " damage. HP: " + HP);
-
         if (HP <= 0)
         {
             Die();
@@ -221,8 +189,6 @@ public class hostageAI : MonoBehaviour, IDamage, IInteractable
 
     private void Die()
     {
-        Debug.Log("HOSTAGE DIED!");
-
         missionManager.instance.LoseMission("HOSTAGE KILLED");
 
         Destroy(gameObject);
@@ -246,12 +212,10 @@ public class hostageAI : MonoBehaviour, IDamage, IInteractable
         if (!followingPlayer)
         {
             agent.isStopped = true;
-            Debug.Log("Hostage stopped following.");
         }
         else
         {
             agent.isStopped = false;
-            Debug.Log("Hostage resumed following.");
         }
     }
 
