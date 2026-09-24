@@ -569,14 +569,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI with Killcount
       objectReference: {fileID: 0}
-    - target: {fileID: 3818199809072402094, guid: 5237abdd7af8b0542a9d6e1104f3d47f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 450
-      objectReference: {fileID: 0}
-    - target: {fileID: 5389699713112840135, guid: 5237abdd7af8b0542a9d6e1104f3d47f, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -790
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -401,7 +401,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &961739750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -541,6 +541,10 @@ GameObject:
 --- !u!4 &992009062
 Transform:
   m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992009061}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1025.7891, y: -539.8949, z: -5.238288}
@@ -569,7 +573,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 516f8daa662712147b02a63b574d01ee, type: 2}
   - {fileID: 11400000, guid: 7d2b5502ee4a87b4ea8801db1c3eab3c, type: 2}
   shopSlotTemplate: {fileID: 4224605313513262000, guid: 4468f156794e70b4abb734a47d3103d4, type: 3}
-  slotContainer: {fileID: 73178621}
+  slotContainer: {fileID: 0}
   playerCreditsText: {fileID: 473134257}
   cashRegSfx: {fileID: 8300000, guid: d0dc6df958f4ee242a2765ffb570172d, type: 3}
   cashSrc: {fileID: 992009064}
@@ -820,7 +824,6 @@ RectTransform:
   m_Children:
   - {fileID: 992009062}
   - {fileID: 1031692247}
-  - {fileID: 73178621}
   - {fileID: 473134256}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
