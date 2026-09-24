@@ -297,17 +297,22 @@ MonoBehaviour:
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 8
-  HP: 11
-  armor: 6
-  armorMax: 1
+  HP: 25
+  armor: 20
+  armorMax: 20
   speed: 7
   sprintMod: 3
   jumpSpeed: 10
-  jumpMax: 2
+  jumpMax: 1
   gravity: 21
   startingGuns:
   - {fileID: 11400000, guid: 4f19344b106e9c84cb29ba45ece7deeb, type: 2}
   gunModel: {fileID: 6526621469927365538}
+  grenadeThrowPoint: {fileID: 0}
+  grenadeThrowKey: 103
+  grenadeSwitchKey: 116
+  maxGrenadesPerType: 3
+  reloadKey: 114
   audHurt:
   - {fileID: 8300000, guid: a2c59b878a779364a869d7d6e21af421, type: 3}
   - {fileID: 8300000, guid: 162dbed01ea9c064da94ea92df321443, type: 3}
@@ -335,7 +340,7 @@ MonoBehaviour:
   reloadSound:
   - {fileID: 8300000, guid: 679b87e5cf03ef547a3d3a2ef2c7f63c, type: 3}
   reloadSoundVol: 0
-  interactDistance: 5
+  interactDistance: 6
   keyCount: 0
 --- !u!33 &4326116532634170512
 MeshFilter:
