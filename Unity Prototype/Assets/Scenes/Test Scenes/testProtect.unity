@@ -2926,18 +2926,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3108563590286888899, guid: 5ba9c0000173504479c1976f95227bae, type: 3}
-      propertyPath: HP
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 3108563590286888899, guid: 5ba9c0000173504479c1976f95227bae, type: 3}
-      propertyPath: armor
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3108563590286888899, guid: 5ba9c0000173504479c1976f95227bae, type: 3}
-      propertyPath: armorMax
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 8790214717902577705, guid: 5ba9c0000173504479c1976f95227bae, type: 3}
       propertyPath: m_Name
       value: Player
