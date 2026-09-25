@@ -32,6 +32,7 @@ public class MenuSelectBtn : MonoBehaviour
                     UI.SetActive(false);
 
                     OpenShop();
+                    canPressMenu = false;
 
                 }
             }
