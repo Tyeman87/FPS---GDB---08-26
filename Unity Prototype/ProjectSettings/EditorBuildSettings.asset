@@ -35,7 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test Scenes/testProtect.unity
     guid: 47b5894ecddaeaa409e2425bd4a03568
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/shopScene.unity
     guid: 22791eb520e6a5841b7ac9930629947f
   - enabled: 1
