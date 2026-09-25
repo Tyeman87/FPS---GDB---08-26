@@ -26,7 +26,7 @@ MonoBehaviour:
   hitEffect: {fileID: 5584602140419805224, guid: 4d5386e8a70034148885447cd6a0a582, type: 3}
   shootSound:
   - {fileID: 8300000, guid: 79e0e3085f3f0e94a9068b0c05a898f9, type: 3}
-  shootSoundVol: 0
+  shootSoundVol: 0.1
   maxDamage: 0
   minShootRate: 0
   maxMagSize: 0

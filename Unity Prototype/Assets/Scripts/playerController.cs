@@ -57,14 +57,14 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
     [SerializeField] LayerMask ignoreLayer;
 
     [Header("Player Stats")]
-    [Range(1, 30)] [SerializeField] int HP;
-    [Range(0, 20)] [SerializeField] int armor;
-    [Range(1, 20)] [SerializeField] int armorMax;
-    [Range(1, 10)] [SerializeField] int speed;
-    [Range(2, 10)] [SerializeField] int sprintMod;
-    [Range(5, 30)] [SerializeField] int jumpSpeed;
-    [Range(1, 5)] [SerializeField] int jumpMax;
-    [Range(15, 40)] [SerializeField] int gravity;
+    [Range(1, 30)][SerializeField] int HP;
+    [Range(0, 20)][SerializeField] int armor;
+    [Range(1, 20)][SerializeField] int armorMax;
+    [Range(1, 10)][SerializeField] int speed;
+    [Range(2, 10)][SerializeField] int sprintMod;
+    [Range(5, 30)][SerializeField] int jumpSpeed;
+    [Range(1, 5)][SerializeField] int jumpMax;
+    [Range(15, 40)][SerializeField] int gravity;
 
     [Header("GunStuff")]
     [SerializeField] List<GunStats> startingGuns = new List<GunStats>();
@@ -93,16 +93,16 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
 
     [Header("Audio")]
     [SerializeField] AudioClip[] audHurt;
-    [Range(0, 1)] [SerializeField] float audHurtVol;
+    [Range(0, 1)][SerializeField] float audHurtVol;
 
     [SerializeField] AudioClip[] audJump;
-    [Range(0, 1)] [SerializeField] float audJumpVol;
+    [Range(0, 1)][SerializeField] float audJumpVol;
 
     [SerializeField] AudioClip[] audSteps;
-    [Range(0, 1)] [SerializeField] float audStepsVol;
+    [Range(0, 1)][SerializeField] float audStepsVol;
 
     [SerializeField] AudioClip[] reloadSound;
-    [Range(0, 1)] [SerializeField] float reloadSoundVol = 1f;
+    [Range(0, 1)][SerializeField] float reloadSoundVol = 1f;
 
     [Header("Interaction")]
     [SerializeField] float interactDistance = 3f;
@@ -635,61 +635,44 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
 
     void reload()
     {
-        if (!Input.GetKeyDown(reloadKey))
-            return;
-
-        if (gunInv.Count == 0)
+        if (Input.GetKeyDown(reloadKey) && gunInv.Count > 0)
         {
-            Debug.Log("RELOAD: No weapon.");
+            GunAmmoData gun = gunInv[gunInvPos];
+            int currentMagSize = GetCurrentMagSize();
+
+            if (gun.currMag >= currentMagSize || gun.currReserve <= 0)
+            { 
+                return; 
+            }
+
+
+            int roundsNeeded = currentMagSize - gun.currMag;
+            int reloadAmt = Mathf.Min(roundsNeeded, gun.currReserve);
+
+            gun.currMag += reloadAmt;
+            gun.currReserve -= reloadAmt;
+
+            if (
+                audioManager.Instance != null &&
+                audioManager.Instance.audPlayer != null &&
+                reloadSound != null &&
+                reloadSound.Length > 0
+            )
+            {
+                audioManager.Instance.audPlayer.PlayOneShot(
+                    reloadSound[Random.Range(0, reloadSound.Length)],
+                    reloadSoundVol
+                );
+            }
+
+            updatePlayerUI();
+
+        }
+        else
+        {
             return;
         }
 
-        GunAmmoData gun = gunInv[gunInvPos];
-        int currentMagSize = GetCurrentMagSize();
-
-        Debug.Log(
-            $"RELOAD: Current {gun.currMag}/{currentMagSize}, " +
-            $"Reserve {gun.currReserve}"
-        );
-
-        if (gun.currMag >= currentMagSize)
-        {
-            Debug.Log("RELOAD: Magazine already full.");
-            return;
-        }
-
-        if (gun.currReserve <= 0)
-        {
-            Debug.Log("RELOAD: No reserve ammo.");
-            return;
-        }
-
-        int roundsNeeded = currentMagSize - gun.currMag;
-        int reloadAmt = Mathf.Min(roundsNeeded, gun.currReserve);
-
-        gun.currMag += reloadAmt;
-        gun.currReserve -= reloadAmt;
-
-        if (
-            audioManager.Instance != null &&
-            audioManager.Instance.audPlayer != null &&
-            reloadSound != null &&
-            reloadSound.Length > 0
-        )
-        {
-            audioManager.Instance.audPlayer.PlayOneShot(
-                reloadSound[Random.Range(0, reloadSound.Length)],
-                reloadSoundVol
-            );
-        }
-
-        Debug.Log(
-            $"RELOAD SUCCESS: Added {reloadAmt}. " +
-            $"Magazine {gun.currMag}/{currentMagSize}. " +
-            $"Reserve {gun.currReserve}"
-        );
-
-        updatePlayerUI();
     }
 
     public void takeDamage(int amount)
@@ -798,9 +781,9 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
                 Camera.main.transform.forward
             );
 
-            if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, ~ignoreLayer, QueryTriggerInteraction.Ignore))
-            {
-                IInteractable interactable = hit.collider.GetComponentInParent<IInteractable>();
+        if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, ~ignoreLayer, QueryTriggerInteraction.Ignore))
+        {
+            IInteractable interactable = hit.collider.GetComponentInParent<IInteractable>();
 
             if (interactable != null)
             {
@@ -1029,7 +1012,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
         updatePlayerUI();
     }
 
-    public void AddReserveAmmo(int ammoAmount)
+    public void FillAmmo(int ammoAmount)
     {
         if (gunInv.Count == 0)
             return;
@@ -1041,7 +1024,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
                 gun.currReserve + ammoAmount,
                 gun.stats.maxReserve
             );
-
+        gun.currMag = gun.stats.magSize;
         updatePlayerUI();
     }
 
@@ -1188,5 +1171,11 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
     public int GetGunIndex()
     {
         return gunInvPos;
+    }
+
+    public int GetAmmoAmountToAdd()
+    {
+        return (gunInv[gunInvPos].stats.magSize - gunInv[gunInvPos].currMag) +
+            (gunInv[gunInvPos].stats.maxReserve - gunInv[gunInvPos].currReserve);
     }
 }
