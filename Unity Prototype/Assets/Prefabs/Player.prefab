@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3327457035481325646}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.16, y: 1, z: 0.11}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -297,9 +297,15 @@ MonoBehaviour:
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 8
+<<<<<<< Updated upstream
   HP: 25
   armor: 20
   armorMax: 20
+=======
+  HP: 30
+  armor: 10
+  armorMax: 10
+>>>>>>> Stashed changes
   speed: 7
   sprintMod: 3
   jumpSpeed: 10
@@ -309,8 +315,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4f19344b106e9c84cb29ba45ece7deeb, type: 2}
   gunModel: {fileID: 6526621469927365538}
   grenadeThrowPoint: {fileID: 0}
+<<<<<<< Updated upstream
   grenadeThrowKey: 113
   grenadeSwitchKey: 103
+=======
+  grenadeThrowKey: 103
+  grenadeSwitchKey: 116
+>>>>>>> Stashed changes
   maxGrenadesPerType: 3
   reloadKey: 114
   audHurt:
@@ -339,7 +350,11 @@ MonoBehaviour:
   audStepsVol: 0.1
   reloadSound:
   - {fileID: 8300000, guid: 679b87e5cf03ef547a3d3a2ef2c7f63c, type: 3}
+<<<<<<< Updated upstream
   reloadSoundVol: 0.321
+=======
+  reloadSoundVol: 0
+>>>>>>> Stashed changes
   interactDistance: 6
   keyCount: 0
 --- !u!33 &4326116532634170512

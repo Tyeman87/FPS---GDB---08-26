@@ -569,6 +569,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI with Killcount
       objectReference: {fileID: 0}
+    - target: {fileID: 2082422359928054236, guid: 5237abdd7af8b0542a9d6e1104f3d47f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3818199809072402094, guid: 5237abdd7af8b0542a9d6e1104f3d47f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 450
@@ -576,6 +580,22 @@ PrefabInstance:
     - target: {fileID: 5389699713112840135, guid: 5237abdd7af8b0542a9d6e1104f3d47f, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -790
+      objectReference: {fileID: 0}
+    - target: {fileID: 6677449301800551725, guid: 5237abdd7af8b0542a9d6e1104f3d47f, type: 3}
+      propertyPath: m_Name
+      value: ReturnToHUB
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077213824178889320, guid: 5237abdd7af8b0542a9d6e1104f3d47f, type: 3}
+      propertyPath: m_text
+      value: Return To HUB
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077213824178889320, guid: 5237abdd7af8b0542a9d6e1104f3d47f, type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077213824178889320, guid: 5237abdd7af8b0542a9d6e1104f3d47f, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
