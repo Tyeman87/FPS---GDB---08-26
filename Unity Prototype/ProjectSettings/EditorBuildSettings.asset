@@ -23,7 +23,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/New Scene.unity
     guid: 5407853fa394f03449e85993045ae410
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Moni.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1

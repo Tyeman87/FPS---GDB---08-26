@@ -312,7 +312,7 @@ MonoBehaviour:
   grenadeThrowKey: 113
   grenadeSwitchKey: 103
   maxGrenadesPerType: 3
-  reloadKey: 116
+  reloadKey: 114
   audHurt:
   - {fileID: 8300000, guid: a2c59b878a779364a869d7d6e21af421, type: 3}
   - {fileID: 8300000, guid: 162dbed01ea9c064da94ea92df321443, type: 3}
