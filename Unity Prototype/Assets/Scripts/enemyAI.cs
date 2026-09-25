@@ -6,6 +6,7 @@ public class enemyAI : MonoBehaviour, IDamage
 {
     [SerializeField] NavMeshAgent agent;
     [SerializeField] public Renderer model;
+    [SerializeField] Animator animator;
 
     [Header("Enemy Stats")]
     [Range(1, 100)][SerializeField] public int HP;
@@ -35,6 +36,9 @@ public class enemyAI : MonoBehaviour, IDamage
     private float hearingTimer = 0f;
     private bool heardPlayer = false;
     private Vector3 noiseLocation;
+    bool isDead;
+
+    [SerializeField] float deathDespawnDelay = 3f;
 
 
     [Header("Investigation")]
@@ -97,9 +101,11 @@ public class enemyAI : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
-        if (playerInSight)
+        bool seesPlayer = playerInSight && canSeePlayer();
+
+        if (seesPlayer)
         {
-            if (canSeePlayer())
+            if (seesPlayer)
             {
                 heardPlayer = false;
                 investigating = false;
@@ -148,6 +154,22 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             CheckPlayerNoise();
         }
+
+        if (animator != null)
+        {
+            bool moving = agent != null
+                && agent.enabled
+                && agent.isOnNavMesh
+                && agent.velocity.sqrMagnitude > 0.01f;
+
+            animator.SetBool("IsWalking", moving);
+            animator.SetBool("IsAiming", isRanged && seesPlayer && !moving);
+        }
+
+        if (isDead)
+        {
+            return;
+        }
     }
 
     void checkRoam()
@@ -194,7 +216,9 @@ public class enemyAI : MonoBehaviour, IDamage
             eyePosition.position,
             playerDir.normalized,
             out hit,
-            playerDir.magnitude
+            playerDir.magnitude,
+            Physics.DefaultRaycastLayers,
+            QueryTriggerInteraction.Ignore
         ))
         {
             Debug.Log("Raycast hit: " + hit.collider.name);
@@ -205,9 +229,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
                 if (detectionTimer >= detectionTime)
                 {
-                    if (missionManager.instance != null &&
-                    missionManager.instance.CurrentState == missionManager.MissionState.Active &&
-                    missionManager.instance.IsStealthMode())
+                    if (missionManager.instance != null)
                     {
                         missionManager.instance.LoseMission("STEALTH DETECTED");
                     }
@@ -219,7 +241,6 @@ public class enemyAI : MonoBehaviour, IDamage
                 {
                     agent.stoppingDistance = 10f;
                     faceTarget();
-                    gunRotation();
 
                     if (shootTimer >= shootRate)
                     {
@@ -299,6 +320,14 @@ public class enemyAI : MonoBehaviour, IDamage
             targetRotation
         );
 
+        foreach (Collider bulletCollider in newBullet.GetComponentsInChildren<Collider>())
+        {
+            foreach (Collider enemyCollider in GetComponentsInChildren<Collider>())
+            {
+                Physics.IgnoreCollision(bulletCollider, enemyCollider);
+            }
+        }
+
         damage bulletDamageScript = newBullet.GetComponent<damage>();
 
         if (bulletDamageScript != null)
@@ -309,6 +338,10 @@ public class enemyAI : MonoBehaviour, IDamage
 
     public void takeDamage(int amount)
     {
+        if (isDead)
+        {
+            return;
+        }
         HP -= amount;
 
         if (agent.enabled && agent.isOnNavMesh)
@@ -333,44 +366,55 @@ public class enemyAI : MonoBehaviour, IDamage
                 assaultMode.enemyDefeated();
             }
 
+           
             if (protectMode != null)
             {
                 protectMode.enemyDefeated();
             }
+			
+            isDead = true;
+            StopAllCoroutines();
 
-            if (audioManager.Instance != null &&
-                audioManager.Instance.audPlayer != null &&
-                audDeath != null &&
-                audDeath.Length > 0)
+            if (model != null)
             {
-                audioManager.Instance.audPlayer.PlayOneShot(
-                    audDeath[Random.Range(0, audDeath.Length)],
-                    audDeathVol
-                );
+                model.material.color = colorOrig;
             }
 
-            Destroy(gameObject);
+            if (agent != null && agent.enabled)
+            {
+                if (agent.isOnNavMesh)
+                {
+                    agent.isStopped = true;
+                    agent.ResetPath();
+                }
+
+                agent.enabled = false;
+            }
+
+            foreach (Collider col in GetComponentsInChildren<Collider>())
+            {
+                col.enabled = false;
+            }
+
+            if (animator != null)
+            {
+                animator.SetBool("IsWalking", false);
+                animator.SetBool("IsAiming", false);
+                animator.SetTrigger("Die");
+            }
+            Destroy(gameObject, deathDespawnDelay);
+
+            audioManager.Instance.audPlayer.PlayOneShot(audDeath[Random.Range(0, audDeath.Length)], audDeathVol);
+
         }
         else
         {
             StartCoroutine(flashRed());
-
-            if (audioManager.Instance != null &&
-                audioManager.Instance.audPlayer != null &&
-                audHurt != null &&
-                audHurt.Length > 0)
-            {
-                audioManager.Instance.audPlayer.PlayOneShot(
-                    audHurt[Random.Range(0, audHurt.Length)],
-                    audHurtVol
-                );
-            }
         }
 
-        if (DmgCounter.instance != null)
-        {
-            DmgCounter.instance.addDmg(amount);
-        }
+        DmgCounter.instance.addDmg(amount);
+
+        audioManager.Instance.audPlayer.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
     }
 
     IEnumerator flashRed()
