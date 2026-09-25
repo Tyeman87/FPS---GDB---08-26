@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5142882991770042755}
   - component: {fileID: 5392342863177165748}
+  - component: {fileID: 2106089453234604173}
   - component: {fileID: 2030840447170847423}
   - component: {fileID: 1779776948449871133}
   m_Layer: 0
@@ -42,6 +43,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6959183472344196488}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2106089453234604173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6959183472344196488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac2519b964dff5a4ca2ad885567a4123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::damage
+  type: 1
+  rb: {fileID: 0}
+  damageAmount: 99999
+  damageRate: 99999
+  bulletSpeed: 0
+  bulletDestroyTime: 0
+  hitEffect: {fileID: 0}
 --- !u!23 &2030840447170847423
 MeshRenderer:
   m_ObjectHideFlags: 0
