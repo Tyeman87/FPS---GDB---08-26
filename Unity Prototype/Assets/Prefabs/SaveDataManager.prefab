@@ -56,3 +56,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b0e5cbff686d0b24595a395c6c2dc858, type: 2}
   - {fileID: 11400000, guid: 516f8daa662712147b02a63b574d01ee, type: 2}
   - {fileID: 11400000, guid: 7d2b5502ee4a87b4ea8801db1c3eab3c, type: 2}
+  allGrenades:
+  - {fileID: 11400000, guid: 82e4895a1d47efa45aa7f67b802ee85f, type: 2}
+  - {fileID: 11400000, guid: ce653a69f81e9464b84ab068ca45e09a, type: 2}
+  defaultUnlockedGuns: []
+  defaultUnlockedGrenades: []
+  autoSaveInterval: 300

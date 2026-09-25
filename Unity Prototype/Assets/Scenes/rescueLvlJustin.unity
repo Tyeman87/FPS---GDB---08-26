@@ -2801,7 +2801,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1051896976
 Transform:
   m_ObjectHideFlags: 0
@@ -5441,10 +5441,6 @@ PrefabInstance:
     - target: {fileID: 817912986394067475, guid: 1b1e8da21a97e2240a75bf49e93488f1, type: 3}
       propertyPath: m_Name
       value: AmmoPickup
-      objectReference: {fileID: 0}
-    - target: {fileID: 1200890786485972728, guid: 1b1e8da21a97e2240a75bf49e93488f1, type: 3}
-      propertyPath: ammoAmount
-      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 8678310942004935433, guid: 1b1e8da21a97e2240a75bf49e93488f1, type: 3}
       propertyPath: m_LocalPosition.x
