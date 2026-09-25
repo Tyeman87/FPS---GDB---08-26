@@ -14,12 +14,12 @@ public class ammoPickup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             
-            gameManager.instance.playerScript.AddReserveAmmo(ammoAmount);
+            StartCoroutine(displayPopup());
+            gameManager.instance.playerScript.FillAmmo(ammoAmount);
 
             //deactivate mesh and collider for duration of timer
             GetComponent<BoxCollider>().enabled = false;
             GetComponent<MeshRenderer>().enabled = false;
-            StartCoroutine(displayPopup());
             StartCoroutine(reenableCoroutine());
         }
     }
@@ -33,7 +33,8 @@ public class ammoPickup : MonoBehaviour
 
     IEnumerator displayPopup()
     {
-        gameManager.instance.ammoAddedText.text = $"+ {ammoAmount} rounds";
+        int amtAdded = gameManager.instance.playerScript.GetAmmoAmountToAdd();
+        gameManager.instance.ammoAddedText.text = $"+{amtAdded} Rounds";
         gameManager.instance.ammoAddedPopup.SetActive(true);
         yield return new WaitForSeconds(2f);
         gameManager.instance.ammoAddedPopup.SetActive(false);

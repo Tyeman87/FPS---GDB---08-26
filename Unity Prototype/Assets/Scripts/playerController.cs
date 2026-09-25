@@ -1012,7 +1012,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
         updatePlayerUI();
     }
 
-    public void AddReserveAmmo(int ammoAmount)
+    public void FillAmmo(int ammoAmount)
     {
         if (gunInv.Count == 0)
             return;
@@ -1024,7 +1024,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
                 gun.currReserve + ammoAmount,
                 gun.stats.maxReserve
             );
-
+        gun.currMag = gun.stats.magSize;
         updatePlayerUI();
     }
 
@@ -1171,5 +1171,11 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
     public int GetGunIndex()
     {
         return gunInvPos;
+    }
+
+    public int GetAmmoAmountToAdd()
+    {
+        return (gunInv[gunInvPos].stats.magSize - gunInv[gunInvPos].currMag) +
+            (gunInv[gunInvPos].stats.maxReserve - gunInv[gunInvPos].currReserve);
     }
 }
