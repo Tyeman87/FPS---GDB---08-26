@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class missionManager : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class missionManager : MonoBehaviour
 
     [Header("Mission Settings")]
     [SerializeField] string missionName;
+    [SerializeField] string missionInstructions;
     [SerializeField] GameMode currentGameMode;
     private MissionState currentState = MissionState.NotStarted;
     public MissionState CurrentState => currentState;
