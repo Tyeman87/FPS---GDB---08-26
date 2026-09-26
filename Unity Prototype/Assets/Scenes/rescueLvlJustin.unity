@@ -693,6 +693,10 @@ PrefabInstance:
       propertyPath: missionName
       value: Hostage Rescue
       objectReference: {fileID: 0}
+    - target: {fileID: 2610585425120437970, guid: 688def61ba8fe604b972793ac6282182, type: 3}
+      propertyPath: rewardMoney
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 3691477038782473280, guid: 688def61ba8fe604b972793ac6282182, type: 3}
       propertyPath: m_Name
       value: MissionManager
@@ -3359,7 +3363,7 @@ PrefabInstance:
     - target: {fileID: 5512593984622318646, guid: a39006c66768def4ab821566768a7b88, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 255556445}
+      objectReference: {fileID: 0}
     - target: {fileID: 6084827872424244587, guid: a39006c66768def4ab821566768a7b88, type: 3}
       propertyPath: m_Name
       value: Hostage_Survivalist1 (1)
@@ -3687,6 +3691,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50387a2d832f761428b93d8d23ade3e6, type: 3}
+--- !u!1001 &1087073076
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6084827872424244587, guid: a39006c66768def4ab821566768a7b88, type: 3}
+      propertyPath: m_Name
+      value: Hostage_Survivalist1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268444870386612710, guid: a39006c66768def4ab821566768a7b88, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 51.528835
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268444870386612710, guid: a39006c66768def4ab821566768a7b88, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.9924468
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268444870386612710, guid: a39006c66768def4ab821566768a7b88, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -132.67197
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268444870386612710, guid: a39006c66768def4ab821566768a7b88, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268444870386612710, guid: a39006c66768def4ab821566768a7b88, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268444870386612710, guid: a39006c66768def4ab821566768a7b88, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268444870386612710, guid: a39006c66768def4ab821566768a7b88, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268444870386612710, guid: a39006c66768def4ab821566768a7b88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268444870386612710, guid: a39006c66768def4ab821566768a7b88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268444870386612710, guid: a39006c66768def4ab821566768a7b88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a39006c66768def4ab821566768a7b88, type: 3}
 --- !u!1001 &1129719828
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6179,6 +6240,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI with Killcount
       objectReference: {fileID: 0}
+    - target: {fileID: 2082422359928054236, guid: 5237abdd7af8b0542a9d6e1104f3d47f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3066616583171304948, guid: 5237abdd7af8b0542a9d6e1104f3d47f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: restart
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395855900937913974, guid: 5237abdd7af8b0542a9d6e1104f3d47f, type: 3}
+      propertyPath: m_Name
+      value: Restart Btn
+      objectReference: {fileID: 0}
+    - target: {fileID: 6677449301800551725, guid: 5237abdd7af8b0542a9d6e1104f3d47f, type: 3}
+      propertyPath: m_Name
+      value: Lobby Btn
+      objectReference: {fileID: 0}
+    - target: {fileID: 8449328197852816838, guid: 5237abdd7af8b0542a9d6e1104f3d47f, type: 3}
+      propertyPath: m_text
+      value: Restart
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077213824178889320, guid: 5237abdd7af8b0542a9d6e1104f3d47f, type: 3}
+      propertyPath: m_text
+      value: Lobby
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6339,7 +6424,7 @@ PrefabInstance:
     - target: {fileID: 5512593984622318646, guid: a39006c66768def4ab821566768a7b88, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 255556445}
+      objectReference: {fileID: 0}
     - target: {fileID: 6084827872424244587, guid: a39006c66768def4ab821566768a7b88, type: 3}
       propertyPath: m_Name
       value: Hostage_Survivalist1
@@ -6409,3 +6494,4 @@ SceneRoots:
   - {fileID: 1833794984}
   - {fileID: 1172577083}
   - {fileID: 723383989}
+  - {fileID: 1087073076}

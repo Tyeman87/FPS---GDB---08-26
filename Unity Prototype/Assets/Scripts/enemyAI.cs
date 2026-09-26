@@ -229,7 +229,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
                 if (detectionTimer >= detectionTime)
                 {
-                    if (missionManager.instance != null)
+                    if (missionManager.instance != null && missionManager.instance.IsStealthMode())
                     {
                         missionManager.instance.LoseMission("STEALTH DETECTED");
                     }
