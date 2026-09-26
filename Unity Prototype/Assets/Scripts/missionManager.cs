@@ -28,6 +28,8 @@ public class missionManager : MonoBehaviour
     private MissionState currentState = MissionState.NotStarted;
     public MissionState CurrentState => currentState;
 
+    [SerializeField] TMP_Text missionInstructionsText;
+
     private bool missionActive;
     private bool missionComplete;
 
@@ -48,6 +50,11 @@ public class missionManager : MonoBehaviour
 
         missionActive = true;
         missionComplete = false;
+
+        if (currentGameMode == GameMode.Stealth && missionInstructionsText != null)
+        {
+            missionInstructionsText.text = missionInstructions;
+        }
 
         Debug.Log($"Mission '{missionName}' started in {currentGameMode} mode.");
     }
