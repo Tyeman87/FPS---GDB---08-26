@@ -50,8 +50,11 @@ public class ButtonFunctions : MonoBehaviour
 
     public void returnToHub()
     {
-        Debug.Log("RETURNING TO LOBBY ROOM");
-
+        if (gameManager.instance != null)
+        {
+            gameManager.instance.stateUnpause();
+        }
+        
         Time.timeScale = 1f;
         SceneManager.LoadScene("LobbyRoom");
     }

@@ -6,6 +6,7 @@ public class gunPickup : MonoBehaviour
     [Range(0, 100)] [SerializeField] float rotationSpeed = 100f;
     [SerializeField] float bobHeight = 0.25f;
     [SerializeField] float bobSpeed = 2f;
+    [SerializeField] int ammoFill = 60;
 
 
     private Vector3 startPosition;
@@ -34,7 +35,7 @@ public class gunPickup : MonoBehaviour
         {
             
             pickup.getGunStats(gun);
-            gameManager.instance.playerScript.updatePlayerUI();
+            gameManager.instance.playerScript.FillAmmo(ammoFill);
             Destroy(gameObject);
         }
     }

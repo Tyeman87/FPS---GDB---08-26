@@ -130,11 +130,11 @@ public class ShopManager : MonoBehaviour
 
     private IEnumerator FlashRedCoroutine()
     {
-        playerCreditsText.faceColor = Color.red;
+        playerCreditsText.color = Color.red;
 
-        yield return new WaitForSecondsRealtime(0.1f);
+        yield return new WaitForSecondsRealtime(0.2f);
 
-        playerCreditsText.faceColor = Color.white;
+        playerCreditsText.color = Color.white;
         flashCoroutine = null;
     }
 

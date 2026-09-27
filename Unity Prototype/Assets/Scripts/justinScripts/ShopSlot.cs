@@ -34,6 +34,11 @@ public class ShopSlot : MonoBehaviour
 
     public void OnPurchaseClicked()
     {
+        if (SaveDataManager.Instance == null)
+        {
+            Debug.LogError("SaveDataManager.Instance is NULL");
+            return;
+        }
         if (SaveDataManager.Instance.IsItemUnlocked(shopItem.itemID)) return;
 
         bool success = SaveDataManager.Instance.Purchase(shopItem);
@@ -48,6 +53,7 @@ public class ShopSlot : MonoBehaviour
         else
         {
             ShopManager.Instance.flashCreditsRed();
+            Debug.Log("Purchase failed. Invoking flashCreditsRed()...");
         }
 
     }

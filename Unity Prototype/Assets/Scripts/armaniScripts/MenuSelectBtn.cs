@@ -32,6 +32,7 @@ public class MenuSelectBtn : MonoBehaviour
                     UI.SetActive(false);
 
                     OpenShop();
+                    canPressMenu = false;
 
                 }
             }
@@ -115,7 +116,7 @@ public class MenuSelectBtn : MonoBehaviour
                 {
                     UI.SetActive(false);
 
-                    MenuLdr.load(MenuLdr.Scene.Moni);
+                    MenuLdr.load(MenuLdr.Scene.StealthLevel);
 
                 }
             }

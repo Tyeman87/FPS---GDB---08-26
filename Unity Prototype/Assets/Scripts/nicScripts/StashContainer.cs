@@ -68,16 +68,13 @@ public class StashContainer : MonoBehaviour, IInteractable
             return;
         }
 
-        int presetIndex = SaveDataManager.Instance.GetActiveLoadoutPresetIndex();
-        SaveDataManager.LoadoutPresetSaveData preset = SaveDataManager.Instance.GetLoadoutPreset(presetIndex);
-
-        if (preset == null)
+        foreach (GunStats gun in SaveDataManager.Instance.GetUnlockedGuns())
         {
-            return;
+            if (gun != null)
+            {
+                AddLoadoutGun(gun.itemID);
+            }
         }
-
-        AddLoadoutGun(preset.gun1ID);
-        AddLoadoutGun(preset.gun2ID);
     }
 
     private void AddLoadoutGun(string itemID)

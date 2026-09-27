@@ -1431,6 +1431,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::enemyAI
   agent: {fileID: 1748264648706540187}
   model: {fileID: 7843536304322557594}
+  animator: {fileID: 0}
   HP: 10
   maxHP: 10
   faceTargetSpeed: 8
@@ -1449,6 +1450,7 @@ MonoBehaviour:
   stealthBar: {fileID: 0}
   hearingThreshold: 0.75
   hearingDelay: 2
+  deathDespawnDelay: 3
   investigationRadius: 5
   investigationTime: 3
   detectionTime: 5
@@ -1463,8 +1465,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 754528019529dfd4bb6f3e61d3c28948, type: 3}
   - {fileID: 8300000, guid: f8beeb0ccc30bd94d9ca05d6b435afed, type: 3}
   audDeathVol: 0.5
-  gunshotClips:
-  - {fileID: 8300000, guid: 550bdf08095d36d43b02b9e9cea3c286, type: 3}
+  gunshotClips: []
   colorOrig: {r: 0, g: 0, b: 0, a: 0}
 --- !u!33 &5200536922452790399
 MeshFilter:
