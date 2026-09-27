@@ -107,6 +107,8 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
     [Header("Interaction")]
     [SerializeField] float interactDistance = 3f;
 
+    
+
     int jumpCount;
     int HPOrig;
     int gunInvPos;
@@ -120,6 +122,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
 
     bool isSprinting;
     bool isPlayingStep;
+    public Animator anim;
 
     void Start()
     {
@@ -200,6 +203,8 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
         }
 
         selectGun();
+        anim.SetFloat("Speed", moveDir.magnitude * speed);
+        Debug.Log($"Anim Speed: {moveDir.magnitude * speed}");
     }
 
     public int GetCurrentDamage()
