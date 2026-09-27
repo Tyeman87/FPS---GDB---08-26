@@ -358,7 +358,7 @@ public class playerController : MonoBehaviour, IDamage, IPickupGun, IOpen, IMenu
                 out hit,
                 gun.shootDist,
                 ~ignoreLayer,
-                QueryTriggerInteraction.Ignore
+                QueryTriggerInteraction.Collide
             )
         )
         {

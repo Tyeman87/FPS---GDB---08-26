@@ -113,7 +113,7 @@ public class enemyAI : MonoBehaviour, IDamage
 
                 if (!isRanged)
                 {
-                    agent.stoppingDistance = 0f;
+                    agent.stoppingDistance = 1f;
                     agent.SetDestination(gameManager.instance.player.transform.position);
                 }
                 else
@@ -207,7 +207,7 @@ public class enemyAI : MonoBehaviour, IDamage
         playerDir = gameManager.instance.player.transform.position - eyePosition.position;
 
         Vector3 flatPlayerDir = new Vector3(playerDir.x, 0, playerDir.z);
-        Debug.Log("Player distance: " + playerDir.magnitude);
+        // Debug.Log("Player distance: " + playerDir.magnitude);
         angleToPlayer = Vector3.Angle(flatPlayerDir, transform.forward);
 
         RaycastHit hit;
@@ -221,7 +221,7 @@ public class enemyAI : MonoBehaviour, IDamage
             QueryTriggerInteraction.Ignore
         ))
         {
-            Debug.Log("Raycast hit: " + hit.collider.name);
+            //Debug.Log("Raycast hit: " + hit.collider.name);
             if (angleToPlayer < FOV &&
                 hit.collider.GetComponentInParent<playerController>() != null)
             {
@@ -249,7 +249,7 @@ public class enemyAI : MonoBehaviour, IDamage
                 }
                 else
                 {
-                    agent.stoppingDistance = 0;
+                    agent.stoppingDistance = 1f;
                     agent.SetDestination(gameManager.instance.player.transform.position);
                     faceTarget();
                 }
@@ -404,8 +404,10 @@ public class enemyAI : MonoBehaviour, IDamage
             }
             Destroy(gameObject, deathDespawnDelay);
 
-            audioManager.Instance.audPlayer.PlayOneShot(audDeath[Random.Range(0, audDeath.Length)], audDeathVol);
-
+            if (audioManager.Instance != null && audDeath.Length > 0)
+            {
+                audioManager.Instance.audPlayer.PlayOneShot(audDeath[Random.Range(0, audDeath.Length)], audDeathVol);
+            }
         }
         else
         {
@@ -414,7 +416,10 @@ public class enemyAI : MonoBehaviour, IDamage
 
         DmgCounter.instance.addDmg(amount);
 
-        audioManager.Instance.audPlayer.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
+        if (audioManager.Instance != null && audHurt.Length > 0)
+        {
+            audioManager.Instance.audPlayer.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
+        }
     }
 
     IEnumerator flashRed()
