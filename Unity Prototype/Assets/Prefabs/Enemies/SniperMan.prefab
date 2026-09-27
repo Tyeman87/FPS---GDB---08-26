@@ -1333,27 +1333,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::enemyAI
   agent: {fileID: 3011267891858190578}
   model: {fileID: 7368769097327308768}
+  animator: {fileID: 0}
   HP: 4
   maxHP: 4
   faceTargetSpeed: 9
-  FOV: 50
+  FOV: 90
   moveSpeed: 1
-  roamDist: 1
+  roamDist: 2
   roamPauseTime: 1
   eyePosition: {fileID: 3473818471812092209}
   bullet: {fileID: 6964972883987111141, guid: e497d04b3da85d748af41ef0a2efde98, type: 3}
   gunPivot: {fileID: 6788570804692156776}
   shootPosition: {fileID: 6788570804692156776}
   shootRate: 3
-  gunRotateSpeed: 1
+  gunRotateSpeed: 3
   bulletDamage: 5
   isRanged: 1
   stealthBar: {fileID: 0}
   hearingThreshold: 0.75
   hearingDelay: 2
+  deathDespawnDelay: 3
   investigationRadius: 5
   investigationTime: 3
   detectionTime: 5
+  audHurt: []
+  audHurtVol: 0
+  audDeath: []
+  audDeathVol: 0
   gunshotClips:
   - {fileID: 8300000, guid: 550bdf08095d36d43b02b9e9cea3c286, type: 3}
   colorOrig: {r: 0, g: 0, b: 0, a: 0}
