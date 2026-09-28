@@ -49,8 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   reenableTimer: 5
-  ammoAmount: 20
-  targetGunIndex: 0
+  ammoAmount: 300
 --- !u!33 &3600108845458987484
 MeshFilter:
   m_ObjectHideFlags: 0

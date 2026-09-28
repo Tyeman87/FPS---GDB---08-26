@@ -44123,6 +44123,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoadoutCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7387340560147317169, guid: 57f7e4dc99ce1024cb91b3d0d1f8f5b4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
