@@ -845,6 +845,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5694969919194760721, guid: bfa28c0da5c76384985d8b25b01ebd15, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 91fee17aa8456294893f2e553931ab3d, type: 2}
     - target: {fileID: 7564662631880208375, guid: bfa28c0da5c76384985d8b25b01ebd15, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.42591
@@ -1138,6 +1142,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedyGonzalez
       objectReference: {fileID: 0}
+    - target: {fileID: 5620934490975021308, guid: 5d9e55400ebc4234abe7d9801b705670, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7971467853802059902, guid: 5d9e55400ebc4234abe7d9801b705670, type: 3}
       propertyPath: m_LocalPosition.x
       value: 47.7
@@ -1177,6 +1185,14 @@ PrefabInstance:
     - target: {fileID: 7971467853802059902, guid: 5d9e55400ebc4234abe7d9801b705670, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327012681050034403, guid: 5d9e55400ebc4234abe7d9801b705670, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155360084570006122, guid: 5d9e55400ebc4234abe7d9801b705670, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
